@@ -1,0 +1,35 @@
+{
+    "env": {
+      "browser": true,
+      "es2020": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended"
+    ],
+    "globals": {
+      "ComponentFramework": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@microsoft/power-apps",
+      "@typescript-eslint",
+      "react"
+    ],
+    "rules": {
+      "no-eval": "error",
+      "no-new-func": "error",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": "off"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
+}

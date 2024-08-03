@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<manifest>
+  <control namespace="yopower.components" constructor="ypxrmjs" version="0.1.7" display-name-key="ypxrmjs" description-key="ypxrmjs description" control-type="virtual" preview-image="img/yp_logo_xrmjs.svg" api-version="1.3.14">
+    <type-group name="allTypes">
+      <type>SingleLine.Text</type>
+      <type>SingleLine.TextArea</type>
+    </type-group>
+    <property name="inputs" display-name-key="inputs" description-key="inputs" of-type-group="allTypes" usage="bound" required="true"/>
+    <property name="label" display-name-key="label" description-key="label" of-type-group="allTypes" usage="bound" required="true"/>
+    <property name="appearance" display-name-key="appearance" description-key="appearance" of-type="Enum" usage="bound" required="true" default-value="primary">
+      <value name="primary" display-name-key="primary">primary</value>
+      <value name="secondary" display-name-key="secondary">secondary</value>
+      <value name="subtle" display-name-key="subtle">subtle</value>
+      <value name="transparent" display-name-key="transparent">transparent</value>
+    </property>
+    <property name="shape" display-name-key="shape" description-key="shape" of-type="Enum" usage="bound" required="true" default-value="rounded">
+      <value name="rounded" display-name-key="rounded">rounded</value>
+      <value name="circular" display-name-key="circular">circular</value>
+      <value name="square" display-name-key="square">square</value>
+    </property>
+    <property name="disabled" display-name-key="disabled" description-key="disabled" of-type="TwoOptions" usage="bound" required="true"/>
+    <property name="method" description-key="method" display-name-key="method" of-type="Enum" usage="bound" required="true" default-value="0">
+      <value name="custom" display-name-key="custom">0</value>
+      <value name="navigateTo" display-name-key="navigateTo">1</value>
+      <value name="openAlertDialog" display-name-key="openAlertDialog">2</value>
+      <value name="openConfirmDialog" display-name-key="openConfirmDialog">3</value>
+      <value name="openErrorDialog" display-name-key="openErrorDialog">4</value>
+      <value name="openFile" display-name-key="openFile">5</value>
+      <value name="openForm" display-name-key="openForm">6</value>
+      <value name="openUrl" display-name-key="openUrl">7</value>
+      <value name="openWebResource" display-name-key="openWebResource">8</value>
+      <value name="showProgressIndicator" display-name-key="showProgressIndicator">9</value>
+      <value name="closeProgressIndicator" display-name-key="closeProgressIndicator">10</value>
+      <value name="lookupObjects" display-name-key="lookupObjects">11</value>
+      <value name="createPane" display-name-key="createPane">12</value>
+      <value name="getAllPanes" display-name-key="getAllPanes">13</value>
+      <value name="getPane" display-name-key="getPane">14</value>
+      <value name="getSelectedPane" display-name-key="getSelectedPane">15</value>
+      <value name="getFocusedSession" display-name-key="getFocusedSession">16</value>
+      <value name="getAllSessions" display-name-key="getAllSessions">17</value>
+      <value name="getSession" display-name-key="getSession">18</value>
+      <value name="createSession" display-name-key="createSession">19</value>
+      <value name="canCreateSession" display-name-key="canCreateSession">20</value>
+      <value name="closeSession" display-name-key="closeSession">21</value>
+      <value name="focusSession" display-name-key="focusSession">22</value>
+      <value name="requestFocusSession" display-name-key="requestFocusSession">23</value>
+      <value name="getFocusedTab" display-name-key="getFocusedTab">24</value>
+      <value name="getAllTabs" display-name-key="getAllTabs">25</value>
+      <value name="getTab" display-name-key="getTab">26</value>
+      <value name="createTab" display-name-key="createTab">27</value>
+      <value name="canCreateTab" display-name-key="canCreateTab">28</value>
+      <value name="closeTab" display-name-key="closeTab">29</value>
+      <value name="focusTab" display-name-key="focusTab">30</value>
+      <value name="refreshTab" display-name-key="refreshTab">31</value>
+      <value name="setContext" display-name-key="setContext">32</value>
+      <value name="updateContext" display-name-key="updateContext">33</value>
+      <value name="getContext" display-name-key="getContext">34</value>
+      <value name="deleteContext" display-name-key="deleteContext">35</value>
+      <value name="resolveSlug" display-name-key="resolveSlug">36</value>
+    </property>
+    <property name="success" display-name-key="success" description-key="success" of-type="TwoOptions" usage="output"/>
+    <property name="message" display-name-key="message" description-key="message" of-type="SingleLine.Text" usage="output"/>
+    <property name="data" display-name-key="data" description-key="data" of-type="SingleLine.Text" usage="output"/>
+    <common-event name="OnSelect"/>
+    <event name="OnOut" display-name-key="OnOut" description-key="OnOut"/>
+    <resources>
+      <code path="bundle.js" order="1"/>
+      <platform-library name="React" version="16.8.6"/>
+      <platform-library name="Fluent" version="8.29.0"/>
+    </resources>
+    <feature-usage>
+      <uses-feature name="Utility" required="true"/>
+      <uses-feature name="WebAPI" required="true"/>
+    </feature-usage>
+    <built-by name="pac" version="1.32.5"/>
+  </control>
+</manifest>

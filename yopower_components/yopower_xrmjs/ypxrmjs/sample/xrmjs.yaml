@@ -1,0 +1,885 @@
+- body:
+    Control: GroupContainer
+    Variant: verticalAutoLayoutContainer
+    Properties:
+      Fill: =RGBA(224, 224, 224, 1)
+      Height: =Parent.Height
+      LayoutAlignItems: =LayoutAlignItems.Stretch
+      LayoutDirection: =LayoutDirection.Vertical
+      LayoutGap: =5
+      LayoutMode: =LayoutMode.Auto
+      PaddingBottom: =10
+      PaddingLeft: =10
+      PaddingRight: =10
+      PaddingTop: =10
+      Width: =Parent.Width
+    Children:
+    - header:
+        Control: GroupContainer
+        Variant: horizontalAutoLayoutContainer
+        Properties:
+          BorderColor: =RGBA(0, 0, 0, 0)
+          BorderStyle: =BorderStyle.None
+          DropShadow: =DropShadow.None
+          FillPortions: =0
+          Height: =50
+          LayoutMode: =LayoutMode.Auto
+          RadiusBottomLeft: =0
+          RadiusBottomRight: =0
+          RadiusTopLeft: =0
+          RadiusTopRight: =0
+        Children:
+        - title:
+            Control: FluentV8/Label
+            Properties:
+              FontSize: =15
+              FontWeight: =FontWeight.Semibold
+              PaddingStart: '=10  '
+              Text: ="PCF - Xrm JS"
+              AlignInContainer: =AlignInContainer.Stretch
+              FillPortions: =1
+              LayoutMinHeight: =40
+        - triggerOnSelect:
+            Control: Classic/Icon
+            Variant: Add
+            Properties:
+              OnSelect: =//Select(ypxrmjs_navigateTo);
+              AlignInContainer: =AlignInContainer.Stretch
+              Icon: =Icon.LightningBolt
+              LayoutMinHeight: =40
+    - debugger:
+        Control: GroupContainer
+        Variant: verticalAutoLayoutContainer
+        Properties:
+          BorderColor: =RGBA(0, 0, 0, 0)
+          BorderStyle: =BorderStyle.None
+          DropShadow: =DropShadow.None
+          FillPortions: =0
+          Height: =100
+          LayoutGap: =10
+          LayoutMode: =LayoutMode.Auto
+          PaddingBottom: =10
+          PaddingLeft: =10
+          PaddingRight: =10
+          PaddingTop: =10
+          RadiusBottomLeft: =0
+          RadiusBottomRight: =0
+          RadiusTopLeft: =0
+          RadiusTopRight: =0
+        Children:
+        - session_id:
+            Control: FluentV8/TextBox
+            Properties:
+              Placeholder: ="session-id-x"
+              Value: =
+              AlignInContainer: =AlignInContainer.Start
+              Width: =100
+        - tab_id:
+            Control: FluentV8/TextBox
+            Properties:
+              Placeholder: ="tab-id-x"
+              Value: =
+              AlignInContainer: =AlignInContainer.Start
+              Width: =100
+        - output:
+            Control: FluentV8/TextBox
+            Properties:
+              ColorBackground: =RGBA(255, 255, 255, 1)
+              ColorText: =RGBA(15, 108, 189, 1)
+              FontSize: =12
+              Mode: ='TextBox.Mode'.Multiline
+              PaddingBottom: =    0
+              Value: |-
+                ="Success: " & success 
+                & Char(10) & "Data: " & JSON(data)
+                & Char(10) & "Error: " & message
+              AlignInContainer: =AlignInContainer.Stretch
+              FillPortions: =1
+    - commands:
+        Control: GroupContainer
+        Variant: horizontalAutoLayoutContainer
+        Properties:
+          DropShadow: =DropShadow.None
+          LayoutAlignItems: =LayoutAlignItems.Stretch
+          LayoutGap: =16
+          LayoutMode: =LayoutMode.Auto
+          LayoutWrap: =true
+          PaddingBottom: =2
+          PaddingLeft: =2
+          PaddingRight: =2
+          PaddingTop: =2
+        Children:
+        - MicrosoftApmSessions:
+            Control: GroupContainer
+            Variant: verticalAutoLayoutContainer
+            Properties:
+              BorderColor: =RGBA(0, 0, 0, 0)
+              BorderStyle: =BorderStyle.None
+              DropShadow: =DropShadow.None
+              LayoutAlignItems: =LayoutAlignItems.Stretch
+              LayoutDirection: =LayoutDirection.Vertical
+              LayoutGap: =10
+              LayoutMinWidth: =150
+              LayoutMode: =LayoutMode.Auto
+              PaddingBottom: =10
+              PaddingLeft: =10
+              PaddingRight: =10
+              PaddingTop: =10
+              RadiusBottomLeft: =0
+              RadiusBottomRight: =0
+              RadiusTopLeft: =0
+              RadiusTopRight: =0
+            Children:
+            - ypxrmjs_getFocusedSession:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  label: ="Get Focused Session"
+                  method: ='yopower.components.ypxrmjs.method'.getFocusedSession
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_getAllSessions:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  label: ="Get All Sessions"
+                  method: ='yopower.components.ypxrmjs.method'.getAllSessions
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_getSession:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"'}"
+                  label: ="Get Session"
+                  method: ='yopower.components.ypxrmjs.method'.getSession
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_createSession:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: |
+                    ="{'parametersStr': '[[\'entityName\', \'incident\'], [\'entityId\', \'85e43f2f-e442-ef11-8409-000d3a1e4f5f\']]','templateName': 'case_entity_session_default_template','isFocused': true}"
+                  label: ="Create Session"
+                  method: ='yopower.components.ypxrmjs.method'.createSession
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_canCreateSession:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  label: ="Can Create Session"
+                  method: ='yopower.components.ypxrmjs.method'.canCreateSession
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_closeSession:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"'}"
+                  label: ="Close Session"
+                  method: ='yopower.components.ypxrmjs.method'.closeSession
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_focusSession:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"'}"
+                  label: ="Focus Session"
+                  method: ='yopower.components.ypxrmjs.method'.focusSession
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_requestFocusSession:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"'}"
+                  label: ="Request Focus Session"
+                  method: ='yopower.components.ypxrmjs.method'.requestFocusSession
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+        - MicrosoftApmTabs:
+            Control: GroupContainer
+            Variant: verticalAutoLayoutContainer
+            Properties:
+              DropShadow: =DropShadow.None
+              LayoutDirection: =LayoutDirection.Vertical
+              LayoutGap: =5
+              LayoutMinWidth: =150
+              LayoutMode: =LayoutMode.Auto
+              PaddingBottom: =10
+              PaddingLeft: =10
+              PaddingRight: =10
+              PaddingTop: =10
+              RadiusBottomLeft: =0
+              RadiusBottomRight: =0
+              RadiusTopLeft: =0
+              RadiusTopRight: =0
+            Children:
+            - ypxrmjs_getFocusedTab:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"'}"
+                  label: ="Get Focused Tab"
+                  method: ='yopower.components.ypxrmjs.method'.getFocusedTab
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_getAllTabs:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"'}"
+                  label: ="Get All Tabs"
+                  method: ='yopower.components.ypxrmjs.method'.getAllTabs
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_getTab:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"','tabId':'"&tab_id.Value&"'}"
+                  label: ="Get Tab"
+                  method: ='yopower.components.ypxrmjs.method'.getTab
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_createTabEntity:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'type':'entity', 'sessionId':'"&session_id.Value&"','entityName':'account','entityId':'69e43f2f-e442-ef11-8409-000d3a1e4f5f','templateName':'msdyn_entityrecord','params':'','isFocused':true }"
+                  label: ="Create Tab - Entity"
+                  method: ='yopower.components.ypxrmjs.method'.createTab
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_createTabEntityNew:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'type':'newentity', 'sessionId':'"&session_id.Value&"','entityName':'account','formId':'a72c7955-442b-4ea4-9499-b10cd18b4256','templateName':'msdyn_entityrecord','isFocused':true }"
+                  label: ="Create Tab - Entity New"
+                  method: ='yopower.components.ypxrmjs.method'.createTab
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_createTabWebResource:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'type':'webresource','webresourceName':'account','data':'69e43f2f-e442-ef11-8409-000d3a1e4f5f','isFocused':true }"
+                  label: ="Create Tab - Web Resource"
+                  method: ='yopower.components.ypxrmjs.method'.createTab
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_canCreateTab:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"'}"
+                  label: ="Can Create Tab"
+                  method: ='yopower.components.ypxrmjs.method'.canCreateTab
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_closeTab:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"','tabId':'"&tab_id.Value&"'}"
+                  label: ="Close Tab"
+                  method: ='yopower.components.ypxrmjs.method'.closeTab
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_focusTab:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"','tabId':'"&tab_id.Value&"'}"
+                  label: ="Focus Tab"
+                  method: ='yopower.components.ypxrmjs.method'.focusTab
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_refreshTab:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"','tabId':'"&tab_id.Value&"'}"
+                  label: ="Refresh Tab"
+                  method: ='yopower.components.ypxrmjs.method'.refreshTab
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+        - MicrosoftApmContext:
+            Control: GroupContainer
+            Variant: verticalAutoLayoutContainer
+            Properties:
+              DropShadow: =DropShadow.None
+              LayoutDirection: =LayoutDirection.Vertical
+              LayoutGap: =5
+              LayoutMinWidth: =150
+              LayoutMode: =LayoutMode.Auto
+              PaddingBottom: =10
+              PaddingLeft: =10
+              PaddingRight: =10
+              PaddingTop: =10
+              RadiusBottomLeft: =0
+              RadiusBottomRight: =0
+              RadiusTopLeft: =0
+              RadiusTopRight: =0
+            Children:
+            - ypxrmjs_setContext:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"','key':'usingXrmJs','value':'set-"&Text(Now())&"'}"
+                  label: ="Set Context"
+                  method: ='yopower.components.ypxrmjs.method'.setContext
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_updateContext:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"','context':{'usingXrmJs':'update"&Text(Now())&"'}}"
+                  label: ="Update Context"
+                  method: ='yopower.components.ypxrmjs.method'.updateContext
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_getContext:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"','key':'usingXrmJs'}"
+                  label: ="Get Context"
+                  method: ='yopower.components.ypxrmjs.method'.getContext
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_deleteContext:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"','key':'usingXrmJs'}"
+                  label: ="Delete Context"
+                  method: ='yopower.components.ypxrmjs.method'.deleteContext
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_resolveSlug:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  appearance: ='yopower.components.ypxrmjs.appearance'.secondary
+                  inputs: ="{'sessionId':'"&session_id.Value&"','slug':'{anchor.title}'}"
+                  label: ="Resolve Slug"
+                  method: ='yopower.components.ypxrmjs.method'.resolveSlug
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+        - Xrm:
+            Control: GroupContainer
+            Variant: verticalAutoLayoutContainer
+            Properties:
+              BorderColor: =RGBA(0, 0, 0, 0)
+              BorderStyle: =BorderStyle.None
+              DropShadow: =DropShadow.None
+              LayoutAlignItems: =LayoutAlignItems.Stretch
+              LayoutDirection: =LayoutDirection.Vertical
+              LayoutGap: =5
+              LayoutMinWidth: =150
+              LayoutMode: =LayoutMode.Auto
+              PaddingBottom: =10
+              PaddingLeft: =10
+              PaddingRight: =10
+              PaddingTop: =10
+              RadiusBottomLeft: =0
+              RadiusBottomRight: =0
+              RadiusTopLeft: =0
+              RadiusTopRight: =0
+            Children:
+            - ypxrmjs_navigateTo:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  OnSelect: =true
+                  inputs: |-
+                    ="{'pageInput': {'pageType': 'entityrecord','entityName': 'account'},'navigationOptions': {'target': 2,'height': {'value': 80,'unit': '%'},'width': {'value': 70,'unit': '%'},'position': 1}}"
+                  label: ="Navigate To"
+                  method: ='yopower.components.ypxrmjs.method'.navigateTo
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_openAlertDialog:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: |-
+                    ="{'alertStrings': {'confirmButtonLabel': 'Yes','title': 'title','text': 'text'},'alertOptions': {'height': 120,'width': 240}}"
+                  label: ="Open Alert Dialog"
+                  method: ='yopower.components.ypxrmjs.method'.openAlertDialog
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_openConfirmDialog:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: |-
+                    ="{'confirmStrings': {'title': 'title','subtitle': 'subtitle','text': 'text','confirmButtonLabel':'confirm','cancelButtonLabel':'cancel' },'confirmOptions': {'heigsht': 120,'width': 240}}"
+                  label: ="Open Confirm Dialog"
+                  method: ='yopower.components.ypxrmjs.method'.openConfirmDialog
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_openErrorDialog:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: |-
+                    ="{'errorOptions': {'errorCode': 12345,'details': 'details','message': 'message'}}"
+                  label: ="Open Error Dialog"
+                  method: ='yopower.components.ypxrmjs.method'.openErrorDialog
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_openFile:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: |-
+                    ="{'file': {'fileContent': '','fileName': 'fileName','fileSize': 10,'mimeType':''},'openFileOptions':{'openMode':1}}"
+                  label: ="Open File"
+                  method: ='yopower.components.ypxrmjs.method'.openFile
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_openForm:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: |-
+                    ="{'entityFormOptions': {'entityName': 'contact','useQuickCreateForm': true},'formParameters': {'firstname': 'Vinicius','lastname': 'Basile'}}"
+                  label: ="Open Form"
+                  method: ='yopower.components.ypxrmjs.method'.openForm
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_openUrl:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: |-
+                    ="{'url': 'https://www.yopower.com.br', 'openUrlOptions': { 'height': 800, 'width': 600 }}"
+                  label: ="Open Url"
+                  method: ='yopower.components.ypxrmjs.method'.openUrl
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_openWebResource:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: |-
+                    ="{'webResourceName': 'xyz', 'windowOptions': { 'height': 800, 'width': 600 }, data: ''}"
+                  label: ="Open Web Resource"
+                  method: ='yopower.components.ypxrmjs.method'.openWebResource
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_showProgressIndicator:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: |-
+                    ="{'message': 'message'}"
+                  label: ="Show Progress Indicator"
+                  method: ='yopower.components.ypxrmjs.method'.showProgressIndicator
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_closeProgressIndicator:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  label: ="Close Progress Indicator"
+                  method: ='yopower.components.ypxrmjs.method'.closeProgressIndicator
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_lookupObjects:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: |-
+                    ="{'lookupOptions':{'defaultEntityType': 'account','entityTypes': ['account','contact'],'allowMultiSelect': true}}"
+                  label: ="Lookup Objects"
+                  method: ='yopower.components.ypxrmjs.method'.lookupObjects
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_createSidePaneEntityList:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: |-
+                    ="{'paneOptions':{'title': 'Incident', 'imageSrc': 'WebResources/_imgs/svg_112', 'paneId': 'spIncidentList', 'canClose': false},'navigate':{'pageType':'entitylist', 'entityName': 'incident'}}"
+                  label: ="Create Side Pane - Entity List"
+                  method: ='yopower.components.ypxrmjs.method'.createPane
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_createSidePaneEntity:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: |-
+                    ="{'paneOptions':{'title': 'Incident', 'imageSrc': 'WebResources/_imgs/svg_112', 'paneId': 'spIncident', 'canClose': false, 'hideHeader': true, 'width': 600},'navigate':{'pageType':'entityrecord', 'entityName': 'incident', 'entityId': '85e43f2f-e442-ef11-8409-000d3a1e4f5f'}}"
+                  label: ="Create Side Pane - Entity"
+                  method: ='yopower.components.ypxrmjs.method'.createPane
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_getAllPanes:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: =
+                  label: ="Get All Panes"
+                  method: ='yopower.components.ypxrmjs.method'.getAllPanes
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_getPane:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: ="{'paneId':'spIncident'}"
+                  label: ="Get Pane"
+                  method: ='yopower.components.ypxrmjs.method'.getPane
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            - ypxrmjs_getSelectedPane:
+                Control: yp_yopower.components.ypxrmjs
+                Properties:
+                  OnOut: |-
+                    =UpdateContext(
+                        {
+                            success: Self.success,
+                            message: Self.message,
+                            data: Self.data
+                        }
+                    )
+                  inputs: =
+                  label: ="Get Selected Pane"
+                  method: ='yopower.components.ypxrmjs.method'.getSelectedPane
+                  Height: =25
+                  LayoutMinHeight: =15
+                  Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
