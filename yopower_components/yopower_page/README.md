@@ -1,11 +1,25 @@
 # Power Apps Grid Extensions
 
+![component]()
+
 ## About the Component
 - On Power Apps Grid component, set on the property **Customizer Control** the value **yp_yopower.components.yppagridextd**.
 - The name of the subgrid logical name should be unique on the environment, it allows a tailored personalization per subgrid.
 - The customizers are associated with specific column types, a plugin will ensure that the column and parameters (json) as fulfilled correct.
 - This solution uses the browser localStorage to prevent multiple requests on the Dataverse APIs, then every 5 minutes the cache will expire.
 - Use localStorage.removeItem("**subgrid-logical-name**") to clear the cache and see the adjusts on parameters.
+
+## Schema
+```mermaid
+flowchart
+  A([Power Apps Grid]) --use yp_yopower.components.yppagridextd--> B([index.ts])
+  B --> C{localStorage <br> is present?}
+  C -- has not data or expired --> D[Call API <br> yp_get_subgrid_definitions]
+  D --> E([Populate <br> localStorage])
+  E -- instanciate --> F([CellRendererOverrides.tsx <br> CellEditorOverrides.tsx])
+  C -- has data --> F
+  F --> G([According parameters 'yp_pagridextd_column_definition' <br> decides which componenet will be applied])
+```
 
 ## Available Customizers
 | **Title**                        | **Description** |
