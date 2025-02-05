@@ -1,6 +1,6 @@
 # Power Apps Grid Extensions
 
-![component]()
+![component](https://github.com/user-attachments/assets/c8fa21c6-d843-4450-b895-8505af2d7fce)
 
 ## About the Component
 - On Power Apps Grid component, set on the property **Customizer Control** the value **yp_yopower.components.yppagridextd**.
