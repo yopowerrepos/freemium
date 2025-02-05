@@ -19,7 +19,7 @@
 | **String [Related Records]** | 🎩 To-Do. |
 
 ### 1. Any [Navigate Buttons]
-✅ Any available column type
+- ✅ Any available column type
 #### Parameters:
 ```json
 {
@@ -66,13 +66,13 @@
 
 ---
 ### 2. Any [Read-Only]
-✅ Any available column type
+- ✅ Any available column type
 ⚠️ No parameters
 
 ---
 ### 3. Lookup [Navigate Buttons]
-✅ Lookups and Customers
-📝 Use double click to enter edit mode
+- ✅ Lookups and Customers
+- 📝 Use double click to enter edit mode
 
 #### Parameters:
 ```json
@@ -112,8 +112,8 @@
 
 ---
 ### 4. Lookup [Filtered Lookup]
-✅ Lookups and Customers
-⚠️ The `reference` property defines whether the row or a column is used to substitute the placeholder `#value#`.
+- ✅ Lookups and Customers
+- ⚠️ The `reference` property defines whether the row or a column is used to substitute the placeholder `#value#`.
 
 #### Parameters:
 ```json
@@ -127,9 +127,9 @@
 
 ---
 ### 5. Numbers & Date [Colorful Cell]
-✅ Decimal, Integer, Float, Currency, Duration, Date Only and Date&Time
-📝 Use double click to enter on edit mode
-⚠️ For Duration, Date Only and Date&Time columns utilize min and max properties as minutes
+- ✅ Decimal, Integer, Float, Currency, Duration, Date Only and Date&Time
+- 📝 Use double click to enter on edit mode
+- ⚠️ For Duration, Date Only and Date&Time columns utilize min and max properties as minutes
 
 #### Parameters for Date Only, Date&Time or Duration:
 ```json
@@ -184,9 +184,9 @@
 
 ---
 ### 6. Numbers [Progress Bar]
-✅ Integer, Decimal and Float
-📝 Use double click to enter on edit mode.
-⚠️ Type options: '*' (column value * 100) | '/' (column value / 100) | empty
+- ✅ Integer, Decimal and Float
+- 📝 Use double click to enter on edit mode.
+- ⚠️ Type options: '*' (column value * 100) | '/' (column value / 100) | empty
 
 #### Parameters Decimal (0 > 1):
 ```json

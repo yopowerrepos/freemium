@@ -1,0 +1,19 @@
+{
+    "type": "%",
+    "rules": [
+        {
+            "min": 0,
+            "max": 10,
+            "background": "#FFFF00",
+            "color": "#FFFF00",
+            "label": ""
+        },
+        {
+            "min": 0,
+            "max": 10000000000000,
+            "background": "#00FF00",
+            "color": "#FFFFFF",
+            "label": ""
+        }
+    ]
+}

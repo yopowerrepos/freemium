@@ -1,0 +1,6 @@
+{
+    "reference": "row",
+    "column": "contactid",
+    "viewId": "00000000-0000-0000-0000-000000000000",
+    "filter": "<filter type='and'><condition attribute='contactid' operator='eq' uitype='contact' value='#value#'/></filter>"
+}
