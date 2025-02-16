@@ -24,19 +24,19 @@ namespace yopower_papps_grid_extensions.earlybound
 		AnyReadOnly = 901,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		AnyRelatedRecords = 902,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		LookupNavigateButtons = 800,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		LookupFilteredLookup = 801,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		NumbersDateColorfulCel = 700,
+		NumbersDateColorfulCell = 700,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		NumbersProgressBar = 701,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		StringRelatedRecords = 500,
 	}
 }
 #pragma warning restore CS1591

@@ -19,7 +19,7 @@ export function getLookupNavigateButtonsCel(col: ColumnDefinition, props: any, d
                         key: m.label,
                         text: m.label,
                         onClick: (e: any) => {
-                            Helper.navigateToModal(m.position, props.value.etn, props.value.id.guid ?? props.value.id, m.formId, m.height, m.width)
+                            Helper.navigateToRecordModal(m.position, props.value.etn, props.value.id.guid ?? props.value.id, m.formId, m.height, m.width)
                         }
                     } as IContextualMenuItem
                 }));

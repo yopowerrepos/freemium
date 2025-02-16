@@ -2243,6 +2243,10 @@ namespace yopower_papps_grid_extensions.earlybound
 			{
 				return ((systemuser_systemmanagedusertype?)(EntityOptionSetEnum.GetEnum(this, "systemmanagedusertype")));
 			}
+			set
+			{
+				this.SetAttributeValue("systemmanagedusertype", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
 		}
 		
 		/// <summary>

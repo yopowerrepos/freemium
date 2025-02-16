@@ -101,7 +101,7 @@ namespace yopower_papps_grid_extensions.business
                             throw new InvalidPluginExecutionException($"The option Lookup [Filtered Lookup] is available just for Lookup columns");
                         break;
 
-                    case yp_gbl_column_definition_type.NumbersDateColorfulCel:
+                    case yp_gbl_column_definition_type.NumbersDateColorfulCell:
                         if (matchColumn.Type.Value == AttributeTypeCode.DateTime.GetHashCode()
                             || matchColumn.Type.Value == AttributeTypeCode.Integer.GetHashCode()
                             || matchColumn.Type.Value == AttributeTypeCode.Decimal.GetHashCode()
@@ -139,6 +139,17 @@ namespace yopower_papps_grid_extensions.business
                         }
                         else
                             throw new InvalidPluginExecutionException($"⚠️The option 'Numbers [Progress Indicator]' is available for Integer, Decimal and Double columns");
+                        break;
+
+                    case yp_gbl_column_definition_type.AnyRelatedRecords:
+                        try
+                        {
+                            var model = JsonConvert.DeserializeObject<StringRelatedRecords>(parameters, settings);
+                        }
+                        catch (JsonSerializationException jse)
+                        {
+                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                        }
                         break;
 
                     default:

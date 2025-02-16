@@ -13,7 +13,7 @@ export function getRowNavigateButtonsCel(col: ColumnDefinition, props: any, defi
                 key: m.label,
                 text: m.label,
                 onClick: (e: any) => {
-                    Helper.navigateToModal(m.position, table, id, m.formId, m.height, m.width)
+                    Helper.navigateToRecordModal(m.position, table, id, m.formId, m.height, m.width)
                 }
             } as IContextualMenuItem
         }));

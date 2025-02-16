@@ -4,7 +4,8 @@
 
 ## About the Component
 - On Power Apps Grid component, set on the property **Customizer Control** the value **yp_yopower.components.yppagridextd**.
-- The name of the subgrid logical name should be unique on the environment, it allows a tailored personalization per subgrid.
+- The name of the subgrid logical name should be unique on the environment, it allows a tailored personalization per subgrid or main grid.
+- Microsoft does not define a name for main grids, then for the customizers understand this behavior set on Column Definition > Subgrid Name the table Logical Name (example)
 - The customizers are associated with specific column types, a plugin will ensure that the column and parameters (json) as fulfilled correct.
 - This solution uses the browser localStorage to prevent multiple requests on the Dataverse APIs, then every 5 minutes the cache will expire.
 - Use localStorage.removeItem("**subgrid-logical-name**") to clear the cache and see the adjusts on parameters.
@@ -33,7 +34,7 @@ flowchart
 | **String [Related Records]** | 🎩 To-Do. |
 
 ### 1. Any [Navigate Buttons]
-- ✅ Any available column type
+- ✅ Any column type
 #### Parameters:
 ```json
 {
@@ -80,11 +81,30 @@ flowchart
 
 ---
 ### 2. Any [Read-Only]
-- ✅ Any available column type
+- ✅ Any column type
 ⚠️ No parameters
 
 ---
-### 3. Lookup [Navigate Buttons]
+### ⭐3. Any [Related Records]
+- ✅ Any column type
+- ⚠️ The `reference` property defines whether the row or a column is used to substitute the placeholder `#value#`.
+
+#### Parameters:
+```json
+{
+    "reference": "column/row",
+    "column": "yp_accountid",
+    "background": "#c8e3f7",
+    "color": "#333333",
+    "table": "phonecall",
+    "fetchXmlAggregate": "<fetch version='1.0' mapping='logical' distinct='false' aggregate='true'><entity name='phonecall'><attribute name='activityid' alias='value' aggregate='count' /><link-entity name='account' from='accountid' to='regardingobjectid' link-type='inner' alias='aa'><filter type='and'><condition attribute='accountid' operator='eq' uitype='#valuetype#' value='#value#' /></filter></link-entity></entity></fetch>",
+    "fetchXml": "<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'><entity name='phonecall'><attribute name='subject' /><attribute name='statecode' /><attribute name='prioritycode' /><attribute name='scheduledend' /><attribute name='createdby' /><attribute name='regardingobjectid' /><attribute name='activityid' /><link-entity name='account' from='accountid' to='regardingobjectid' link-type='inner' alias='aa'><filter type='and'><condition attribute='accountid' operator='eq' uitype='#valuetype#' value='#value#' /></filter></link-entity></entity></fetch>",
+    "layoutXml": "<grid name='resultset' object='1' jump='createdon' select='1' icon='1' preview='1'><row name='result' id='activityid'><cell name='createdon' width='150' /><cell name='subject' width='200' /><cell name='prioritycode' width='100' /><cell name='scheduledstart' width='150' /><cell name='scheduledend' width='150' /><cell name='statuscode' width='100' /></row></grid>"
+}
+```
+
+---
+### 4. Lookup [Navigate Buttons]
 - ✅ Lookups and Customers
 - 📝 Use double click to enter edit mode
 
@@ -125,7 +145,7 @@ flowchart
 ```
 
 ---
-### 4. Lookup [Filtered Lookup]
+### 5. Lookup [Filtered Lookup]
 - ✅ Lookups and Customers
 - ⚠️ The `reference` property defines whether the row or a column is used to substitute the placeholder `#value#`.
 
@@ -140,7 +160,7 @@ flowchart
 ```
 
 ---
-### 5. Numbers & Date [Colorful Cell]
+### 6. Numbers & Date [Colorful Cell]
 - ✅ Decimal, Integer, Float, Currency, Duration, Date Only and Date&Time
 - 📝 Use double click to enter on edit mode
 - ⚠️ For Duration, Date Only and Date&Time columns utilize min and max properties as minutes
@@ -197,7 +217,7 @@ flowchart
 ```
 
 ---
-### 6. Numbers [Progress Bar]
+### 7. Numbers [Progress Bar]
 - ✅ Integer, Decimal and Float
 - 📝 Use double click to enter on edit mode.
 - ⚠️ Type options: '*' (column value * 100) | '/' (column value / 100) | empty

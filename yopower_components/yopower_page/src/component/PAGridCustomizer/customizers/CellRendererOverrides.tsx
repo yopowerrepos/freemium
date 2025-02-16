@@ -9,6 +9,7 @@ import { getReadOnlyCel } from "./ReadOnlyCel";
 import { getLookupNavigateButtonsCel } from "./LookupNavigateButtonsCel";
 import { getRowNavigateButtonsCel } from "./RowNavigateButtonsCel";
 import { gerProgressBarCel } from "./ProgressIndicatorCel";
+import { RelatedRecordsCell } from "./RelatedRecords";
 
 const editIcon: IIconProps = { iconName: 'Edit' };
 const clearIcon: IIconProps = { iconName: 'Clear' };
@@ -76,6 +77,18 @@ export function getComponent(props: any, col: GetRendererParams, definitions: Cu
 					definition);
 				break;
 
+			//Any [Related Records]
+			case 902:
+				return <RelatedRecordsCell
+					context={context}
+					editor={col}
+					col={col.colDefs[col.columnIndex]}
+					props={props}
+					definition={definition}
+					table={table}
+				/>
+				break;
+
 			// Lookup [Navigate Buttons]
 			case 800:
 				return getLookupNavigateButtonsCel(
@@ -98,7 +111,7 @@ export function getComponent(props: any, col: GetRendererParams, definitions: Cu
 					col.colDefs[col.columnIndex],
 					props,
 					definition);
-				return 
+				return
 		}
 	}
 	return;

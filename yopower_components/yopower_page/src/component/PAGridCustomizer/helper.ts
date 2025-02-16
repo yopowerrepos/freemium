@@ -11,7 +11,6 @@ export class Helper {
     }
 
     public static getFilteredLookupValue(params: any, table: string, col: GetEditorParams | GetRendererParams): any {
-        let reference = {};
         if (params.reference === "row") {
             return {
                 table: table,
@@ -68,7 +67,7 @@ export class Helper {
         }
     }
 
-    public static navigateToModal(position: number, tableLogicalName: string, id: string, formId: string, height: any, width: any) {
+    public static navigateToRecordModal(position: number, tableLogicalName: string, id: string, formId: string, height: any, width: any) {
         (window as any).Xrm.Navigation.navigateTo(
             {
                 pageType: "entityrecord",
@@ -81,6 +80,21 @@ export class Helper {
                 width: width,
                 position: position,
                 formId: formId
+            }
+        )
+    }
+
+    public static navigateToViewModal(tableLogicalName: string, viewId: string) {
+        (window as any).Xrm.Navigation.navigateTo(
+            {
+                pageType: "entitylist",
+                entityName: tableLogicalName,
+                viewId: viewId,
+                viewType: "userquery"
+            },
+            {
+                target: 2,
+                position: 1,
             }
         )
     }

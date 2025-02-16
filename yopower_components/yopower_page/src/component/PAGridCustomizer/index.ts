@@ -10,14 +10,16 @@ export class yppagridextd implements ComponentFramework.ReactControl<IInputs, IO
 	private _timeout: number;
 
 	constructor() {
-		this._timeout = 5 * 60 * 1000;
+		this._timeout = 30 * 60 * 1000;
 	}
 
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary): void {
 		this._context = context;
 		const eventName = context.parameters.EventName.raw;
-		const subgrid = (context.utils as any).getParentControlName();
-		const table = (context as any).cards._customControlProperties.descriptor.Parameters.TargetEntityType;
+		const table = (context as any).cards._customControlProperties.descriptor!.Parameters !== undefined
+			? (context as any).cards._customControlProperties.descriptor!.Parameters.TargetEntityType :
+			(context as any).navigation._customControlProperties.contextToken.entityTypeName;
+		const subgrid = (context.utils as any).getParentControlName() !== '' ? (context.utils as any).getParentControlName() : table;
 		if (eventName) {
 			this.populateSchema(subgrid).then((_) => {
 				const paOneGridCustomizer: PAOneGridCustomizer =

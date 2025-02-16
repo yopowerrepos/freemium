@@ -1,0 +1,10 @@
+{
+    "reference": "column",
+    "column": "yp_contactid",
+    "viewId": "00000000-0000-0000-0000-000000000010",
+    "background": "#FF0000",
+    "color": "#FFFFFF",
+    "fetchXmlAggregate": "",
+    "fetchXml": "<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'><entity name='task'><attribute name='subject' /><attribute name='statecode' /><attribute name='prioritycode' /><attribute name='scheduledend' /><attribute name='createdby' /><attribute name='regardingobjectid' /><attribute name='activityid' /><link-entity name='contact' from='contactid' to='regardingobjectid' link-type='inner' alias='aa'><filter type='and'><condition attribute='contactid' operator='eq' uitype='#typevalue#' value='#value#' /></filter></link-entity></entity></fetch>",
+    "layoutXml": ""
+}
