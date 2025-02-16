@@ -7,7 +7,7 @@
 - The name of the subgrid logical name should be unique on the environment, it allows a tailored personalization per subgrid or main grid.
 - Microsoft does not define a name for main grids, then for the customizers understand this behavior set on Column Definition > Subgrid Name the table Logical Name [sample](https://github.com/user-attachments/assets/aaf0acd6-1ffd-484c-9ab5-523e7632da28)
 - The customizers are associated with specific column types, a plugin will ensure that the column and parameters (json) as fulfilled correct.
-- This solution uses the browser localStorage to prevent multiple requests on the Dataverse APIs, then every 5 minutes the cache will expire.
+- This solution uses the browser localStorage to prevent multiple requests on the Dataverse APIs, then every 30 minutes the cache will expire.
 - Use localStorage.removeItem("**subgrid-logical-name**") to clear the cache and see the adjusts on parameters.
 
 ## Schema
