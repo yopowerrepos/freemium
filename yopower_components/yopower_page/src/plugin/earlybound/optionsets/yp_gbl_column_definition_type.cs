@@ -37,6 +37,9 @@ namespace yopower_papps_grid_extensions.earlybound
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		NumbersProgressBar = 701,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		FileUploadDownload = 600,
 	}
 }
 #pragma warning restore CS1591

@@ -152,6 +152,17 @@ namespace yopower_papps_grid_extensions.business
                         }
                         break;
 
+                    case yp_gbl_column_definition_type.FileUploadDownload:
+                        try
+                        {
+                            var model = JsonConvert.DeserializeObject<FileUploadDownloadModel>(parameters, settings);
+                        }
+                        catch (JsonSerializationException jse)
+                        {
+                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                        }
+                        break;
+
                     default:
                         throw new InvalidPluginExecutionException($"Type not implemented");
                 }

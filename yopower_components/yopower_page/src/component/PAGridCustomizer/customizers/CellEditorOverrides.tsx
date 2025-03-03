@@ -1,13 +1,9 @@
 import * as React from "react";
-import { CellEditorOverrides, ColumnDataType, ColumnDefinition, GetEditorParams } from "../types";
-import { CommandButton, DetailsList, DetailsListLayoutMode, IconButton, IContextualMenuItem, IContextualMenuProps, IIconProps, Label, TextField } from "@fluentui/react";
+import { CellEditorOverrides, ColumnDataType, GetEditorParams } from "../types";
 import { CustomColumnDefinition } from "../models/CustomColumnDefinition";
 import { Helper } from "../helper";
 import { IInputs } from "../generated/ManifestTypes";
 import { getFilteredLookupCel } from "./FilteredLookupCel";
-
-const editIcon: IIconProps = { iconName: 'Edit' };
-const clearIcon: IIconProps = { iconName: 'Clear' };
 
 export function cellEditorOverrides(
 	subgrid: string,
@@ -63,7 +59,7 @@ export function getComponent(props: any, col: GetEditorParams, definitions: Cust
 					props,
 					definition,
 					table
-				)
+				);
 				break;
 		}
 	}

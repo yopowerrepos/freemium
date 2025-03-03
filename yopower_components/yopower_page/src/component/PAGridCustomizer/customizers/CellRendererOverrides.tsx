@@ -1,6 +1,5 @@
 import * as React from "react";
 import { CellRendererOverrides, ColumnDataType, ColumnDefinition, GetRendererParams, RECID } from "../types";
-import { anchorProperties, CommandButton, IconButton, IContextualMenuItem, IContextualMenuProps, IIconProps, Label, ProgressIndicator } from "@fluentui/react";
 import { CustomColumnDefinition } from "../models/CustomColumnDefinition";
 import { IInputs } from "../generated/ManifestTypes";
 import { Helper } from "../helper";
@@ -10,9 +9,7 @@ import { getLookupNavigateButtonsCel } from "./LookupNavigateButtonsCel";
 import { getRowNavigateButtonsCel } from "./RowNavigateButtonsCel";
 import { gerProgressBarCel } from "./ProgressIndicatorCel";
 import { RelatedRecordsCell } from "./RelatedRecords";
-
-const editIcon: IIconProps = { iconName: 'Edit' };
-const clearIcon: IIconProps = { iconName: 'Clear' };
+import { FileCell } from "./FileCel";
 
 export function cellRendererOverrides(
 	subgrid: string,
@@ -25,25 +22,7 @@ export function cellRendererOverrides(
 	if (schema !== null)
 		definitions = JSON.parse(JSON.parse(schema).value).definitions as CustomColumnDefinition[];
 
-	const supportedDataTypes: ColumnDataType[] = ["Text", "Email", "Phone", "Ticker", "URL", "TextArea", "Lookup", "Customer", "Owner", "MultiSelectPicklist"
-		, "OptionSet"
-		, "TwoOptions"
-		, "Duration"
-		, "Language"
-		, "Multiple"
-		, "TimeZone"
-		, "Integer"
-		, "Currency"
-		, "Decimal"
-		, "FloatingPoint"
-		, "AutoNumber"
-		, "DateOnly"
-		, "DateAndTime"
-		, "Image"
-		, "File"
-		, "Persona"
-		, "RichText"
-		, "UniqueIdentifier"];
+	const supportedDataTypes: ColumnDataType[] = ["Text", "Email", "Phone", "Ticker", "URL", "TextArea", "Lookup", "Customer", "Owner", "MultiSelectPicklist", "OptionSet", "TwoOptions", "Duration", "Language", "Multiple", "TimeZone", "Integer", "Currency", "Decimal", "FloatingPoint", "AutoNumber", "DateOnly", "DateAndTime", "Image", "File", "Persona", "RichText", "UniqueIdentifier"];
 
 	// Dynamically create the CellRendererOverrides object
 	const overrides: CellRendererOverrides = supportedDataTypes.reduce((acc, dataType) => {
@@ -111,7 +90,27 @@ export function getComponent(props: any, col: GetRendererParams, definitions: Cu
 					col.colDefs[col.columnIndex],
 					props,
 					definition);
-				return
+				break;
+
+			//Any [File]
+			case 600:
+				if (props.value == undefined && props.value !== null)
+					props.value = {
+						fileUrl: "",
+						fileName: "--",
+						fileSize: 0,
+						mimeType: ""
+					};
+
+				return <FileCell
+					context={context}
+					col={col.colDefs[col.columnIndex]}
+					props={props}
+					definition={definition}
+					table={table}
+					id={col.rowData!.__rec_id}
+				/>
+				break;
 		}
 	}
 	return;

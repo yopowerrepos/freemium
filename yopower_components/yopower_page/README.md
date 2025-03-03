@@ -31,7 +31,8 @@ flowchart
 | **Lookup [Filtered Lookup]** | Configures a lookup field to be filtered based on the row or other subgrid columns using the `lookupObject` concept. |
 | **Numbers & Date [Colorful Cell]** | Determines the fill and text color of a cell based on a range of values. |
 | **Numbers [Progress Bar]** | Determines the fill and color of a progress bar based on a range of values. |
-| **String [Related Records]** | 🎩 To-Do. |
+| **String [Related Records]** | Allow interact with associated records through the subgrid buttons |
+| **File [Upload Download]** | Visualize, download, updload and delete files |
 
 ### 1. Any [Navigate Buttons]
 - ✅ Any column type
@@ -82,7 +83,7 @@ flowchart
 ---
 ### 2. Any [Read-Only]
 - ✅ Any column type
-⚠️ No parameters
+- ⚠️ No parameters
 
 ---
 ### ⭐3. Any [Related Records]
@@ -297,3 +298,18 @@ flowchart
 ```
 
 ---
+### 8. File [Upload Download]
+- ✅ File
+
+#### Parameters:
+```json
+{
+    "readOnly": false,
+    "allowedTypes": [
+        "jpg",
+        "jpeg",
+        "png",
+        "gif"
+    ]
+}
+```
