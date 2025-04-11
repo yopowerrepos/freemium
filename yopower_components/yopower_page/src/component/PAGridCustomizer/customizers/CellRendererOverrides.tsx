@@ -3,13 +3,13 @@ import { CellRendererOverrides, ColumnDataType, ColumnDefinition, GetRendererPar
 import { CustomColumnDefinition } from "../models/CustomColumnDefinition";
 import { IInputs } from "../generated/ManifestTypes";
 import { Helper } from "../helper";
-import { getColorfulCel } from "./ColorfulCel";
-import { getReadOnlyCel } from "./ReadOnlyCel";
-import { getLookupNavigateButtonsCel } from "./LookupNavigateButtonsCel";
-import { getRowNavigateButtonsCel } from "./RowNavigateButtonsCel";
-import { gerProgressBarCel } from "./ProgressIndicatorCel";
-import { RelatedRecordsCell } from "./RelatedRecords";
-import { FileCell } from "./FileCel";
+import { getColorfulCell } from "./ColorfulCell";
+import { getReadOnlyCell } from "./ReadOnlyCell";
+import { getLookupNavigateButtonsCell } from "./LookupNavigateButtonsCell";
+import { getRowNavigateButtonsCell } from "./RowNavigateButtonsCell";
+import { gerProgressBarCell } from "./ProgressIndicatorCell";
+import { RelatedRecordsCell } from "./RelatedRecordsCell";
+import { FileCell } from "./FileCell";
 
 export function cellRendererOverrides(
 	subgrid: string,
@@ -27,69 +27,60 @@ export function cellRendererOverrides(
 	// Dynamically create the CellRendererOverrides object
 	const overrides: CellRendererOverrides = supportedDataTypes.reduce((acc, dataType) => {
 		acc[dataType] = (props, col) =>
-			getComponent(props, col, definitions, tableLogicalName, col.colDefs[col.columnIndex].name, context);
+			getComponent(
+				context,
+				col,
+				props,
+				definitions,
+				tableLogicalName,
+				col.colDefs[col.columnIndex].name,
+				subgrid);
 		return acc;
 	}, {} as CellRendererOverrides);
 
 	return overrides;
 };
 
-export function getComponent(props: any, col: GetRendererParams, definitions: CustomColumnDefinition[], table: string, column: string, context: ComponentFramework.Context<IInputs>): React.ReactElement | null | undefined {
-	const definition = Helper.getDefinition(definitions, table, column);
+export function getComponent(
+	context: ComponentFramework.Context<IInputs>,
+	col: GetRendererParams,
+	props: any,
+	definitions: CustomColumnDefinition[],
+	table: string,
+	column: string,
+	subgrid: string
+): React.ReactElement | null | undefined {
+	const definition = Helper.getDefinition(definitions, table, column, col.rowData!);
 	if (definition !== null) {
 		switch (definition.type) {
 			//Any [Navigate To]
 			case 900:
-				return getRowNavigateButtonsCel(
-					col.colDefs[col.columnIndex],
-					props,
-					definition,
-					table,
-					col.rowData!.__rec_id);
+				return getRowNavigateButtonsCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
 				break;
 
 			//Any [Read-Only]
 			case 901:
-				return getReadOnlyCel(
-					col.colDefs[col.columnIndex],
-					props,
-					definition);
+				return getReadOnlyCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
 				break;
 
 			//Any [Related Records]
 			case 902:
-				return <RelatedRecordsCell
-					context={context}
-					editor={col}
-					col={col.colDefs[col.columnIndex]}
-					props={props}
-					definition={definition}
-					table={table}
-				/>
+				return <RelatedRecordsCell context={context} editor={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} />
 				break;
 
 			// Lookup [Navigate Buttons]
 			case 800:
-				return getLookupNavigateButtonsCel(
-					col.colDefs[col.columnIndex],
-					props,
-					definition);
+				return getLookupNavigateButtonsCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
 				break;
 
-			// Number & Date Time [Colorful Cel]
+			// Number & Date Time [Colorful Cell]
 			case 700:
-				return getColorfulCel(
-					col.colDefs[col.columnIndex],
-					props,
-					definition);
+				return getColorfulCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
 				break;
 
-			// Number [Colorful Cel]
+			// Number [Colorful Cell]
 			case 701:
-				return gerProgressBarCel(
-					col.colDefs[col.columnIndex],
-					props,
-					definition);
+				return gerProgressBarCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
 				break;
 
 			//Any [File]
@@ -101,14 +92,7 @@ export function getComponent(props: any, col: GetRendererParams, definitions: Cu
 						fileSize: 0,
 						mimeType: ""
 					};
-
-				return <FileCell
-					context={context}
-					col={col.colDefs[col.columnIndex]}
-					props={props}
-					definition={definition}
-					table={table}
-					id={col.rowData!.__rec_id}
+				return <FileCell context={context} render={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id}
 				/>
 				break;
 		}

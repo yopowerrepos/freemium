@@ -8,6 +8,7 @@ const fileCellClassName = "page-file-cell";
 
 interface FileCellProps {
     context: ComponentFramework.Context<IInputs>,
+    render: GetRendererParams,
     col: ColumnDefinition,
     props: any,
     definition: any,

@@ -398,6 +398,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string IncomingEmailDeliveryMethod = "incomingemaildeliverymethod";
 			public const string InternalEMailAddress = "internalemailaddress";
 			public const string InviteStatusCode = "invitestatuscode";
+			public const string IsAllowedByIpFirewall = "isallowedbyipfirewall";
 			public const string IsDisabled = "isdisabled";
 			public const string IsEmailAddressApprovedByO365Admin = "isemailaddressapprovedbyo365admin";
 			public const string IsIntegrationUser = "isintegrationuser";
@@ -1706,6 +1707,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("invitestatuscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		/// <summary>
+		/// Bypasses the selected user from IP firewall restriction
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isallowedbyipfirewall")]
+		public System.Nullable<bool> IsAllowedByIpFirewall
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isallowedbyipfirewall");
+			}
+			set
+			{
+				this.SetAttributeValue("isallowedbyipfirewall", value);
 			}
 		}
 		

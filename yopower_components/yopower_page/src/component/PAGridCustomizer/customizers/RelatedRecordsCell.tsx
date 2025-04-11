@@ -10,6 +10,7 @@ interface RelatedRecordsCellProps {
     props: any;
     definition: any;
     table: string;
+    id: string;
 }
 
 export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
@@ -18,7 +19,8 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
     col,
     props,
     definition,
-    table
+    table,
+    id
 }) => {
     const params = JSON.parse(definition.parameters);
     const background = params.background ?? "transparent";

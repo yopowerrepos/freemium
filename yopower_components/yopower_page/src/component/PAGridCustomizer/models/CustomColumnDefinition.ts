@@ -6,4 +6,9 @@ export interface CustomColumnDefinition {
     table: string;
     column: string;
     parameters: any;
+    condition: {
+        column: string;
+        operator: number;
+        values: string[];
+    }
 }

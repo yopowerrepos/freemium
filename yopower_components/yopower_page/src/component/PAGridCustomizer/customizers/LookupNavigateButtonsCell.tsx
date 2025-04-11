@@ -1,9 +1,18 @@
 import * as React from "react";
-import { ColumnDefinition } from "../types";
+import { ColumnDefinition, GetRendererParams } from "../types";
 import { CommandButton, IContextualMenuItem, IContextualMenuProps } from "@fluentui/react";
 import { Helper } from "../helper";
+import { IInputs } from "../generated/ManifestTypes";
 
-export function getLookupNavigateButtonsCel(col: ColumnDefinition, props: any, definition: any): React.ReactElement | null | undefined {
+export function getLookupNavigateButtonsCell(
+    context: ComponentFramework.Context<IInputs>,
+    render: GetRendererParams,
+    col: ColumnDefinition,
+    props: any,
+    definition: any,
+    table: string,
+    id: string
+): React.ReactElement | null | undefined {
     if (col.dataType === "Lookup"
         || col.dataType === "Customer") {
 

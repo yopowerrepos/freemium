@@ -1,9 +1,18 @@
 import * as React from "react";
-import { ColumnDefinition } from "../types";
+import { ColumnDefinition, GetRendererParams } from "../types";
 import { CommandButton, IContextualMenuItem, IContextualMenuProps } from "@fluentui/react";
 import { Helper } from "../helper";
+import { IInputs } from "../generated/ManifestTypes";
 
-export function getRowNavigateButtonsCel(col: ColumnDefinition, props: any, definition: any, table: string, id: string): React.ReactElement | null | undefined {
+export function getRowNavigateButtonsCell(
+    context: ComponentFramework.Context<IInputs>,
+    render: GetRendererParams,
+    col: ColumnDefinition,
+    props: any,
+    definition: any,
+    table: string,
+    id: string
+): React.ReactElement | null | undefined {
     let items = new Array<IContextualMenuItem>();
     const modal = JSON.parse(definition.parameters).modal as Array<any>;
     const sidePane = JSON.parse(definition.parameters).sidePane as Array<any>;

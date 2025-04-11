@@ -1,15 +1,17 @@
 import * as React from "react";
-import { ColumnDefinition, GetEditorParams } from "../types";
+import { ColumnDefinition, GetEditorParams, GetRendererParams } from "../types";
 import { Helper } from "../helper";
 import { IInputs } from "../generated/ManifestTypes";
 
-export function getFilteredLookupCel(
+export function getFilteredLookupCell(
     context: ComponentFramework.Context<IInputs>,
     editor: GetEditorParams,
     col: ColumnDefinition,
     props: any,
     definition: any,
-    table: string): React.ReactElement | null | undefined {
+    table: string,
+    id: string
+): React.ReactElement | null | undefined {
     if (col.dataType === "Lookup"
         || col.dataType === "Customer") {
         const params = JSON.parse(definition.parameters);

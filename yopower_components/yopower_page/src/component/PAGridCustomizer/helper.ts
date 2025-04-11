@@ -1,13 +1,61 @@
 import { CustomColumnDefinition } from "./models/CustomColumnDefinition";
-import { ColumnDefinition, GetEditorParams, GetRendererParams } from "./types";
+import { ColumnDefinition, GetEditorParams, GetRendererParams, RowData } from "./types";
 
 export class Helper {
-    public static getDefinition(definitions: CustomColumnDefinition[], table: string, column: string) {
-        const match = definitions.filter(f => f.table === table && f.column === column);
-        if (match.length === 1)
-            return match[0];
+    public static getDefinition(
+        definitions: CustomColumnDefinition[],
+        table: string,
+        column: string,
+        rowData: RowData
+    ) {
+        const conditions: Record<number, (value: string, values: string[]) => boolean> = {
+            1: (value, values) => value === values[0],
+            2: (value, values) => value !== values[0],
+            3: (value, values) => values.some(k => k.includes(value)),
+            4: (value, values) => values.some(k => k.includes(value)),
+        };
+
+        const matches = definitions.filter(f => f.table === table && f.column === column);
+
+        if (matches.length === 0) return null;
+
+        const sortedMatches = matches.sort((a, b) => (a.condition === null ? 1 : b.condition === null ? -1 : 0));
+
+        for (const definition of sortedMatches) {
+            if (definition.condition !== null) {
+                const conditionColumn = definition.condition.column;
+                const foundColumn = Object.keys(rowData).find(k => k.includes(conditionColumn));
+
+                if (foundColumn !== undefined) {
+                    const operator = definition.condition.operator;
+                    const value: string | null | undefined = (rowData as any)[foundColumn];
+
+                    if (value !== undefined && value !== null) {
+                        if (conditions[operator]?.(value, definition.condition.values)) {
+                            return definition;
+                        }
+                    }
+                }
+            }
+            else
+                return definition;
+        }
+
+        return null;
+    }
+
+    public static getValue(rowData: RowData, column: string): string {
+        let foundColumn: string | undefined;
+        if (!column.includes("."))
+            foundColumn = Object.keys(rowData).find(k => k === column);
         else
-            return null;
+            foundColumn = Object.keys(rowData).find(k => k.includes(column));
+
+        if (foundColumn !== undefined) {
+            return (rowData as any)[foundColumn] as string;
+        }
+        
+        return "";
     }
 
     public static getFilteredLookupValue(params: any, table: string, col: GetEditorParams | GetRendererParams): any {
@@ -98,7 +146,7 @@ export class Helper {
             }
         )
     }
-    
+
     public static async navigateToPane(tableLogicalName: string, id: string, formId: string, imageSrc: string, paneId: string, canClose: boolean, hideHeader: boolean, width: any) {
         const pane = (window as any).Xrm.App.sidePanes.getPane(paneId) ?? await (window as any).Xrm.App.sidePanes.createPane({
             paneId: paneId,

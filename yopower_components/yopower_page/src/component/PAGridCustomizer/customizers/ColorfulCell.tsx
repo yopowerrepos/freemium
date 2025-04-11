@@ -1,7 +1,16 @@
 import * as React from "react";
-import { ColumnDefinition } from "../types";
+import { ColumnDefinition, GetRendererParams } from "../types";
+import { IInputs } from "../generated/ManifestTypes";
+import { Icon } from "@fluentui/react";
 
-export function getColorfulCel(col: ColumnDefinition, props: any, definition: any): React.ReactElement | null | undefined {
+export function getColorfulCell(
+	context: ComponentFramework.Context<IInputs>,
+	render: GetRendererParams,
+	col: ColumnDefinition,
+	props: any,
+	definition: any,
+	table: string,
+	id: string): React.ReactElement | null | undefined {
 	if (props.value !== null && props.value !== undefined) {
 		const rules = JSON.parse(definition.parameters).rules as Array<any>;
 		let value: number | null = null;
@@ -10,7 +19,7 @@ export function getColorfulCel(col: ColumnDefinition, props: any, definition: an
 			case "DateOnly":
 			case "DateAndTime":
 				value = calcDateTimeDiffInMinutes(new Date(props.value));
-				formattedValue = dateTimeLabel(value);
+				formattedValue = dateTimeLabel(value) + " " + props.formattedValue;
 				break;
 
 			case "Duration":
@@ -32,16 +41,20 @@ export function getColorfulCel(col: ColumnDefinition, props: any, definition: an
 			const background = rule.background ?? "transparent";
 			const color = rule.color ?? "black";
 			return <div
-				title={props.value + "\r\n" + rule!.label}
+				title={formattedValue! + "\r\n" + rule!.label!}
 				style={{
-					padding: 5,
-					borderRadius: 5,
+					padding: "4px 8px",
+					borderRadius: 2,
 					textAlign: "center",
 					background: background,
-					color: color
+					color: color,
+					lineHeight: "20px",
+					display: "flex",
+					margin: "4px"
 				}}
 				onClick={(e) => { props.startEditing() }}>
-				{formattedValue!}
+				<Icon iconName={rule.icon} style={{ marginRight: 3 }} />
+				<div>{formattedValue!}</div>
 			</div>;
 		}
 	}

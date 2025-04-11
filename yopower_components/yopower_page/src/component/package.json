@@ -18,7 +18,8 @@
 		"babel": "^6.23.0",
 		"mime": "^4.0.6",
 		"react": "^16.14.0",
-		"react-dom": "^16.14.0"
+		"react-dom": "^16.14.0",
+		"uuid": "^11.1.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.26.0",

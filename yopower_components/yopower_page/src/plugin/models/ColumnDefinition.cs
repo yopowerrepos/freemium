@@ -20,6 +20,16 @@ namespace yopower_papps_grid_extensions.models
             this.Table = row.yp_subgrid_table;
             this.Column = row.yp_subgrid_column;
             this.Parameters = row.yp_parameters;
+
+            if (!string.IsNullOrEmpty(row.yp_based_on_optionset_column)
+                && row.yp_optionset_criteria != null
+                && !string.IsNullOrEmpty(row.yp_optionset_values))
+                this.Condition = new OptionSetCondition()
+                {
+                    Column = row.yp_based_on_optionset_column,
+                    Operator = row.yp_optionset_criteria.Value.GetHashCode(),
+                    Values = row.yp_optionset_values.Split(',').ToList()
+                };
         }
 
         [DataMember(Name = "id", Order = 1)] public Guid Id { get; set; }
@@ -29,5 +39,7 @@ namespace yopower_papps_grid_extensions.models
         [DataMember(Name = "table", Order = 5)] public string Table { get; set; }
         [DataMember(Name = "column", Order = 6)] public string Column { get; set; }
         [DataMember(Name = "parameters", Order = 7)] public string Parameters { get; set; }
+        [DataMember(Name = "condition", IsRequired = false, Order = 7)] public OptionSetCondition Condition { get; set; }
+
     }
 }

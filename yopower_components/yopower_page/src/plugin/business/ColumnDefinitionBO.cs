@@ -55,7 +55,7 @@ namespace yopower_papps_grid_extensions.business
                         {
                             var model = JsonConvert.DeserializeObject<NavigateToModel>(parameters, settings);
                         }
-                        catch (JsonSerializationException jse)
+                        catch (Exception jse)
                         {
                             throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
                         }
@@ -70,7 +70,7 @@ namespace yopower_papps_grid_extensions.business
                             {
                                 var model = JsonConvert.DeserializeObject<NavigateToModel>(parameters, settings);
                             }
-                            catch (JsonSerializationException jse)
+                            catch (Exception jse)
                             {
                                 throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
                             }
@@ -92,7 +92,7 @@ namespace yopower_papps_grid_extensions.business
                             {
                                 var model = JsonConvert.DeserializeObject<FilteredLookupModel>(parameters, settings);
                             }
-                            catch (JsonSerializationException jse)
+                            catch (Exception jse)
                             {
                                 throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
                             }
@@ -113,7 +113,7 @@ namespace yopower_papps_grid_extensions.business
                             {
                                 var model = JsonConvert.DeserializeObject<ColorfulCellModel>(parameters, settings);
                             }
-                            catch (JsonSerializationException jse)
+                            catch (Exception jse)
                             {
                                 throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
                             }
@@ -132,7 +132,7 @@ namespace yopower_papps_grid_extensions.business
                             {
                                 var model = JsonConvert.DeserializeObject<ProgressIndicatorModel>(parameters, settings);
                             }
-                            catch (JsonSerializationException jse)
+                            catch (Exception jse)
                             {
                                 throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
                             }
@@ -146,7 +146,7 @@ namespace yopower_papps_grid_extensions.business
                         {
                             var model = JsonConvert.DeserializeObject<StringRelatedRecords>(parameters, settings);
                         }
-                        catch (JsonSerializationException jse)
+                        catch (Exception jse)
                         {
                             throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
                         }
@@ -157,14 +157,18 @@ namespace yopower_papps_grid_extensions.business
                         {
                             var model = JsonConvert.DeserializeObject<FileUploadDownloadModel>(parameters, settings);
                         }
-                        catch (JsonSerializationException jse)
+                        catch (Exception jse)
                         {
                             throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
                         }
                         break;
 
+                    case yp_gbl_column_definition_type.AnyCopilotExecuteEvent:
+                        throw new InvalidPluginExecutionException($"❌Type not implemented!");
+                        break;
+
                     default:
-                        throw new InvalidPluginExecutionException($"Type not implemented");
+                        throw new InvalidPluginExecutionException($"❌Type not implemented!");
                 }
             }
             else
@@ -199,7 +203,10 @@ namespace yopower_papps_grid_extensions.business
                         yp_subgrid_name = s.yp_subgrid_name,
                         yp_subgrid_table = s.yp_subgrid_table,
                         yp_subgrid_column = s.yp_subgrid_column,
-                        yp_parameters = s.yp_parameters
+                        yp_parameters = s.yp_parameters,
+                        yp_based_on_optionset_column = s.yp_based_on_optionset_column,
+                        yp_optionset_criteria = s.yp_optionset_criteria,
+                        yp_optionset_values = s.yp_optionset_values
                     })
                     .ToList();
             }

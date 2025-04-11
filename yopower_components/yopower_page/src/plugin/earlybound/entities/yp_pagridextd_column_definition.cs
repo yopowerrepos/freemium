@@ -65,8 +65,11 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string TimeZoneRuleVersionNumber = "timezoneruleversionnumber";
 			public const string UTCConversionTimeZoneCode = "utcconversiontimezonecode";
 			public const string VersionNumber = "versionnumber";
+			public const string yp_based_on_optionset_column = "yp_based_on_optionset_column";
 			public const string yp_mode = "yp_mode";
 			public const string yp_name = "yp_name";
+			public const string yp_optionset_criteria = "yp_optionset_criteria";
+			public const string yp_optionset_values = "yp_optionset_values";
 			public const string yp_pagridextd_column_definitionId = "yp_pagridextd_column_definitionid";
 			public const string Id = "yp_pagridextd_column_definitionid";
 			public const string yp_parameters = "yp_parameters";
@@ -287,6 +290,19 @@ namespace yopower_papps_grid_extensions.earlybound
 			}
 		}
 		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yp_based_on_optionset_column")]
+		public string yp_based_on_optionset_column
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("yp_based_on_optionset_column");
+			}
+			set
+			{
+				this.SetAttributeValue("yp_based_on_optionset_column", value);
+			}
+		}
+		
 		/// <summary>
 		/// Populated by Plugin
 		/// </summary>
@@ -313,6 +329,32 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("yp_name", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yp_optionset_criteria")]
+		public virtual yp_gbl_column_definition_pptionset_criteria? yp_optionset_criteria
+		{
+			get
+			{
+				return ((yp_gbl_column_definition_pptionset_criteria?)(EntityOptionSetEnum.GetEnum(this, "yp_optionset_criteria")));
+			}
+			set
+			{
+				this.SetAttributeValue("yp_optionset_criteria", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yp_optionset_values")]
+		public string yp_optionset_values
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("yp_optionset_values");
+			}
+			set
+			{
+				this.SetAttributeValue("yp_optionset_values", value);
 			}
 		}
 		

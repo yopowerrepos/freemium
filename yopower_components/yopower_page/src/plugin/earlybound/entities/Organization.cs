@@ -625,6 +625,9 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string EnableAsyncMergeAPIForUCI = "enableasyncmergeapiforuci";
 			public const string EnableBingMapsIntegration = "enablebingmapsintegration";
 			public const string EnableCanvasAppsInSolutionsByDefault = "enablecanvasappsinsolutionsbydefault";
+			public const string EnableCopilotStudioCrossGeoShareDataWithVivaInsights = "enablecopilotstudiocrossgeosharedatawithvivainsights";
+			public const string EnableCopilotStudioShareDataWithVI = "enablecopilotstudiosharedatawithvi";
+			public const string EnableCopilotStudioShareDataWithVivaInsights = "enablecopilotstudiosharedatawithvivainsights";
 			public const string EnableEnvironmentSettingsApp = "enableenvironmentsettingsapp";
 			public const string EnableFlowsInSolutionByDefault = "enableflowsinsolutionbydefault";
 			public const string EnableFlowsInSolutionByDefaultGracePeriod = "enableflowsinsolutionbydefaultgraceperiod";
@@ -3021,6 +3024,54 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("enablecanvasappsinsolutionsbydefault", value);
+			}
+		}
+		
+		/// <summary>
+		/// Enable this feature to allow cross-geo boundary sharing of aggregated analytics data if your preferred data location for Viva Insights is different than the location of your environment
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablecopilotstudiocrossgeosharedatawithvivainsights")]
+		public System.Nullable<bool> EnableCopilotStudioCrossGeoShareDataWithVivaInsights
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablecopilotstudiocrossgeosharedatawithvivainsights");
+			}
+			set
+			{
+				this.SetAttributeValue("enablecopilotstudiocrossgeosharedatawithvivainsights", value);
+			}
+		}
+		
+		/// <summary>
+		/// (Deprecated) Enable this feature to allow Copilot Studio to share aggregated analytics data for custom agents with Viva Insights for an individual environment
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablecopilotstudiosharedatawithvi")]
+		public System.Nullable<bool> EnableCopilotStudioShareDataWithVI
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablecopilotstudiosharedatawithvi");
+			}
+			set
+			{
+				this.SetAttributeValue("enablecopilotstudiosharedatawithvi", value);
+			}
+		}
+		
+		/// <summary>
+		/// Enable this feature to allow Copilot Studio to share aggregated analytics data for custom agents with Viva Insights for an individual environment
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablecopilotstudiosharedatawithvivainsights")]
+		public System.Nullable<bool> EnableCopilotStudioShareDataWithVivaInsights
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablecopilotstudiosharedatawithvivainsights");
+			}
+			set
+			{
+				this.SetAttributeValue("enablecopilotstudiosharedatawithvivainsights", value);
 			}
 		}
 		

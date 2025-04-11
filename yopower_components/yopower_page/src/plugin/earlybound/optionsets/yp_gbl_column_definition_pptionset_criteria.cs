@@ -14,35 +14,20 @@ namespace yopower_papps_grid_extensions.earlybound
 	
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	public enum yp_gbl_column_definition_type
+	public enum yp_gbl_column_definition_pptionset_criteria
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		AnyNavigateButtons = 900,
+		Equals = 1,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		AnyReadOnly = 901,
+		NotEquals = 2,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		AnyRelatedRecords = 902,
+		In = 3,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		AnyCopilotExecuteEvent = 903,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		LookupNavigateButtons = 800,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		LookupFilteredLookup = 801,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		NumbersDateColorfulCell = 700,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		NumbersProgressBar = 701,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		FileUploadDownload = 600,
+		NotIn = 4,
 	}
 }
 #pragma warning restore CS1591

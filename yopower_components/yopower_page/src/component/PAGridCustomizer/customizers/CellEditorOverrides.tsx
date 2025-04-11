@@ -3,7 +3,8 @@ import { CellEditorOverrides, ColumnDataType, GetEditorParams } from "../types";
 import { CustomColumnDefinition } from "../models/CustomColumnDefinition";
 import { Helper } from "../helper";
 import { IInputs } from "../generated/ManifestTypes";
-import { getFilteredLookupCel } from "./FilteredLookupCel";
+import { getFilteredLookupCell } from "./FilteredLookupCell";
+import { getReadOnlyCell } from "./ReadOnlyCell";
 
 export function cellEditorOverrides(
 	subgrid: string,
@@ -47,19 +48,18 @@ export function cellEditorOverrides(
 };
 
 export function getComponent(props: any, col: GetEditorParams, definitions: CustomColumnDefinition[], table: string, column: string, context: ComponentFramework.Context<IInputs>): React.ReactElement | null | undefined {
-	const definition = Helper.getDefinition(definitions, table, column);
+	const definition = Helper.getDefinition(definitions, table, column, col.rowData!);
 	if (definition !== null) {
 		switch (definition.type) {
+
+			//Any [Read-Only]
+			case 901:
+				return getReadOnlyCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				break;
+				
 			//Lookup [Filtered Lookup]
 			case 801:
-				return getFilteredLookupCel(
-					context,
-					col,
-					col.colDefs[col.columnIndex],
-					props,
-					definition,
-					table
-				);
+				return getFilteredLookupCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
 				break;
 		}
 	}

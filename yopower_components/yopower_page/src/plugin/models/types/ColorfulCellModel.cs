@@ -20,7 +20,8 @@ namespace yopower_papps_grid_extensions.models.types
         [DataMember(Name = "max", Order = 2, IsRequired = true)] public decimal Max { get; set; }
         [DataMember(Name = "background", Order = 3, IsRequired = true)] public string Background { get; set; }
         [DataMember(Name = "color", Order = 4, IsRequired = true)] public string Color { get; set; }
-        [DataMember(Name = "label", Order = 5, IsRequired = true)] public string Label { get; set; }
+        [DataMember(Name = "icon", Order = 5, IsRequired = false)] public string Icon { get; set; }
+        [DataMember(Name = "label", Order = 6, IsRequired = false)] public string Label { get; set; }
 
     }
 }
