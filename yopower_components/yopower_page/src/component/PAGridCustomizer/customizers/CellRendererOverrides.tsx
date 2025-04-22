@@ -52,6 +52,24 @@ export function getComponent(
 ): React.ReactElement | null | undefined {
 	const definition = Helper.getDefinition(definitions, table, column, col.rowData!);
 	if (definition !== null) {
+
+		// Additional Settings
+		if(definition.settings !== null)
+		{
+			// Editable
+			(col.colDefs[col.columnIndex] as any).editable = definition.settings.editable;
+
+			// Allow Pin
+			if(definition.settings.allowPin)
+				(col.colDefs[col.columnIndex] as any).pinMenuItem = 'show';
+			else
+				(col.colDefs[col.columnIndex] as any).pinMenuItem = 'hide';
+
+			// Rename Columns
+			// if(definition.settings.renameColumn)
+			// 	(col.colDefs[col.columnIndex] as any).displayName = definition.settings.renameColumn;
+		}
+
 		switch (definition.type) {
 			//Any [Navigate To]
 			case 900:
@@ -78,7 +96,7 @@ export function getComponent(
 				return getColorfulCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
 				break;
 
-			// Number [Colorful Cell]
+			// Number [Progress Bar Cell]
 			case 701:
 				return gerProgressBarCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
 				break;

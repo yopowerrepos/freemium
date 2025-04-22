@@ -19,6 +19,12 @@ namespace yopower_papps_grid_extensions.models
             this.Subgrid = row.yp_subgrid_name;
             this.Table = row.yp_subgrid_table;
             this.Column = row.yp_subgrid_column;
+            this.Settings = new AdditionalSettings()
+            {
+                Editable = row.yp_editable != null ? row.yp_editable.Value : false,
+                AllowPin = row.yp_allow_pin != null ? row.yp_allow_pin.Value : false,
+                RenameColumn = row.yp_rename_column
+            };
             this.Parameters = row.yp_parameters;
 
             if (!string.IsNullOrEmpty(row.yp_based_on_optionset_column)
@@ -28,7 +34,7 @@ namespace yopower_papps_grid_extensions.models
                 {
                     Column = row.yp_based_on_optionset_column,
                     Operator = row.yp_optionset_criteria.Value.GetHashCode(),
-                    Values = row.yp_optionset_values.Split(',').ToList()
+                    Values = row.yp_optionset_values.Split(',').Select(s => Convert.ToDecimal(s)).ToList()
                 };
         }
 
@@ -38,8 +44,9 @@ namespace yopower_papps_grid_extensions.models
         [DataMember(Name = "subgrid", Order = 4)] public string Subgrid { get; set; }
         [DataMember(Name = "table", Order = 5)] public string Table { get; set; }
         [DataMember(Name = "column", Order = 6)] public string Column { get; set; }
-        [DataMember(Name = "parameters", Order = 7)] public string Parameters { get; set; }
-        [DataMember(Name = "condition", IsRequired = false, Order = 7)] public OptionSetCondition Condition { get; set; }
+        [DataMember(Name = "settings", Order = 7)] public AdditionalSettings Settings { get; set; }
+        [DataMember(Name = "parameters", Order = 8)] public string Parameters { get; set; }
+        [DataMember(Name = "condition", IsRequired = false, Order = 9)] public OptionSetCondition Condition { get; set; }
 
     }
 }

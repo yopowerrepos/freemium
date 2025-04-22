@@ -22,7 +22,7 @@ export function getRowNavigateButtonsCell(
                 key: m.label,
                 text: m.label,
                 onClick: (e: any) => {
-                    Helper.navigateToRecordModal(m.position, table, id, m.formId, m.height, m.width)
+                    Helper.navigateToRecordModal(m.position, table, id, m.formId, m.tabName!, m.height, m.width)
                 }
             } as IContextualMenuItem
         }));
@@ -50,6 +50,6 @@ export function getRowNavigateButtonsCell(
             checked={false}
             iconProps={undefined}
             onClick={(e) => { navigateToProps.items[0].onClick }}
-            onDoubleClick={(e) => { props.startEditing() }} />
+            onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }} />
     );
 }

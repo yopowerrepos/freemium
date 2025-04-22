@@ -28,6 +28,18 @@ namespace yopower_papps_grid_extensions.earlybound
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		NotIn = 4,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Greater = 5,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		GreaterOrEquals = 6,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Less = 7,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		LessOrEquals = 8,
 	}
 }
 #pragma warning restore CS1591

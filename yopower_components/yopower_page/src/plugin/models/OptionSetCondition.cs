@@ -12,7 +12,7 @@ namespace yopower_papps_grid_extensions.models
     {
         [DataMember(Order = 1, Name = "column")] public string Column { get; set; }
         [DataMember(Order = 2, Name = "operator")] public int Operator { get; set; }
-        [DataMember(Order = 3, Name = "values")] public List<string> Values { get; set; }
+        [DataMember(Order = 3, Name = "values")] public List<decimal> Values { get; set; }
 
     }
 }

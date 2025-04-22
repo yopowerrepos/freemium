@@ -8,11 +8,15 @@ export class Helper {
         column: string,
         rowData: RowData
     ) {
-        const conditions: Record<number, (value: string, values: string[]) => boolean> = {
+        const conditions: Record<number, (value: number, values: number[]) => boolean> = {
             1: (value, values) => value === values[0],
             2: (value, values) => value !== values[0],
-            3: (value, values) => values.some(k => k.includes(value)),
-            4: (value, values) => values.some(k => k.includes(value)),
+            3: (value, values) => values.some(k => k === value),
+            4: (value, values) => !values.some(k => k === value),
+            5: (value, values) => value > values[0],
+            6: (value, values) => value >= values[0],
+            7: (value, values) => value < values[0],
+            8: (value, values) => value <= values[0],
         };
 
         const matches = definitions.filter(f => f.table === table && f.column === column);
@@ -28,21 +32,27 @@ export class Helper {
 
                 if (foundColumn !== undefined) {
                     const operator = definition.condition.operator;
-                    const value: string | null | undefined = (rowData as any)[foundColumn];
+                    const rawValue = (rowData as any)[foundColumn];
 
-                    if (value !== undefined && value !== null) {
-                        if (conditions[operator]?.(value, definition.condition.values)) {
-                            return definition;
+                    if (rawValue !== undefined && rawValue !== null) {
+                        const value = Number(rawValue);
+                        const conditionValues = definition.condition.values.map(Number);
+
+                        if (!isNaN(value) && conditionValues.every(v => !isNaN(v))) {
+                            if (conditions[operator]?.(value, conditionValues)) {
+                                return definition;
+                            }
                         }
                     }
                 }
-            }
-            else
+            } else {
                 return definition;
+            }
         }
 
         return null;
     }
+
 
     public static getValue(rowData: RowData, column: string): string {
         let foundColumn: string | undefined;
@@ -54,7 +64,7 @@ export class Helper {
         if (foundColumn !== undefined) {
             return (rowData as any)[foundColumn] as string;
         }
-        
+
         return "";
     }
 
@@ -115,19 +125,20 @@ export class Helper {
         }
     }
 
-    public static navigateToRecordModal(position: number, tableLogicalName: string, id: string, formId: string, height: any, width: any) {
+    public static navigateToRecordModal(position: number, tableLogicalName: string, id: string, formId: string, tabName: string, height: any, width: any) {
         (window as any).Xrm.Navigation.navigateTo(
             {
                 pageType: "entityrecord",
                 entityName: tableLogicalName,
-                entityId: id
+                entityId: id,
+                formId: formId,
+                tabName: tabName
             },
             {
                 target: 2,
                 height: height,
                 width: width,
                 position: position,
-                formId: formId
             }
         )
     }

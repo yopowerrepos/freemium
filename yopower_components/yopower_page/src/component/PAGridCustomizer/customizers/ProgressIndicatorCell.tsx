@@ -34,7 +34,7 @@ export function gerProgressBarCell(
                             borderRadius: 5,
                             textAlign: "left"
                         }}
-                        onClick={(e) => { props.startEditing() }}>
+                        onClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}>
                         <ProgressIndicator
                             description={props.formattedValue}
                             percentComplete={value}

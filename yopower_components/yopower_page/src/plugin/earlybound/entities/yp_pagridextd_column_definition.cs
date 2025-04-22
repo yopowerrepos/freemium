@@ -65,7 +65,9 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string TimeZoneRuleVersionNumber = "timezoneruleversionnumber";
 			public const string UTCConversionTimeZoneCode = "utcconversiontimezonecode";
 			public const string VersionNumber = "versionnumber";
+			public const string yp_allow_pin = "yp_allow_pin";
 			public const string yp_based_on_optionset_column = "yp_based_on_optionset_column";
+			public const string yp_editable = "yp_editable";
 			public const string yp_mode = "yp_mode";
 			public const string yp_name = "yp_name";
 			public const string yp_optionset_criteria = "yp_optionset_criteria";
@@ -73,6 +75,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string yp_pagridextd_column_definitionId = "yp_pagridextd_column_definitionid";
 			public const string Id = "yp_pagridextd_column_definitionid";
 			public const string yp_parameters = "yp_parameters";
+			public const string yp_rename_column = "yp_rename_column";
 			public const string yp_subgrid_column = "yp_subgrid_column";
 			public const string yp_subgrid_name = "yp_subgrid_name";
 			public const string yp_subgrid_table = "yp_subgrid_table";
@@ -290,6 +293,19 @@ namespace yopower_papps_grid_extensions.earlybound
 			}
 		}
 		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yp_allow_pin")]
+		public System.Nullable<bool> yp_allow_pin
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("yp_allow_pin");
+			}
+			set
+			{
+				this.SetAttributeValue("yp_allow_pin", value);
+			}
+		}
+		
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yp_based_on_optionset_column")]
 		public string yp_based_on_optionset_column
 		{
@@ -300,6 +316,19 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("yp_based_on_optionset_column", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yp_editable")]
+		public System.Nullable<bool> yp_editable
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("yp_editable");
+			}
+			set
+			{
+				this.SetAttributeValue("yp_editable", value);
 			}
 		}
 		
@@ -405,6 +434,19 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("yp_parameters", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yp_rename_column")]
+		public string yp_rename_column
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("yp_rename_column");
+			}
+			set
+			{
+				this.SetAttributeValue("yp_rename_column", value);
 			}
 		}
 		

@@ -11,45 +11,28 @@
 - This solution uses the browser localStorage to prevent multiple requests on the Dataverse APIs, then every 30 minutes the cache will expire.
 - Use localStorage.removeItem("**subgrid-logical-name**") to clear the cache and see the adjusts on parameters.
 
-## Conditions
-
-The customizers are applied following a priority defined by conditions related to optionsets on the grid
-Is **required** that the optionset column be on the view!
-Priority
-
-1. With Conditions
-2. General (No Conditions)
-
-## Schema
-
-```mermaid
-flowchart
-  A([Power Apps Grid]) --use yp_yopower.components.yppagridextd--> B([index.ts])
-  B --> C{localStorage <br> is present?}
-  C -- has not data or expired --> D[Call API <br> yp_get_subgrid_definitions]
-  D --> E([Populate <br> localStorage])
-  E -- instanciate --> F([CellRendererOverrides.tsx <br> CellEditorOverrides.tsx])
-  C -- has data --> F
-  F --> G([According parameters 'yp_pagridextd_column_definition' <br> decides which componenet will be applied])
-```
-
 ## Available Customizers
 
-| **Title**                          | **Description**                                                                                                                                                                                                                             |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Any [Navigate Buttons]**         | Enables navigation buttons for forms related to the row.                                                                                                                                                                                    |
-| **Any [Read-Only]**                | Makes read-only columns editable.                                                                                                                                                                                                           |
-| **Lookup [Navigate Buttons]**      | Enables navigation buttons for forms related to the lookup.                                                                                                                                                                                 |
-| **Lookup [Filtered Lookup]**       | Configures a lookup field to be filtered based on the row or other subgrid columns using the `lookupObject` concept.                                                                                                                        |
-| **Numbers & Date [Colorful Cell]** | Determines the fill and text color of a cell based on a range of values.                                                                                                                                                                    |
-| **Numbers [Progress Bar]**         | Determines the fill and color of a progress bar based on a range of values.                                                                                                                                                                 |
-| **String [Related Records]**       | Allow interact with associated records through the subgrid buttons                                                                                                                                                                          |
-| **File [Upload Download]**         | Visualize, download, updload and delete files                                                                                                                                                                                               |
+| **Title**                          | **Description**                                                                                                      |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Any [Navigate Buttons]**         | Enables navigation buttons for forms related to the row.                                                             |
+| **Any [Read-Only]**                | Makes read-only columns editable.                                                                                    |
+| **Lookup [Navigate Buttons]**      | Enables navigation buttons for forms related to the lookup.                                                          |
+| **Lookup [Filtered Lookup]**       | Configures a lookup field to be filtered based on the row or other subgrid columns using the `lookupObject` concept. |
+| **Numbers & Date [Colorful Cell]** | Determines the fill and text color of a cell based on a range of values.                                             |
+| **Numbers [Progress Bar]**         | Determines the fill and color of a progress bar based on a range of values.                                          |
+| **String [Related Records]**       | Allow interact with associated records through the subgrid buttons                                                   |
+| **File [Upload Download]**         | Visualize, download, updload and delete files                                                                        |
 
-## Icons
+## Additional Settings
 
-Taking color blindness into account, some components support icons.
-Use the [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/styles/web/icons) list to get the right names
+| **Feature**              | **Description**                                                                                                                                                                       |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Conditions**           | The customizers are applied following a priority defined by conditions related to optionsets, numbers or booleans on the grid. Is **required** the column be on the view!             |
+| **Available Conditions** | Equals, Not Equals, In, Not In, Greater, Greater or Equals, Less, Less or Equals                                                                                                      |
+| **Editable**             | Allow a customizer enter on edit mode. (default no)                                                                                                                                   |
+| **Allow Pin Column**     | Enable the column to be pinned on left or right side.                                                                                                                                 |
+| **Icons**                | Taking color blindness into account, some components support icons. Use the [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/styles/web/icons) list to get the right names |
 
 ### 1. Any [Navigate Buttons]
 
@@ -64,6 +47,7 @@ Use the [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/styles/web/i
       "position": 1,
       "label": "⬆️Center Modal",
       "formId": "00000000-0000-0000-0000-000000000000",
+      "tabName": "tab_name",
       "height": {
         "value": 80,
         "unit": "%"
@@ -77,6 +61,7 @@ Use the [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/styles/web/i
       "position": 2,
       "label": "↗️Right Modal",
       "formId": "00000000-0000-0000-0000-000000000000",
+      "tabName": "tab_name",
       "height": {
         "value": 80,
         "unit": "%"
@@ -145,6 +130,7 @@ Use the [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/styles/web/i
       "position": 1,
       "label": "⬆️Center Modal",
       "formId": "00000000-0000-0000-0000-000000000000",
+      "tabName": "tab_name",      
       "height": {
         "value": 80,
         "unit": "%"
@@ -158,6 +144,7 @@ Use the [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/styles/web/i
       "position": 2,
       "label": "↗️Right Modal",
       "formId": "00000000-0000-0000-0000-000000000000",
+      "tabName": "tab_name",      
       "height": {
         "value": 80,
         "unit": "%"
@@ -235,30 +222,30 @@ Use the [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/styles/web/i
 
 ```json
 {
-    "rules": [
-        {
-            "min": -10000000000,
-            "max": -1,
-            "background": "#E098AF",
-            "color": "#1F1F1F",
-            "label": "Positive", // optional
-            "icon": "ArrowTallDownLeft" // optional
-        },
-        {
-            "min": 0,
-            "max": 0,
-            "background": "transparent",
-            "color": "#666666"
-        },
-        {
-            "min": 1,
-            "max": 10000000000,
-            "background": "#A1D6A5",
-            "color": "#1F1F1F",
-            "label": "Negative", // optional
-            "icon": "ArrowTallUpRight" // optional
-        }
-    ]
+  "rules": [
+    {
+      "min": -10000000000,
+      "max": -1,
+      "background": "#E098AF",
+      "color": "#1F1F1F",
+      "label": "Positive", // optional
+      "icon": "ArrowTallDownLeft" // optional
+    },
+    {
+      "min": 0,
+      "max": 0,
+      "background": "transparent",
+      "color": "#666666"
+    },
+    {
+      "min": 1,
+      "max": 10000000000,
+      "background": "#A1D6A5",
+      "color": "#1F1F1F",
+      "label": "Negative", // optional
+      "icon": "ArrowTallUpRight" // optional
+    }
+  ]
 }
 ```
 
@@ -359,4 +346,17 @@ Use the [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/styles/web/i
   "readOnly": false,
   "allowedTypes": ["jpg", "jpeg", "png", "gif"]
 }
+```
+
+## Schema
+
+```mermaid
+flowchart
+  A([Power Apps Grid]) --use yp_yopower.components.yppagridextd--> B([index.ts])
+  B --> C{localStorage <br> is present?}
+  C -- has not data or expired --> D[Call API <br> yp_get_subgrid_definitions]
+  D --> E([Populate <br> localStorage])
+  E -- instanciate --> F([CellRendererOverrides.tsx <br> CellEditorOverrides.tsx])
+  C -- has data --> F
+  F --> G([According parameters 'yp_pagridextd_column_definition' <br> decides which componenet will be applied])
 ```

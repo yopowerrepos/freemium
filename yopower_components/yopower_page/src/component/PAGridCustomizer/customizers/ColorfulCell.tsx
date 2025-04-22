@@ -52,7 +52,7 @@ export function getColorfulCell(
 					display: "flex",
 					margin: "4px"
 				}}
-				onClick={(e) => { props.startEditing() }}>
+				onClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}>
 				<Icon iconName={rule.icon} style={{ marginRight: 3 }} />
 				<div>{formattedValue!}</div>
 			</div>;

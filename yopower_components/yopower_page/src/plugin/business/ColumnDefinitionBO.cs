@@ -206,7 +206,10 @@ namespace yopower_papps_grid_extensions.business
                         yp_parameters = s.yp_parameters,
                         yp_based_on_optionset_column = s.yp_based_on_optionset_column,
                         yp_optionset_criteria = s.yp_optionset_criteria,
-                        yp_optionset_values = s.yp_optionset_values
+                        yp_optionset_values = s.yp_optionset_values,
+                        yp_editable = s.yp_editable,
+                        yp_allow_pin = s.yp_allow_pin,
+                        yp_rename_column = s.yp_rename_column
                     })
                     .ToList();
             }
