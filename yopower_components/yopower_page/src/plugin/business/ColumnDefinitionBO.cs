@@ -101,6 +101,17 @@ namespace yopower_papps_grid_extensions.business
                             throw new InvalidPluginExecutionException($"The option Lookup [Filtered Lookup] is available just for Lookup columns");
                         break;
 
+                    case yp_gbl_column_definition_type.AnyDependentColorfulCell:
+                            try
+                            {
+                                var model = JsonConvert.DeserializeObject<ColorfulCellModel>(parameters, settings);
+                            }
+                            catch (Exception jse)
+                            {
+                                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                            }
+                        break;
+
                     case yp_gbl_column_definition_type.NumbersDateColorfulCell:
                         if (matchColumn.Type.Value == AttributeTypeCode.DateTime.GetHashCode()
                             || matchColumn.Type.Value == AttributeTypeCode.Integer.GetHashCode()

@@ -11,6 +11,7 @@ namespace yopower_papps_grid_extensions.models.types
     public class ColorfulCellModel
     {
         [DataMember(Name = "rules", Order = 1, IsRequired = true)] public List<ColorfulCellRuleModel> Rules { get; set; }
+        [DataMember(Name = "column", Order = 2, IsRequired = false)] public string Column { get; set; }
     }
 
     [DataContract]
@@ -22,6 +23,5 @@ namespace yopower_papps_grid_extensions.models.types
         [DataMember(Name = "color", Order = 4, IsRequired = true)] public string Color { get; set; }
         [DataMember(Name = "icon", Order = 5, IsRequired = false)] public string Icon { get; set; }
         [DataMember(Name = "label", Order = 6, IsRequired = false)] public string Label { get; set; }
-
     }
 }

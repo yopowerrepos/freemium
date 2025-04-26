@@ -1,0 +1,22 @@
+<entities >
+  <entity name="yp_pagridextd_column_definition" displayname="Column Definition" etc="10467" primaryidfield="yp_pagridextd_column_definitionid" primarynamefield="yp_name" disableplugins="true">
+    <fields>
+      <field displayname="Criteria" name="yp_optionset_criteria" type="optionsetvalue" customfield="true" />
+      <field displayname="Display Name" name="yp_name" type="string" customfield="true" />
+      <field displayname="Editable" name="yp_editable" type="bool" customfield="true" />
+      <field displayname="Allow Pin" name="yp_allow_pin" type="bool" customfield="true" />
+      <field displayname="Based On OptionSet, Boolean or Number" name="yp_based_on_optionset_column" type="string" customfield="true" />
+      <field displayname="Column Definition" name="yp_pagridextd_column_definitionid" type="guid" primaryKey="true" />
+      <field displayname="Mode" name="yp_mode" type="optionsetvalue" customfield="true" />
+      <field displayname="Parameters" name="yp_parameters" type="string" customfield="true" />
+      <field displayname="Rename Column" name="yp_rename_column" type="string" customfield="true" />
+      <field displayname="Subgrid Column" name="yp_subgrid_column" type="string" customfield="true" />
+      <field displayname="Subgrid Name" name="yp_subgrid_name" type="string" customfield="true" />
+      <field displayname="Subgrid Table" name="yp_subgrid_table" type="string" customfield="true" />
+      <field displayname="Type" name="yp_type" type="optionsetvalue" customfield="true" />
+      <field displayname="Values" name="yp_optionset_values" type="string" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+  </entity>
+</entities>

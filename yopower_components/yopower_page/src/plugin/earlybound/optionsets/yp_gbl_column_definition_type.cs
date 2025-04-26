@@ -30,6 +30,9 @@ namespace yopower_papps_grid_extensions.earlybound
 		AnyCopilotExecuteEvent = 903,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		AnyDependentColorfulCell = 904,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		LookupNavigateButtons = 800,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]

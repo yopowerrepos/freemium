@@ -10,7 +10,8 @@ export function getColorfulCell(
 	props: any,
 	definition: any,
 	table: string,
-	id: string): React.ReactElement | null | undefined {
+	id: string,
+	overrideFormattedValue: string | null = null): React.ReactElement | null | undefined {
 	if (props.value !== null && props.value !== undefined) {
 		const rules = JSON.parse(definition.parameters).rules as Array<any>;
 		let value: number | null = null;
@@ -23,7 +24,7 @@ export function getColorfulCell(
 				break;
 
 			case "Duration":
-				value = props.value as number;
+				value = Number(props.value);
 				formattedValue = dateTimeLabel(value);
 				break;
 
@@ -31,7 +32,13 @@ export function getColorfulCell(
 			case "Decimal":
 			case "FloatingPoint":
 			case "Currency":
-				value = props.value as number;
+			case "OptionSet":
+				value = Number(props.value);
+				formattedValue = props.value;
+				break;
+
+			case "TwoOptions":
+				value = Number(props.value);
 				formattedValue = props.value;
 				break;
 		}
@@ -41,7 +48,7 @@ export function getColorfulCell(
 			const background = rule.background ?? "transparent";
 			const color = rule.color ?? "black";
 			return <div
-				title={formattedValue! + "\r\n" + rule!.label!}
+				title={(overrideFormattedValue !== "" ? overrideFormattedValue! : formattedValue!) + "\r\n" + rule!.label!}
 				style={{
 					padding: "4px 8px",
 					borderRadius: 2,
@@ -54,7 +61,9 @@ export function getColorfulCell(
 				}}
 				onClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}>
 				<Icon iconName={rule.icon} style={{ marginRight: 3 }} />
-				<div>{formattedValue!}</div>
+				<div style={{ height: 20 }}>
+					{(overrideFormattedValue !== null ? overrideFormattedValue! : formattedValue!)}
+				</div>
 			</div>;
 		}
 	}

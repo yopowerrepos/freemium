@@ -10,6 +10,7 @@ import { getRowNavigateButtonsCell } from "./RowNavigateButtonsCell";
 import { gerProgressBarCell } from "./ProgressIndicatorCell";
 import { RelatedRecordsCell } from "./RelatedRecordsCell";
 import { FileCell } from "./FileCell";
+import { format } from "path";
 
 export function cellRendererOverrides(
 	subgrid: string,
@@ -54,13 +55,12 @@ export function getComponent(
 	if (definition !== null) {
 
 		// Additional Settings
-		if(definition.settings !== null)
-		{
+		if (definition.settings !== null) {
 			// Editable
 			(col.colDefs[col.columnIndex] as any).editable = definition.settings.editable;
 
 			// Allow Pin
-			if(definition.settings.allowPin)
+			if (definition.settings.allowPin)
 				(col.colDefs[col.columnIndex] as any).pinMenuItem = 'show';
 			else
 				(col.colDefs[col.columnIndex] as any).pinMenuItem = 'hide';
@@ -84,6 +84,27 @@ export function getComponent(
 			//Any [Related Records]
 			case 902:
 				return <RelatedRecordsCell context={context} editor={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} />
+				break;
+
+			// Any [Dependent Colorful Cell]
+			case 904:
+				const foundColumn = Object.keys(col.rowData!).find(k => k.includes(JSON.parse(definition.parameters).column));
+				if (foundColumn !== undefined)
+					return getColorfulCell(
+						context,
+						col,
+						col.colDefs.filter(f => f.name === foundColumn)[0],
+						{
+							value: (col.rowData as any)[foundColumn],
+							formattedValue: (col.rowData as any)[foundColumn]
+						},
+						definition,
+						table,
+						col.rowData!.__rec_id,
+						props.formattedValue !== null && props.formattedValue !== "" ? props.formattedValue : ""
+					);
+				else
+					return null;
 				break;
 
 			// Lookup [Navigate Buttons]

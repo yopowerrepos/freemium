@@ -41,12 +41,14 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
     return (
         <div
             style={{
-                padding: 5,
-                borderRadius: 50,
+                padding: "4px 8px",
+                borderRadius: 2,
                 textAlign: "center",
-                cursor: "pointer",
                 background: background,
-                color: color
+                color: color,
+                lineHeight: "20px",
+                display: "flex",
+                margin: "4px"
             }}
             onClick={(e) => { upserPageManagedUserQuery(context, params.table, reference, params.fetchXml, params.layoutXml) }}>
             {value}

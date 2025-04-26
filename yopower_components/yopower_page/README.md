@@ -1,6 +1,6 @@
 # Power Apps Grid Extensions
 
-![component](https://github.com/user-attachments/assets/c8fa21c6-d843-4450-b895-8505af2d7fce)
+![component](https://github.com/user-attachments/assets/a7c3c1f1-ff38-4048-a74f-1b803b5ea048)
 
 ## About the Component
 
@@ -16,7 +16,9 @@
 | **Title**                          | **Description**                                                                                                      |
 | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | **Any [Navigate Buttons]**         | Enables navigation buttons for forms related to the row.                                                             |
-| **Any [Read-Only]**                | Makes read-only columns editable.                                                                                    |
+| **Any [Read Only]**                | Makes read-only columns editable.                                                                                    |
+| **Any [Related Records]**          | Works as a rollup column, support different column types to compose a fetchxml.                                      |
+| **Any [Dependent Colorful Cell]**  | Determines the fill and text color of a cell based on an other column according range of values.                     |
 | **Lookup [Navigate Buttons]**      | Enables navigation buttons for forms related to the lookup.                                                          |
 | **Lookup [Filtered Lookup]**       | Configures a lookup field to be filtered based on the row or other subgrid columns using the `lookupObject` concept. |
 | **Numbers & Date [Colorful Cell]** | Determines the fill and text color of a cell based on a range of values.                                             |
@@ -29,10 +31,16 @@
 | **Feature**              | **Description**                                                                                                                                                                       |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Conditions**           | The customizers are applied following a priority defined by conditions related to optionsets, numbers or booleans on the grid. Is **required** the column be on the view!             |
+| **Related Columns**      | It is available also define conditions using columns lookup related (N:1) with the row, just add a dot on begin '.numberofemployees'                                                  |
 | **Available Conditions** | Equals, Not Equals, In, Not In, Greater, Greater or Equals, Less, Less or Equals                                                                                                      |
 | **Editable**             | Allow a customizer enter on edit mode. (default no)                                                                                                                                   |
 | **Allow Pin Column**     | Enable the column to be pinned on left or right side.                                                                                                                                 |
 | **Icons**                | Taking color blindness into account, some components support icons. Use the [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/styles/web/icons) list to get the right names |
+
+## Sample Data via Configuration Migration Tool
+
+18 examples can be imported using Configuration Migration Tool
+/sample/data.zip
 
 ### 1. Any [Navigate Buttons]
 
@@ -87,7 +95,7 @@
 
 ---
 
-### 2. Any [Read-Only]
+### 2. Any [Read Only]
 
 - ✅ Any column type
 - ⚠️ No parameters
@@ -116,7 +124,36 @@
 
 ---
 
-### 4. Lookup [Navigate Buttons]
+### ⭐4. Any [Dependent Colorful Cell]
+
+- 📝 Use double click to enter on edit mode
+- ⚠️ Different of 'Numbers & Date [Colorful Cell]' it will define a color according the column defined on parameters
+
+#### Parameters:
+
+```json
+{
+  "column": "statuscode",
+  "rules": [
+    {
+      "min": 1,
+      "max": 1,
+      "background": "#A1D6A5",
+      "color": "#1F1F1F"
+    },
+    {
+      "min": 2,
+      "max": 2,
+      "background": "#E098AF",
+      "color": "#1F1F1F"
+    }
+  ]
+}
+```
+
+---
+
+### 5. Lookup [Navigate Buttons]
 
 - ✅ Lookups and Customers
 - 📝 Use double click to enter edit mode
@@ -130,7 +167,7 @@
       "position": 1,
       "label": "⬆️Center Modal",
       "formId": "00000000-0000-0000-0000-000000000000",
-      "tabName": "tab_name",      
+      "tabName": "tab_name",
       "height": {
         "value": 80,
         "unit": "%"
@@ -144,7 +181,7 @@
       "position": 2,
       "label": "↗️Right Modal",
       "formId": "00000000-0000-0000-0000-000000000000",
-      "tabName": "tab_name",      
+      "tabName": "tab_name",
       "height": {
         "value": 80,
         "unit": "%"
@@ -161,7 +198,7 @@
 
 ---
 
-### 5. Lookup [Filtered Lookup]
+### 6. Lookup [Filtered Lookup]
 
 - ✅ Lookups and Customers
 - ⚠️ The `reference` property defines whether the row or a column is used to substitute the placeholder `#value#`.
@@ -179,7 +216,7 @@
 
 ---
 
-### 6. Numbers & Date [Colorful Cell]
+### 7. Numbers & Date [Colorful Cell]
 
 - ✅ Decimal, Integer, Float, Currency, Duration, Date Only and Date&Time
 - 📝 Use double click to enter on edit mode
@@ -251,7 +288,7 @@
 
 ---
 
-### 7. Numbers [Progress Bar]
+### 8. Numbers [Progress Bar]
 
 - ✅ Integer, Decimal and Float
 - 📝 Use double click to enter on edit mode.
@@ -335,7 +372,7 @@
 
 ---
 
-### 8. File [Upload Download]
+### 9. File [Upload Download]
 
 - ✅ File
 
