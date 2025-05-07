@@ -50,6 +50,7 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
                 display: "flex",
                 margin: "4px"
             }}
+            onKeyDown={(e) => { e.preventDefault() }}
             onClick={(e) => { upserPageManagedUserQuery(context, params.table, reference, params.fetchXml, params.layoutXml) }}>
             {value}
         </div>

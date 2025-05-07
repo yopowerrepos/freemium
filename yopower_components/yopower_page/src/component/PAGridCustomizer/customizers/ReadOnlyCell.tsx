@@ -16,6 +16,7 @@ export function getReadOnlyCell(
             borderRadius: 5,
             textAlign: "left",
         }}
+        onKeyDown={(e) => { e.preventDefault() }}
         onClick={(e) => { e.preventDefault(); return; }}>
         {props.formattedValue}
     </p>

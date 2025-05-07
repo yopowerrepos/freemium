@@ -34,6 +34,7 @@ export function gerProgressBarCell(
                             borderRadius: 5,
                             textAlign: "left"
                         }}
+                        onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
                         onClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}>
                         <ProgressIndicator
                             description={props.formattedValue}

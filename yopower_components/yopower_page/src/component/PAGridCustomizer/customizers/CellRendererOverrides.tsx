@@ -11,6 +11,7 @@ import { gerProgressBarCell } from "./ProgressIndicatorCell";
 import { RelatedRecordsCell } from "./RelatedRecordsCell";
 import { FileCell } from "./FileCell";
 import { format } from "path";
+import { getNewRelatedRecordCell } from "./NewRelatedRecord";
 
 export function cellRendererOverrides(
 	subgrid: string,
@@ -105,6 +106,11 @@ export function getComponent(
 					);
 				else
 					return null;
+				break;
+
+			//Any [New Contextualized Record]
+			case 905:
+				return getNewRelatedRecordCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
 				break;
 
 			// Lookup [Navigate Buttons]

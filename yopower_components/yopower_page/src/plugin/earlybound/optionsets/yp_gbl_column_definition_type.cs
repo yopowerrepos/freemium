@@ -33,6 +33,9 @@ namespace yopower_papps_grid_extensions.earlybound
 		AnyDependentColorfulCell = 904,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		AnyNewRelatedRecord = 905,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		LookupNavigateButtons = 800,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]

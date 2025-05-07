@@ -1,3 +1,4 @@
+import { IInputs } from "./generated/ManifestTypes";
 import { CustomColumnDefinition } from "./models/CustomColumnDefinition";
 import { ColumnDefinition, GetEditorParams, GetRendererParams, RowData } from "./types";
 
@@ -159,6 +160,7 @@ export class Helper {
     }
 
     public static async navigateToPane(tableLogicalName: string, id: string, formId: string, imageSrc: string, paneId: string, canClose: boolean, hideHeader: boolean, width: any) {
+
         const pane = (window as any).Xrm.App.sidePanes.getPane(paneId) ?? await (window as any).Xrm.App.sidePanes.createPane({
             paneId: paneId,
             canClose: canClose,
@@ -172,5 +174,30 @@ export class Helper {
             entityId: id,
             formId: formId
         });
+    }
+
+    public static async newRecord(context: ComponentFramework.Context<IInputs>, source: any, targetTableLogicalName: string, formId: string, useQuickCreateForm: boolean, height: any, width: any) {
+        var entityFormOptions: any = {};
+        entityFormOptions["entityName"] = targetTableLogicalName;
+        entityFormOptions["useQuickCreateForm"] = useQuickCreateForm;
+        entityFormOptions["openInNewWindow"] = true;
+        entityFormOptions["navbar"] = "entity";
+        entityFormOptions["formId"] = formId;
+        entityFormOptions["createFromEntity"] = {
+            entityType: source.entityType,
+            id: source.id
+        }
+        entityFormOptions["height"] = height;
+        entityFormOptions["width"] = width;
+
+        var formParameters: any = {};
+
+        context.navigation.openForm(entityFormOptions, formParameters).then(
+            (_: any) => {
+                const x = 1;
+            },
+            (_: any) => {
+                const x = 2;
+            });
     }
 }

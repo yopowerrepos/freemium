@@ -54,8 +54,9 @@ export function getLookupNavigateButtonsCell(
                     text={props.formattedValue}
                     menuProps={navigateToProps}
                     checked={false}
-                    iconProps={undefined}
+                    iconProps={{ iconName: "View" }}
                     onClick={(e) => { navigateToProps.items[0].onClick }}
+                    onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
                     onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }} />
             );
         }

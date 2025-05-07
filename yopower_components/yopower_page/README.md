@@ -19,6 +19,7 @@
 | **Any [Read Only]**                | Makes read-only columns editable.                                                                                    |
 | **Any [Related Records]**          | Works as a rollup column, support different column types to compose a fetchxml.                                      |
 | **Any [Dependent Colorful Cell]**  | Determines the fill and text color of a cell based on an other column according range of values.                     |
+| **Any [New Related Record]**       | Define which associated records can be created through the Power Apps Grid, respecting the relationship's mappings.  |
 | **Lookup [Navigate Buttons]**      | Enables navigation buttons for forms related to the lookup.                                                          |
 | **Lookup [Filtered Lookup]**       | Configures a lookup field to be filtered based on the row or other subgrid columns using the `lookupObject` concept. |
 | **Numbers & Date [Colorful Cell]** | Determines the fill and text color of a cell based on a range of values.                                             |
@@ -124,7 +125,7 @@
 
 ---
 
-### ⭐4. Any [Dependent Colorful Cell]
+### 4. Any [Dependent Colorful Cell]
 
 - 📝 Use double click to enter on edit mode
 - ⚠️ Different of 'Numbers & Date [Colorful Cell]' it will define a color according the column defined on parameters
@@ -153,7 +154,65 @@
 
 ---
 
-### 5. Lookup [Navigate Buttons]
+### ⭐5. Any [New Related Record]
+
+- ✅ Any column type
+
+#### Parameters:
+
+```json
+{
+  "options": [
+    {
+      "icon": "AddToShoppingList",
+      "label": "Task",
+      "useQuickCreateForm": true,
+      "targetTableLogicalName": "task",
+      "formId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+      "icon": "Phone",
+      "label": "Phone Call",
+      "useQuickCreateForm": true,
+      "targetTableLogicalName": "phonecall",
+      "formId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+      "icon": "Calendar",
+      "label": "Appointment",
+      "useQuickCreateForm": true,
+      "targetTableLogicalName": "appointment",
+      "formId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+      "icon": "FavoriteStar",
+      "label": "Add My Demo Custom Table (Quick Create)",
+      "useQuickCreateForm": true,
+      "targetTableLogicalName": "yp_demo_powerappsgrid_extensions",
+      "formId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+      "icon": "FavoriteStarFill",
+      "label": "Add My Demo Custom Table (Main)",
+      "useQuickCreateForm": false,
+      "targetTableLogicalName": "yp_demo_powerappsgrid_extensions",
+      "formId": "00000000-0000-0000-0000-000000000000",
+      "height": {
+        "value": 800,
+        "unit": "px"
+      },
+      "width": {
+        "value": 600,
+        "unit": "px"
+      }
+    }
+  ]
+}
+```
+
+---
+
+### 6. Lookup [Navigate Buttons]
 
 - ✅ Lookups and Customers
 - 📝 Use double click to enter edit mode
@@ -198,7 +257,7 @@
 
 ---
 
-### 6. Lookup [Filtered Lookup]
+### 7. Lookup [Filtered Lookup]
 
 - ✅ Lookups and Customers
 - ⚠️ The `reference` property defines whether the row or a column is used to substitute the placeholder `#value#`.
@@ -216,7 +275,7 @@
 
 ---
 
-### 7. Numbers & Date [Colorful Cell]
+### 8. Numbers & Date [Colorful Cell]
 
 - ✅ Decimal, Integer, Float, Currency, Duration, Date Only and Date&Time
 - 📝 Use double click to enter on edit mode
@@ -288,7 +347,7 @@
 
 ---
 
-### 8. Numbers [Progress Bar]
+### 9. Numbers [Progress Bar]
 
 - ✅ Integer, Decimal and Float
 - 📝 Use double click to enter on edit mode.
@@ -372,7 +431,7 @@
 
 ---
 
-### 9. File [Upload Download]
+### 10. File [Upload Download]
 
 - ✅ File
 

@@ -4,7 +4,7 @@ import { CommandButton, IContextualMenuItem, IContextualMenuProps } from "@fluen
 import { Helper } from "../helper";
 import { IInputs } from "../generated/ManifestTypes";
 
-export function getRowNavigateButtonsCell(
+export function getNewRelatedRecordCell(
     context: ComponentFramework.Context<IInputs>,
     render: GetRendererParams,
     col: ColumnDefinition,
@@ -14,28 +14,15 @@ export function getRowNavigateButtonsCell(
     id: string
 ): React.ReactElement | null | undefined {
     let items = new Array<IContextualMenuItem>();
-    const modal = JSON.parse(definition.parameters).modal as Array<any>;
-    const sidePane = JSON.parse(definition.parameters).sidePane as Array<any>;
-    if (modal !== null && modal.length > 0) {
-        items = items.concat(modal.map(m => {
+    const options = JSON.parse(definition.parameters).options as Array<any>;
+    if (options !== null && options.length > 0) {
+        items = items.concat(options.map(o => {
             return {
-                iconProps: { iconName: m.icon! },
-                key: m.label,
-                text: m.label,
+                iconProps: { iconName: o.icon! },
+                key: o.label,
+                text: o.label,
                 onClick: (e: any) => {
-                    Helper.navigateToRecordModal(m.position, table, id, m.formId, m.tabName!, m.height, m.width)
-                }
-            } as IContextualMenuItem
-        }));
-    }
-    if (sidePane !== null && sidePane.length > 0) {
-        items = items.concat(sidePane.map(m => {
-            return {
-                iconProps: { iconName: m.icon! },
-                key: m.label,
-                text: m.label,
-                onClick: (e: any) => {
-                    Helper.navigateToPane(table, id, m.formId, m.imageSrc, m.paneId, m.canClose, m.hideHeader, m.width)
+                    Helper.newRecord(context, { entityType: table, id: id }, o.targetTableLogicalName, o.formId, o.useQuickCreateForm, o.height, o.width);
                 }
             } as IContextualMenuItem
         }));
@@ -50,8 +37,7 @@ export function getRowNavigateButtonsCell(
             text={props.formattedValue}
             menuProps={navigateToProps}
             checked={false}
-            iconProps={{ iconName: "View" }}
-            onClick={(e) => { navigateToProps.items[0].onClick }}
+            iconProps={{ iconName: "Add" }}
             onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
             onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }} />
     );

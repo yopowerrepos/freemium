@@ -61,6 +61,17 @@ namespace yopower_papps_grid_extensions.business
                         }
                         break;
 
+                    case yp_gbl_column_definition_type.AnyNewRelatedRecord:
+                        try
+                        {
+                            var model = JsonConvert.DeserializeObject<NewRelatedRecordModel>(parameters, settings);
+                        }
+                        catch (Exception jse)
+                        {
+                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                        }
+                        break;
+
                     case yp_gbl_column_definition_type.LookupNavigateButtons:
                         if (matchColumn.Type.Value == AttributeTypeCode.Customer.GetHashCode()
                             || matchColumn.Type.Value == AttributeTypeCode.Lookup.GetHashCode()
