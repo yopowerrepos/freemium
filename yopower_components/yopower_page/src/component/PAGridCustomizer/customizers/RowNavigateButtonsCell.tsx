@@ -11,7 +11,8 @@ export function getRowNavigateButtonsCell(
     props: any,
     definition: any,
     table: string,
-    id: string
+    id: string,
+    goToSettings: (e: any) => void
 ): React.ReactElement | null | undefined {
     let items = new Array<IContextualMenuItem>();
     const modal = JSON.parse(definition.parameters).modal as Array<any>;
@@ -45,14 +46,42 @@ export function getRowNavigateButtonsCell(
         items: items
     };
 
-    return (
-        <CommandButton
-            text={props.formattedValue}
-            menuProps={navigateToProps}
-            checked={false}
-            iconProps={{ iconName: "View" }}
-            onClick={(e) => { navigateToProps.items[0].onClick }}
+    if (navigateToProps.items.length === 1) {
+        const item = navigateToProps.items[0];
+        return <div
+            style={{
+                padding: "4px 8px",
+                borderRadius: 2,
+                textAlign: "left",
+                background: "transparent",
+                color: "#115EA3",
+                lineHeight: "20px",
+                display: "flex",
+                margin: "4px",
+                cursor: "pointer"
+            }}
             onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
-            onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }} />
-    );
+            onClick={
+                item.onClick
+            }
+            //Helper.navigateToRecordModal(item.position, props.value.etn, props.value.id.guid ?? props.value.id, item.formId, item.tabName, item.height, item.width) }}
+            onContextMenu={(e) => { goToSettings(e); }
+            }>
+            <div style={{ height: 20 }}>
+                {props.formattedValue}
+            </div>
+        </div>;
+    }
+    else {
+        return (
+            <CommandButton
+                text={props.formattedValue}
+                menuProps={navigateToProps}
+                checked={false}
+                iconProps={{ iconName: "View" }}
+                onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
+                onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
+                onMouseDown={(e) => { goToSettings(e) }} />
+        );
+    }
 }

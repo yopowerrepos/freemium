@@ -10,6 +10,7 @@
 - The customizers are associated with specific column types, a plugin will ensure that the column and parameters (json) as fulfilled correct.
 - This solution uses the browser localStorage to prevent multiple requests on the Dataverse APIs, then every 30 minutes the cache will expire.
 - Use localStorage.removeItem("**subgrid-logical-name**") to clear the cache and see the adjusts on parameters.
+  On grid cells utilize **CTRL + Right Click** to open the applied customizer.
 
 ## Available Customizers
 
@@ -106,7 +107,7 @@
 ### 3. Any [Related Records]
 
 - ✅ Any column type
-- ⚠️ The `reference` property defines whether the row or a column is used to substitute the placeholder `#value#`.
+- ⚠️ The `reference` property defines whether the `row` or a `column` is used to substitute the placeholder `#value#`.
 
 #### Parameters:
 
@@ -114,8 +115,23 @@
 {
   "reference": "column/row",
   "column": "yp_accountid",
-  "background": "#c8e3f7",
-  "color": "#333333",
+  "viewId": "00000000-0000-0000-0000-000000000010",
+  "viewName": "Related Phone Calls",
+  "rules": [
+    {
+      "min": 1,
+      "max": 1,
+      "background": "#A1D6A5",
+      "color": "#1F1F1F",
+      "icon": "AlertSolid"
+    },
+    {
+      "min": 2,
+      "max": 10,
+      "background": "#E098AF",
+      "color": "#1F1F1F"
+    }
+  ],
   "table": "phonecall",
   "fetchXmlAggregate": "<fetch version='1.0' mapping='logical' distinct='false' aggregate='true'><entity name='phonecall'><attribute name='activityid' alias='value' aggregate='count' /><link-entity name='account' from='accountid' to='regardingobjectid' link-type='inner' alias='aa'><filter type='and'><condition attribute='accountid' operator='eq' uitype='#valuetype#' value='#value#' /></filter></link-entity></entity></fetch>",
   "fetchXml": "<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'><entity name='phonecall'><attribute name='subject' /><attribute name='statecode' /><attribute name='prioritycode' /><attribute name='scheduledend' /><attribute name='createdby' /><attribute name='regardingobjectid' /><attribute name='activityid' /><link-entity name='account' from='accountid' to='regardingobjectid' link-type='inner' alias='aa'><filter type='and'><condition attribute='accountid' operator='eq' uitype='#valuetype#' value='#value#' /></filter></link-entity></entity></fetch>",
@@ -154,7 +170,7 @@
 
 ---
 
-### ⭐5. Any [New Related Record]
+### 5. Any [New Related Record]
 
 - ✅ Any column type
 

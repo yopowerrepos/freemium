@@ -2,6 +2,7 @@ import * as React from "react";
 import { ColumnDefinition, GetRendererParams } from "../types";
 import { Helper } from "../helper";
 import { IInputs } from "../generated/ManifestTypes";
+import { Icon } from "@fluentui/react/lib/components/Icon/Icon";
 
 interface RelatedRecordsCellProps {
     context: ComponentFramework.Context<IInputs>;
@@ -11,6 +12,7 @@ interface RelatedRecordsCellProps {
     definition: any;
     table: string;
     id: string;
+    goToSettings: (e: any) => void;
 }
 
 export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
@@ -20,23 +22,37 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
     props,
     definition,
     table,
-    id
+    id,
+    goToSettings
 }) => {
     const params = JSON.parse(definition.parameters);
-    const background = params.background ?? "transparent";
-    const color = params.color ?? "black";
+    const rules = params.rules as Array<any>;
+
     const reference = Helper.getFilteredLookupValue(params, table, editor);
 
-    const [value, setValue] = React.useState<string>("0");
+    const [value, setValue] = React.useState("0");
+    const [background, setBackground] = React.useState("transparent");
+    const [color, setColor] = React.useState("black");
+    const [icon, setIcon] = React.useState<string | undefined>(undefined);
 
-    React.useEffect(() => {
-        executeAggregate(context, params.table, reference, params.fetchXmlAggregate)
-            .then(
-                (_) => setValue(_.entities[0].value.toString() ?? "0"))
-            .catch(
-                (_) => setValue(_.message)
-            );
-    }, [context, table, reference, params.fetchXmlAggregate]);
+    if (reference !== null)
+        React.useEffect(() => {
+            executeAggregate(context, params.table, reference, params.fetchXmlAggregate)
+                .then((_) => {
+                    const val = _.entities[0].value.toString() ?? "0";
+                    setValue(val);
+                    const matchedRule = rules.find(r => r.min <= +val && r.max >= +val);
+                    setBackground(matchedRule?.background ?? "transparent");
+                    setColor(matchedRule?.color ?? "black");
+                    setIcon(matchedRule?.icon); // <== Set icon if it exists
+                })
+                .catch((_) => {
+                    setValue(_.message);
+                    setBackground("transparent");
+                    setColor("black");
+                    setIcon(undefined); // reset icon on error
+                });
+        }, [context, table, reference, params.fetchXmlAggregate, rules]);
 
     return (
         <div
@@ -44,18 +60,26 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
                 padding: "4px 8px",
                 borderRadius: 2,
                 textAlign: "center",
+                justifyContent: "center",
+                alignItems: "center",
                 background: background,
                 color: color,
                 lineHeight: "20px",
                 display: "flex",
-                margin: "4px"
+                margin: "4px",
+                fontWeight: "bold",
+                cursor: "pointer"
             }}
             onKeyDown={(e) => { e.preventDefault() }}
-            onClick={(e) => { upserPageManagedUserQuery(context, params.table, reference, params.fetchXml, params.layoutXml) }}>
-            {value}
+            onClick={(e) => { upserPageManagedUserQuery(context, params.viewName, params.table, reference, params.fetchXml, params.layoutXml) }}
+            onMouseDown={(e) => { goToSettings(e) }} >
+            <Icon iconName={icon} style={{ marginRight: 3 }} />
+            <div style={{ height: 20 }}>
+                {value}
+            </div>
         </div>
     );
-};
+}
 
 export function executeAggregate(
     context: ComponentFramework.Context<IInputs>,
@@ -71,26 +95,26 @@ export function executeAggregate(
     }
 }
 
-export async function upserPageManagedUserQuery(context: ComponentFramework.Context<IInputs>, table: string, reference: string, fetchXml: string, layoutXml: string): Promise<void> {
+export async function upserPageManagedUserQuery(context: ComponentFramework.Context<IInputs>, name: string, table: string, reference: string, fetchXml: string, layoutXml: string): Promise<void> {
     const tag = "[Managed PAGE " + table + "]";
     fetchXml = Helper.buildFilter(fetchXml, reference);
     const viewId = await context.webAPI.retrieveMultipleRecords("userquery", "?$select=userqueryid&$filter=description eq '" + tag + "'").then(
         async (r: ComponentFramework.WebApi.RetrieveMultipleResponse) => {
             if (r.entities.length >= 1) {
                 const id = r.entities[0]["userqueryid"];
-                return await updateView(context, id, fetchXml, layoutXml).then(
+                return await updateView(context, name, id, fetchXml, layoutXml).then(
                     (_) => { return id }
                 );
             }
             else
-                return await createView(context, tag, table, fetchXml, layoutXml);
+                return await createView(context, name, tag, table, fetchXml, layoutXml);
         });
     Helper.navigateToViewModal(table, viewId);
 }
 
-export async function createView(context: ComponentFramework.Context<IInputs>, tag: string, table: string, fetchXml: string, layoutXml: string): Promise<string> {
+export async function createView(context: ComponentFramework.Context<IInputs>, name: string, tag: string, table: string, fetchXml: string, layoutXml: string): Promise<string> {
     var columns: any = {};
-    columns["name"] = "Custom View Managed by PAGE";
+    columns["name"] = name;
     columns["description"] = tag;
     columns["querytype"] = 0;
     columns["returnedtypecode"] = table;
@@ -101,8 +125,9 @@ export async function createView(context: ComponentFramework.Context<IInputs>, t
     });
 }
 
-export async function updateView(context: ComponentFramework.Context<IInputs>, id: string, fetchXml: string, layoutXml: string): Promise<void> {
+export async function updateView(context: ComponentFramework.Context<IInputs>, name: string, id: string, fetchXml: string, layoutXml: string): Promise<void> {
     var columns: any = {};
+    columns["name"] = name;
     columns["fetchxml"] = fetchXml;
     columns["layoutxml"] = layoutXml;
     return await context.webAPI.updateRecord("userquery", id, columns).then((r: ComponentFramework.LookupValue) => {

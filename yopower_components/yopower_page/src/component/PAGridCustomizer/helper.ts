@@ -200,4 +200,32 @@ export class Helper {
                 const x = 2;
             });
     }
+
+    public static goToDefinitions(id: string) {
+        (window as any).Xrm.Navigation.navigateTo(
+            {
+                pageType: "entityrecord",
+                entityName: "yp_pagridextd_column_definition",
+                entityId: id,
+            },
+            {
+                target: 2,
+                height: {
+                    value: 80,
+                    unit: "%"
+                },
+                width: {
+                    value: 70,
+                    unit: "%"
+                },
+                position: 1,
+            }
+        ).then((_: any) => {
+            window.location.reload();
+            // const pageType = (window as any).Xrm.Utility.getPageContext().input;
+            // if (pageType === "entitylist") {
+            //     (window as any).Xrm.Utility.refreshParentGrid({});
+            // }
+        });
+    }
 }

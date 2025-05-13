@@ -49,14 +49,20 @@ export function cellEditorOverrides(
 
 export function getComponent(props: any, col: GetEditorParams, definitions: CustomColumnDefinition[], table: string, column: string, context: ComponentFramework.Context<IInputs>): React.ReactElement | null | undefined {
 	const definition = Helper.getDefinition(definitions, table, column, col.rowData!);
+	const goToSettings = (e: MouseEvent) => {
+		if (e.ctrlKey) {
+			e.preventDefault();
+			Helper.goToDefinitions(definition!.id);
+		}
+	};
 	if (definition !== null) {
 		switch (definition.type) {
 
 			//Any [Read-Only]
 			case 901:
-				return getReadOnlyCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return getReadOnlyCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id, goToSettings);
 				break;
-				
+
 			//Lookup [Filtered Lookup]
 			case 801:
 				return getFilteredLookupCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);

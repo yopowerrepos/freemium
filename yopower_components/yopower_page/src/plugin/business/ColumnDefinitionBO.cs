@@ -166,7 +166,7 @@ namespace yopower_papps_grid_extensions.business
                     case yp_gbl_column_definition_type.AnyRelatedRecords:
                         try
                         {
-                            var model = JsonConvert.DeserializeObject<StringRelatedRecords>(parameters, settings);
+                            var model = JsonConvert.DeserializeObject<AnyRelatedRecords>(parameters, settings);
                         }
                         catch (Exception jse)
                         {

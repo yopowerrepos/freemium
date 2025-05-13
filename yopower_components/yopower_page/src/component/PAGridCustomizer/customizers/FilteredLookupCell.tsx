@@ -30,6 +30,7 @@ export function getFilteredLookupCell(
 export function openLookup(params: any, table: string, props: any, col: GetEditorParams, context: ComponentFramework.Context<IInputs>) {
     // Get Referece Column
     const reference = Helper.getFilteredLookupValue(params, table, col);
+
     if (reference !== null) {
         // Build Filter
         const filter = Helper.buildFilter(params.filter, reference);

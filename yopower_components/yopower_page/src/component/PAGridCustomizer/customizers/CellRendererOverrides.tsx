@@ -53,6 +53,12 @@ export function getComponent(
 	subgrid: string
 ): React.ReactElement | null | undefined {
 	const definition = Helper.getDefinition(definitions, table, column, col.rowData!);
+	const goToSettings = (e: MouseEvent) => {
+		if (e.ctrlKey) {
+			e.preventDefault();
+			Helper.goToDefinitions(definition!.id);
+		}
+	};
 	if (definition !== null) {
 
 		// Additional Settings
@@ -74,17 +80,17 @@ export function getComponent(
 		switch (definition.type) {
 			//Any [Navigate To]
 			case 900:
-				return getRowNavigateButtonsCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return getRowNavigateButtonsCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id, goToSettings);
 				break;
 
 			//Any [Read-Only]
 			case 901:
-				return getReadOnlyCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return getReadOnlyCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id, goToSettings);
 				break;
 
 			//Any [Related Records]
 			case 902:
-				return <RelatedRecordsCell context={context} editor={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} />
+				return <RelatedRecordsCell context={context} editor={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} goToSettings={goToSettings}/>
 				break;
 
 			// Any [Dependent Colorful Cell]
@@ -102,6 +108,7 @@ export function getComponent(
 						definition,
 						table,
 						col.rowData!.__rec_id,
+						goToSettings,
 						props.formattedValue !== null && props.formattedValue !== "" ? props.formattedValue : ""
 					);
 				else
@@ -110,22 +117,22 @@ export function getComponent(
 
 			//Any [New Contextualized Record]
 			case 905:
-				return getNewRelatedRecordCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return getNewRelatedRecordCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id, goToSettings);
 				break;
 
 			// Lookup [Navigate Buttons]
 			case 800:
-				return getLookupNavigateButtonsCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return getLookupNavigateButtonsCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id, goToSettings);
 				break;
 
 			// Number & Date Time [Colorful Cell]
 			case 700:
-				return getColorfulCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return getColorfulCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id, goToSettings);
 				break;
 
 			// Number [Progress Bar Cell]
 			case 701:
-				return gerProgressBarCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return gerProgressBarCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id, goToSettings);
 				break;
 
 			//Any [File]
@@ -137,8 +144,7 @@ export function getComponent(
 						fileSize: 0,
 						mimeType: ""
 					};
-				return <FileCell context={context} render={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id}
-				/>
+				return <FileCell context={context} render={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} goToSettings={goToSettings}/>
 				break;
 		}
 	}
