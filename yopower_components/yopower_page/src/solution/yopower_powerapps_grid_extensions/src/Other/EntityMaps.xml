@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityMaps xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityMap>
+    <EntitySource>yp_demo_powerappsgrid_extensions</EntitySource>
+    <EntityTarget>yp_demo_powerappsgrid_extensions</EntityTarget>
+    <AttributeMaps>
+      <AttributeMap>
+        <AttributeSource>yp_decimal</AttributeSource>
+        <AttributeTarget>yp_decimal</AttributeTarget>
+      </AttributeMap>
+      <AttributeMap>
+        <AttributeSource>yp_integer</AttributeSource>
+        <AttributeTarget>yp_integer</AttributeTarget>
+      </AttributeMap>
+    </AttributeMaps>
+  </EntityMap>
+</EntityMaps>

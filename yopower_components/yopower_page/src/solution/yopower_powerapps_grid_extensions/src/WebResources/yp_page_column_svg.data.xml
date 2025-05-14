@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{0664e75b-d1dd-ef11-8eea-002248de8553}</WebResourceId>
+  <Name>yp_page_column_svg</Name>
+  <DisplayName>PAGE Column Definition SVG</DisplayName>
+  <WebResourceType>11</WebResourceType>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/yp_page_column_svg0664E75B-D1DD-EF11-8EEA-002248DE8553</FileName>
+</WebResource>

@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{b0fd91ab-f065-4b49-aaec-a8552f732120}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{7f0b4b37-a264-4716-b76e-6bfb5398283f}" IsUserDefined="1" name="settings">
+          <labels>
+            <label description="Settings" languagecode="1033" />
+            <label description="Geral" languagecode="1046" />
+          </labels>
+          <columns>
+            <column width="35%">
+              <sections>
+                <section showlabel="true" showbar="false" IsUserDefined="0" id="{8f0c2847-66f0-4bf2-920b-757f6e3fac93}" name="general">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                    <label description="Geral" languagecode="1046" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{59e96be5-fa7e-4e8e-b822-0d409df9e563}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="createdon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a551ae2d-4bbb-4e1b-a309-3898528cb9f6}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="yp_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="yp_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{46d03a4c-a234-4480-8c83-24d347532b6e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="yp_type" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="yp_type" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bc999400-2262-456d-b8b6-3dcdeda1a1e2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="yp_mode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="yp_mode" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="subgrid" id="3344bc5c-2ec3-47cd-9bbe-d9e3e2193409" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Subgrid" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{2ccac55b-3e47-4d63-8b7d-0ec809b7c766}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="yp_subgrid_name" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="yp_subgrid_name" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{da6de95c-07d3-4fd5-8dcc-0ec1a65fa79c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Table" languagecode="1033" />
+                        </labels>
+                        <control id="yp_subgrid_table" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="yp_subgrid_table" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b1776125-f401-459e-8987-f76c4e6a08c2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Column" languagecode="1033" />
+                        </labels>
+                        <control id="yp_subgrid_column" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="yp_subgrid_column" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="value_condition" id="f8c216e2-e0a8-43c1-ab14-59d836a78df0" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="OptionSet, Boolean or Number Condition" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{6b621157-81ac-4563-9179-52ec1d05fdea}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Column" languagecode="1033" />
+                        </labels>
+                        <control id="yp_based_on_optionset_column" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="yp_based_on_optionset_column" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{836b13ea-8435-461d-a14c-d3ef68ac9c23}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Criteria" languagecode="1033" />
+                        </labels>
+                        <control id="yp_optionset_criteria" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="yp_optionset_criteria" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f6860d9a-aaad-4040-93a4-e865c0d8e5fe}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Value(s)" languagecode="1033" />
+                        </labels>
+                        <control id="yp_optionset_values" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="yp_optionset_values" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="additional_properties" id="2cb4e6bb-69ca-45ad-9d8b-5f8d861540b6" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Additional Properties" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{330b7e99-1770-44fe-bd69-1ed0adce63c0}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="yp_editable" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="yp_editable" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{99252307-c1b3-44c6-835e-95c3df3c9809}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="yp_allow_pin" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="yp_allow_pin" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3fc902e0-137c-4d6a-a458-a7ae7ba6517e}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="yp_rename_column" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="yp_rename_column" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="65%">
+              <sections>
+                <section name="parameters" id="c819942e-feeb-4c1c-9ed9-e865370b8e78" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="true" height="auto">
+                  <labels>
+                    <label description="Parameters" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{a8867232-f1a9-44c7-ada6-a6a23087cdd7}" locklevel="0" colspan="1" rowspan="40" showlabel="false" auto="true">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="yp_parameters" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="yp_parameters" disabled="false" uniqueid="{63f21d15-1dc8-474d-a362-bd424cea2dc7}" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row height="auto" />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{b98d669b-749d-4998-a1c4-fbabcac12887}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{cb1f7d8a-2c13-4d53-bc91-4f413baf7595}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{4ae34d3f-2bcb-4436-a53d-c5e62d3b73bb}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{705ef877-7330-4c79-b62e-7c078ab68618}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{56cbfd96-98da-4ab9-aeac-166df227ec34}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{3c17da7e-946e-4956-981c-054673295a34}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{77a78c66-d86d-42c4-b9f3-37008e6fbb87}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{cb5e3c03-d4ee-4e81-8729-0ebc695e87e2}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <Navigation>
+        <NavBar />
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{63f21d15-1dc8-474d-a362-bd424cea2dc7}">
+          <customControl id="{E0DECE4B-6FC8-4A8F-A065-082708572369}">
+            <parameters>
+              <datafieldname>yp_parameters</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="yp_yopower.components.ypjson">
+            <parameters>
+              <value type="Multiple">yp_parameters</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="yp_yopower.components.ypjson">
+            <parameters>
+              <value type="Multiple">yp_parameters</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="yp_yopower.components.ypjson">
+            <parameters>
+              <value type="Multiple">yp_parameters</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Main" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{93ef8fdf-66cf-ef11-8ee9-6045bd39f5aa}" Name="Prevent Updates" Description="Click to add description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <XamlFileName>/Workflows/PreventUpdates-93EF8FDF-66CF-EF11-8EE9-6045BD39F5AA.xaml</XamlFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>2</Category>
+  <Mode>1</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>1</StateCode>
+  <StatusCode>2</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <BusinessProcessType>0</BusinessProcessType>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <ProcessTriggerFormId>{b0fd91ab-f065-4b49-aaec-a8552f732120}</ProcessTriggerFormId>
+  <ProcessTriggerScope>1</ProcessTriggerScope>
+  <PrimaryEntity>yp_pagridextd_column_definition</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Prevent Updates" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description languagecode="1033" description="Click to add description" />
+  </Descriptions>
+</Workflow>

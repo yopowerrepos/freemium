@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModuleSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SiteMapUniqueName>yp_powerappsgridextensions</SiteMapUniqueName>
+  <EnableCollapsibleGroups>False</EnableCollapsibleGroups>
+  <ShowHome>False</ShowHome>
+  <ShowPinned>False</ShowPinned>
+  <ShowRecents>False</ShowRecents>
+  <SiteMap IntroducedVersion="7.0.0.0">
+    <Area Id="area_4d042535" ResourceId="SitemapDesigner.NewTitle" DescriptionResourceId="SitemapDesigner.NewTitle" ShowGroups="true" IntroducedVersion="7.0.0.0">
+      <Titles>
+        <Title LCID="1033" Title="Area1" />
+      </Titles>
+      <Group Id="settings" ResourceId="SitemapDesigner.NewGroup" DescriptionResourceId="SitemapDesigner.NewGroup" IntroducedVersion="7.0.0.0" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown">
+        <Titles>
+          <Title LCID="1033" Title="Settings" />
+        </Titles>
+        <SubArea Id="subarea_edfd1037" Icon="/_imgs/imagestrips/transparent_spacer.gif" Entity="yp_pagridextd_column_definition" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
+        <SubArea Id="subarea_9de8c5f0" Icon="/_imgs/imagestrips/transparent_spacer.gif" Entity="yp_demo_powerappsgrid_extensions" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
+        <SubArea Id="subarea_39de43d9" ResourceId="SitemapDesigner.NewSubArea" VectorIcon="/WebResources/yp_components_logo_svg" Icon="/WebResources/yp_components_logo_svg" Url="https://github.com/yopowerrepos/freemium/tree/main/yopower_components/yopower_page" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA">
+          <Titles>
+            <Title LCID="1033" Title="GitHub" />
+          </Titles>
+        </SubArea>
+      </Group>
+    </Area>
+  </SiteMap>
+  <LocalizedNames>
+    <LocalizedName description="power apps grid extensions" languagecode="1033" />
+  </LocalizedNames>
+</AppModuleSiteMap>

@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="subgrid">
+  <description default="subgrid">
+    <label description="subgrid" languagecode="1033" />
+  </description>
+  <displayname default="subgrid">
+    <label description="subgrid" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>0</isoptional>
+  <name>subgrid</name>
+  <type>10</type>
+</customapirequestparameter>

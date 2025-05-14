@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.2.25044.174" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25044.174" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25044.00174">
+  <SolutionManifest>
+    <UniqueName>yopower_powerapps_grid_extensions</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="🟣yopower - Power Apps Grid Extensions" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.0.7</Version>
+    <Managed>2</Managed>
+    <Publisher>
+      <UniqueName>yopower</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="yopower" languagecode="1033" />
+        <LocalizedName description="yopower" languagecode="1046" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="yopower" languagecode="1033" />
+        <Description description="yopower" languagecode="1046" />
+      </Descriptions>
+      <EMailAddress>vinicius@yopower.com.br</EMailAddress>
+      <SupportingWebsiteUrl>https://www.yopower.com.br</SupportingWebsiteUrl>
+      <CustomizationPrefix>yp</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>62895</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="account" behavior="1" />
+      <RootComponent type="1" schemaName="contact" behavior="2" />
+      <RootComponent type="1" schemaName="yp_demo_powerappsgrid_extensions" behavior="0" />
+      <RootComponent type="1" schemaName="yp_pagridextd_column_definition" behavior="0" />
+      <RootComponent type="29" id="{117b6346-d2dd-ef11-8eea-002248de8553}" behavior="0" />
+      <RootComponent type="29" id="{93ef8fdf-66cf-ef11-8ee9-6045bd39f5aa}" behavior="0" />
+      <RootComponent type="300" schemaName="yp_powerappsgridextensionsdefaultcommandlibrary_50a99" behavior="0" />
+      <RootComponent type="61" schemaName="msdyn_CopilotIconWithColor.svg" behavior="0" />
+      <RootComponent type="61" schemaName="yp_column_definition_main_js" behavior="0" />
+      <RootComponent type="61" schemaName="yp_components_logo_svg" behavior="0" />
+      <RootComponent type="61" schemaName="yp_page_column_svg" behavior="0" />
+      <RootComponent type="61" schemaName="yp_page_try_svg" behavior="0" />
+      <RootComponent type="62" schemaName="yp_powerappsgridextensions" behavior="0" />
+      <RootComponent type="66" schemaName="yp_yopower.components.ypjson" behavior="0" />
+      <RootComponent type="66" schemaName="yp_yopower.components.yppagridextd" behavior="0" />
+      <RootComponent type="80" schemaName="yp_powerappsgridextensions" behavior="0" />
+      <RootComponent type="9" schemaName="yp_gbl_column_definition_pptionset_criteria" behavior="0" />
+      <RootComponent type="9" schemaName="yp_gbl_column_definition_type" behavior="0" />
+      <RootComponent type="9" schemaName="yp_gbl_column_mode" behavior="0" />
+      <RootComponent type="91" id="{bab14543-14d2-432a-bb50-f365490030f3}" schemaName="yopower_papps_grid_extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35ea4f843cfb5138" behavior="0" />
+      <RootComponent type="92" id="{2a1a580a-e8c6-ef11-b8e9-002248de8553}" behavior="0" />
+      <RootComponent type="92" id="{44f377fd-e7c6-ef11-8ee9-000d3ac131a9}" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="60" displayName="Account" parentDisplayName="Account" solution="msdynce_AppCommon (9.0.4.0066)" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}">
+          <package appName="msdynce_AppCommon" version="9.0.25043.10002">msdynce_AppCommonAnchor (9.0.25043.10002)</package>
+        </Required>
+        <Dependent type="80" schemaName="yp_powerappsgridextensions" displayName="Power Apps Grid Extensions" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_CopilotIcon.svg" displayName="msdyn_CopilotIcon.svg" solution="msdyn_AppCopilotFeatures (9.2.2025044.250423013)">
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.1">msdyn_SuggestedAction (1.0.0.1)</package>
+        </Required>
+        <Dependent type="appaction" displayName="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_CopilotIconWithColor.svg" displayName="msdyn_CopilotIconWithColor.svg" solution="msdyn_AppCopilotFeatures (9.2.2025044.250423013)">
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.1">msdyn_SuggestedAction (1.0.0.1)</package>
+        </Required>
+        <Dependent type="61" schemaName="msdyn_CopilotIconWithColor.svg" displayName="msdyn_CopilotIconWithColor.svg" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_CopilotSummarizeLibrary.js" displayName="msdyn_CopilotSummarizeLibrary.js" solution="msdyn_AppCopilotFeatures (9.2.2025044.250423013)">
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.1">msdyn_SuggestedAction (1.0.0.1)</package>
+        </Required>
+        <Dependent type="appaction" displayName="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2504.4014)">
+          <package appName="Base Custom Controls" version="9.0.2504.4014">BaseCustomControlsCore (9.0.2504.4014)</package>
+        </Required>
+        <Dependent type="60" displayName="Main" parentDisplayName="Demo P.A.G.E" id="{5c017196-1ac1-4367-a59f-01b62333de4a}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2504.4014)">
+          <package appName="Base Custom Controls" version="9.0.2504.4014">BaseCustomControlsCore (9.0.2504.4014)</package>
+        </Required>
+        <Dependent type="68" id="{b9bbe449-8ab9-430c-ace6-8eda0eaf1058}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2504.4014)">
+          <package appName="Base Custom Controls" version="9.0.2504.4014">BaseCustomControlsCore (9.0.2504.4014)</package>
+        </Required>
+        <Dependent type="68" id="{f68092fc-94f8-4db1-8d15-51934cf026ac}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.AvailableOnForm!0" solution="msdyn_SystemAppActions (9.1.0.55)" id.uniquename="msdyn_Mscrm.AvailableOnForm!0">
+          <package appName="PowerAppsActions Package" version="9.1.0.55">PowerAppsActions_Anchor (9.1.0.55)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.AvailableOnForm!0" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.AvailableOnForm!0" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.CanSavePrimary!0" solution="msdyn_SystemAppActions (9.1.0.55)" id.uniquename="msdyn_Mscrm.CanSavePrimary!0">
+          <package appName="PowerAppsActions Package" version="9.1.0.55">PowerAppsActions_Anchor (9.1.0.55)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.CanSavePrimary!0" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.CanSavePrimary!0" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.CanSavePrimaryEntityType!1" solution="msdyn_SystemAppActions (9.1.0.55)" id.uniquename="msdyn_Mscrm.CanSavePrimaryEntityType!1">
+          <package appName="PowerAppsActions Package" version="9.1.0.55">PowerAppsActions_Anchor (9.1.0.55)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.CanSavePrimaryEntityType!1" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.CanSavePrimaryEntityType!1" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.CopilotClientApi!1" solution="msdyn_AppCopilotFeatures (9.2.2025044.250423013)" id.uniquename="msdyn_Mscrm.CopilotClientApi!1">
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.1">msdyn_SuggestedAction (1.0.0.1)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.CopilotClientApi!1" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.CopilotClientApi!1" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.EnableCopilotSummarizeCommandButton!1" solution="msdyn_AppCopilotFeatures (9.2.2025044.250423013)" id.uniquename="msdyn_Mscrm.EnableCopilotSummarizeCommandButton!1">
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.1">msdyn_SuggestedAction (1.0.0.1)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.EnableCopilotSummarizeCommandButton!1" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.EnableCopilotSummarizeCommandButton!1" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.EnableCopilotSummarizeFeatures!1" solution="msdyn_AppCopilotFeatures (9.2.2025044.250423013)" id.uniquename="msdyn_Mscrm.EnableCopilotSummarizeFeatures!1">
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.1">msdyn_SuggestedAction (1.0.0.1)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.EnableCopilotSummarizeFeatures!1" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.EnableCopilotSummarizeFeatures!1" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.FormStateNotNew!0" solution="msdyn_SystemAppActions (9.1.0.55)" id.uniquename="msdyn_Mscrm.FormStateNotNew!0">
+          <package appName="PowerAppsActions Package" version="9.1.0.55">PowerAppsActions_Anchor (9.1.0.55)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.FormStateNotNew!0" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.FormStateNotNew!0" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.FormStateNotNew!0" solution="msdyn_SystemAppActions (9.1.0.55)" id.uniquename="msdyn_Mscrm.FormStateNotNew!0">
+          <package appName="PowerAppsActions Package" version="9.1.0.55">PowerAppsActions_Anchor (9.1.0.55)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.FormStateNotNew!0" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.FormStateNotNew!0" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.HideOnMobile!0" solution="msdyn_AppCopilotFeatures (9.2.2025044.250423013)" id.uniquename="msdyn_Mscrm.HideOnMobile!0">
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.1">msdyn_SuggestedAction (1.0.0.1)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.HideOnMobile!0" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.HideOnMobile!0" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.InitializeCopilotSidePaneOnBoot!1" solution="msdyn_AppCopilotFeatures (9.2.2025044.250423013)" id.uniquename="msdyn_Mscrm.InitializeCopilotSidePaneOnBoot!1">
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.1">msdyn_SuggestedAction (1.0.0.1)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.InitializeCopilotSidePaneOnBoot!1" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.InitializeCopilotSidePaneOnBoot!1" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.IsAppCopilotEnabled!0" solution="msdyn_AppCopilotFeatures (9.2.2025044.250423013)" id.uniquename="msdyn_Mscrm.IsAppCopilotEnabled!0">
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.1">msdyn_SuggestedAction (1.0.0.1)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.IsAppCopilotEnabled!0" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.IsAppCopilotEnabled!0" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.IsBPFEntityCustomizationFeatureEnabled!1" solution="msdyn_SystemAppActions (9.1.0.55)" id.uniquename="msdyn_Mscrm.IsBPFEntityCustomizationFeatureEnabled!1">
+          <package appName="PowerAppsActions Package" version="9.1.0.55">PowerAppsActions_Anchor (9.1.0.55)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.IsBPFEntityCustomizationFeatureEnabled!1" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.IsBPFEntityCustomizationFeatureEnabled!1" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.IsEntityAvailableForUserInMocaOffline!0" solution="msdyn_SystemAppActions (9.1.0.55)" id.uniquename="msdyn_Mscrm.IsEntityAvailableForUserInMocaOffline!0">
+          <package appName="PowerAppsActions Package" version="9.1.0.55">PowerAppsActions_Anchor (9.1.0.55)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.IsEntityAvailableForUserInMocaOffline!0" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.IsEntityAvailableForUserInMocaOffline!0" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.IsPUV2EntityCustomizationEnabled!1" solution="msdyn_SystemAppActions (9.1.0.55)" id.uniquename="msdyn_Mscrm.IsPUV2EntityCustomizationEnabled!1">
+          <package appName="PowerAppsActions Package" version="9.1.0.55">PowerAppsActions_Anchor (9.1.0.55)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.IsPUV2EntityCustomizationEnabled!1" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.IsPUV2EntityCustomizationEnabled!1" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.OutlookRenderTypeWeb!1" solution="msdyn_SystemAppActions (9.1.0.55)" id.uniquename="msdyn_Mscrm.OutlookRenderTypeWeb!1">
+          <package appName="PowerAppsActions Package" version="9.1.0.55">PowerAppsActions_Anchor (9.1.0.55)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.OutlookRenderTypeWeb!1" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.OutlookRenderTypeWeb!1" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.OutlookRenderTypeWeb!1" solution="msdyn_SystemAppActions (9.1.0.55)" id.uniquename="msdyn_Mscrm.OutlookRenderTypeWeb!1">
+          <package appName="PowerAppsActions Package" version="9.1.0.55">PowerAppsActions_Anchor (9.1.0.55)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.OutlookRenderTypeWeb!1" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.OutlookRenderTypeWeb!1" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.PrimaryEntityIsBPFEntity!1" solution="msdyn_SystemAppActions (9.1.0.55)" id.uniquename="msdyn_Mscrm.PrimaryEntityIsBPFEntity!1">
+          <package appName="PowerAppsActions Package" version="9.1.0.55">PowerAppsActions_Anchor (9.1.0.55)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.PrimaryEntityIsBPFEntity!1" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.PrimaryEntityIsBPFEntity!1" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.PrimaryIsActivity!1" solution="msdyn_SystemAppActions (9.1.0.55)" id.uniquename="msdyn_Mscrm.PrimaryIsActivity!1">
+          <package appName="PowerAppsActions Package" version="9.1.0.55">PowerAppsActions_Anchor (9.1.0.55)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.PrimaryIsActivity!1" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.PrimaryIsActivity!1" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="appactionrule" displayName="msdyn_Mscrm.ReadPrimaryPermission!0" solution="msdyn_SystemAppActions (9.1.0.55)" id.uniquename="msdyn_Mscrm.ReadPrimaryPermission!0">
+          <package appName="PowerAppsActions Package" version="9.1.0.55">PowerAppsActions_Anchor (9.1.0.55)</package>
+        </Required>
+        <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.ReadPrimaryPermission!0" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.ReadPrimaryPermission!0" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.14)" id.uniquename="AppChannel">
+          <package appName="PowerAppsAppFramework Package" version="1.0.0.19">PowerAppsAppFramework_Anchor (1.0.0.19)</package>
+        </Required>
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=yp_powerappsgridextensions,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="yp_powerappsgridextensions" id.settingdefinitionid.uniquename="AppChannel" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

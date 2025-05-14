@@ -1,0 +1,34 @@
+var yp_column_definition_main;
+(function (yp_column_definition_main) {
+    function clearLocalStorage(executionContext) {
+        var subgridName = executionContext.getAttribute("yp_subgrid_name");
+        var value = subgridName.getValue();
+        if (value) {
+            localStorage.removeItem(value);
+            executionContext.ui.setFormNotification("localStorage " + value + " was cleaned!", "INFO", "yp_column_definition_clear_localstorage");
+        }
+        else {
+            executionContext.ui.setFormNotification("Subgrid Name is empty!", "WARNING", "yp_column_definition_clear_localstorage");
+        }
+    }
+    yp_column_definition_main.clearLocalStorage = clearLocalStorage;
+    function clone(executionContext) {
+        var entityFormOptions = {};
+        entityFormOptions["entityName"] = "yp_pagridextd_column_definition";
+        var formParameters = {};
+        formParameters["yp_name"] = "COPY" + executionContext.getAttribute("yp_name").getValue();
+        formParameters["yp_type"] = executionContext.getAttribute("yp_type").getValue();
+        formParameters["yp_subgrid_name"] = executionContext.getAttribute("yp_subgrid_name").getValue();
+        formParameters["yp_subgrid_table"] = executionContext.getAttribute("yp_subgrid_table").getValue();
+        formParameters["yp_subgrid_column"] = "????";
+        formParameters["yp_based_on_optionset_column"] = executionContext.getAttribute("yp_based_on_optionset_column").getValue();
+        formParameters["yp_optionset_criteria"] = executionContext.getAttribute("yp_optionset_criteria").getValue();
+        formParameters["yp_optionset_values"] = executionContext.getAttribute("yp_optionset_values").getValue();
+        formParameters["yp_editable"] = executionContext.getAttribute("yp_editable").getValue();
+        formParameters["yp_allow_pin"] = executionContext.getAttribute("yp_allow_pin").getValue();
+        formParameters["yp_parameters"] = executionContext.getAttribute("yp_parameters").getValue();
+        Xrm.Navigation.openForm(entityFormOptions, formParameters);
+    }
+    yp_column_definition_main.clone = clone;
+})(yp_column_definition_main || (yp_column_definition_main = {}));
+//# sourceMappingURL=yp_column_definition_main.js.map

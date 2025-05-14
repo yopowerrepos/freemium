@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{e9a70810-0537-45da-b392-23c7c3221e74}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="yp_name" select="1" icon="1" preview="1">
+        <row name="result" id="yp_demo_powerappsgrid_extensionsid">
+          <cell name="statuscode" width="150" />
+          <cell name="yp_name" width="150" />
+          <cell name="yp_text" width="150" />
+          <cell name="yp_datetime" width="250" />
+          <cell name="yp_decimal" width="150" />
+          <cell name="yp_integer" width="150" />
+          <cell name="yp_currency" width="150" />
+          <cell name="a_44f2887d406b4cc19c7dac331e0f04fb.numberofemployees" width="227" />
+          <cell name="yp_accountid" width="200" />
+          <cell name="yp_contactid" width="200" />
+          <cell name="yp_file" width="200" />
+          <cell name="yp_file2" width="200" />
+          <cell name="yp_file3" width="200" />
+          <cell name="yp_contact_tasks" width="150" />
+          <cell name="yp_account_phonecalls" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="yp_demo_powerappsgrid_extensions">
+          <attribute name="yp_demo_powerappsgrid_extensionsid" />
+          <attribute name="yp_name" />
+          <attribute name="yp_decimal" />
+          <attribute name="yp_integer" />
+          <attribute name="yp_currency" />
+          <attribute name="yp_accountid" />
+          <attribute name="yp_contactid" />
+          <attribute name="yp_text" />
+          <attribute name="yp_datetime" />
+          <attribute name="statuscode" />
+          <attribute name="yp_file" />
+          <attribute name="yp_file2" />
+          <attribute name="yp_file3" />
+          <attribute name="yp_contact_tasks" />
+          <attribute name="yp_account_phonecalls" />
+          <link-entity alias="a_44f2887d406b4cc19c7dac331e0f04fb" name="account" to="yp_accountid" from="accountid" link-type="outer" visible="false">
+            <attribute name="numberofemployees" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Demo P.A.G.E" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

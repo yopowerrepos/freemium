@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25044.174" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25044.00174">
+  <Entities />
+  <Roles />
+  <Workflows />
+  <FieldSecurityProfiles />
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <WebResources />
+  <CustomControls />
+  <SolutionPluginAssemblies />
+  <SdkMessageProcessingSteps />
+  <AppModuleSiteMaps />
+  <AppModules />
+  <EntityDataProviders />
+  <CanvasApps />
+  <appaction_appactionrule_classicrulesset>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.FormStateNotNew!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.IsBPFEntityCustomizationFeatureEnabled!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.IsPUV2EntityCustomizationEnabled!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.OutlookRenderTypeWeb!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.OpenActiveStage!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.PrimaryEntityIsBPFEntity!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.AvailableOnForm!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.CanSavePrimary!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.CanSavePrimaryEntityType!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.IsEntityAvailableForUserInMocaOffline!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.OutlookRenderTypeWeb!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.PrimaryIsActivity!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.ReadPrimaryPermission!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.CopilotClientApi!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.EnableCopilotSummarizeCommandButton!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.EnableCopilotSummarizeFeatures!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.FormStateNotNew!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.HideOnMobile!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.InitializeCopilotSidePaneOnBoot!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" appactionruleid.uniquename="msdyn_Mscrm.IsAppCopilotEnabled!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+  </appaction_appactionrule_classicrulesset>
+  <Languages>
+    <Language>1033</Language>
+    <Language>1046</Language>
+  </Languages>
+</ImportExportXml>

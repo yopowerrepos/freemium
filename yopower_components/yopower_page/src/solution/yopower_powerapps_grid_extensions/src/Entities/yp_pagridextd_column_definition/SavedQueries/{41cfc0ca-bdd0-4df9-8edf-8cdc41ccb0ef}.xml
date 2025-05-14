@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{41cfc0ca-bdd0-4df9-8edf-8cdc41ccb0ef}</savedqueryid>
+    <layoutxml>
+      <grid name="yp_pagridextd_column_definitions" jump="yp_name" select="1" icon="1" preview="1">
+        <row name="yp_pagridextd_column_definition" id="yp_pagridextd_column_definitionid">
+          <cell name="yp_name" width="200" />
+          <cell name="yp_type" width="250" />
+          <cell name="yp_editable" width="100" />
+          <cell name="yp_based_on_optionset_column" width="150" />
+          <cell name="yp_optionset_criteria" width="100" />
+          <cell name="yp_optionset_values" width="150" />
+          <cell name="yp_allow_pin" width="100" />
+          <cell name="yp_subgrid_name" width="250" />
+          <cell name="yp_subgrid_table" width="250" />
+          <cell name="yp_subgrid_column" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="yp_pagridextd_column_definition">
+          <attribute name="yp_pagridextd_column_definitionid" />
+          <attribute name="yp_name" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="yp_type" />
+          <attribute name="yp_subgrid_table" />
+          <attribute name="yp_subgrid_name" />
+          <attribute name="yp_subgrid_column" />
+          <attribute name="yp_optionset_criteria" />
+          <attribute name="yp_optionset_values" />
+          <attribute name="yp_based_on_optionset_column" />
+          <attribute name="yp_editable" />
+          <attribute name="yp_allow_pin" />
+          <order attribute="yp_type" descending="false" />
+          <order attribute="yp_optionset_criteria" descending="true" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Column Definition Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

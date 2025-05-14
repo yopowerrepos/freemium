@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="yopower_papps_grid_extensions.code.definitions.PreOperation: Update of yp_pagridextd_column_definition" SdkMessageProcessingStepId="{2a1a580a-e8c6-ef11-b8e9-002248de8553}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>yopower_papps_grid_extensions.code.definitions.PreOperation, yopower_papps_grid_extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35ea4f843cfb5138</PluginTypeName>
+  <PluginTypeId>269c930b-5357-4657-bad5-5feb54d5703c</PluginTypeId>
+  <PrimaryEntity>yp_pagridextd_column_definition</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>yopower_papps_grid_extensions.code.definitions.PreOperation: Update of yp_pagridextd_column_definition</Description>
+  <FilteringAttributes>yp_parameters,yp_subgrid_column,yp_subgrid_table,yp_type</FilteringAttributes>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>20</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages>
+    <SdkMessageProcessingStepImage Name="PreImage">
+      <SdkMessageProcessingStepImageId>{1505941b-e8c6-ef11-8ee9-000d3ac131a9}</SdkMessageProcessingStepImageId>
+      <Attributes>yp_parameters,yp_subgrid_column,yp_subgrid_table,yp_type</Attributes>
+      <EntityAlias>PreImage</EntityAlias>
+      <ImageType>0</ImageType>
+      <MessagePropertyName>Target</MessagePropertyName>
+      <IsCustomizable>1</IsCustomizable>
+    </SdkMessageProcessingStepImage>
+  </SdkMessageProcessingStepImages>
+</SdkMessageProcessingStep>

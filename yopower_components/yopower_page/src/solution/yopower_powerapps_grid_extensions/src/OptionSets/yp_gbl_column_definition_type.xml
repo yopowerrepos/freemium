@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<optionset Name="yp_gbl_column_definition_type" localizedName="Column Definition Type" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OptionSetType>picklist</OptionSetType>
+  <IsGlobal>1</IsGlobal>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <ExternalTypeName></ExternalTypeName>
+  <displaynames>
+    <displayname description="Column Definition Type" languagecode="1033" />
+  </displaynames>
+  <Descriptions>
+    <Description description="" languagecode="1033" />
+  </Descriptions>
+  <options>
+    <option value="900" ExternalValue="" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="Any [Navigate Buttons]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="901" Color="#FAD897" IsHidden="0">
+      <labels>
+        <label description="Any [Read-Only]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="902" ExternalValue="" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="Any [Related Records]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="903" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="Any [Copilot Execute Event]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="904" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="Any [Dependent Colorful Cell]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="905" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="Any [New Related Record]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="800" Color="#fc8ad2" IsHidden="0">
+      <labels>
+        <label description="Lookup [Navigate Buttons]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="801" Color="#fc8ad2" IsHidden="0">
+      <labels>
+        <label description="Lookup [Filtered Lookup]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="700" Color="#E098AF" IsHidden="0">
+      <labels>
+        <label description="Numbers &amp; Date [Colorful Cell]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="701" Color="#e098af" IsHidden="0">
+      <labels>
+        <label description="Numbers [Progress Bar]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="600" Color="#c8e3f7" IsHidden="0">
+      <labels>
+        <label description="File [Upload Download]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+  </options>
+</optionset>

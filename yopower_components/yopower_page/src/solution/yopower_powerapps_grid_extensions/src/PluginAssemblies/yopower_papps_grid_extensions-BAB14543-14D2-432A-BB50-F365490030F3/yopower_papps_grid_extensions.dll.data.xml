@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginAssembly FullName="yopower_papps_grid_extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35ea4f843cfb5138" PluginAssemblyId="bab14543-14d2-432a-bb50-f365490030f3" CustomizationLevel="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsolationMode>2</IsolationMode>
+  <SourceType>0</SourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <FileName>/PluginAssemblies/yopower_papps_grid_extensions-BAB14543-14D2-432A-BB50-F365490030F3/yopower_papps_grid_extensions.dll</FileName>
+  <PluginTypes>
+    <PluginType AssemblyQualifiedName="yopower_papps_grid_extensions.code.definitions.PreOperation, yopower_papps_grid_extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35ea4f843cfb5138" PluginTypeId="269c930b-5357-4657-bad5-5feb54d5703c" Name="yopower_papps_grid_extensions.code.definitions.PreOperation">
+      <FriendlyName>bfae2084-df94-4967-a021-b36802304d42</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="yopower_papps_grid_extensions.code.global.GetSubgridDefinitions, yopower_papps_grid_extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35ea4f843cfb5138" PluginTypeId="67a6f503-b8e0-40ac-96ab-5031704cb462" Name="yopower_papps_grid_extensions.code.global.GetSubgridDefinitions">
+      <FriendlyName>dd5da11e-0937-4036-8e43-acca2004cc0a</FriendlyName>
+    </PluginType>
+  </PluginTypes>
+</PluginAssembly>

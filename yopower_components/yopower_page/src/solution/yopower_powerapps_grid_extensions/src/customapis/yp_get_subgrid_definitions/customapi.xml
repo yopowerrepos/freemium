@@ -1,0 +1,18 @@
+<customapi uniquename="yp_get_subgrid_definitions">
+  <allowedcustomprocessingsteptype>0</allowedcustomprocessingsteptype>
+  <bindingtype>0</bindingtype>
+  <description default="⚡Get Subgrid Definitions">
+    <label description="⚡Get Subgrid Definitions" languagecode="1033" />
+  </description>
+  <displayname default="⚡Get Subgrid Definitions">
+    <label description="⚡Get Subgrid Definitions" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isfunction>0</isfunction>
+  <isprivate>0</isprivate>
+  <name>yp_get_subgrid_definitions</name>
+  <plugintypeid>
+    <plugintypeexportkey>67a6f503-b8e0-40ac-96ab-5031704cb462</plugintypeexportkey>
+  </plugintypeid>
+  <workflowsdkstepenabled>0</workflowsdkstepenabled>
+</customapi>

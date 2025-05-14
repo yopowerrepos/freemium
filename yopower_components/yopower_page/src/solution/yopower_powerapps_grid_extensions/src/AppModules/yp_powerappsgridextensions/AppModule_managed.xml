@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModule>
+  <UniqueName>yp_powerappsgridextensions</UniqueName>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <WebResourceId>d6d0f7b3-d045-ef11-a316-000d3a88d375</WebResourceId>
+  <OptimizedFor></OptimizedFor>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <FormFactor>1</FormFactor>
+  <ClientType>4</ClientType>
+  <NavigationType>0</NavigationType>
+  <AppModuleComponents>
+    <AppModuleComponent type="1" schemaName="account" />
+    <AppModuleComponent type="1" schemaName="yp_demo_powerappsgrid_extensions" />
+    <AppModuleComponent type="1" schemaName="yp_pagridextd_column_definition" />
+    <AppModuleComponent type="26" id="{0573cd72-d62a-f011-8c4e-000d3ac04b80}" />
+    <AppModuleComponent type="26" id="{b6ac9a97-cb41-4bc4-9185-05fcefb2ad71}" />
+    <AppModuleComponent type="26" id="{4b6388ff-7c5b-46dd-8444-23ad3b30518f}" />
+    <AppModuleComponent type="26" id="{e9a70810-0537-45da-b392-23c7c3221e74}" />
+    <AppModuleComponent type="26" id="{4bc2f471-b285-4084-a185-4c998903d0e2}" />
+    <AppModuleComponent type="26" id="{cb6cb06d-c351-415c-9d4e-569248545598}" />
+    <AppModuleComponent type="60" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+    <AppModuleComponent type="62" schemaName="yp_powerappsgridextensions" />
+  </AppModuleComponents>
+  <AppModuleRoleMaps>
+    <Role id="{627090ff-40a3-4053-8790-584edc5be201}" />
+    <Role id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+  </AppModuleRoleMaps>
+  <LocalizedNames>
+    <LocalizedName description="Power Apps Grid Extensions" languagecode="1033" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description description="Empower your business with Power Apps Grid Extensions, enabling seamless customization and management of grid column definitions. Enhance productivity and streamline data handling with this intuitive and flexible solution." languagecode="1033" />
+  </Descriptions>
+  <appelements>
+    <appelement uniquename="yp_yp_powerappsgridextensions_canvasappid_yp_powerappsgridextensionsdefaultcommandlibrary_50a99">
+      <canvasappid>
+        <name>yp_powerappsgridextensionsdefaultcommandlibrary_50a99</name>
+      </canvasappid>
+      <iscustomizable>1</iscustomizable>
+      <name>yp_yp_powerappsgridextensions_canvasappid_yp_powerappsgridextensionsdefaultcommandlibrary_50a99</name>
+    </appelement>
+  </appelements>
+  <appsettings>
+    <appsetting settingdefinitionid.uniquename="AppChannel">
+      <iscustomizable>1</iscustomizable>
+      <value>1</value>
+    </appsetting>
+  </appsettings>
+</AppModule>

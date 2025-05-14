@@ -1,0 +1,37 @@
+<appaction uniquename="yp__ClearlocalStorage!115b9478e41d46568b9cf38a2f947cba!yp_powerappsgridextensions!yp_pagridextd_column_definition!0">
+  <appmoduleid>
+    <uniquename>yp_powerappsgridextensions</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Clear localStorage">
+    <label description="Clear localStorage" languagecode="1033" />
+  </buttonlabeltext>
+  <context>1</context>
+  <contextentity>
+    <logicalname>yp_pagridextd_column_definition</logicalname>
+  </contextentity>
+  <contextvalue>yp_pagridextd_column_definition</contextvalue>
+  <fonticon>Cancel</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>ClearlocalStorage!115b9478e41d46568b9cf38a2f947cba</name>
+  <onclickeventjavascriptfunctionname>yp_column_definition_main.clearLocalStorage</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[{"type":5}]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>900932df-f80f-f011-9989-00224836c477</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>1.0000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilityformulacomponentlibraryid>
+    <name>yp_powerappsgridextensionsdefaultcommandlibrary_50a99</name>
+  </visibilityformulacomponentlibraryid>
+  <visibilityformulacomponentname>28f18bc888074fcd9d07175841f762b7</visibilityformulacomponentname>
+  <visibilityformulafunctionname>Visible</visibilityformulafunctionname>
+  <visibilitytype>1</visibilitytype>
+</appaction>

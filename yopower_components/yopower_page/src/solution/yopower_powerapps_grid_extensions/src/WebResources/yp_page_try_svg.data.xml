@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{9c2469da-d1dd-ef11-8ee9-6045bd3c84cc}</WebResourceId>
+  <Name>yp_page_try_svg</Name>
+  <DisplayName>PAGE Try SVG</DisplayName>
+  <WebResourceType>11</WebResourceType>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/yp_page_try_svg9C2469DA-D1DD-EF11-8EE9-6045BD3C84CC</FileName>
+</WebResource>

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{4cf951a5-91e2-ef11-9341-6045bd3c84cc}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{19ce930f-fce7-4a89-ab77-4902ee60960f}" showlabel="false" name="New Tab" labelid="{d5d3989c-336a-4e56-a5ae-9b44e3cd4d58}">
+          <labels>
+            <label description="New Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="34%">
+              <sections>
+                <section showlabel="true" columns="1" showbar="false" IsUserDefined="false" labelwidth="130" id="{26bcc1eb-98ad-478d-9432-b2d518c2bc4b}" name="new_record" labelid="{ac0a5d24-73e5-4c43-b862-764a2f2fe1e3}">
+                  <labels>
+                    <label description="New Record" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{9b2dd5d0-67c7-4cf9-b7be-948374cb00c0}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Parent" languagecode="1033" />
+                        </labels>
+                        <control id="yp_parentid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="yp_parentid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9025899a-b36d-466d-ac67-7f744c007fba}" labelid="{4c730f0d-8e24-4149-bf6d-91975cb04edc}">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="yp_name" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="yp_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a792b9e7-5006-4a60-9be1-4aa1e942f3f1}" locklevel="0" colspan="1" rowspan="1" labelid="{925b75bd-3d4e-4e90-9103-6552dce7f844}">
+                        <labels>
+                          <label description="Text" languagecode="1033" />
+                        </labels>
+                        <control id="yp_text" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="yp_text" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{52206cf2-f4ba-4971-b9a3-a9b7e50614b3}" locklevel="0" colspan="1" rowspan="1" labelid="{705c59cc-8130-4ec3-bd96-4b16dd798858}">
+                        <labels>
+                          <label description="Date &amp; Time" languagecode="1033" />
+                        </labels>
+                        <control id="yp_datetime" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="yp_datetime" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{079c6631-c566-4642-981d-9262429c272b}" locklevel="0" colspan="1" rowspan="1" labelid="{1dfe1b03-d0f0-436f-99dd-1f86b5bbce95}">
+                        <labels>
+                          <label description="Decimal" languagecode="1033" />
+                        </labels>
+                        <control id="yp_decimal" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="yp_decimal" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8cccac65-3725-47e5-9fc8-10ace76de6d2}" locklevel="0" colspan="1" rowspan="1" labelid="{53684391-09b1-4826-a0eb-69936718ce86}">
+                        <labels>
+                          <label description="Integer" languagecode="1033" />
+                        </labels>
+                        <control id="yp_integer" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="yp_integer" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f5f07837-e9a4-4b9c-862b-6acd5194c1d0}" locklevel="0" colspan="1" rowspan="1" labelid="{16163a4d-a326-47aa-acfc-4055c94ea104}">
+                        <labels>
+                          <label description="Currency (Value)" languagecode="1033" />
+                        </labels>
+                        <control id="yp_currency" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="yp_currency" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bccfe798-4c96-4d47-b94f-54ffa09eed91}" locklevel="0" colspan="1" rowspan="1" labelid="{f323e4a7-63e8-4737-91c2-161f76e6f9dd}">
+                        <labels>
+                          <label description="Account" languagecode="1033" />
+                        </labels>
+                        <control id="yp_accountid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="yp_accountid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{235e0ed9-cc51-4f8a-bf1e-ccb96a6f02c8}" locklevel="0" colspan="1" rowspan="1" labelid="{3f707661-a5d7-4693-963a-117edaf6f5c1}">
+                        <labels>
+                          <label description="Contact" languagecode="1033" />
+                        </labels>
+                        <control id="yp_contactid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="yp_contactid" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="{e3d10803-afef-415a-a600-b4be11b581d0}" name="tab_1_column_2_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" visible="false" labelid="{6657d128-1a0e-45b8-a2e0-e1957ee9f79f}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{e3bfef5c-9ea1-43a8-a85f-42583231d4af}" labelid="{efa9667b-c85c-46e2-96c9-e99367790b0c}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="{06ac3b77-d232-407f-a022-f9a8bf818332}" name="tab_1_column_3_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" visible="false" labelid="{ef825751-8345-4702-9d66-df1b0c58a0c8}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{88576ce1-f086-46a8-8f31-b5520d06e7e2}" labelid="{e2ea3049-6a86-4c07-b636-0197237c5b13}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Quick Create" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>

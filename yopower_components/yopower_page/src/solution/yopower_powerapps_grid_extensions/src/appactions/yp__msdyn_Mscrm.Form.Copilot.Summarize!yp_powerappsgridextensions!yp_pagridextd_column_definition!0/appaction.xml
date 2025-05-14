@@ -1,0 +1,37 @@
+<appaction uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0">
+  <appmoduleid>
+    <uniquename>yp_powerappsgridextensions</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Summarize">
+    <label description="Summarize" languagecode="1033" />
+  </buttonlabeltext>
+  <buttontooltiptitle default="Summarize the record">
+    <label description="Summarize the record" languagecode="1033" />
+  </buttontooltiptitle>
+  <context>1</context>
+  <contextentity>
+    <logicalname>yp_pagridextd_column_definition</logicalname>
+  </contextentity>
+  <contextvalue>yp_pagridextd_column_definition</contextvalue>
+  <hidden>1</hidden>
+  <iconwebresourceid>
+    <webresourceid>1316f45f-d73b-ee11-bdf2-000d3a334de7</webresourceid>
+  </iconwebresourceid>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>msdyn_Mscrm.Form.Copilot.Summarize</name>
+  <onclickeventjavascriptfunctionname>openCopilotChatWindowAndSummarizeTheRecord</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>16cbaa5b-e53b-ee11-bdf2-000d3a334de7</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>100100047.0000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>2</visibilitytype>
+</appaction>
