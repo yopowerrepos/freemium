@@ -48,6 +48,9 @@ namespace yopower_papps_grid_extensions.earlybound
 		NumbersProgressBar = 701,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		NumbersDuration = 702,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		FileUploadDownload = 600,
 	}
 }

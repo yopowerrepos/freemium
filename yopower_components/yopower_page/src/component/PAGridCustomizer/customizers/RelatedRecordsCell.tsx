@@ -32,7 +32,7 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
 
     const [value, setValue] = React.useState("0");
     const [background, setBackground] = React.useState("transparent");
-    const [color, setColor] = React.useState("black");
+    const [color, setColor] = React.useState("transparent");
     const [icon, setIcon] = React.useState<string | undefined>(undefined);
 
     if (reference !== null)
@@ -43,13 +43,13 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
                     setValue(val);
                     const matchedRule = rules.find(r => r.min <= +val && r.max >= +val);
                     setBackground(matchedRule?.background ?? "transparent");
-                    setColor(matchedRule?.color ?? "black");
+                    setColor(matchedRule?.color ?? "transparent");
                     setIcon(matchedRule?.icon); // <== Set icon if it exists
                 })
                 .catch((_) => {
                     setValue(_.message);
                     setBackground("transparent");
-                    setColor("black");
+                    setColor("transparent");
                     setIcon(undefined); // reset icon on error
                 });
         }, [context, table, reference, params.fetchXmlAggregate, rules]);

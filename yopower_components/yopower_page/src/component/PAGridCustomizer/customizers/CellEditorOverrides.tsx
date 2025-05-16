@@ -5,6 +5,7 @@ import { Helper } from "../helper";
 import { IInputs } from "../generated/ManifestTypes";
 import { getFilteredLookupCell } from "./FilteredLookupCell";
 import { getReadOnlyCell } from "./ReadOnlyCell";
+import { DurationCell } from "./DurationCell";
 
 export function cellEditorOverrides(
 	subgrid: string,
@@ -66,6 +67,11 @@ export function getComponent(props: any, col: GetEditorParams, definitions: Cust
 			//Lookup [Filtered Lookup]
 			case 801:
 				return getFilteredLookupCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				break;
+
+			//Number [Duration]
+			case 702:
+				return <DurationCell context={context} editor={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} goToSettings={goToSettings}/>
 				break;
 		}
 	}

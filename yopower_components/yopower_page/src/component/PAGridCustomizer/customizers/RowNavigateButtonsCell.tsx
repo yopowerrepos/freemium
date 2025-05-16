@@ -68,7 +68,7 @@ export function getRowNavigateButtonsCell(
             onContextMenu={(e) => { goToSettings(e); }
             }>
             <div style={{ height: 20 }}>
-                {props.formattedValue}
+                {item.label ?? props.formattedValue}
             </div>
         </div>;
     }

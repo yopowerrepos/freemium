@@ -113,14 +113,14 @@ namespace yopower_papps_grid_extensions.business
                         break;
 
                     case yp_gbl_column_definition_type.AnyDependentColorfulCell:
-                            try
-                            {
-                                var model = JsonConvert.DeserializeObject<ColorfulCellModel>(parameters, settings);
-                            }
-                            catch (Exception jse)
-                            {
-                                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                            }
+                        try
+                        {
+                            var model = JsonConvert.DeserializeObject<ColorfulCellModel>(parameters, settings);
+                        }
+                        catch (Exception jse)
+                        {
+                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                        }
                         break;
 
                     case yp_gbl_column_definition_type.NumbersDateColorfulCell:
@@ -161,6 +161,22 @@ namespace yopower_papps_grid_extensions.business
                         }
                         else
                             throw new InvalidPluginExecutionException($"⚠️The option 'Numbers [Progress Indicator]' is available for Integer, Decimal and Double columns");
+                        break;
+
+                    case yp_gbl_column_definition_type.NumbersDuration:
+                        if (matchColumn.Type.Value == AttributeTypeCode.Integer.GetHashCode())
+                        {
+                            try
+                            {
+                                var model = JsonConvert.DeserializeObject<DurationCellModel>(parameters, settings);
+                            }
+                            catch (Exception jse)
+                            {
+                                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                            }
+                        }
+                        else
+                            throw new InvalidPluginExecutionException($"⚠️The option 'Numbers [Duration]' is available for Integer, Decimal and Double columns");
                         break;
 
                     case yp_gbl_column_definition_type.AnyRelatedRecords:

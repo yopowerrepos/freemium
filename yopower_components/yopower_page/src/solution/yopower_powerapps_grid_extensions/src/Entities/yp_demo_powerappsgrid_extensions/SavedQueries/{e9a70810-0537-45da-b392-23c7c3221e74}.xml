@@ -14,6 +14,7 @@
           <cell name="yp_name" width="150" />
           <cell name="yp_text" width="150" />
           <cell name="yp_datetime" width="250" />
+          <cell name="yp_duration" width="300" />
           <cell name="yp_decimal" width="150" />
           <cell name="yp_integer" width="150" />
           <cell name="yp_currency" width="150" />
@@ -50,6 +51,7 @@
           <link-entity alias="a_44f2887d406b4cc19c7dac331e0f04fb" name="account" to="yp_accountid" from="accountid" link-type="outer" visible="false">
             <attribute name="numberofemployees" />
           </link-entity>
+          <attribute name="yp_duration" />
         </entity>
       </fetch>
     </fetchxml>
