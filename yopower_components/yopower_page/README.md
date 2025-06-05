@@ -50,6 +50,8 @@
 
 An agent was implemented to support you customize yours visualizations
 
+![page_ai_builder](https://github.com/user-attachments/assets/16c5b2c5-b0f6-4c2f-a38f-9222d1b5d446)
+
 ### 1. Any [Navigate Buttons]
 
 - ✅ Any column type
