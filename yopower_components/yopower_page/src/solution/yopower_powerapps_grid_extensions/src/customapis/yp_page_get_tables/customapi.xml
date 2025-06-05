@@ -1,0 +1,18 @@
+<customapi uniquename="yp_page_get_tables">
+  <allowedcustomprocessingsteptype>0</allowedcustomprocessingsteptype>
+  <bindingtype>0</bindingtype>
+  <description default="⚡Get Tables">
+    <label description="⚡Get Tables" languagecode="1033" />
+  </description>
+  <displayname default="⚡Get Tables">
+    <label description="⚡Get Tables" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isfunction>0</isfunction>
+  <isprivate>0</isprivate>
+  <name>yp_page_get_tables</name>
+  <plugintypeid>
+    <plugintypeexportkey>cd0c07ea-42b7-4f10-9c4d-3e1c724323e5</plugintypeexportkey>
+  </plugintypeid>
+  <workflowsdkstepenabled>0</workflowsdkstepenabled>
+</customapi>

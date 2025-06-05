@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="viewId">
+  <description default="viewId">
+    <label description="viewId" languagecode="1033" />
+  </description>
+  <displayname default="viewId">
+    <label description="viewId" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>0</isoptional>
+  <name>viewId</name>
+  <type>12</type>
+</customapirequestparameter>

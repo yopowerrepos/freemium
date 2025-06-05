@@ -1,0 +1,431 @@
+{
+    "customizers": [
+        {
+            "name": "Any [Navigate Buttons]",
+            "type": 900,
+            "availableColumns": [
+                "Any"
+            ],
+            "description": "Enables navigation buttons for forms related to the row.",
+            "whenToUse": "Use when you want to open related forms in modals or side panes from any type of column.",
+            "jsonSchema": {
+                "modal": [
+                    {
+                        "position": 1,
+                        "label": "Center Modal",
+                        "formId": "00000000-0000-0000-0000-000000000000",
+                        "tabName": "tab_name",
+                        "height": {
+                            "value": 80,
+                            "unit": "%"
+                        },
+                        "width": {
+                            "value": 70,
+                            "unit": "%"
+                        }
+                    },
+                    {
+                        "position": 2,
+                        "label": "Right Modal",
+                        "formId": "00000000-0000-0000-0000-000000000000",
+                        "tabName": "tab_name",
+                        "height": {
+                            "value": 80,
+                            "unit": "%"
+                        },
+                        "width": {
+                            "value": 70,
+                            "unit": "%"
+                        }
+                    }
+                ],
+                "sidePane": [
+                    {
+                        "label": "Side Pane",
+                        "width": 300,
+                        "canClose": true,
+                        "paneId": "subgrid_try",
+                        "imageSrc": "/webresources/yp_page_try_svg.svg",
+                        "hideHeader": true
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Any [Read Only]",
+            "type": 901,
+            "availableColumns": [
+                "Any"
+            ],
+            "description": "Makes read-only columns editable.",
+            "whenToUse": "Use to override read-only behavior and allow editing directly in the grid.",
+            "jsonSchema": {}
+        },
+        {
+            "name": "Any [Related Records]",
+            "type": 902,
+            "availableColumns": [
+                "Any"
+            ],
+            "description": "Works as a rollup column; supports composing fetchxml with different types.",
+            "whenToUse": "Use when you want to show related records with custom fetch/xml logic.",
+            "jsonSchema": {
+                "reference": "column/row",
+                "column": "yp_accountid",
+                "viewId": "00000000-0000-0000-0000-000000000010",
+                "viewName": "Related Phone Calls",
+                "rules": [
+                    {
+                        "min": 1,
+                        "max": 1,
+                        "background": "#A1D6A5",
+                        "color": "#1F1F1F",
+                        "icon": "AlertSolid"
+                    },
+                    {
+                        "min": 2,
+                        "max": 10,
+                        "background": "#E098AF",
+                        "color": "#1F1F1F"
+                    }
+                ],
+                "table": "phonecall",
+                "fetchXmlAggregate": "<fetch version='1.0' mapping='logical' distinct='false' aggregate='true'><entity name='phonecall'><attribute name='activityid' alias='value' aggregate='count' /><link-entity name='account' from='accountid' to='regardingobjectid' link-type='inner' alias='aa'><filter type='and'><condition attribute='accountid' operator='eq' uitype='#valuetype#' value='#value#' /></filter></link-entity></entity></fetch>",
+                "fetchXml": "<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'><entity name='phonecall'><attribute name='subject' /><attribute name='statecode' /><attribute name='prioritycode' /><attribute name='scheduledend' /><attribute name='createdby' /><attribute name='regardingobjectid' /><attribute name='activityid' /><link-entity name='account' from='accountid' to='regardingobjectid' link-type='inner' alias='aa'><filter type='and'><condition attribute='accountid' operator='eq' uitype='#valuetype#' value='#value#' /></filter></link-entity></entity></fetch>",
+                "layoutXml": "<grid name='resultset' object='1' jump='createdon' select='1' icon='1' preview='1'><row name='result' id='activityid'><cell name='createdon' width='150' /><cell name='subject' width='200' /><cell name='prioritycode' width='100' /><cell name='scheduledstart' width='150' /><cell name='scheduledend' width='150' /><cell name='statuscode' width='100' /></row></grid>"
+            }
+        },
+        {
+            "name": "Any [Dependent Colorful Cell]",
+            "type": 904,
+            "availableColumns": [
+                "Any"
+            ],
+            "description": "Determines cell color based on another columns value and defined ranges.",
+            "whenToUse": "Use to visually differentiate rows based on a secondary column value.",
+            "jsonSchema": {
+                "column": "statuscode",
+                "rules": [
+                    {
+                        "min": 1,
+                        "max": 1,
+                        "background": "#A1D6A5",
+                        "color": "#1F1F1F"
+                    },
+                    {
+                        "min": 2,
+                        "max": 2,
+                        "background": "#E098AF",
+                        "color": "#1F1F1F"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Any [New Related Record]",
+            "type": 905,
+            "availableColumns": [
+                "Any"
+            ],
+            "description": "Define which associated records can be created through the grid, respecting mappings.",
+            "whenToUse": "Use to allow inline creation of related records with quick or main forms.",
+            "jsonSchema": {
+                "options": [
+                    {
+                        "icon": "AddToShoppingList",
+                        "label": "Task",
+                        "useQuickCreateForm": true,
+                        "targetTableLogicalName": "task",
+                        "formId": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                        "icon": "Phone",
+                        "label": "Phone Call",
+                        "useQuickCreateForm": true,
+                        "targetTableLogicalName": "phonecall",
+                        "formId": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                        "icon": "Calendar",
+                        "label": "Appointment",
+                        "useQuickCreateForm": true,
+                        "targetTableLogicalName": "appointment",
+                        "formId": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                        "icon": "FavoriteStar",
+                        "label": "Add My Demo Custom Table (Quick Create)",
+                        "useQuickCreateForm": true,
+                        "targetTableLogicalName": "yp_demo_powerappsgrid_extensions",
+                        "formId": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                        "icon": "FavoriteStarFill",
+                        "label": "Add My Demo Custom Table (Main)",
+                        "useQuickCreateForm": false,
+                        "targetTableLogicalName": "yp_demo_powerappsgrid_extensions",
+                        "formId": "00000000-0000-0000-0000-000000000000",
+                        "height": {
+                            "value": 800,
+                            "unit": "px"
+                        },
+                        "width": {
+                            "value": 600,
+                            "unit": "px"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Lookup [Navigate Buttons]",
+            "type": 800,
+            "availableColumns": [
+                6,
+                1
+            ],
+            "description": "Enables navigation buttons for forms related to the lookup.",
+            "whenToUse": "Use to navigate quickly from lookup fields to related record forms.",
+            "jsonSchema": {
+                "modal": [
+                    {
+                        "position": 1,
+                        "label": "Center Modal",
+                        "formId": "00000000-0000-0000-0000-000000000000",
+                        "tabName": "tab_name",
+                        "height": {
+                            "value": 80,
+                            "unit": "%"
+                        },
+                        "width": {
+                            "value": 70,
+                            "unit": "%"
+                        }
+                    },
+                    {
+                        "position": 2,
+                        "label": "Right Modal",
+                        "formId": "00000000-0000-0000-0000-000000000000",
+                        "tabName": "tab_name",
+                        "height": {
+                            "value": 80,
+                            "unit": "%"
+                        },
+                        "width": {
+                            "value": 70,
+                            "unit": "%"
+                        }
+                    }
+                ],
+                "sidePane": []
+            }
+        },
+        {
+            "name": "Lookup [Filtered Lookup]",
+            "type": 801,
+            "availableColumns": [
+                6,
+                1
+            ],
+            "description": "Filter a lookup field using values from current or related rows.",
+            "whenToUse": "Use to restrict lookup options based on row context.",
+            "jsonSchema": {
+                "reference": "column/row",
+                "column": "yp_accountid",
+                "viewId": "00000000-0000-0000-0000-000000000000",
+                "filter": "<filter type='and'><condition attribute='parentcustomerid' operator='eq' uitype='#valuetype#' value='#value#'/></filter>"
+            }
+        },
+        {
+            "name": "Numbers & Date [Colorful Cell]",
+            "type": 700,
+            "availableColumns": [
+                3,
+                5,
+                4,
+                8,
+                5,
+                2,
+                2
+            ],
+            "description": "Color cells based on ranges for numbers, dates or durations.",
+            "whenToUse": "Use to provide visual feedback based on numerical or time-based thresholds.",
+            "jsonSchema": {
+                "rules": [
+                    {
+                        "min": -10000000000,
+                        "max": 0,
+                        "background": "#E098AF",
+                        "color": "#1F1F1F",
+                        "label": "Passed date in minutes",
+                        "icon": "BufferTimeBefore"
+                    },
+                    {
+                        "min": 1,
+                        "max": 10080,
+                        "background": "#FAD897",
+                        "color": "#1F1F1F",
+                        "label": "Next week in minutes",
+                        "icon": "BufferTimeBoth"
+                    },
+                    {
+                        "min": 10081,
+                        "max": 10000000000,
+                        "background": "#A1D6A5",
+                        "color": "#1F1F1F",
+                        "label": "After next week in minutes",
+                        "icon": "BufferTimeAfter"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Numbers [Progress Bar]",
+            "type": 701,
+            "availableColumns": [
+                5,
+                3,
+                4
+            ],
+            "description": "Display a colored progress bar in the cell based on value ranges.",
+            "whenToUse": "Use when you want a visual indicator of numeric progress or status.",
+            "jsonSchema": {
+                "type": "",
+                "rules": [
+                    {
+                        "min": 0,
+                        "max": 0.25,
+                        "background": "#E098AF",
+                        "color": "#1F1F1F",
+                        "label": ""
+                    },
+                    {
+                        "min": 0.26,
+                        "max": 0.5,
+                        "background": "#F4B394",
+                        "color": "#1F1F1F",
+                        "label": ""
+                    },
+                    {
+                        "min": 0.51,
+                        "max": 0.75,
+                        "background": "#FAD897",
+                        "color": "#1F1F1F",
+                        "label": ""
+                    },
+                    {
+                        "min": 0.76,
+                        "max": 1,
+                        "background": "#A1D6A5",
+                        "color": "#1F1F1F",
+                        "label": ""
+                    }
+                ]
+            }
+        },
+        {
+            "name": "File [Upload Download]",
+            "type": 600,
+            "availableColumns": [
+                "File"
+            ],
+            "description": "Visualize, upload, download, or delete files in the grid.",
+            "whenToUse": "Use when working with file columns to manage attachments inline.",
+            "jsonSchema": {
+                "readOnly": false,
+                "allowedTypes": [
+                    "jpg",
+                    "jpeg",
+                    "png",
+                    "gif"
+                ]
+            }
+        }
+    ],
+    "columnTypeMappings": [
+        {
+            "Label": "Boolean",
+            "Value": 0
+        },
+        {
+            "Label": "Customer",
+            "Value": 1
+        },
+        {
+            "Label": "DateTime",
+            "Value": 2
+        },
+        {
+            "Label": "Decimal",
+            "Value": 3
+        },
+        {
+            "Label": "Double",
+            "Value": 4
+        },
+        {
+            "Label": "Integer",
+            "Value": 5
+        },
+        {
+            "Label": "Lookup",
+            "Value": 6
+        },
+        {
+            "Label": "Memo",
+            "Value": 7
+        },
+        {
+            "Label": "Money",
+            "Value": 8
+        },
+        {
+            "Label": "Owner",
+            "Value": 9
+        },
+        {
+            "Label": "PartyList",
+            "Value": 10
+        },
+        {
+            "Label": "Picklist",
+            "Value": 11
+        },
+        {
+            "Label": "State",
+            "Value": 12
+        },
+        {
+            "Label": "Status",
+            "Value": 13
+        },
+        {
+            "Label": "String",
+            "Value": 14
+        },
+        {
+            "Label": "Uniqueidentifier",
+            "Value": 15
+        },
+        {
+            "Label": "CalendarRules",
+            "Value": 16
+        },
+        {
+            "Label": "Virtual",
+            "Value": 17
+        },
+        {
+            "Label": "BigInt",
+            "Value": 18
+        },
+        {
+            "Label": "ManagedProperty",
+            "Value": 19
+        },
+        {
+            "Label": "EntityName",
+            "Value": 20
+        }
+    ]
+}

@@ -96,6 +96,10 @@ namespace yopower_papps_grid_extensions.earlybound
 			{
 				return this.GetAttributeValue<System.Nullable<System.Guid>>("applicationid");
 			}
+			set
+			{
+				this.SetAttributeValue("applicationid", value);
+			}
 		}
 		
 		/// <summary>
@@ -295,6 +299,10 @@ namespace yopower_papps_grid_extensions.earlybound
 			get
 			{
 				return this.GetAttributeValue<System.Nullable<bool>>("issytemgenerated");
+			}
+			set
+			{
+				this.SetAttributeValue("issytemgenerated", value);
 			}
 		}
 		

@@ -91,6 +91,44 @@ namespace yopower_papps_grid_extensions.earlybound
 	}
 	
 	/// <summary>
+	/// What verbosity level the Power Automate Desktop Flow Run Action logs allow.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	public enum organization_desktopflowrunactionlogverbosity
+	{
+		
+		/// <summary>
+		/// All Power Automate Desktop Flow Run Action Logs are included.
+		/// </summary>
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Full = 0,
+		
+		/// <summary>
+		/// All Power Automate Desktop Flow Run Action Logs except Built-in Actions Logs.
+		/// </summary>
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Debug = 1,
+		
+		/// <summary>
+		/// Power Automate Desktop Flow Run Action Logs Using Log Message Action and all Warning and Errors Action Logs.
+		/// </summary>
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Custom = 2,
+		
+		/// <summary>
+		/// Power Automate Desktop Flow Run Action Warning and Error Logs.
+		/// </summary>
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Warning = 3,
+		
+		/// <summary>
+		/// Power Automate Desktop Flow Run Action Error Logs only.
+		/// </summary>
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Error = 4,
+	}
+	
+	/// <summary>
 	/// Where the Power Automate Desktop Flow Run Action logs are stored.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
@@ -104,13 +142,13 @@ namespace yopower_papps_grid_extensions.earlybound
 		AdditionalContext = 0,
 		
 		/// <summary>
-		/// Power Automate Desktop Flow Run Action Logs are stored in the Flow Logs Dataverse Entity (Preview).
+		/// Power Automate Desktop Flow Run Action Logs are stored in the Flow Logs Dataverse Entity.
 		/// </summary>
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		FlowLogs = 1,
 		
 		/// <summary>
-		/// Power Automate Desktop Flow Run Action Logs are stored in the Additional Context field of the Flow Session and the Flow Logs Dataverse Entity (Preview).
+		/// Power Automate Desktop Flow Run Action Logs are stored in the Additional Context field of the Flow Session and the Flow Logs Dataverse Entity.
 		/// </summary>
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		AdditionalContextAndFlowLogs = 2,
@@ -542,6 +580,8 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string AppointmentRichEditorExperience = "appointmentricheditorexperience";
 			public const string AppointmentWithTeamsMeeting = "appointmentwithteamsmeeting";
 			public const string AppointmentWithTeamsMeetingV2 = "appointmentwithteamsmeetingv2";
+			public const string AreAutomationCenterPreviewFeaturesEnabled = "areautomationcenterpreviewfeaturesenabled";
+			public const string AreProcessInsightsPreviewFeaturesEnabled = "areprocessinsightspreviewfeaturesenabled";
 			public const string AuditRetentionPeriod = "auditretentionperiod";
 			public const string AuditRetentionPeriodV2 = "auditretentionperiodv2";
 			public const string AuditSettings = "auditsettings";
@@ -613,6 +653,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string DelegatedAdminUserId = "delegatedadminuserid";
 			public const string DesktopFlowQueueLogsTtlInMinutes = "desktopflowqueuelogsttlinminutes";
 			public const string DesktopFlowRunActionLogsStatus = "desktopflowrunactionlogsstatus";
+			public const string DesktopFlowRunActionLogVerbosity = "desktopflowrunactionlogverbosity";
 			public const string DesktopFlowRunActionLogVersion = "desktopflowrunactionlogversion";
 			public const string DisabledReason = "disabledreason";
 			public const string DisableSocialCare = "disablesocialcare";
@@ -712,6 +753,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string IsBasicGeospatialIntegrationEnabled = "isbasicgeospatialintegrationenabled";
 			public const string IsBPFEntityCustomizationFeatureEnabled = "isbpfentitycustomizationfeatureenabled";
 			public const string IsCollaborationExperienceEnabled = "iscollaborationexperienceenabled";
+			public const string IsComputerUseInMCSEnabled = "iscomputeruseinmcsenabled";
 			public const string IsConflictDetectionEnabledForMobileClient = "isconflictdetectionenabledformobileclient";
 			public const string IsContactMailingAddressSyncEnabled = "iscontactmailingaddresssyncenabled";
 			public const string IsContentSecurityPolicyEnabled = "iscontentsecuritypolicyenabled";
@@ -753,6 +795,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string IsMobileClientOnDemandSyncEnabled = "ismobileclientondemandsyncenabled";
 			public const string IsMobileOfflineEnabled = "ismobileofflineenabled";
 			public const string IsModelDrivenAppsInMSTeamsEnabled = "ismodeldrivenappsinmsteamsenabled";
+			public const string IsMoneySavingsAllowed = "ismoneysavingsallowed";
 			public const string IsMSTeamsCollaborationEnabled = "ismsteamscollaborationenabled";
 			public const string IsMSTeamsEnabled = "ismsteamsenabled";
 			public const string IsMSTeamsSettingChangedByUser = "ismsteamssettingchangedbyuser";
@@ -905,6 +948,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string RiErrorStatus = "rierrorstatus";
 			public const string SameSiteModeForSessionCookie = "samesitemodeforsessioncookie";
 			public const string SampleDataImportId = "sampledataimportid";
+			public const string SavingEventsTTLInMinutes = "savingeventsttlinminutes";
 			public const string SchemaNamePrefix = "schemanameprefix";
 			public const string SendBulkEmailInUCI = "sendbulkemailinuci";
 			public const string ServeStaticResourcesFromAzureCDN = "servestaticresourcesfromazurecdn";
@@ -980,6 +1024,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string organization_entitydatasource = "organization_entitydatasource";
 			public const string organization_organizationsetting = "organization_organizationsetting";
 			public const string organization_roles = "organization_roles";
+			public const string organization_saved_queries = "organization_saved_queries";
 			public const string organization_settingdefinition = "organization_settingdefinition";
 			public const string organization_system_users = "organization_system_users";
 			public const string organization_teams = "organization_teams";
@@ -1722,6 +1767,38 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("appointmentwithteamsmeetingv2", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Power Automate Automation Center preview features will be available for all users in this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("areautomationcenterpreviewfeaturesenabled")]
+		public System.Nullable<bool> AreAutomationCenterPreviewFeaturesEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("areautomationcenterpreviewfeaturesenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("areautomationcenterpreviewfeaturesenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Process Insights Preview features are enabled in this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("areprocessinsightspreviewfeaturesenabled")]
+		public System.Nullable<bool> AreProcessInsightsPreviewFeaturesEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("areprocessinsightspreviewfeaturesenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("areprocessinsightspreviewfeaturesenabled", value);
 			}
 		}
 		
@@ -2836,6 +2913,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("desktopflowrunactionlogsstatus", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		/// <summary>
+		/// What verbosity level the Power Automate Desktop Flow Run Action Logs allow.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowrunactionlogverbosity")]
+		public virtual organization_desktopflowrunactionlogverbosity? DesktopFlowRunActionLogVerbosity
+		{
+			get
+			{
+				return ((organization_desktopflowrunactionlogverbosity?)(EntityOptionSetEnum.GetEnum(this, "desktopflowrunactionlogverbosity")));
+			}
+			set
+			{
+				this.SetAttributeValue("desktopflowrunactionlogverbosity", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 			}
 		}
 		
@@ -4386,6 +4479,22 @@ namespace yopower_papps_grid_extensions.earlybound
 		}
 		
 		/// <summary>
+		/// Indicates whether Computer Use in MCS feature is enabled in this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscomputeruseinmcsenabled")]
+		public System.Nullable<bool> IsComputerUseInMCSEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscomputeruseinmcsenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("iscomputeruseinmcsenabled", value);
+			}
+		}
+		
+		/// <summary>
 		/// Information that specifies whether conflict detection for mobile client is enabled.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isconflictdetectionenabledformobileclient")]
@@ -4626,7 +4735,7 @@ namespace yopower_papps_grid_extensions.earlybound
 		}
 		
 		/// <summary>
-		/// Indicates whether Windows Vanilla Image will be readly available for Desktop Flow users in this organization.
+		/// Indicates whether Windows Vanilla Image will be available for Desktop Flow users in this organization.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowvanillaimagesharingenabled")]
 		public System.Nullable<bool> IsDesktopFlowVanillaImageSharingEnabled
@@ -5034,6 +5143,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("ismodeldrivenappsinmsteamsenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether the maker can create Power Automate money based saving rules.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismoneysavingsallowed")]
+		public System.Nullable<bool> IsMoneySavingsAllowed
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismoneysavingsallowed");
+			}
+			set
+			{
+				this.SetAttributeValue("ismoneysavingsallowed", value);
 			}
 		}
 		
@@ -7408,6 +7533,22 @@ namespace yopower_papps_grid_extensions.earlybound
 		}
 		
 		/// <summary>
+		/// Default time to live in minutes for new Power Automate savings events records in flow aggregation.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("savingeventsttlinminutes")]
+		public System.Nullable<int> SavingEventsTTLInMinutes
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("savingeventsttlinminutes");
+			}
+			set
+			{
+				this.SetAttributeValue("savingeventsttlinminutes", value);
+			}
+		}
+		
+		/// <summary>
 		/// Prefix used for custom entities and attributes.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("schemanameprefix")]
@@ -8597,6 +8738,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetRelatedEntities<yopower_papps_grid_extensions.earlybound.Role>("organization_roles", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_saved_queries
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_saved_queries")]
+		public System.Collections.Generic.IEnumerable<yopower_papps_grid_extensions.earlybound.SavedQuery> organization_saved_queries
+		{
+			get
+			{
+				return this.GetRelatedEntities<yopower_papps_grid_extensions.earlybound.SavedQuery>("organization_saved_queries", null);
+			}
+			set
+			{
+				this.SetRelatedEntities<yopower_papps_grid_extensions.earlybound.SavedQuery>("organization_saved_queries", null, value);
 			}
 		}
 		

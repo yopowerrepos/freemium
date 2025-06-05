@@ -28,6 +28,7 @@
     "appsetting",
     "appmodule",
     "usersettings",
+    "savedquery",
     "yp_pagridextd_column_definition"
   ],
   "messageNamesFilter": [

@@ -18,7 +18,26 @@ namespace yopower_papps_grid_extensions.business
         {
         }
 
-        public TableModel GetMetadataTable(string table)
+        /// <summary>
+        /// Get Tables
+        /// </summary>
+        /// <returns></returns>
+        public List<TableModel> GetTables()
+        {
+            var request = new RetrieveAllEntitiesRequest()
+            {
+                EntityFilters = Microsoft.Xrm.Sdk.Metadata.EntityFilters.Entity
+            };
+            var response = (RetrieveAllEntitiesResponse)this.Service.Execute(request);
+            return response.EntityMetadata.Select(s => new TableModel(s)).ToList();
+        }
+
+        /// <summary>
+        /// Get Table Metadata
+        /// </summary>
+        /// <param name="table">Table Logical Name</param>
+        /// <returns></returns>
+        public TableModel GetTable(string table)
         {
             RetrieveEntityResponse response = null;
             try
@@ -39,6 +58,80 @@ namespace yopower_papps_grid_extensions.business
                 return new TableModel(response.EntityMetadata);
             else
                 return null;
+        }
+
+        /// <summary>
+        /// Get Table System Views
+        /// </summary>
+        /// <returns></returns>
+        public List<ViewModel> GetTableViews(string table)
+        {
+            var savedQueries = this.GetSavedQueries(table);
+            return savedQueries.Select(s => new ViewModel(s)).ToList();
+        }
+
+        /// <summary>
+        /// Get Table Saved Queries
+        /// </summary>
+        /// <param name="table">Table</param>
+        /// <returns></returns>
+        private List<SavedQuery> GetSavedQueries(string table)
+        {
+            using (var orgContext = new CrmServiceContext(this.ServiceAdmin))
+            {
+                return orgContext.SavedQuerySet
+                    .Where(w => w.ReturnedTypeCode == table)
+                    .Select(s => new SavedQuery()
+                    {
+                        Id = s.Id,
+                        Name = s.Name
+                    }).ToList();
+            }
+        }
+
+        /// <summary>
+        /// Get Table Saved Query
+        /// </summary>
+        /// <param name="viewId">Id</param>
+        /// <returns></returns>
+        public SavedQuery GetSavedQuery(Guid viewId)
+        {
+            using (var orgContext = new CrmServiceContext(this.ServiceAdmin))
+            {
+                return orgContext.SavedQuerySet
+                    .Where(w => w.Id == viewId)
+                    .Select(s => new SavedQuery()
+                    {
+                        Id = s.Id,
+                        Name = s.Name,
+                        Description = s.Description,
+                        ReturnedTypeCode = s.ReturnedTypeCode,
+                        FetchXml = s.FetchXml,
+                        LayoutXml = s.LayoutXml
+                    }).FirstOrDefault();
+            }
+        }
+
+        /// <summary>
+        /// Get View Details
+        /// </summary>
+        /// <param name="table">Table</param>
+        /// <param name="viewId">View</param>
+        /// <returns></returns>
+        public ViewModel GetTableView(Guid viewId)
+        {
+            var view = this.GetSavedQuery(viewId);
+            var metadata = this.GetTable(view.ReturnedTypeCode);
+            var convertRequest = new FetchXmlToQueryExpressionRequest() { FetchXml = view.FetchXml };
+            var convertResponse = (FetchXmlToQueryExpressionResponse)this.ServiceAdmin.Execute(convertRequest);
+            var viewAttributes = convertResponse.Query.ColumnSet.Columns.Select(s => s).ToList();
+            return new ViewModel(view, viewAttributes
+                .Join(metadata.Columns,
+                    a => a,
+                    c => c.LogicalName,
+                    (a, c) => new { A = a, C = c })
+                .Select(s => s.C)
+                .ToList());
         }
 
         /// <summary>

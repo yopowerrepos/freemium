@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Adaptive Card on Load</title>
+    <script src="https://unpkg.com/adaptivecards@2.10.0/dist/adaptivecards.min.js"></script>
+</head>
+
+<body>
+    <div id="cards"></div>
+    <script>
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('data');
+            if (id) {
+                const data = JSON.parse(localStorage.getItem(id));
+                localStorage.removeItem(id);
+                if (data) {
+                    data.value.forEach(response_ => {
+                        const attachments = response_.attachments;
+                        attachments.forEach(attachment => {
+                            if (attachment.contentType === "application/vnd.microsoft.card.adaptive") {
+                                const adaptiveCard = new window.AdaptiveCards.AdaptiveCard();
+                                adaptiveCard.parse(attachment.content);
+                                const card = adaptiveCard.render();
+                                card.style.marginBottom = "10px";
+                                document.getElementById("cards").appendChild(card);
+                            }
+                        });
+                    });
+                }
+            }
+        };
+    </script>
+</body>
+
+</html>

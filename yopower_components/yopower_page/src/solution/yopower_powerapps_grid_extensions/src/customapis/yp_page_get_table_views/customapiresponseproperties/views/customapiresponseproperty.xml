@@ -1,0 +1,11 @@
+<customapiresponseproperty uniquename="views">
+  <description default="views">
+    <label description="views" languagecode="1033" />
+  </description>
+  <displayname default="views">
+    <label description="views" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <name>views</name>
+  <type>10</type>
+</customapiresponseproperty>

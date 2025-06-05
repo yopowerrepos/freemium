@@ -9,9 +9,10 @@ import { getLookupNavigateButtonsCell } from "./LookupNavigateButtonsCell";
 import { getRowNavigateButtonsCell } from "./RowNavigateButtonsCell";
 import { gerProgressBarCell } from "./ProgressIndicatorCell";
 import { RelatedRecordsCell } from "./RelatedRecordsCell";
+
 import { FileCell } from "./FileCell";
-import { format } from "path";
 import { getNewRelatedRecordCell } from "./NewRelatedRecord";
+import { CopilotExecuteEventCell } from "./CopilotExecuteEventCell";
 
 export function cellRendererOverrides(
 	subgrid: string,
@@ -90,7 +91,12 @@ export function getComponent(
 
 			//Any [Related Records]
 			case 902:
-				return <RelatedRecordsCell context={context} editor={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} goToSettings={goToSettings}/>
+				return <RelatedRecordsCell context={context} editor={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} goToSettings={goToSettings} />
+				break;
+
+			//Any [Copilot Execute Event]
+			case 903:
+				return <CopilotExecuteEventCell context={context} editor={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} subgrid={subgrid} goToSettings={goToSettings} />
 				break;
 
 			// Any [Dependent Colorful Cell]
@@ -144,7 +150,7 @@ export function getComponent(
 						fileSize: 0,
 						mimeType: ""
 					};
-				return <FileCell context={context} render={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} goToSettings={goToSettings}/>
+				return <FileCell context={context} render={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} goToSettings={goToSettings} />
 				break;
 		}
 	}

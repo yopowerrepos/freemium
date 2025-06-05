@@ -29,5 +29,8 @@
     <LocalizedNames>
       <LocalizedName description="DEMO Page Accounts" languagecode="1033" />
     </LocalizedNames>
+    <Descriptions>
+      <Description description="Only for tests" languagecode="1033" />
+    </Descriptions>
   </savedquery>
 </savedqueries>

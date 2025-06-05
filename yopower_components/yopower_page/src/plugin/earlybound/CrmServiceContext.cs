@@ -129,6 +129,17 @@ namespace yopower_papps_grid_extensions.earlybound
 		}
 		
 		/// <summary>
+		/// Gets a binding to the set of all <see cref="yopower_papps_grid_extensions.earlybound.SavedQuery"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<yopower_papps_grid_extensions.earlybound.SavedQuery> SavedQuerySet
+		{
+			get
+			{
+				return this.CreateQuery<yopower_papps_grid_extensions.earlybound.SavedQuery>();
+			}
+		}
+		
+		/// <summary>
 		/// Gets a binding to the set of all <see cref="yopower_papps_grid_extensions.earlybound.SettingDefinition"/> entities.
 		/// </summary>
 		public System.Linq.IQueryable<yopower_papps_grid_extensions.earlybound.SettingDefinition> SettingDefinitionSet

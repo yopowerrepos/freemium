@@ -1,0 +1,30 @@
+<bot schemaname="crffb_bot540100">
+  <authenticationmode>2</authenticationmode>
+  <authenticationtrigger>1</authenticationtrigger>
+  <iscustomizable>1</iscustomizable>
+  <language>1033</language>
+  <name>Copilot in Power Apps - Power Apps Grid...</name>
+  <runtimeprovider>0</runtimeprovider>
+  <synchronizationstatus>{
+  "$kind": "BotSynchronizationDetails",
+  "contentVersion": 2,
+  "lastFinishedPublishOperation": {
+    "$kind": "PublishResultDetails",
+    "operationStart": "2025-05-22T20:43:47.700115Z",
+    "operationEnd": "2025-05-22T20:44:06.3448724Z",
+    "status": "Succeeded"
+  },
+  "lastPublishedDetails": {
+    "$kind": "SuccessfulPublishResultDetails",
+    "authenticationMode": "Integrated"
+  },
+  "currentSynchronizationState": {
+    "$kind": "SynchronizationState",
+    "provisioningStatus": "ProvisionedWithoutRegistration",
+    "state": "Synchronized"
+  },
+  "lastSynchronizedOnUtc": "2025-05-22T20:20:15.7968127Z"
+}</synchronizationstatus>
+  <template>empty-1.0.0</template>
+  <timezoneruleversionnumber>4</timezoneruleversionnumber>
+</bot>

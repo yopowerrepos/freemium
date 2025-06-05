@@ -1,0 +1,11 @@
+<customapiresponseproperty uniquename="tables">
+  <description default="tables">
+    <label description="tables" languagecode="1033" />
+  </description>
+  <displayname default="tables">
+    <label description="tables" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <name>tables</name>
+  <type>10</type>
+</customapiresponseproperty>

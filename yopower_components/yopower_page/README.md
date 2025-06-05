@@ -14,19 +14,21 @@
 
 ## Available Customizers
 
-| **Title**                          | **Description**                                                                                                      |
-| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| **Any [Navigate Buttons]**         | Enables navigation buttons for forms related to the row.                                                             |
-| **Any [Read Only]**                | Makes read-only columns editable.                                                                                    |
-| **Any [Related Records]**          | Works as a rollup column, support different column types to compose a fetchxml.                                      |
-| **Any [Dependent Colorful Cell]**  | Determines the fill and text color of a cell based on an other column according range of values.                     |
-| **Any [New Related Record]**       | Define which associated records can be created through the Power Apps Grid, respecting the relationship's mappings.  |
-| **Lookup [Navigate Buttons]**      | Enables navigation buttons for forms related to the lookup.                                                          |
-| **Lookup [Filtered Lookup]**       | Configures a lookup field to be filtered based on the row or other subgrid columns using the `lookupObject` concept. |
-| **Numbers & Date [Colorful Cell]** | Determines the fill and text color of a cell based on a range of values.                                             |
-| **Numbers [Progress Bar]**         | Determines the fill and color of a progress bar based on a range of values.                                          |
-| **String [Related Records]**       | Allow interact with associated records through the subgrid buttons                                                   |
-| **File [Upload Download]**         | Visualize, download, updload and delete files                                                                        |
+| **Title**                               | **Description**                                                                                                      |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Any [Navigate Buttons]**              | Enables navigation buttons for forms related to the row.                                                             |
+| **Any [Read Only]**                     | Makes read-only columns editable.                                                                                    |
+| **Any [Related Records]**               | Works as a rollup column, support different column types to compose a fetchxml.                                      |
+| **Any [Copilot Execute Event] Preview** | Allow trigger an topic event on Copilot associated with the Model-Driven App.                                        |
+| **Any [Dependent Colorful Cell]**       | Determines the fill and text color of a cell based on an other column according range of values.                     |
+| **Any [New Related Record]**            | Define which associated records can be created through the Power Apps Grid, respecting the relationship's mappings.  |
+| **Lookup [Navigate Buttons]**           | Enables navigation buttons for forms related to the lookup.                                                          |
+| **Lookup [Filtered Lookup]**            | Configures a lookup field to be filtered based on the row or other subgrid columns using the `lookupObject` concept. |
+| **Numbers & Date [Colorful Cell]**      | Determines the fill and text color of a cell based on a range of values.                                             |
+| **Numbers [Progress Bar]**              | Determines the fill and color of a progress bar based on a range of values.                                          |
+| **Numbers [Duration ]**                 | Allow edit duration columns as a decimal number i.e: 1,5 = 90 minutes                                                |
+| **String [Related Records]**            | Allow interact with associated records through the subgrid buttons                                                   |
+| **File [Upload Download]**              | Visualize, download, updload and delete files                                                                        |
 
 ## Additional Settings
 
@@ -43,6 +45,10 @@
 
 18 examples can be imported using Configuration Migration Tool
 /sample/data.zip
+
+### Agent
+
+An agent was implemented to support you customize yours visualizations
 
 ### 1. Any [Navigate Buttons]
 
@@ -170,7 +176,32 @@
 
 ---
 
-### 5. Any [New Related Record]
+### 5. Any [Copilot Execute Event] (PREVIEW)
+
+- ✅ Any column type
+
+#### Parameters:
+
+```json
+{
+  "events": [
+    {
+      "event": "yopower.trigger",
+      "label": "Event 01 - yopower.trigger",
+      "tooltip": ""
+    },
+    {
+      "event": "yopower.othertrigger",
+      "label": "Trigger 1 yopower.othertrigger",
+      "tooltip": ""
+    }
+  ]
+}
+```
+
+---
+
+### 6. Any [New Related Record]
 
 - ✅ Any column type
 
@@ -228,7 +259,7 @@
 
 ---
 
-### 6. Lookup [Navigate Buttons]
+### 7. Lookup [Navigate Buttons]
 
 - ✅ Lookups and Customers
 - 📝 Use double click to enter edit mode
@@ -273,7 +304,7 @@
 
 ---
 
-### 7. Lookup [Filtered Lookup]
+### 8. Lookup [Filtered Lookup]
 
 - ✅ Lookups and Customers
 - ⚠️ The `reference` property defines whether the row or a column is used to substitute the placeholder `#value#`.
@@ -291,7 +322,7 @@
 
 ---
 
-### 8. Numbers & Date [Colorful Cell]
+### 9. Numbers & Date [Colorful Cell]
 
 - ✅ Decimal, Integer, Float, Currency, Duration, Date Only and Date&Time
 - 📝 Use double click to enter on edit mode
@@ -363,7 +394,7 @@
 
 ---
 
-### 9. Numbers [Progress Bar]
+### 10. Numbers [Progress Bar]
 
 - ✅ Integer, Decimal and Float
 - 📝 Use double click to enter on edit mode.
@@ -447,7 +478,23 @@
 
 ---
 
-### 10. File [Upload Download]
+### 11. Numbers [Duration ]
+
+- ✅ Duration
+
+#### Parameters
+
+```json
+{
+  "min": 0.25,
+  "max": 240,
+  "step": 0.25
+}
+```
+
+---
+
+### 12. File [Upload Download]
 
 - ✅ File
 

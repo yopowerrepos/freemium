@@ -11,5 +11,14 @@
     <PluginType AssemblyQualifiedName="yopower_papps_grid_extensions.code.global.GetSubgridDefinitions, yopower_papps_grid_extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35ea4f843cfb5138" PluginTypeId="67a6f503-b8e0-40ac-96ab-5031704cb462" Name="yopower_papps_grid_extensions.code.global.GetSubgridDefinitions">
       <FriendlyName>dd5da11e-0937-4036-8e43-acca2004cc0a</FriendlyName>
     </PluginType>
+    <PluginType AssemblyQualifiedName="yopower_papps_grid_extensions.code.global.GetTables, yopower_papps_grid_extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35ea4f843cfb5138" PluginTypeId="cd0c07ea-42b7-4f10-9c4d-3e1c724323e5" Name="yopower_papps_grid_extensions.code.global.GetTables">
+      <FriendlyName>7cfc2e44-bb06-4a23-81d9-626f313350df</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="yopower_papps_grid_extensions.code.global.GetTableView, yopower_papps_grid_extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35ea4f843cfb5138" PluginTypeId="188e7e8b-6da9-4c1c-a1d8-5891a27b2fe9" Name="yopower_papps_grid_extensions.code.global.GetTableView">
+      <FriendlyName>443e1cd2-470f-457c-9654-6a982daf7722</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="yopower_papps_grid_extensions.code.global.GetTableViews, yopower_papps_grid_extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35ea4f843cfb5138" PluginTypeId="68609285-b8da-4933-8a8e-798397ee0f3e" Name="yopower_papps_grid_extensions.code.global.GetTableViews">
+      <FriendlyName>5507c5c9-0fe2-408c-a055-d02b8808e003</FriendlyName>
+    </PluginType>
   </PluginTypes>
 </PluginAssembly>

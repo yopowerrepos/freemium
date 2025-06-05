@@ -1,0 +1,5 @@
+<bot_botcomponentcollectionset>
+  <bot_botcomponentcollection botcomponentcollectionid.schemaname="bot_componentcollection_appcopilot_v1" botid.schemaname="crffb_bot540100">
+    <iscustomizable>1</iscustomizable>
+  </bot_botcomponentcollection>
+</bot_botcomponentcollectionset>

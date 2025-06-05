@@ -1435,8 +1435,8 @@
                 <DisableChildItemsEditing static="true" type="Enum">no</DisableChildItemsEditing>
                 <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
                 <EnableSorting static="true" type="Enum">yes</EnableSorting>
-                <EnableGrouping static="true" type="Enum">no</EnableGrouping>
-                <EnableAggregation static="true" type="Enum">no</EnableAggregation>
+                <EnableGrouping static="true" type="Enum">yes</EnableGrouping>
+                <EnableAggregation static="true" type="Enum">yes</EnableAggregation>
                 <EnableColumnMoving static="true" type="Enum">no</EnableColumnMoving>
                 <EnableMultipleSelection static="true" type="Enum">yes</EnableMultipleSelection>
                 <EnableRangeSelection static="true" type="Enum">yes</EnableRangeSelection>
@@ -1452,6 +1452,7 @@
                 <ShowColumnHeaders static="true" type="Enum">yes</ShowColumnHeaders>
                 <ContextualLookupColumnFilters static="true" type="Enum">yes</ContextualLookupColumnFilters>
                 <LookupFilterBeginsWith static="true" type="Enum">no</LookupFilterBeginsWith>
+                <UseFirstColumnForLookupEdits static="true" type="Enum">no</UseFirstColumnForLookupEdits>
                 <GridCustomizerControlFullName static="true" type="SingleLine.Text">yp_yopower.components.yppagridextd</GridCustomizerControlFullName>
                 <DateTimeFormat static="true" type="Enum">none</DateTimeFormat>
                 <DateOnlyFormat static="true" type="Enum">none</DateOnlyFormat>
@@ -1467,8 +1468,8 @@
                 <DisableChildItemsEditing static="true" type="Enum">no</DisableChildItemsEditing>
                 <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
                 <EnableSorting static="true" type="Enum">yes</EnableSorting>
-                <EnableGrouping static="true" type="Enum">no</EnableGrouping>
-                <EnableAggregation static="true" type="Enum">no</EnableAggregation>
+                <EnableGrouping static="true" type="Enum">yes</EnableGrouping>
+                <EnableAggregation static="true" type="Enum">yes</EnableAggregation>
                 <EnableColumnMoving static="true" type="Enum">no</EnableColumnMoving>
                 <EnableMultipleSelection static="true" type="Enum">yes</EnableMultipleSelection>
                 <EnableRangeSelection static="true" type="Enum">yes</EnableRangeSelection>
@@ -1484,6 +1485,7 @@
                 <ShowColumnHeaders static="true" type="Enum">yes</ShowColumnHeaders>
                 <ContextualLookupColumnFilters static="true" type="Enum">yes</ContextualLookupColumnFilters>
                 <LookupFilterBeginsWith static="true" type="Enum">no</LookupFilterBeginsWith>
+                <UseFirstColumnForLookupEdits static="true" type="Enum">no</UseFirstColumnForLookupEdits>
                 <GridCustomizerControlFullName static="true" type="SingleLine.Text">yp_yopower.components.yppagridextd</GridCustomizerControlFullName>
                 <DateTimeFormat static="true" type="Enum">none</DateTimeFormat>
                 <DateOnlyFormat static="true" type="Enum">none</DateOnlyFormat>
@@ -1499,8 +1501,8 @@
                 <DisableChildItemsEditing static="true" type="Enum">no</DisableChildItemsEditing>
                 <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
                 <EnableSorting static="true" type="Enum">yes</EnableSorting>
-                <EnableGrouping static="true" type="Enum">no</EnableGrouping>
-                <EnableAggregation static="true" type="Enum">no</EnableAggregation>
+                <EnableGrouping static="true" type="Enum">yes</EnableGrouping>
+                <EnableAggregation static="true" type="Enum">yes</EnableAggregation>
                 <EnableColumnMoving static="true" type="Enum">no</EnableColumnMoving>
                 <EnableMultipleSelection static="true" type="Enum">yes</EnableMultipleSelection>
                 <EnableRangeSelection static="true" type="Enum">yes</EnableRangeSelection>
@@ -1516,6 +1518,7 @@
                 <ShowColumnHeaders static="true" type="Enum">yes</ShowColumnHeaders>
                 <ContextualLookupColumnFilters static="true" type="Enum">yes</ContextualLookupColumnFilters>
                 <LookupFilterBeginsWith static="true" type="Enum">no</LookupFilterBeginsWith>
+                <UseFirstColumnForLookupEdits static="true" type="Enum">no</UseFirstColumnForLookupEdits>
                 <GridCustomizerControlFullName static="true" type="SingleLine.Text">yp_yopower.components.yppagridextd</GridCustomizerControlFullName>
                 <DateTimeFormat static="true" type="Enum">none</DateTimeFormat>
                 <DateOnlyFormat static="true" type="Enum">none</DateOnlyFormat>

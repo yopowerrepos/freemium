@@ -33,12 +33,26 @@
     <Description description="Empower your business with Power Apps Grid Extensions, enabling seamless customization and management of grid column definitions. Enhance productivity and streamline data handling with this intuitive and flexible solution." languagecode="1033" />
   </Descriptions>
   <appelements>
+    <appelement uniquename="crffb_bot540100">
+      <iscustomizable>1</iscustomizable>
+      <objectid>
+        <schemaname>crffb_bot540100</schemaname>
+      </objectid>
+      <objectidtype>bot</objectidtype>
+    </appelement>
     <appelement uniquename="yp_yp_powerappsgridextensions_canvasappid_yp_powerappsgridextensionsdefaultcommandlibrary_50a99">
       <canvasappid>
         <name>yp_powerappsgridextensionsdefaultcommandlibrary_50a99</name>
       </canvasappid>
       <iscustomizable>1</iscustomizable>
       <name>yp_yp_powerappsgridextensions_canvasappid_yp_powerappsgridextensionsdefaultcommandlibrary_50a99</name>
+    </appelement>
+    <appelement uniquename="yp_yp_powerappsgridextensions_canvasappid_yp_powerappsgridextensionshelper_15e18">
+      <canvasappid>
+        <name>yp_powerappsgridextensionshelper_15e18</name>
+      </canvasappid>
+      <iscustomizable>1</iscustomizable>
+      <name>yp_yp_powerappsgridextensions_canvasappid_yp_powerappsgridextensionshelper_15e18</name>
     </appelement>
   </appelements>
   <appsettings>

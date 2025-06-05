@@ -476,6 +476,10 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string lk_role_modifiedonbehalfby = "lk_role_modifiedonbehalfby";
 			public const string lk_rolebase_createdby = "lk_rolebase_createdby";
 			public const string lk_rolebase_modifiedby = "lk_rolebase_modifiedby";
+			public const string lk_savedquery_createdonbehalfby = "lk_savedquery_createdonbehalfby";
+			public const string lk_savedquery_modifiedonbehalfby = "lk_savedquery_modifiedonbehalfby";
+			public const string lk_savedquerybase_createdby = "lk_savedquerybase_createdby";
+			public const string lk_savedquerybase_modifiedby = "lk_savedquerybase_modifiedby";
 			public const string lk_settingdefinition_createdby = "lk_settingdefinition_createdby";
 			public const string lk_settingdefinition_createdonbehalfby = "lk_settingdefinition_createdonbehalfby";
 			public const string lk_settingdefinition_modifiedby = "lk_settingdefinition_modifiedby";
@@ -2928,6 +2932,70 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetRelatedEntities<yopower_papps_grid_extensions.earlybound.Role>("lk_rolebase_modifiedby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_savedquery_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_savedquery_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<yopower_papps_grid_extensions.earlybound.SavedQuery> lk_savedquery_createdonbehalfby
+		{
+			get
+			{
+				return this.GetRelatedEntities<yopower_papps_grid_extensions.earlybound.SavedQuery>("lk_savedquery_createdonbehalfby", null);
+			}
+			set
+			{
+				this.SetRelatedEntities<yopower_papps_grid_extensions.earlybound.SavedQuery>("lk_savedquery_createdonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_savedquery_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_savedquery_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<yopower_papps_grid_extensions.earlybound.SavedQuery> lk_savedquery_modifiedonbehalfby
+		{
+			get
+			{
+				return this.GetRelatedEntities<yopower_papps_grid_extensions.earlybound.SavedQuery>("lk_savedquery_modifiedonbehalfby", null);
+			}
+			set
+			{
+				this.SetRelatedEntities<yopower_papps_grid_extensions.earlybound.SavedQuery>("lk_savedquery_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_savedquerybase_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_savedquerybase_createdby")]
+		public System.Collections.Generic.IEnumerable<yopower_papps_grid_extensions.earlybound.SavedQuery> lk_savedquerybase_createdby
+		{
+			get
+			{
+				return this.GetRelatedEntities<yopower_papps_grid_extensions.earlybound.SavedQuery>("lk_savedquerybase_createdby", null);
+			}
+			set
+			{
+				this.SetRelatedEntities<yopower_papps_grid_extensions.earlybound.SavedQuery>("lk_savedquerybase_createdby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_savedquerybase_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_savedquerybase_modifiedby")]
+		public System.Collections.Generic.IEnumerable<yopower_papps_grid_extensions.earlybound.SavedQuery> lk_savedquerybase_modifiedby
+		{
+			get
+			{
+				return this.GetRelatedEntities<yopower_papps_grid_extensions.earlybound.SavedQuery>("lk_savedquerybase_modifiedby", null);
+			}
+			set
+			{
+				this.SetRelatedEntities<yopower_papps_grid_extensions.earlybound.SavedQuery>("lk_savedquerybase_modifiedby", null, value);
 			}
 		}
 		

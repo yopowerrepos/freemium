@@ -1,0 +1,11 @@
+<customapiresponseproperty uniquename="success">
+  <description default="success">
+    <label description="success" languagecode="1033" />
+  </description>
+  <displayname default="success">
+    <label description="success" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <name>success</name>
+  <type>0</type>
+</customapiresponseproperty>

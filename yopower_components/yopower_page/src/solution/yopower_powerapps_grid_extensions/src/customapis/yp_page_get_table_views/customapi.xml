@@ -1,0 +1,18 @@
+<customapi uniquename="yp_page_get_table_views">
+  <allowedcustomprocessingsteptype>0</allowedcustomprocessingsteptype>
+  <bindingtype>0</bindingtype>
+  <description default="⚡Get Table Views">
+    <label description="⚡Get Table Views" languagecode="1033" />
+  </description>
+  <displayname default="⚡Get Table Views">
+    <label description="⚡Get Table Views" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isfunction>0</isfunction>
+  <isprivate>0</isprivate>
+  <name>yp_page_get_table_views</name>
+  <plugintypeid>
+    <plugintypeexportkey>68609285-b8da-4933-8a8e-798397ee0f3e</plugintypeexportkey>
+  </plugintypeid>
+  <workflowsdkstepenabled>0</workflowsdkstepenabled>
+</customapi>

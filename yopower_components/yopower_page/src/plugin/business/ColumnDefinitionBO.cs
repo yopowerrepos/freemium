@@ -41,7 +41,7 @@ namespace yopower_papps_grid_extensions.business
 
             var metadataBO = new MetadataBO(this.Service, this.ServiceAdmin, this.NotificationService, this.TracingService, this.Logger, this.Messages);
 
-            var matchTable = metadataBO.GetMetadataTable(table);
+            var matchTable = metadataBO.GetTable(table);
             var matchColumn = matchTable.Columns.Where(w => w.LogicalName == column).FirstOrDefault();
 
             if (matchColumn != null)
@@ -202,7 +202,14 @@ namespace yopower_papps_grid_extensions.business
                         break;
 
                     case yp_gbl_column_definition_type.AnyCopilotExecuteEvent:
-                        throw new InvalidPluginExecutionException($"❌Type not implemented!");
+                        try
+                        {
+                            var model = JsonConvert.DeserializeObject<CopilotExecuteEventModel>(parameters, settings);
+                        }
+                        catch (Exception jse)
+                        {
+                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                        }
                         break;
 
                     default:
