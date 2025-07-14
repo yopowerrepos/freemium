@@ -13,6 +13,7 @@ import { RelatedRecordsCell } from "./RelatedRecordsCell";
 import { FileCell } from "./FileCell";
 import { getNewRelatedRecordCell } from "./NewRelatedRecord";
 import { CopilotExecuteEventCell } from "./CopilotExecuteEventCell";
+import { NotesCell } from "./NotesCell";
 
 export function cellRendererOverrides(
 	subgrid: string,
@@ -29,7 +30,10 @@ export function cellRendererOverrides(
 
 	// Dynamically create the CellRendererOverrides object
 	const overrides: CellRendererOverrides = supportedDataTypes.reduce((acc, dataType) => {
-		acc[dataType] = (props, col) =>
+		// Create a function for each data type that returns the appropriate component
+		// The function will receive the parameters needed to render the cell
+		// and will call getComponent with the correct parameters
+		acc[dataType] = (props, col) => 
 			getComponent(
 				context,
 				col,
@@ -124,6 +128,11 @@ export function getComponent(
 			//Any [New Contextualized Record]
 			case 905:
 				return getNewRelatedRecordCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id, goToSettings);
+				break;
+
+			//Any [Notes]
+			case 906:
+				return <NotesCell context={context} editor={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} goToSettings={goToSettings} />
 				break;
 
 			// Lookup [Navigate Buttons]

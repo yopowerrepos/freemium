@@ -36,6 +36,9 @@ namespace yopower_papps_grid_extensions.earlybound
 		AnyNewRelatedRecord = 905,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		AnyNotes = 906,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		LookupNavigateButtons = 800,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]

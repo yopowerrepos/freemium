@@ -10,5 +10,4 @@ if (Test-Path -Path $out) {
 }
 pac pcf version -s manifest
 pac auth select -n ypdev
-#pac auth select -n ypprv
 pac pcf push --solution-unique-name yopower_powerapps_grid_extensions

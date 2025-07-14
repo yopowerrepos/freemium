@@ -71,7 +71,7 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
                 cursor: "pointer"
             }}
             onKeyDown={(e) => { e.preventDefault() }}
-            onClick={(e) => { upserPageManagedUserQuery(context, params.viewName, params.table, reference, params.fetchXml, params.layoutXml) }}
+            onClick={(e) => { upsertPageManagedUserQuery(context, params.viewName, params.table, reference, params.fetchXml, params.layoutXml) }}
             onMouseDown={(e) => { goToSettings(e) }} >
             <Icon iconName={icon} style={{ marginRight: 3 }} />
             <div style={{ height: 20 }}>
@@ -84,7 +84,7 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
 export function executeAggregate(
     context: ComponentFramework.Context<IInputs>,
     table: string,
-    reference: string,
+    reference: any,
     fetchXmlAggregate: string
 ): Promise<any> {
     if (reference !== null) {
@@ -95,7 +95,7 @@ export function executeAggregate(
     }
 }
 
-export async function upserPageManagedUserQuery(context: ComponentFramework.Context<IInputs>, name: string, table: string, reference: string, fetchXml: string, layoutXml: string): Promise<void> {
+export async function upsertPageManagedUserQuery(context: ComponentFramework.Context<IInputs>, name: string, table: string, reference: string, fetchXml: string, layoutXml: string): Promise<void> {
     const tag = "[Managed PAGE " + table + "]";
     fetchXml = Helper.buildFilter(fetchXml, reference);
     const viewId = await context.webAPI.retrieveMultipleRecords("userquery", "?$select=userqueryid&$filter=description eq '" + tag + "'").then(

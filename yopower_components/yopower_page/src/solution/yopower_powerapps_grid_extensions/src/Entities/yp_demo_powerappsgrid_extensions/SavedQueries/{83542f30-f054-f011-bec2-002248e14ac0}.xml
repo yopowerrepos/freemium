@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{83542f30-f054-f011-bec2-002248e14ac0}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="yp_name" select="1" icon="1" preview="1">
+        <row name="result" id="yp_demo_powerappsgrid_extensionsid">
+          <cell name="yp_rollup_datetime" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="yp_demo_powerappsgrid_extensions">
+          <attribute name="yp_demo_powerappsgrid_extensionsid" />
+          <attribute name="yp_rollup_datetime" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.8</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Rollup Columns" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

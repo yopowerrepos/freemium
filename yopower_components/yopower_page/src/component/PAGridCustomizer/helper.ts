@@ -166,6 +166,7 @@ export class Helper {
             canClose: canClose,
             imageSrc: imageSrc,
             hideHeader: hideHeader,
+            isSelected: true,
             width: width
         });
         pane.navigate({

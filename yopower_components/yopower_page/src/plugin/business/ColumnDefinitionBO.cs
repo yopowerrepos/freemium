@@ -212,6 +212,29 @@ namespace yopower_papps_grid_extensions.business
                         }
                         break;
 
+                    case yp_gbl_column_definition_type.AnyNotes:
+                        try
+                        {
+                            var model = JsonConvert.DeserializeObject<NoteCellModel>(parameters, settings);
+                            if (!string.IsNullOrEmpty(model.FetchXmlAggregate))
+                            {
+                                var fetchxml = model.FetchXmlAggregate.Replace("#valuetype#", "account").Replace("#value#", Guid.Empty.ToString());
+                                var query = ((FetchXmlToQueryExpressionResponse)this.ServiceAdmin.Execute(new FetchXmlToQueryExpressionRequest() { FetchXml = fetchxml })).Query;
+                                NoteCellModel.EnsureFetchXmlAggregateQuery(query);
+                            }
+                            if (!string.IsNullOrEmpty(model.FetchXml))
+                            {
+                                var fetchxml = model.FetchXmlAggregate.Replace("#valuetype#", "account").Replace("#value#", Guid.Empty.ToString());
+                                var query = ((FetchXmlToQueryExpressionResponse)this.ServiceAdmin.Execute(new FetchXmlToQueryExpressionRequest() { FetchXml = fetchxml })).Query;
+                                NoteCellModel.EnsureFetchXmlQuery(query);
+                            }
+                        }
+                        catch (Exception jse)
+                        {
+                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                        }
+                        break;
+
                     default:
                         throw new InvalidPluginExecutionException($"❌Type not implemented!");
                 }

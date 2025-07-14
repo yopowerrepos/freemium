@@ -60,5 +60,13 @@
       <iscustomizable>1</iscustomizable>
       <value>1</value>
     </appsetting>
+    <appsetting settingdefinitionid.uniquename="FormFillBarUXEnabled">
+      <iscustomizable>1</iscustomizable>
+      <value>1</value>
+    </appsetting>
+    <appsetting settingdefinitionid.uniquename="HeaderAndNavigationRefresh">
+      <iscustomizable>1</iscustomizable>
+      <value>2</value>
+    </appsetting>
   </appsettings>
 </AppModule>

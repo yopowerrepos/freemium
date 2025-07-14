@@ -22,6 +22,7 @@
 | **Any [Copilot Execute Event] Preview** | Allow trigger an topic event on Copilot associated with the Model-Driven App.                                        |
 | **Any [Dependent Colorful Cell]**       | Determines the fill and text color of a cell based on an other column according range of values.                     |
 | **Any [New Related Record]**            | Define which associated records can be created through the Power Apps Grid, respecting the relationship's mappings.  |
+| **Any [Notes ]**                        | Allow display notes related to the row, lookups or using a custom fetchxml to group them.                            |
 | **Lookup [Navigate Buttons]**           | Enables navigation buttons for forms related to the lookup.                                                          |
 | **Lookup [Filtered Lookup]**            | Configures a lookup field to be filtered based on the row or other subgrid columns using the `lookupObject` concept. |
 | **Numbers & Date [Colorful Cell]**      | Determines the fill and text color of a cell based on a range of values.                                             |
@@ -261,7 +262,45 @@ An agent was implemented to support you customize yours visualizations
 
 ---
 
-### 7. Lookup [Navigate Buttons]
+### 7. Lookup [Notes ]
+
+- ✅ Allow display notes related to the row, lookups or using a custom fetchxml to group them.       
+- Required include those attributes when the query is customized: annotationid, subject, notetext, createdon, createdby, modifiedon, modifiedby, isdocument and filename
+
+#### Parameters - Notes related to the row
+
+```json
+{
+    "reference" : "row",
+    "column": "",
+    "fetchXmlAggregate": "",
+    "fetchXml": ""
+}
+```
+
+#### Parameters - Notes related to the column lookup (Account)
+
+```json
+{
+    "reference" : "column",
+    "column": "yp_accountid",
+    "fetchXmlAggregate": "",
+    "fetchXml": ""
+}
+```
+
+#### Parameters - Notes related Contacts, related to the column lookup (Account)
+
+```json
+{
+    "reference" : "column",
+    "column": "yp_accountid",
+    "fetchXmlAggregate": "<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false' aggregate='true'><entity name='annotation'><attribute name='annotationid' aggregate='count' alias='count' /><link-entity name='contact' from='contactid' to='objectid' link-type='inner' alias='contact'><filter type='and'><condition attribute='parentcustomerid' operator='eq' uitype='#valuetype#' value='#value#' /></filter></link-entity></entity></fetch>",
+    "fetchXml": "<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'><entity name='annotation'><attribute name='annotationid' /><attribute name='subject' /><attribute name='notetext' /><attribute name='createdon' /><attribute name='createdby' /><attribute name='modifiedon' /><attribute name='modifiedby' /><attribute name='isdocument' />    <attribute name='filename' /><link-entity name='contact' from='contactid' to='objectid' link-type='inner' alias='contact'><filter type='and'><condition attribute='parentcustomerid' operator='eq' uitype='#valuetype#' value='#value#' /></filter></link-entity></entity></fetch>"
+}
+```
+
+### 8. Lookup [Navigate Buttons]
 
 - ✅ Lookups and Customers
 - 📝 Use double click to enter edit mode
@@ -306,7 +345,7 @@ An agent was implemented to support you customize yours visualizations
 
 ---
 
-### 8. Lookup [Filtered Lookup]
+### 9. Lookup [Filtered Lookup]
 
 - ✅ Lookups and Customers
 - ⚠️ The `reference` property defines whether the row or a column is used to substitute the placeholder `#value#`.
@@ -324,7 +363,7 @@ An agent was implemented to support you customize yours visualizations
 
 ---
 
-### 9. Numbers & Date [Colorful Cell]
+### 10. Numbers & Date [Colorful Cell]
 
 - ✅ Decimal, Integer, Float, Currency, Duration, Date Only and Date&Time
 - 📝 Use double click to enter on edit mode
@@ -396,7 +435,7 @@ An agent was implemented to support you customize yours visualizations
 
 ---
 
-### 10. Numbers [Progress Bar]
+### 11. Numbers [Progress Bar]
 
 - ✅ Integer, Decimal and Float
 - 📝 Use double click to enter on edit mode.
@@ -480,7 +519,7 @@ An agent was implemented to support you customize yours visualizations
 
 ---
 
-### 11. Numbers [Duration ]
+### 12. Numbers [Duration ]
 
 - ✅ Duration
 
@@ -496,7 +535,7 @@ An agent was implemented to support you customize yours visualizations
 
 ---
 
-### 12. File [Upload Download]
+### 13. File [Upload Download]
 
 - ✅ File
 

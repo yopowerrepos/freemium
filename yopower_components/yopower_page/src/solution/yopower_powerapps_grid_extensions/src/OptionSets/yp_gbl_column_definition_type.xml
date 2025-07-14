@@ -60,6 +60,14 @@
         <Description description="" languagecode="1033" />
       </Descriptions>
     </option>
+    <option value="906" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="Any [Notes]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
     <option value="800" Color="#fc8ad2" IsHidden="0">
       <labels>
         <label description="Lookup [Navigate Buttons]" languagecode="1033" />

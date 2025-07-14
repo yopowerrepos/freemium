@@ -15,7 +15,7 @@
           <columns>
             <column width="100%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{ed4bc073-775a-4f58-9651-513c5f1079fb}" name="subgrid">
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{ed4bc073-775a-4f58-9651-513c5f1079fb}" name="subgrid" height="auto">
                   <labels>
                     <label description="Subgrid" languagecode="1033" />
                     <label description="Geral" languagecode="1046" />
@@ -44,14 +44,14 @@
                     </row>
                     <row />
                     <row />
-                    <row />
+                    <row height="auto" />
                   </rows>
                 </section>
               </sections>
             </column>
           </columns>
         </tab>
-        <tab name="self" id="910f00f3-8d34-453d-a18e-a8cc7a957b43" IsUserDefined="0" locklevel="0" showlabel="true" expanded="false">
+        <tab name="self" id="910f00f3-8d34-453d-a18e-a8cc7a957b43" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="Self" languagecode="1033" />
           </labels>
@@ -63,7 +63,6 @@
                     <label description="Self" languagecode="1033" />
                   </labels>
                   <rows>
-                    <row />
                     <row>
                       <cell id="{7b8dedbd-6fbf-43ec-9ac0-e49a04ecf43d}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
@@ -167,6 +166,95 @@
                         <control id="yp_file3" classid="{0A7FF475-B016-4687-9CE5-042BFDBD6519}" datafieldname="yp_file3" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell locklevel="0" id="{3d1e106f-989e-439c-896f-64e0fa1eeeae}" rowspan="15" colspan="1">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-C143-495E-A496-C962E5B4488E}" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="rollups" id="a26ab65b-cdf5-40c9-88bc-975c1d602546" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Rollups" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="rollups" id="12b755e6-8bd9-4c85-9561-b81856134741" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Rollups" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{b7c44bb9-5125-b453-7a04-e82c5682707b}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Parent" languagecode="1033" />
+                        </labels>
+                        <control id="yp_parentid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="yp_parentid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0d753c1b-2c34-47ff-87bc-5316930dc725}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Rollup DateTime" languagecode="1033" />
+                        </labels>
+                        <control id="yp_rollup_datetime" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="yp_rollup_datetime" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1d9a41c8-a720-bb1a-0e8d-10ba9ab0c7b4}" showlabel="true" colspan="1" auto="false" rowspan="8">
+                        <labels>
+                          <label description="Demo P.A.G.E (Parent)" languagecode="1033" />
+                        </labels>
+                        <control id="sbgrd_rollups" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" indicationOfSubgrid="true" uniqueid="{07ebae93-c08d-06b4-04e1-7bb6a480c65b}">
+                          <parameters>
+                            <ViewId>{83542F30-F054-F011-BEC2-002248E14AC0}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>yp_demo_powerappsgrid_extensions_parentid_yp_demo_powerappsgrid_extensions</RelationshipName>
+                            <TargetEntityType>yp_demo_powerappsgrid_extensions</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds />
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>Grid</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>false</EnableChartPicker>
+                            <RecordsPerPage>5</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -216,9 +304,6 @@
           </row>
         </rows>
       </footer>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <controlDescriptions>
         <controlDescription forControl="{189ba528-dc53-4e2f-837f-cff589ec97ce}">
           <customControl id="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
@@ -336,7 +421,178 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{07ebae93-c08d-06b4-04e1-7bb6a480c65b}">
+          <customControl id="{E7A81278-8635-4d9e-8D4D-59480B391C5B}">
+            <parameters>
+              <ViewId>{83542F30-F054-F011-BEC2-002248E14AC0}</ViewId>
+              <IsUserView>false</IsUserView>
+              <RelationshipName>yp_demo_powerappsgrid_extensions_parentid_yp_demo_powerappsgrid_extensions</RelationshipName>
+              <TargetEntityType>yp_demo_powerappsgrid_extensions</TargetEntityType>
+              <AutoExpand>Fixed</AutoExpand>
+              <EnableQuickFind>false</EnableQuickFind>
+              <EnableViewPicker>false</EnableViewPicker>
+              <ViewIds />
+              <EnableJumpBar>false</EnableJumpBar>
+              <ChartGridMode>Grid</ChartGridMode>
+              <VisualizationId />
+              <IsUserChart>false</IsUserChart>
+              <EnableChartPicker>false</EnableChartPicker>
+              <RecordsPerPage>5</RecordsPerPage>
+              <HeaderColorCode>#F3F3F3</HeaderColorCode>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="Microsoft.PowerApps.PowerAppsOneGrid">
+            <parameters>
+              <data-set name="Items">
+                <ViewId>{83542F30-F054-F011-BEC2-002248E14AC0}</ViewId>
+                <columnsDefaultView />
+                <IsUserView>false</IsUserView>
+                <RelationshipName>yp_demo_powerappsgrid_extensions_parentid_yp_demo_powerappsgrid_extensions</RelationshipName>
+                <TargetEntityType>yp_demo_powerappsgrid_extensions</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds />
+              </data-set>
+              <EnableEditing static="true" type="Enum">yes</EnableEditing>
+              <DisableChildItemsEditing static="true" type="Enum">no</DisableChildItemsEditing>
+              <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
+              <EnableSorting static="true" type="Enum">yes</EnableSorting>
+              <EnableGrouping static="true" type="Enum">yes</EnableGrouping>
+              <EnableAggregation static="true" type="Enum">yes</EnableAggregation>
+              <EnableColumnMoving static="true" type="Enum">no</EnableColumnMoving>
+              <EnableMultipleSelection static="true" type="Enum">yes</EnableMultipleSelection>
+              <EnableRangeSelection static="true" type="Enum">yes</EnableRangeSelection>
+              <EnableJumpBar static="true" type="Enum">no</EnableJumpBar>
+              <EnablePagination static="true" type="Enum">no</EnablePagination>
+              <EnableDropdownColor static="true" type="Enum">no</EnableDropdownColor>
+              <EnableStatusIcons static="true" type="Enum">yes</EnableStatusIcons>
+              <EnableTypeIcons static="true" type="Enum">no</EnableTypeIcons>
+              <NavigationTypesAllowed static="true" type="Enum">all</NavigationTypesAllowed>
+              <ReflowBehavior static="true" type="Enum">Reflow</ReflowBehavior>
+              <ShowAvatar static="true" type="Enum">yes</ShowAvatar>
+              <ShowFooter static="true" type="Enum">yes</ShowFooter>
+              <ShowColumnHeaders static="true" type="Enum">yes</ShowColumnHeaders>
+              <ContextualLookupColumnFilters static="true" type="Enum">yes</ContextualLookupColumnFilters>
+              <LookupFilterBeginsWith static="true" type="Enum">no</LookupFilterBeginsWith>
+              <UseFirstColumnForLookupEdits static="true" type="Enum">no</UseFirstColumnForLookupEdits>
+              <GridCustomizerControlFullName static="true" type="SingleLine.Text">yp_yopower.components.yppagridextd</GridCustomizerControlFullName>
+              <DateTimeFormat static="true" type="Enum">none</DateTimeFormat>
+              <DateOnlyFormat static="true" type="Enum">none</DateOnlyFormat>
+              <EnableStatusColumn static="true" type="Enum">yes</EnableStatusColumn>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="Microsoft.PowerApps.PowerAppsOneGrid">
+            <parameters>
+              <data-set name="Items">
+                <ViewId>{83542F30-F054-F011-BEC2-002248E14AC0}</ViewId>
+                <columnsDefaultView />
+                <IsUserView>false</IsUserView>
+                <RelationshipName>yp_demo_powerappsgrid_extensions_parentid_yp_demo_powerappsgrid_extensions</RelationshipName>
+                <TargetEntityType>yp_demo_powerappsgrid_extensions</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds />
+              </data-set>
+              <EnableEditing static="true" type="Enum">yes</EnableEditing>
+              <DisableChildItemsEditing static="true" type="Enum">no</DisableChildItemsEditing>
+              <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
+              <EnableSorting static="true" type="Enum">yes</EnableSorting>
+              <EnableGrouping static="true" type="Enum">yes</EnableGrouping>
+              <EnableAggregation static="true" type="Enum">yes</EnableAggregation>
+              <EnableColumnMoving static="true" type="Enum">no</EnableColumnMoving>
+              <EnableMultipleSelection static="true" type="Enum">yes</EnableMultipleSelection>
+              <EnableRangeSelection static="true" type="Enum">yes</EnableRangeSelection>
+              <EnableJumpBar static="true" type="Enum">no</EnableJumpBar>
+              <EnablePagination static="true" type="Enum">no</EnablePagination>
+              <EnableDropdownColor static="true" type="Enum">no</EnableDropdownColor>
+              <EnableStatusIcons static="true" type="Enum">yes</EnableStatusIcons>
+              <EnableTypeIcons static="true" type="Enum">no</EnableTypeIcons>
+              <NavigationTypesAllowed static="true" type="Enum">all</NavigationTypesAllowed>
+              <ReflowBehavior static="true" type="Enum">Reflow</ReflowBehavior>
+              <ShowAvatar static="true" type="Enum">yes</ShowAvatar>
+              <ShowFooter static="true" type="Enum">yes</ShowFooter>
+              <ShowColumnHeaders static="true" type="Enum">yes</ShowColumnHeaders>
+              <ContextualLookupColumnFilters static="true" type="Enum">yes</ContextualLookupColumnFilters>
+              <LookupFilterBeginsWith static="true" type="Enum">no</LookupFilterBeginsWith>
+              <UseFirstColumnForLookupEdits static="true" type="Enum">no</UseFirstColumnForLookupEdits>
+              <GridCustomizerControlFullName static="true" type="SingleLine.Text">yp_yopower.components.yppagridextd</GridCustomizerControlFullName>
+              <DateTimeFormat static="true" type="Enum">none</DateTimeFormat>
+              <DateOnlyFormat static="true" type="Enum">none</DateOnlyFormat>
+              <EnableStatusColumn static="true" type="Enum">yes</EnableStatusColumn>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="Microsoft.PowerApps.PowerAppsOneGrid">
+            <parameters>
+              <data-set name="Items">
+                <ViewId>{83542F30-F054-F011-BEC2-002248E14AC0}</ViewId>
+                <columnsDefaultView />
+                <IsUserView>false</IsUserView>
+                <RelationshipName>yp_demo_powerappsgrid_extensions_parentid_yp_demo_powerappsgrid_extensions</RelationshipName>
+                <TargetEntityType>yp_demo_powerappsgrid_extensions</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds />
+              </data-set>
+              <EnableEditing static="true" type="Enum">yes</EnableEditing>
+              <DisableChildItemsEditing static="true" type="Enum">no</DisableChildItemsEditing>
+              <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
+              <EnableSorting static="true" type="Enum">yes</EnableSorting>
+              <EnableGrouping static="true" type="Enum">yes</EnableGrouping>
+              <EnableAggregation static="true" type="Enum">yes</EnableAggregation>
+              <EnableColumnMoving static="true" type="Enum">no</EnableColumnMoving>
+              <EnableMultipleSelection static="true" type="Enum">yes</EnableMultipleSelection>
+              <EnableRangeSelection static="true" type="Enum">yes</EnableRangeSelection>
+              <EnableJumpBar static="true" type="Enum">no</EnableJumpBar>
+              <EnablePagination static="true" type="Enum">no</EnablePagination>
+              <EnableDropdownColor static="true" type="Enum">no</EnableDropdownColor>
+              <EnableStatusIcons static="true" type="Enum">yes</EnableStatusIcons>
+              <EnableTypeIcons static="true" type="Enum">no</EnableTypeIcons>
+              <NavigationTypesAllowed static="true" type="Enum">all</NavigationTypesAllowed>
+              <ReflowBehavior static="true" type="Enum">Reflow</ReflowBehavior>
+              <ShowAvatar static="true" type="Enum">yes</ShowAvatar>
+              <ShowFooter static="true" type="Enum">yes</ShowFooter>
+              <ShowColumnHeaders static="true" type="Enum">yes</ShowColumnHeaders>
+              <ContextualLookupColumnFilters static="true" type="Enum">yes</ContextualLookupColumnFilters>
+              <LookupFilterBeginsWith static="true" type="Enum">no</LookupFilterBeginsWith>
+              <UseFirstColumnForLookupEdits static="true" type="Enum">no</UseFirstColumnForLookupEdits>
+              <GridCustomizerControlFullName static="true" type="SingleLine.Text">yp_yopower.components.yppagridextd</GridCustomizerControlFullName>
+              <DateTimeFormat static="true" type="Enum">none</DateTimeFormat>
+              <DateOnlyFormat static="true" type="Enum">none</DateOnlyFormat>
+              <EnableStatusColumn static="true" type="Enum">yes</EnableStatusColumn>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
+      <Navigation>
+        <NavBar />
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
