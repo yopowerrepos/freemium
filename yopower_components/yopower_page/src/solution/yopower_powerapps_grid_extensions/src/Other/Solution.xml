@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.25065.158" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25065.158" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25065.00158">
+<ImportExportXml version="9.2.25081.196" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25081.196" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25082.00141">
   <SolutionManifest>
     <UniqueName>yopower_powerapps_grid_extensions</UniqueName>
     <LocalizedNames>
       <LocalizedName description="🟣yopower - Power Apps Grid Extensions" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.8</Version>
+    <Version>1.0.0.9</Version>
     <Managed>2</Managed>
     <Publisher>
       <UniqueName>yopower</UniqueName>
@@ -103,6 +103,7 @@
       <RootComponent type="66" schemaName="yp_yopower.components.yppagridextd" behavior="0" />
       <RootComponent type="80" schemaName="yp_powerappsgridextensions" behavior="0" />
       <RootComponent type="9" schemaName="yp_gbl_column_definition_pptionset_criteria" behavior="0" />
+      <RootComponent type="9" schemaName="yp_gbl_column_definition_shortcut" behavior="0" />
       <RootComponent type="9" schemaName="yp_gbl_column_definition_type" behavior="0" />
       <RootComponent type="9" schemaName="yp_gbl_column_mode" behavior="0" />
       <RootComponent type="91" id="{bab14543-14d2-432a-bb50-f365490030f3}" schemaName="yopower_papps_grid_extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35ea4f843cfb5138" behavior="0" />
@@ -111,14 +112,14 @@
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_aimodel" displayName="AI Model" solution="msdyn_AISolution (202506.4.17.3)">
-          <package appName="PowerAI" version="202506.4.17.3">msdyn_AISolutionAnchor (202506.4.17.3)</package>
+        <Required type="1" schemaName="msdyn_aimodel" displayName="AI Model" solution="msdyn_AISolution (202507.1.4.2)">
+          <package appName="PowerAI" version="202507.1.4.2">msdyn_AISolutionAnchor (202507.1.4.2)</package>
         </Required>
         <Dependent type="300" schemaName="yp_powerappsgridextensionshelper_15e18" displayName="Power Apps Grid Extensions - Helper" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Account" parentDisplayName="Account" solution="msdynce_AppCommon (9.0.4.0066)" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}">
-          <package appName="msdynce_AppCommon" version="9.0.25064.10001">msdynce_AppCommonAnchor (9.0.25064.10001)</package>
+          <package appName="msdynce_AppCommon" version="9.0.25073.10001">msdynce_AppCommonAnchor (9.0.25073.10001)</package>
         </Required>
         <Dependent type="80" schemaName="yp_powerappsgridextensions" displayName="Power Apps Grid Extensions" />
       </MissingDependency>
@@ -144,20 +145,20 @@
         <Dependent type="appaction" displayName="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2506.5008)">
-          <package appName="Base Custom Controls" version="9.0.2506.5008">BaseCustomControlsCore (9.0.2506.5008)</package>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2508.1011)">
+          <package appName="Base Custom Controls" version="9.0.2508.1011">BaseCustomControlsCore (9.0.2508.1011)</package>
         </Required>
         <Dependent type="60" displayName="Main" parentDisplayName="Demo P.A.G.E" id="{5c017196-1ac1-4367-a59f-01b62333de4a}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2506.5008)">
-          <package appName="Base Custom Controls" version="9.0.2506.5008">BaseCustomControlsCore (9.0.2506.5008)</package>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2508.1011)">
+          <package appName="Base Custom Controls" version="9.0.2508.1011">BaseCustomControlsCore (9.0.2508.1011)</package>
         </Required>
         <Dependent type="68" id="{b9bbe449-8ab9-430c-ace6-8eda0eaf1058}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2506.5008)">
-          <package appName="Base Custom Controls" version="9.0.2506.5008">BaseCustomControlsCore (9.0.2506.5008)</package>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2508.1011)">
+          <package appName="Base Custom Controls" version="9.0.2508.1011">BaseCustomControlsCore (9.0.2508.1011)</package>
         </Required>
         <Dependent type="68" id="{f68092fc-94f8-4db1-8d15-51934cf026ac}" />
       </MissingDependency>

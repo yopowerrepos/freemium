@@ -17,7 +17,6 @@ interface NotesCellProps {
     definition: any;
     table: string;
     id: string;
-    goToSettings: (e: any) => void;
 }
 
 export const NotesCell: React.FC<NotesCellProps> = ({
@@ -27,8 +26,7 @@ export const NotesCell: React.FC<NotesCellProps> = ({
     props,
     definition,
     table,
-    id,
-    goToSettings
+    id
 }) => {
     const params = JSON.parse(definition.parameters);
     const reference = Helper.getFilteredLookupValue(params, table, editor);
@@ -80,9 +78,7 @@ export const NotesCell: React.FC<NotesCellProps> = ({
                 cursor: "pointer"
             }}
             onKeyDown={(e) => { e.preventDefault(); }}
-            onClick={(e) => { setModalOpen(true); }}
-            onMouseDown={(e) => { goToSettings(e); }}
-        >
+            onClick={(e) => { value !== "0" && setModalOpen(true); }}>
             <Icon iconName={"AddNotes"} style={{ marginRight: 3 }} />
             <div style={{ height: 20 }}>{value}</div>
 

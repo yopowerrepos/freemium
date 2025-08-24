@@ -11,8 +11,7 @@ export function getLookupNavigateButtonsCell(
     props: any,
     definition: any,
     table: string,
-    id: string,
-    goToSettings: (e: any) => void
+    id: string
 ): React.ReactElement | null | undefined {
     if (col.dataType === "Lookup"
         || col.dataType === "Customer") {
@@ -67,9 +66,6 @@ export function getLookupNavigateButtonsCell(
                     onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
                     onClick={
                         item.onClick
-                    }
-                    //Helper.navigateToRecordModal(item.position, props.value.etn, props.value.id.guid ?? props.value.id, item.formId, item.tabName, item.height, item.width) }}
-                    onContextMenu={(e) => { goToSettings(e); }
                     }>
                     <div style={{ height: 20 }}>
                         {props.formattedValue}
@@ -84,8 +80,7 @@ export function getLookupNavigateButtonsCell(
                         checked={false}
                         iconProps={{ iconName: "View" }}
                         onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
-                        onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
-                        onMouseDown={(e) => { goToSettings(e) }} />
+                        onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }} />
                 );
             }
         }

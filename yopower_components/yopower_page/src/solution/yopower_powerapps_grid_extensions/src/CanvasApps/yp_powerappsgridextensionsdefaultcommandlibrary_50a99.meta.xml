@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Name>yp_powerappsgridextensionsdefaultcommandlibrary_50a99</Name>
-  <AppVersion>2025-04-26T22:44:47Z</AppVersion>
+  <AppVersion>2025-07-18T11:10:49Z</AppVersion>
   <Status>Ready</Status>
-  <CreatedByClientVersion>3.25042.10.0</CreatedByClientVersion>
-  <MinClientVersion>3.25042.10.0</MinClientVersion>
-  <Tags>{"primaryDeviceWidth":"1366","primaryDeviceHeight":"768","sienaVersion":"20250423T221537Z-3.25042.10.0","deviceCapabilities":"","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","publisherVersion":"3.25042.10","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false","showStatusBar":"false"}</Tags>
+  <CreatedByClientVersion>3.25071.7.0</CreatedByClientVersion>
+  <MinClientVersion>0.0.0.0</MinClientVersion>
+  <Tags>{"primaryDeviceWidth":"1366","primaryDeviceHeight":"768","sienaVersion":"20250426T224447Z-3.25042.10.0","deviceCapabilities":"","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","publisherVersion":"3.25071.7","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false","showStatusBar":"false"}</Tags>
   <IsCdsUpgraded>0</IsCdsUpgraded>
   <GalleryItemId xsi:nil="true"></GalleryItemId>
   <BackgroundColor>RGBA(251,101,60,1)</BackgroundColor>
   <DisplayName>powerappsgridextensions_DefaultCommandLibrary</DisplayName>
   <Description xsi:nil="true"></Description>
-  <CommitMessage xsi:nil="true"></CommitMessage>
+  <CommitMessage>Saved by Command designer.</CommitMessage>
   <Publisher xsi:nil="true"></Publisher>
   <AuthorizationReferences>[]</AuthorizationReferences>
   <ConnectionReferences>{}</ConnectionReferences>
-  <DatabaseReferences>{"default.cds":{"databaseDetails":{"referenceType":"Environmental","environmentName":"default.cds","overrideValues":{"status":"NotSpecified"}},"dataSources":{"Column Definitions":{"entitySetName":"yp_pagridextd_column_definitions","logicalName":"yp_pagridextd_column_definition"}}}}</DatabaseReferences>
-  <AppComponents>[{"appComponentName":"28f18bc888074fcd9d07175841f762b7","displayName":"Clear localStorage_1","appName":"2af1d63a-46c6-4386-a1c2-50a6dfe0792a","appVersion":"2025-04-26T22:44:47Z","appComponentLibraryLogicalName":"yp_powerappsgridextensionsdefaultcommandlibrary_50a99","appDisplayName":"powerappsgridextensions_DefaultCommandLibrary","environmentName":"46aa772c-06e0-e4ed-82c4-8de2d06bc8e4","owner":{"id":"4c9cd051-f500-473d-af69-6df9fa79ee8c","displayName":"Vinicius Basile","email":"vinicius@yopower.com.br","type":"User","tenantId":"0c663099-0ee3-44e8-9b16-4f2897e8ffd4","userPrincipalName":"vinicius@yopower.com.br"},"allowCustomization":true,"createdOn":"2025-04-02T19:17:10.354Z","lastModifiedOn":"2025-04-23T22:15:37.855Z","connectionReferences":{},"databaseReferences":{"default.cds":{"databaseDetails":{"referenceType":"NotSpecified","environmentName":"default.cds","overrideValues":{"status":"NotSpecified"}},"dataSources":{"Column Definitions":{"entitySetName":"yp_pagridextd_column_definitions","logicalName":"yp_pagridextd_column_definition"}}}}},{"appComponentName":"e34fba6517ed488e8756e60a14010902","displayName":"Clone Definition_2","appName":"2af1d63a-46c6-4386-a1c2-50a6dfe0792a","appVersion":"2025-04-26T22:44:47Z","appComponentLibraryLogicalName":"yp_powerappsgridextensionsdefaultcommandlibrary_50a99","appDisplayName":"powerappsgridextensions_DefaultCommandLibrary","environmentName":"46aa772c-06e0-e4ed-82c4-8de2d06bc8e4","owner":{"id":"4c9cd051-f500-473d-af69-6df9fa79ee8c","displayName":"Vinicius Basile","email":"vinicius@yopower.com.br","type":"User","tenantId":"0c663099-0ee3-44e8-9b16-4f2897e8ffd4","userPrincipalName":"vinicius@yopower.com.br"},"allowCustomization":true,"createdOn":"2025-04-02T19:17:10.354Z","lastModifiedOn":"2025-04-23T22:15:37.855Z","connectionReferences":{},"databaseReferences":{"default.cds":{"databaseDetails":{"referenceType":"NotSpecified","environmentName":"default.cds","overrideValues":{"status":"NotSpecified"}},"dataSources":{"Column Definitions":{"entitySetName":"yp_pagridextd_column_definitions","logicalName":"yp_pagridextd_column_definition"}}}}}]</AppComponents>
+  <DatabaseReferences>{"default.cds":{"databaseDetails":{"referenceType":"Environmental","environmentName":"default.cds"},"dataSources":{"Column Definitions":{"entitySetName":"yp_pagridextd_column_definitions","logicalName":"yp_pagridextd_column_definition"}}}}</DatabaseReferences>
+  <AppComponents>[]</AppComponents>
   <AppComponentDependencies>[]</AppComponentDependencies>
   <CanConsumeAppPass>1</CanConsumeAppPass>
   <CanvasAppType>1</CanvasAppType>
@@ -26,9 +26,6 @@
   <IntroducedVersion>1.0</IntroducedVersion>
   <CdsDependencies>{"cdsdependencies":[{"logicalname":"yp_pagridextd_column_definition","componenttype":1}]}</CdsDependencies>
   <IsCustomizable>1</IsCustomizable>
-  <BackgroundImageUri>/CanvasApps/yp_powerappsgridextensionsdefaultcommandlibra25396_BackgroundImageUri</BackgroundImageUri>
-  <DocumentUri>/CanvasApps/yp_powerappsgridextensionsdefaultcommandlibra87745_DocumentUri.msapp</DocumentUri>
-  <AdditionalUris>
-    <AdditionalUri>/CanvasApps/yp_powerappsgridextensionsdefaultcommandlibra85113_AdditionalUris0_identity.json</AdditionalUri>
-  </AdditionalUris>
+  <BackgroundImageUri>/CanvasApps/yp_powerappsgridextensionsdefaultcommandlibra47425_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/yp_powerappsgridextensionsdefaultcommandlibra65126_DocumentUri.msapp</DocumentUri>
 </CanvasApp>

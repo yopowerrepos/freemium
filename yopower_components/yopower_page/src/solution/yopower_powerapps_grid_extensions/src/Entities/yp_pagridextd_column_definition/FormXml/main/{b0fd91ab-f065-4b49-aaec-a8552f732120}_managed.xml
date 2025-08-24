@@ -53,6 +53,14 @@
                         <control id="yp_mode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="yp_mode" disabled="true" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{4e10e190-5e03-4641-9a45-8b1e490f10be}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="yp_shortcut" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="yp_shortcut" disabled="false" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
                 <section name="subgrid" id="3344bc5c-2ec3-47cd-9bbe-d9e3e2193409" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">

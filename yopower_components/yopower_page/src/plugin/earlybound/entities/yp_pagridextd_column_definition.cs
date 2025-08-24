@@ -76,6 +76,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string Id = "yp_pagridextd_column_definitionid";
 			public const string yp_parameters = "yp_parameters";
 			public const string yp_rename_column = "yp_rename_column";
+			public const string yp_shortcut = "yp_shortcut";
 			public const string yp_subgrid_column = "yp_subgrid_column";
 			public const string yp_subgrid_name = "yp_subgrid_name";
 			public const string yp_subgrid_table = "yp_subgrid_table";
@@ -447,6 +448,19 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("yp_rename_column", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yp_shortcut")]
+		public virtual yp_gbl_column_definition_shortcut? yp_shortcut
+		{
+			get
+			{
+				return ((yp_gbl_column_definition_shortcut?)(EntityOptionSetEnum.GetEnum(this, "yp_shortcut")));
+			}
+			set
+			{
+				this.SetAttributeValue("yp_shortcut", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 			}
 		}
 		

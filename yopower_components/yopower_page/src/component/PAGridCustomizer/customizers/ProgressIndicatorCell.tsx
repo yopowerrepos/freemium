@@ -10,8 +10,7 @@ export function gerProgressBarCell(
     props: any,
     definition: any,
     table: string,
-    id: string,
-    goToSettings: (e: any) => void
+    id: string
 ): React.ReactElement | null | undefined {
     const type = JSON.parse(definition.parameters).type as string;
     const rules = JSON.parse(definition.parameters).rules as Array<any>;
@@ -36,8 +35,7 @@ export function gerProgressBarCell(
                             textAlign: "left"
                         }}
                         onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
-                        onClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
-                        onMouseDown={(e) => { goToSettings(e) }} >
+                        onClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}>
                         <ProgressIndicator
                             description={props.formattedValue}
                             percentComplete={value}

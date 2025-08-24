@@ -16,6 +16,7 @@ namespace yopower_papps_grid_extensions.models
             this.Id = row.Id;
             this.Name = row.yp_name;
             this.Type = row.yp_type.Value.GetHashCode();
+            this.Shortcut = row.yp_shortcut != null ? row.yp_shortcut.GetHashCode() : -1;
             this.Subgrid = row.yp_subgrid_name;
             this.Table = row.yp_subgrid_table;
             this.Column = row.yp_subgrid_column;
@@ -41,12 +42,13 @@ namespace yopower_papps_grid_extensions.models
         [DataMember(Name = "id", Order = 1)] public Guid Id { get; set; }
         [DataMember(Name = "name", Order = 2)] public string Name { get; set; }
         [DataMember(Name = "type", Order = 3)] public int Type { get; set; }
-        [DataMember(Name = "subgrid", Order = 4)] public string Subgrid { get; set; }
-        [DataMember(Name = "table", Order = 5)] public string Table { get; set; }
-        [DataMember(Name = "column", Order = 6)] public string Column { get; set; }
-        [DataMember(Name = "settings", Order = 7)] public AdditionalSettings Settings { get; set; }
-        [DataMember(Name = "parameters", Order = 8)] public string Parameters { get; set; }
-        [DataMember(Name = "condition", IsRequired = false, Order = 9)] public OptionSetCondition Condition { get; set; }
+        [DataMember(Name = "shortcut", Order = 4)] public int Shortcut { get; set; }
+        [DataMember(Name = "subgrid", Order = 5)] public string Subgrid { get; set; }
+        [DataMember(Name = "table", Order = 6)] public string Table { get; set; }
+        [DataMember(Name = "column", Order = 7)] public string Column { get; set; }
+        [DataMember(Name = "settings", Order = 8)] public AdditionalSettings Settings { get; set; }
+        [DataMember(Name = "parameters", Order = 9)] public string Parameters { get; set; }
+        [DataMember(Name = "condition", IsRequired = false, Order = 10)] public OptionSetCondition Condition { get; set; }
 
     }
 }

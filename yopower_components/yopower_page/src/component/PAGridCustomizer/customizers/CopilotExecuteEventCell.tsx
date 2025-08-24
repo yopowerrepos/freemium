@@ -16,7 +16,6 @@ interface CopilotExecuteEventCellProps {
     table: string;
     id: string;
     subgrid: string;
-    goToSettings: (e: any) => void;
 }
 
 export const CopilotExecuteEventCell: React.FC<CopilotExecuteEventCellProps> = ({
@@ -27,8 +26,7 @@ export const CopilotExecuteEventCell: React.FC<CopilotExecuteEventCellProps> = (
     definition,
     table,
     id,
-    subgrid,
-    goToSettings
+    subgrid
 }) => {
     const [loading, setLoading] = React.useState<boolean>(false);
 
@@ -83,9 +81,7 @@ export const CopilotExecuteEventCell: React.FC<CopilotExecuteEventCellProps> = (
                     }}
                     onClick={item?.onClick}
                     onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
-                    onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
-                    onMouseDown={(e) => { goToSettings(e) }}
-                >
+                    onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}>
                     <Icon imageProps={{ src: "/WebResources/msdyn_CopilotIconWithColor.svg", style: { height: 18 } }} style={{ marginRight: 3 }} />
                     <div style={{ height: 20 }}>{item?.text ?? props.formattedValue}</div>
                 </div>
@@ -95,9 +91,7 @@ export const CopilotExecuteEventCell: React.FC<CopilotExecuteEventCellProps> = (
                     menuProps={{ items } as IContextualMenuProps}
                     checked={true}
                     iconProps={{ imageProps: { src: "/WebResources/msdyn_CopilotIconWithColor.svg", style: { height: 18 } } }}
-                    onDoubleClick={(e) => { e.preventDefault(); }}
-                    onMouseDown={(e) => { goToSettings(e); }}
-                />
+                    onDoubleClick={(e) => { e.preventDefault(); }} />
             )}
         </div>
     );

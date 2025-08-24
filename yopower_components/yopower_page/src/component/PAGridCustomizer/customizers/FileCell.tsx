@@ -13,8 +13,7 @@ interface FileCellProps {
     props: any,
     definition: any,
     table: string,
-    id: string,
-    goToSettings: (e: any) => void
+    id: string
 }
 
 export const FileCell: React.FC<FileCellProps> = ({
@@ -23,8 +22,7 @@ export const FileCell: React.FC<FileCellProps> = ({
     props,
     definition,
     table,
-    id,
-    goToSettings
+    id
 }) => {
 
     // Workaround for a bug when the file cell is empty
@@ -126,8 +124,7 @@ export const FileCell: React.FC<FileCellProps> = ({
     const navigateToProps: IContextualMenuProps = { items };
 
     return (
-        <div className={fileCellClassName}
-            onMouseDown={(e) => { goToSettings(e) }} >
+        <div className={fileCellClassName}>
             {
                 loading
                     ? (<Spinner size={SpinnerSize.small} />)

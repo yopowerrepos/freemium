@@ -268,6 +268,7 @@ namespace yopower_papps_grid_extensions.business
                         Id = s.Id,
                         yp_name = s.yp_name,
                         yp_type = s.yp_type,
+                        yp_shortcut = s.yp_shortcut,
                         yp_subgrid_name = s.yp_subgrid_name,
                         yp_subgrid_table = s.yp_subgrid_table,
                         yp_subgrid_column = s.yp_subgrid_column,

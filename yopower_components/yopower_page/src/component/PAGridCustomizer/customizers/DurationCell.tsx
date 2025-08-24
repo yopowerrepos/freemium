@@ -13,8 +13,7 @@ interface DurationCellProps {
     props: any,
     definition: any,
     table: string,
-    id: string,
-    goToSettings: (e: any) => void
+    id: string
 }
 
 export const DurationCell: React.FC<DurationCellProps> = ({
@@ -24,8 +23,7 @@ export const DurationCell: React.FC<DurationCellProps> = ({
     props,
     definition,
     table,
-    id,
-    goToSettings
+    id
 }) => {
     if (col.dataType === "Duration") {
         const params = JSON.parse(definition.parameters);
@@ -45,8 +43,7 @@ export const DurationCell: React.FC<DurationCellProps> = ({
                     alignItems: "center",
                     justifyContent: "center"
                 }}
-                tabIndex={-1}
-                onMouseDown={(e) => goToSettings(e)}>
+                tabIndex={-1}>
                 <SpinButton
                     defaultValue={(props.value / 60).toString()}
                     min={params.min}

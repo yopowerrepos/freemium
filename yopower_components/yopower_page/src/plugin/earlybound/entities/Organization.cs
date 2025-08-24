@@ -752,6 +752,8 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string IsBaseCardStaticFieldDataEnabled = "isbasecardstaticfielddataenabled";
 			public const string IsBasicGeospatialIntegrationEnabled = "isbasicgeospatialintegrationenabled";
 			public const string IsBPFEntityCustomizationFeatureEnabled = "isbpfentitycustomizationfeatureenabled";
+			public const string IsCloudFlowSavingsEnabled = "iscloudflowsavingsenabled";
+			public const string IsClusteringEnabled = "isclusteringenabled";
 			public const string IsCollaborationExperienceEnabled = "iscollaborationexperienceenabled";
 			public const string IsComputerUseInMCSEnabled = "iscomputeruseinmcsenabled";
 			public const string IsConflictDetectionEnabledForMobileClient = "isconflictdetectionenabledformobileclient";
@@ -768,6 +770,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string IsDesktopFlowConnectionEmbeddingEnabled = "isdesktopflowconnectionembeddingenabled";
 			public const string IsDesktopFlowRuntimeRepairAttendedEnabled = "isdesktopflowruntimerepairattendedenabled";
 			public const string IsDesktopFlowRuntimeRepairUnattendedEnabled = "isdesktopflowruntimerepairunattendedenabled";
+			public const string IsDesktopFlowSavingsEnabled = "isdesktopflowsavingsenabled";
 			public const string IsDesktopFlowSchemaV2Enabled = "isdesktopflowschemav2enabled";
 			public const string IsDesktopFlowVanillaImageSharingEnabled = "isdesktopflowvanillaimagesharingenabled";
 			public const string IsDisabled = "isdisabled";
@@ -831,6 +834,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string IsTextWrapEnabled = "istextwrapenabled";
 			public const string IsUserAccessAuditEnabled = "isuseraccessauditenabled";
 			public const string ISVIntegrationCode = "isvintegrationcode";
+			public const string IsWorkQueueSavingsEnabled = "isworkqueuesavingsenabled";
 			public const string IsWriteInProductsAllowed = "iswriteinproductsallowed";
 			public const string KaPrefix = "kaprefix";
 			public const string KbPrefix = "kbprefix";
@@ -4465,6 +4469,34 @@ namespace yopower_papps_grid_extensions.earlybound
 			}
 		}
 		
+		/// <summary>
+		/// Indicates whether Power Automate savings feature is enabled for Cloudflow.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscloudflowsavingsenabled")]
+		public System.Nullable<bool> IsCloudFlowSavingsEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscloudflowsavingsenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("iscloudflowsavingsenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Read-only flag indicating whether clustering is enabled for the organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isclusteringenabled")]
+		public System.Nullable<bool> IsClusteringEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isclusteringenabled");
+			}
+		}
+		
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscollaborationexperienceenabled")]
 		public System.Nullable<bool> IsCollaborationExperienceEnabled
 		{
@@ -4715,6 +4747,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("isdesktopflowruntimerepairunattendedenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Power Automate savings feature is enabled for Desktopflow.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowsavingsenabled")]
+		public System.Nullable<bool> IsDesktopFlowSavingsEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdesktopflowsavingsenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("isdesktopflowsavingsenabled", value);
 			}
 		}
 		
@@ -5713,6 +5761,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("isvintegrationcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Power Automate savings feature is enabled for WorkQueue.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isworkqueuesavingsenabled")]
+		public System.Nullable<bool> IsWorkQueueSavingsEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isworkqueuesavingsenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("isworkqueuesavingsenabled", value);
 			}
 		}
 		

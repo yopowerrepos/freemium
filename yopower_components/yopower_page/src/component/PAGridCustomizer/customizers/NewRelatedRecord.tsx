@@ -11,9 +11,7 @@ export function getNewRelatedRecordCell(
     props: any,
     definition: any,
     table: string,
-    id: string,
-    goToSettings: (e: any) => void
-
+    id: string
 ): React.ReactElement | null | undefined {
     let items = new Array<IContextualMenuItem>();
     const options = JSON.parse(definition.parameters).options as Array<any>;
@@ -41,7 +39,6 @@ export function getNewRelatedRecordCell(
             checked={false}
             iconProps={{ iconName: "Add" }}
             onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
-            onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
-            onMouseDown={(e) => { goToSettings(e) }} />
+            onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }} />
     );
 }

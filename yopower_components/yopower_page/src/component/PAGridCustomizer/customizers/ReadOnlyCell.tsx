@@ -9,8 +9,7 @@ export function getReadOnlyCell(
     props: any,
     definition: any,
     table: string,
-    id: string,
-    goToSettings: (e: any) => void
+    id: string
 ): React.ReactElement | null | undefined {
     return <p
         style={{
@@ -19,8 +18,7 @@ export function getReadOnlyCell(
             textAlign: "left",
         }}
         onKeyDown={(e) => { e.preventDefault() }}
-        onClick={(e) => { e.preventDefault(); return; }}
-        onMouseDown={(e) => { goToSettings(e) }} >
+        onClick={(e) => { e.preventDefault(); return; }}>
         {props.formattedValue}
     </p>
 }

@@ -12,7 +12,6 @@ interface RelatedRecordsCellProps {
     definition: any;
     table: string;
     id: string;
-    goToSettings: (e: any) => void;
 }
 
 export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
@@ -22,8 +21,7 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
     props,
     definition,
     table,
-    id,
-    goToSettings
+    id
 }) => {
     const params = JSON.parse(definition.parameters);
     const rules = params.rules as Array<any>;
@@ -71,8 +69,7 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
                 cursor: "pointer"
             }}
             onKeyDown={(e) => { e.preventDefault() }}
-            onClick={(e) => { upsertPageManagedUserQuery(context, params.viewName, params.table, reference, params.fetchXml, params.layoutXml) }}
-            onMouseDown={(e) => { goToSettings(e) }} >
+            onClick={(e) => { upsertPageManagedUserQuery(context, params.viewName, params.table, reference, params.fetchXml, params.layoutXml) }}>
             <Icon iconName={icon} style={{ marginRight: 3 }} />
             <div style={{ height: 20 }}>
                 {value}
