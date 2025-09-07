@@ -1,0 +1,15 @@
+<aiskillconfig uniquename="ais_FormFillFieldOptOut_yp_pagridextd_column_definition_yp_elegible_for_security_roles">
+  <aiskill>FormFillFieldOptOut</aiskill>
+  <attribute>
+    <entityid.logicalname>yp_pagridextd_column_definition</entityid.logicalname>
+    <logicalname>yp_elegible_for_security_roles</logicalname>
+  </attribute>
+  <description>yp_pagridextd_column_definition - Elegible For Security Roles Form fill opt out</description>
+  <entity>
+    <logicalname>yp_pagridextd_column_definition</logicalname>
+  </entity>
+  <iscustomizable>1</iscustomizable>
+  <scope>1</scope>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</aiskillconfig>

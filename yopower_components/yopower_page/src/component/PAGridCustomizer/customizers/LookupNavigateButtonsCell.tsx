@@ -1,34 +1,25 @@
 import * as React from "react";
-import { ColumnDefinition, GetRendererParams } from "../types";
-import { CommandButton, IContextualMenuItem, IContextualMenuProps } from "@fluentui/react";
+import { ICell } from "../interfaces/ICell";
 import { Helper } from "../helper";
-import { IInputs } from "../generated/ManifestTypes";
+import { CommandButton, IContextualMenuItem, IContextualMenuProps } from "@fluentui/react";
 
-export function getLookupNavigateButtonsCell(
-    context: ComponentFramework.Context<IInputs>,
-    render: GetRendererParams,
-    col: ColumnDefinition,
-    props: any,
-    definition: any,
-    table: string,
-    id: string
-): React.ReactElement | null | undefined {
-    if (col.dataType === "Lookup"
-        || col.dataType === "Customer") {
+export function getLookupNavigateButtonsCell(cell: ICell): React.ReactElement | null | undefined {
+    if (cell.col.dataType === "Lookup"
+        || cell.col.dataType === "Customer") {
 
         let items = new Array<IContextualMenuItem>();
-        const modal = JSON.parse(definition.parameters).modal as Array<any>;
-        const sidePane = JSON.parse(definition.parameters).sidePane as Array<any>;
+        const modal = JSON.parse(cell.definition.parameters).modal as Array<any>;
+        const sidePane = JSON.parse(cell.definition.parameters).sidePane as Array<any>;
 
         // Get Table (Manage Polymorphic)
-        if (props.value) {
+        if (cell.props.value) {
             if (modal !== null && modal.length > 0) {
                 items = items.concat(modal.map(m => {
                     return {
                         key: m.label,
                         text: m.label,
                         onClick: (e: any) => {
-                            Helper.navigateToRecordModal(m.position, props.value.etn, props.value.id.guid ?? props.value.id, m.formId, m.tabName, m.height, m.width)
+                            Helper.navigateToRecordModal(m.position, cell.props.value.etn, cell.props.value.id.guid ?? cell.props.value.id, m.formId, m.tabName, m.height, m.width)
                         }
                     } as IContextualMenuItem
                 }));
@@ -39,7 +30,7 @@ export function getLookupNavigateButtonsCell(
                         key: m.label,
                         text: m.label,
                         onClick: (e: any) => {
-                            Helper.navigateToPane(props.value.etn, props.value.id.guid ?? props.value.id, m.formId, m.imageSrc, m.paneId, m.canClose, m.hideHeader, m.width)
+                            Helper.navigateToPane(cell.props.value.etn, cell.props.value.id.guid ?? cell.props.value.id, m.formId, m.imageSrc, m.paneId, m.canClose, m.hideHeader, m.width)
                         }
                     } as IContextualMenuItem
                 }));
@@ -63,24 +54,24 @@ export function getLookupNavigateButtonsCell(
                         margin: "4px",
                         cursor: "pointer"
                     }}
-                    onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
+                    onKeyDown={(e) => { cell.definition.settings.editable ? cell.props.startEditing() : e.preventDefault() }}
                     onClick={
                         item.onClick
                     }>
                     <div style={{ height: 20 }}>
-                        {props.formattedValue}
+                        {cell.props.formattedValue}
                     </div>
                 </div>;
             }
             else {
                 return (
                     <CommandButton
-                        text={props.formattedValue}
+                        text={cell.props.formattedValue}
                         menuProps={navigateToProps}
                         checked={false}
                         iconProps={{ iconName: "View" }}
-                        onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
-                        onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }} />
+                        onKeyDown={(e) => { cell.definition.settings.editable ? cell.props.startEditing() : e.preventDefault() }}
+                        onDoubleClick={(e) => { cell.definition.settings.editable ? cell.props.startEditing() : e.preventDefault() }} />
                 );
             }
         }

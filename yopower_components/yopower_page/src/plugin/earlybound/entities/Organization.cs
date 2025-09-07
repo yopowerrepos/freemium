@@ -621,6 +621,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string CreatedOn = "createdon";
 			public const string CreatedOnBehalfBy = "createdonbehalfby";
 			public const string CreateProductsWithoutParentInActiveState = "createproductswithoutparentinactivestate";
+			public const string CuaFlowLogsTtlInMinutes = "cuaflowlogsttlinminutes";
 			public const string CurrencyDecimalPrecision = "currencydecimalprecision";
 			public const string CurrencyDisplayOption = "currencydisplayoption";
 			public const string CurrencyFormatCode = "currencyformatcode";
@@ -2407,6 +2408,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("createproductswithoutparentinactivestate", value);
+			}
+		}
+		
+		/// <summary>
+		/// Default time to live in minutes for new records in the Flow Logs entity for CUA logs.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("cuaflowlogsttlinminutes")]
+		public System.Nullable<int> CuaFlowLogsTtlInMinutes
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("cuaflowlogsttlinminutes");
+			}
+			set
+			{
+				this.SetAttributeValue("cuaflowlogsttlinminutes", value);
 			}
 		}
 		

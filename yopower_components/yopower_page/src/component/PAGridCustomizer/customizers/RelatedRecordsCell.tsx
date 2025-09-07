@@ -1,32 +1,14 @@
 import * as React from "react";
-import { ColumnDefinition, GetRendererParams } from "../types";
+import { ICell } from "../interfaces/ICell";
 import { Helper } from "../helper";
 import { IInputs } from "../generated/ManifestTypes";
 import { Icon } from "@fluentui/react/lib/components/Icon/Icon";
 
-interface RelatedRecordsCellProps {
-    context: ComponentFramework.Context<IInputs>;
-    editor: GetRendererParams;
-    col: ColumnDefinition;
-    props: any;
-    definition: any;
-    table: string;
-    id: string;
-}
-
-export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
-    context,
-    editor,
-    col,
-    props,
-    definition,
-    table,
-    id
-}) => {
-    const params = JSON.parse(definition.parameters);
+export const RelatedRecordsCell: React.FC<ICell> = (cell) => {
+    const params = JSON.parse(cell.definition.parameters);
     const rules = params.rules as Array<any>;
 
-    const reference = Helper.getFilteredLookupValue(params, table, editor);
+    const reference = Helper.getFilteredLookupValue(params, cell.table, cell.params);
 
     const [value, setValue] = React.useState("0");
     const [background, setBackground] = React.useState("transparent");
@@ -35,7 +17,7 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
 
     if (reference !== null)
         React.useEffect(() => {
-            executeAggregate(context, params.table, reference, params.fetchXmlAggregate)
+            executeAggregate(cell.context, params.table, reference, params.fetchXmlAggregate)
                 .then((_) => {
                     const val = _.entities[0].value.toString() ?? "0";
                     setValue(val);
@@ -50,7 +32,7 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
                     setColor("transparent");
                     setIcon(undefined); // reset icon on error
                 });
-        }, [context, table, reference, params.fetchXmlAggregate, rules]);
+        }, [cell.context, cell.table, reference, params.fetchXmlAggregate, rules]);
 
     return (
         <div
@@ -69,7 +51,7 @@ export const RelatedRecordsCell: React.FC<RelatedRecordsCellProps> = ({
                 cursor: "pointer"
             }}
             onKeyDown={(e) => { e.preventDefault() }}
-            onClick={(e) => { upsertPageManagedUserQuery(context, params.viewName, params.table, reference, params.fetchXml, params.layoutXml) }}>
+            onClick={(e) => { upsertPageManagedUserQuery(cell.context, params.viewName, params.table, reference, params.fetchXml, params.layoutXml) }}>
             <Icon iconName={icon} style={{ marginRight: 3 }} />
             <div style={{ height: 20 }}>
                 {value}

@@ -50,6 +50,14 @@ namespace yopower_papps_grid_extensions.business
 
                 switch ((yp_gbl_column_definition_type)type.Value)
                 {
+                    case yp_gbl_column_definition_type.TextRichTextPopover:
+                        if (matchColumn.Type.Value != AttributeTypeCode.Memo.GetHashCode()
+                            && matchColumn.Type.Value != AttributeTypeCode.String.GetHashCode())
+                        {
+                            throw new InvalidPluginExecutionException($"⚠️The option 'Text [RichText]' is available for String and Memo columns");
+                        }
+                        break;
+
                     case yp_gbl_column_definition_type.AnyNavigateButtons:
                         try
                         {
@@ -247,20 +255,24 @@ namespace yopower_papps_grid_extensions.business
         /// Get Column Definition Response
         /// </summary>
         /// <returns></returns>
-        public GetDefinitionsResponse GetDefinitions(string subgrid)
+        public GetDefinitionsResponse GetDefinitions(Guid initialUserId, string subgrid)
         {
-            return new GetDefinitionsResponse(this.GetColumnDefinitions(subgrid));
+            return new GetDefinitionsResponse(this.GetColumnDefinitions(initialUserId, subgrid));
         }
 
         /// <summary>
         /// Get Active Column Definitions
         /// </summary>
         /// <returns>List Column Definitions</returns>
-        private List<yp_pagridextd_column_definition> GetColumnDefinitions(string subgrid)
+        private List<yp_pagridextd_column_definition> GetColumnDefinitions(Guid initialUserId, string subgrid)
         {
+            var userBO = new UserBO(this.Service, this.ServiceAdmin, this.NotificationService, this.TracingService, this.Logger, this.Messages);
+
             using (var orgContext = new CrmServiceContext(this.ServiceAdmin))
             {
-                return orgContext.yp_pagridextd_column_definitionSet
+                var roles = userBO.GetSecurityRoles(initialUserId);
+
+                var definitions = orgContext.yp_pagridextd_column_definitionSet
                     .Where(w => w.statuscode == yp_pagridextd_column_definition_statuscode.Active
                         && w.yp_subgrid_name == subgrid)
                     .Select(s => new yp_pagridextd_column_definition()
@@ -272,6 +284,7 @@ namespace yopower_papps_grid_extensions.business
                         yp_subgrid_name = s.yp_subgrid_name,
                         yp_subgrid_table = s.yp_subgrid_table,
                         yp_subgrid_column = s.yp_subgrid_column,
+                        yp_elegible_for_security_roles = s.yp_elegible_for_security_roles,
                         yp_parameters = s.yp_parameters,
                         yp_based_on_optionset_column = s.yp_based_on_optionset_column,
                         yp_optionset_criteria = s.yp_optionset_criteria,
@@ -281,6 +294,31 @@ namespace yopower_papps_grid_extensions.business
                         yp_rename_column = s.yp_rename_column
                     })
                     .ToList();
+
+                var openDefinitions = new List<yp_pagridextd_column_definition>();
+                if (definitions != null && definitions.Count > 0)
+                    openDefinitions = definitions
+                    .Where(w => w.yp_elegible_for_security_roles == null 
+                        || w.yp_elegible_for_security_roles == "")
+                    .ToList();
+
+                var roleDefinitions = new List<yp_pagridextd_column_definition>();
+                if (definitions != null && definitions.Count > 0 && roles.Count > 0)
+                {
+                    roleDefinitions = definitions
+                        .Where(w => !string.IsNullOrEmpty(w.yp_elegible_for_security_roles)
+                            && w.yp_elegible_for_security_roles
+                                .Split(',')  
+                                .Intersect(roles.Select(r => r.Name))
+                                .Any())
+                        .ToList();
+                }
+
+                var elegibleDefinitions = new List<yp_pagridextd_column_definition>();
+                elegibleDefinitions.AddRange(openDefinitions);
+                elegibleDefinitions.AddRange(roleDefinitions);
+
+                return elegibleDefinitions;
             }
         }
 

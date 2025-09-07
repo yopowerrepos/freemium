@@ -35,7 +35,8 @@ const updateState = (newState: Partial<ModifierState>) => {
 let initialized = false;
 
 // ✅ Call this once (e.g. in PCF `init()`) to begin tracking keys globally
-export const initModifierTracker = () => {
+// `subgrid` is the localStorage key you want cleared on CTRL+F5
+export const initModifierTracker = (subgrid: string) => {
   if (initialized) return;
   initialized = true;
 
@@ -48,6 +49,11 @@ export const initModifierTracker = () => {
       case "ShiftLeft":
       case "ShiftRight":
         updateState({ shift: e.type === "keydown" });
+        break;
+      case "F5":
+        if (modifierState.ctrl && e.type === "keydown") {
+          localStorage.removeItem(subgrid);
+        }
         break;
     }
   };

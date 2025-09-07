@@ -1,32 +1,13 @@
 import * as React from "react";
-import { ColumnDefinition, GetEditorParams } from "../types";
-import { IInputs } from "../generated/ManifestTypes";
+import { ICell } from "../interfaces/ICell";
 import { ISpinButtonStyles, SpinButton } from "@fluentui/react/lib/SpinButton";
-import { Icon } from "@fluentui/react/lib/components/Icon/Icon";
+import { GetEditorParams } from "../types";
 
 const styles: Partial<ISpinButtonStyles> = { spinButtonWrapper: { width: 50, flex: 1 } };
 
-interface DurationCellProps {
-    context: ComponentFramework.Context<IInputs>,
-    editor: GetEditorParams,
-    col: ColumnDefinition,
-    props: any,
-    definition: any,
-    table: string,
-    id: string
-}
-
-export const DurationCell: React.FC<DurationCellProps> = ({
-    context,
-    editor,
-    col,
-    props,
-    definition,
-    table,
-    id
-}) => {
-    if (col.dataType === "Duration") {
-        const params = JSON.parse(definition.parameters);
+export const DurationCell: React.FC<ICell> = (cell) => {
+    if (cell.col.dataType === "Duration") {
+        const params = JSON.parse(cell.definition.parameters);
 
         const [duration, setDuration] = React.useState<number>(0);
 
@@ -45,7 +26,7 @@ export const DurationCell: React.FC<DurationCellProps> = ({
                 }}
                 tabIndex={-1}>
                 <SpinButton
-                    defaultValue={(props.value / 60).toString()}
+                    defaultValue={(cell.props.value / 60).toString()}
                     min={params.min}
                     max={params.max}
                     step={params.step}
@@ -56,16 +37,19 @@ export const DurationCell: React.FC<DurationCellProps> = ({
                             const value_ = getNumericPart(value!) ?? 0;
                             const minutes = value_ !== null ? value_ * 60 : null;
                             setDuration(minutes!);
-                            editor.onCellValueChanged(minutes);
+                            (cell.params as GetEditorParams).onCellValueChanged(minutes);
                         }
                     }
-                    onKeyDown={(e) => {
+                    onKeyDownCapture={(e) => {
                         if (e.key === "Enter") {
-                            editor.onCellValueChanged(duration);
-                            editor.stopEditing();
+                            const value_ = getNumericPart((e.target as HTMLInputElement).value) ?? 0;
+                            const minutes = value_ !== null ? value_ * 60 : null;
+                            setDuration(minutes!);
+                            (cell.params as GetEditorParams).onCellValueChanged(minutes);
+                            (cell.params as GetEditorParams).stopEditing();
                         }
                     }}
-                    onBlur={(e) => handleBlur(e, editor)}
+                    onBlur={(e) => handleBlur(e, cell.params as GetEditorParams)}
                 />
             </div>
         );
@@ -87,9 +71,10 @@ const getValidateHandler = (min: number, max: number) => (
 };
 
 export function getNumericPart(value: string): number | undefined {
+    const normalizedValue = value.replace(',', '.');
     const valueRegex = /^(\d+(\.\d+)?).*/;
-    if (valueRegex.test(value)) {
-        const numericValue = Number(value.replace(valueRegex, "$1"));
+    if (valueRegex.test(normalizedValue)) {
+        const numericValue = Number(normalizedValue.replace(valueRegex, "$1"));
         return isNaN(numericValue) ? undefined : numericValue;
     }
     return undefined;

@@ -1,28 +1,21 @@
 import * as React from "react";
-import { ColumnDefinition, GetEditorParams, GetRendererParams } from "../types";
+import { GetEditorParams } from "../types";
 import { Helper } from "../helper";
 import { IInputs } from "../generated/ManifestTypes";
+import { ICell } from "../interfaces/ICell";
 
-export function getFilteredLookupCell(
-    context: ComponentFramework.Context<IInputs>,
-    editor: GetEditorParams,
-    col: ColumnDefinition,
-    props: any,
-    definition: any,
-    table: string,
-    id: string
-): React.ReactElement | null | undefined {
-    if (col.dataType === "Lookup"
-        || col.dataType === "Customer") {
-        const params = JSON.parse(definition.parameters);
-        openLookup(params, table, props, editor, context);
+export function getFilteredLookupCell(cell: ICell): React.ReactElement | null | undefined {
+    if (cell.col.dataType === "Lookup"
+        || cell.col.dataType === "Customer") {
+        const params = JSON.parse(cell.definition.parameters);
+        openLookup(params, cell.table, cell.props, cell.params as GetEditorParams, cell.context);
         return <div
             style={{
                 padding: 5,
                 borderRadius: 5,
                 textAlign: "center",
             }}>
-            {props.formattedValue}
+            {cell.props.formattedValue}
         </div>
     }
 }

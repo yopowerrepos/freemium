@@ -15,6 +15,8 @@ import { getNewRelatedRecordCell } from "./NewRelatedRecord";
 import { CopilotExecuteEventCell } from "./CopilotExecuteEventCell";
 import { NotesCell } from "./NotesCell";
 import { ModifierState } from "../ControlKeyTracker";
+import { ICell } from "../interfaces/ICell";
+import { getRichTextPopoverCell } from "./RichTextCell";
 
 export function cellRendererOverrides(
 	subgrid: string,
@@ -78,83 +80,93 @@ export function getComponent(
 			// 	(col.colDefs[col.columnIndex] as any).displayName = definition.settings.renameColumn;
 		}
 
+		let cell : ICell = {
+			context: context,
+			params: col,
+			props: props,
+			definition: definition,
+			table: table,
+			id: col.rowData!.__rec_id,
+			subgrid: subgrid,
+			col: col.colDefs[col.columnIndex],
+			overrideFormattedValue: props.formattedValue !== null && props.formattedValue !== "" ? props.formattedValue : ""
+		};
+
 		switch (definition.type) {
 			//Any [Navigate To]
 			case 900:
-				return getRowNavigateButtonsCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return getRowNavigateButtonsCell(cell);
 				break;
 
 			//Any [Read-Only]
 			case 901:
-				return getReadOnlyCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return getReadOnlyCell(cell);
 				break;
 
 			//Any [Related Records]
 			case 902:
-				return <RelatedRecordsCell context={context} editor={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} />
+				return <RelatedRecordsCell {...cell} />;
 				break;
 
 			//Any [Copilot Execute Event]
 			case 903:
-				return <CopilotExecuteEventCell context={context} editor={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} subgrid={subgrid} />
-				break;
+				return <CopilotExecuteEventCell {...cell} />;
 
 			// Any [Dependent Colorful Cell]
 			case 904:
 				const foundColumn = Object.keys(col.rowData!).find(k => k.includes(JSON.parse(definition.parameters).column));
 				if (foundColumn !== undefined)
-					return getColorfulCell(
-						context,
-						col,
-						col.colDefs.filter(f => f.name === foundColumn)[0],
-						{
-							value: (col.rowData as any)[foundColumn],
-							formattedValue: (col.rowData as any)[foundColumn]
-						},
-						definition,
-						table,
-						col.rowData!.__rec_id,
-						props.formattedValue !== null && props.formattedValue !== "" ? props.formattedValue : ""
-					);
+				{
+					cell.col = col.colDefs.filter(f => f.name === foundColumn)[0],
+					{
+						value: (col.rowData as any)[foundColumn],
+						formattedValue: (col.rowData as any)[foundColumn]
+					};
+					return getColorfulCell(cell);
+				}
 				else
 					return null;
 				break;
 
 			//Any [New Contextualized Record]
 			case 905:
-				return getNewRelatedRecordCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return getNewRelatedRecordCell(cell);
 				break;
 
 			//Any [Notes]
 			case 906:
-				return <NotesCell context={context} editor={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} />
-				break;
+				return <NotesCell {...cell} />;
 
 			// Lookup [Navigate Buttons]
 			case 800:
-				return getLookupNavigateButtonsCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return getLookupNavigateButtonsCell(cell);
 				break;
 
 			// Number & Date Time [Colorful Cell]
 			case 700:
-				return getColorfulCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return getColorfulCell(cell);
 				break;
 
 			// Number [Progress Bar Cell]
 			case 701:
-				return gerProgressBarCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return gerProgressBarCell(cell);
 				break;
 
 			//Any [File]
 			case 600:
-				if (props.value == undefined && props.value !== null)
-					props.value = {
+				if (cell.props.value == undefined && cell.props.value !== null)
+					cell.props.value = {
 						fileUrl: "",
 						fileName: "--",
 						fileSize: 0,
 						mimeType: ""
 					};
-				return <FileCell context={context} render={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} />
+				return <FileCell {...cell} />;
+				break;
+
+			//Text [Rich Text]
+			case 500:
+				return getRichTextPopoverCell(cell);
 				break;
 		}
 	}

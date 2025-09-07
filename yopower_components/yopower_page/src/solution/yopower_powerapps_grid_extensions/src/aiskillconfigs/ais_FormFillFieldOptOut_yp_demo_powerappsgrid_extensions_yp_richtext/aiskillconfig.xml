@@ -1,0 +1,15 @@
+<aiskillconfig uniquename="ais_FormFillFieldOptOut_yp_demo_powerappsgrid_extensions_yp_richtext">
+  <aiskill>FormFillFieldOptOut</aiskill>
+  <attribute>
+    <entityid.logicalname>yp_demo_powerappsgrid_extensions</entityid.logicalname>
+    <logicalname>yp_richtext</logicalname>
+  </attribute>
+  <description>yp_demo_powerappsgrid_extensions - Rich Text Form fill opt out</description>
+  <entity>
+    <logicalname>yp_demo_powerappsgrid_extensions</logicalname>
+  </entity>
+  <iscustomizable>1</iscustomizable>
+  <scope>1</scope>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</aiskillconfig>

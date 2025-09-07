@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.25081.196" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25081.196" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25082.00141">
+<ImportExportXml version="9.2.25084.140" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25084.140" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25084.00140">
   <SolutionManifest>
     <UniqueName>yopower_powerapps_grid_extensions</UniqueName>
     <LocalizedNames>
       <LocalizedName description="🟣yopower - Power Apps Grid Extensions" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.9</Version>
+    <Version>1.0.1.0</Version>
     <Managed>2</Managed>
     <Publisher>
       <UniqueName>yopower</UniqueName>
@@ -112,14 +112,14 @@
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_aimodel" displayName="AI Model" solution="msdyn_AISolution (202507.1.4.2)">
-          <package appName="PowerAI" version="202507.1.4.2">msdyn_AISolutionAnchor (202507.1.4.2)</package>
+        <Required type="1" schemaName="msdyn_aimodel" displayName="AI Model" solution="msdyn_AISolution (202508.3.29.5)">
+          <package appName="PowerAI" version="202508.3.29.5">msdyn_AISolutionAnchor (202508.3.29.5)</package>
         </Required>
         <Dependent type="300" schemaName="yp_powerappsgridextensionshelper_15e18" displayName="Power Apps Grid Extensions - Helper" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Account" parentDisplayName="Account" solution="msdynce_AppCommon (9.0.4.0066)" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}">
-          <package appName="msdynce_AppCommon" version="9.0.25073.10001">msdynce_AppCommonAnchor (9.0.25073.10001)</package>
+          <package appName="msdynce_AppCommon" version="9.0.25083.10002">msdynce_AppCommonAnchor (9.0.25083.10002)</package>
         </Required>
         <Dependent type="80" schemaName="yp_powerappsgridextensions" displayName="Power Apps Grid Extensions" />
       </MissingDependency>
@@ -145,20 +145,20 @@
         <Dependent type="appaction" displayName="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2508.1011)">
-          <package appName="Base Custom Controls" version="9.0.2508.1011">BaseCustomControlsCore (9.0.2508.1011)</package>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2508.4008)">
+          <package appName="Base Custom Controls" version="9.0.2508.4008">BaseCustomControlsCore (9.0.2508.4008)</package>
         </Required>
         <Dependent type="60" displayName="Main" parentDisplayName="Demo P.A.G.E" id="{5c017196-1ac1-4367-a59f-01b62333de4a}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2508.1011)">
-          <package appName="Base Custom Controls" version="9.0.2508.1011">BaseCustomControlsCore (9.0.2508.1011)</package>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2508.4008)">
+          <package appName="Base Custom Controls" version="9.0.2508.4008">BaseCustomControlsCore (9.0.2508.4008)</package>
         </Required>
         <Dependent type="68" id="{b9bbe449-8ab9-430c-ace6-8eda0eaf1058}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2508.1011)">
-          <package appName="Base Custom Controls" version="9.0.2508.1011">BaseCustomControlsCore (9.0.2508.1011)</package>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2508.4008)">
+          <package appName="Base Custom Controls" version="9.0.2508.4008">BaseCustomControlsCore (9.0.2508.4008)</package>
         </Required>
         <Dependent type="68" id="{f68092fc-94f8-4db1-8d15-51934cf026ac}" />
       </MissingDependency>
@@ -290,7 +290,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.15)" id.uniquename="AppChannel">
-          <package appName="PowerAppsAppFramework Package" version="1.0.0.21">PowerAppsAppFramework_Anchor (1.0.0.21)</package>
+          <package appName="PowerAppsAppFramework Package" version="1.0.0.23">PowerAppsAppFramework_Anchor (1.0.0.23)</package>
         </Required>
         <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=yp_powerappsgridextensions,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="yp_powerappsgridextensions" id.settingdefinitionid.uniquename="AppChannel" />
       </MissingDependency>
@@ -302,7 +302,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="SettingDefinition" displayName="HeaderAndNavigationRefresh" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.15)" id.uniquename="HeaderAndNavigationRefresh">
-          <package appName="PowerAppsAppFramework Package" version="1.0.0.21">PowerAppsAppFramework_Anchor (1.0.0.21)</package>
+          <package appName="PowerAppsAppFramework Package" version="1.0.0.23">PowerAppsAppFramework_Anchor (1.0.0.23)</package>
         </Required>
         <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=yp_powerappsgridextensions,settingdefinitionid.uniquename=HeaderAndNavigationRefresh" id.parentappmoduleid.uniquename="yp_powerappsgridextensions" id.settingdefinitionid.uniquename="HeaderAndNavigationRefresh" />
       </MissingDependency>

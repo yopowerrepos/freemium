@@ -1,29 +1,12 @@
 import * as React from "react";
-import { ColumnDefinition, GetEditorParams, GetRendererParams } from "../types";
-import { CommandButton, IContextualMenuItem, IContextualMenuProps, Spinner, SpinnerSize } from "@fluentui/react";
+import { ICell } from "../interfaces/ICell";
 import { IInputs } from "../generated/ManifestTypes";
+import { CommandButton, IContextualMenuItem, IContextualMenuProps, Spinner, SpinnerSize } from "@fluentui/react";
 import mime from 'mime';
 
 const fileCellClassName = "page-file-cell";
 
-interface FileCellProps {
-    context: ComponentFramework.Context<IInputs>,
-    render: GetRendererParams,
-    col: ColumnDefinition,
-    props: any,
-    definition: any,
-    table: string,
-    id: string
-}
-
-export const FileCell: React.FC<FileCellProps> = ({
-    context,
-    col,
-    props,
-    definition,
-    table,
-    id
-}) => {
+export const FileCell: React.FC<ICell> = (cell) => {
 
     // Workaround for a bug when the file cell is empty
     const checkElements = () => {
@@ -52,9 +35,9 @@ export const FileCell: React.FC<FileCellProps> = ({
     // Run the combined function every 500ms
     const intervalId = setInterval(checkElements, 500);
 
-    const settings = JSON.parse(definition.parameters) as any;
+    const settings = JSON.parse(cell.definition.parameters) as any;
     const readOnly = settings.readOnly as boolean;
-    const [propsValue, setPropsValue] = React.useState<any>(props.value);
+    const [propsValue, setPropsValue] = React.useState<any>(cell.props.value);
     const [loading, setLoading] = React.useState<boolean>(false);
 
     let items: IContextualMenuItem[] = [];
@@ -66,10 +49,10 @@ export const FileCell: React.FC<FileCellProps> = ({
             iconProps: { iconName: "View" },
             onClick: () => {
                 setLoading(true);
-                handleFileDownload(context, propsValue.fileUrl)
+                handleFileDownload(cell.context, propsValue.fileUrl)
                     .then((_) => {
                         if (_) {
-                            context.navigation.openFile(
+                            cell.context.navigation.openFile(
                                 {
                                     fileContent: _,
                                     fileName: propsValue.fileName,
@@ -102,7 +85,7 @@ export const FileCell: React.FC<FileCellProps> = ({
             iconProps: { iconName: "Upload" },
             onClick: () => {
                 setLoading(true);
-                handleFileUpload(context, settings, table, id, col.name, setPropsValue)
+                handleFileUpload(cell.context, settings, cell.table, cell.id, cell.col.name, setPropsValue)
                     .finally(() => setLoading(false));
             },
         });
@@ -115,7 +98,7 @@ export const FileCell: React.FC<FileCellProps> = ({
             iconProps: { iconName: "Delete" },
             onClick: () => {
                 setLoading(true);
-                handleFileDelete(context, table, id, col.name, setPropsValue)
+                handleFileDelete(cell.context, cell.table, cell.id, cell.col.name, setPropsValue)
                     .finally(() => setLoading(false));
             },
         });

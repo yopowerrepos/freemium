@@ -1,30 +1,21 @@
 import * as React from "react";
-import { ColumnDefinition, GetRendererParams } from "../types";
-import { IInputs } from "../generated/ManifestTypes";
 import { Icon } from "@fluentui/react";
+import { ICell } from "../interfaces/ICell";
 
-export function getColorfulCell(
-	context: ComponentFramework.Context<IInputs>,
-	render: GetRendererParams,
-	col: ColumnDefinition,
-	props: any,
-	definition: any,
-	table: string,
-	id: string,
-	overrideFormattedValue: string | null = null): React.ReactElement | null | undefined {
-	if (props.value !== null && props.value !== undefined) {
-		const rules = JSON.parse(definition.parameters).rules as Array<any>;
+export function getColorfulCell(cell : ICell): React.ReactElement | null | undefined {
+	if (cell.props.value !== null && cell.props.value !== undefined) {
+		const rules = JSON.parse(cell.definition.parameters).rules as Array<any>;
 		let value: number | null = null;
 		let formattedValue: string | null;
-		switch (col.dataType) {
+		switch (cell.col.dataType) {
 			case "DateOnly":
 			case "DateAndTime":
-				value = calcDateTimeDiffInMinutes(new Date(props.value));
-				formattedValue = dateTimeLabel(value) + " " + props.formattedValue;
+				value = calcDateTimeDiffInMinutes(new Date(cell.props.value));
+				formattedValue = dateTimeLabel(value) + " " + cell.props.formattedValue;
 				break;
 
 			case "Duration":
-				value = Number(props.value);
+				value = Number(cell.props.value);
 				formattedValue = dateTimeLabel(value);
 				break;
 
@@ -33,13 +24,13 @@ export function getColorfulCell(
 			case "FloatingPoint":
 			case "Currency":
 			case "OptionSet":
-				value = Number(props.value);
-				formattedValue = props.value;
+				value = Number(cell.props.value);
+				formattedValue = cell.props.value;
 				break;
 
 			case "TwoOptions":
-				value = Number(props.value);
-				formattedValue = props.value;
+				value = Number(cell.props.value);
+				formattedValue = cell.props.value;
 				break;
 		}
 
@@ -48,7 +39,7 @@ export function getColorfulCell(
 			const background = rule.background ?? "transparent";
 			const color = rule.color ?? "black";
 			return <div
-				title={(overrideFormattedValue !== "" ? overrideFormattedValue! : formattedValue!) + "\r\n" + rule!.label!}
+				title={(cell.overrideFormattedValue !== "" ? cell.overrideFormattedValue! : formattedValue!) + "\r\n" + rule!.label!}
 				style={{
 					padding: "4px 8px",
 					borderRadius: 2,
@@ -59,11 +50,11 @@ export function getColorfulCell(
 					display: "flex",
 					margin: "4px"
 				}}
-				onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
-				onClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}>
+				onKeyDown={(e) => { cell.definition.settings.editable ? cell.props.startEditing() : e.preventDefault() }}
+				onClick={(e) => { cell.definition.settings.editable ? cell.props.startEditing() : e.preventDefault() }}>
 				<Icon iconName={rule.icon} style={{ marginRight: 3 }} />
 				<div style={{ height: 20 }}>
-					{(overrideFormattedValue !== null ? overrideFormattedValue! : formattedValue!)}
+					{(cell.overrideFormattedValue !== null ? cell.overrideFormattedValue! : formattedValue!)}
 				</div>
 			</div >;
 		}

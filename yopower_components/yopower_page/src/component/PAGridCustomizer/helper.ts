@@ -56,7 +56,7 @@ export class Helper {
         if (sortedMatches.length !== 0)
             sortedMatches = sortedMatches.sort((a, b) => (a.condition === null ? 1 : b.condition === null ? -1 : 0));
         else
-            sortedMatches = matches.sort((a, b) => (a.condition === null ? 1 : b.condition === null ? -1 : 0));
+            sortedMatches = matches.filter(f => f.shortcut === -1).sort((a, b) => (a.condition === null ? 1 : b.condition === null ? -1 : 0));
 
         // Step 4: evaluate each sorted definition’s condition (if present)
         for (const definition of sortedMatches) {

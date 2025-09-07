@@ -1,36 +1,16 @@
 import * as React from "react";
-import { ColumnDefinition, GetRendererParams } from "../types";
+import { ICell } from "../interfaces/ICell";
+import { v4 as uuidv4 } from "uuid";
 import { IInputs } from "../generated/ManifestTypes";
 import { Icon } from "@fluentui/react/lib/Icon";
 import { CommandButton, IContextualMenuItem, IContextualMenuProps } from "@fluentui/react";
 import { ProgressIndicator } from "@fluentui/react/lib/ProgressIndicator";
 import { CopilotResponse } from "../models/CopilotResponse";
-import { v4 as uuidv4 } from "uuid";
 
-interface CopilotExecuteEventCellProps {
-    context: ComponentFramework.Context<IInputs>;
-    editor: GetRendererParams;
-    col: ColumnDefinition;
-    props: any;
-    definition: any;
-    table: string;
-    id: string;
-    subgrid: string;
-}
-
-export const CopilotExecuteEventCell: React.FC<CopilotExecuteEventCellProps> = ({
-    context,
-    editor,
-    col,
-    props,
-    definition,
-    table,
-    id,
-    subgrid
-}) => {
+export const CopilotExecuteEventCell: React.FC<ICell> = (cell) => {
     const [loading, setLoading] = React.useState<boolean>(false);
 
-    const events = JSON.parse(definition.parameters).events as Array<any>;
+    const events = JSON.parse(cell.definition.parameters).events as Array<any>;
     let items = new Array<IContextualMenuItem>();
 
     if (events && events.length > 0) {
@@ -42,13 +22,13 @@ export const CopilotExecuteEventCell: React.FC<CopilotExecuteEventCellProps> = (
                 title: m.tooltip,
                 onClick: (e: any) => {
                     setLoading(true);
-                    (context as any).copilot.executeEvent(m.event, { table: table, id: id, from: subgrid }).then(
+                    (cell.context as any).copilot.executeEvent(m.event, { table: cell.table, id: cell.id, from: cell.subgrid }).then(
                         (_: Array<CopilotResponse>) => {
-                            renderAnswer(context, _);
+                            renderAnswer(cell.context, _);
                             setLoading(false);
                         }).catch((_: any) => {
                             setLoading(false);
-                            context.navigation.openErrorDialog({ message: _.message });
+                            cell.context.navigation.openErrorDialog({ message: _.message });
                         });
                 }
             } as IContextualMenuItem
@@ -80,14 +60,14 @@ export const CopilotExecuteEventCell: React.FC<CopilotExecuteEventCellProps> = (
                         alignItems: "center"
                     }}
                     onClick={item?.onClick}
-                    onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
-                    onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}>
+                    onKeyDown={(e) => { cell.definition.settings.editable ? cell.props.startEditing() : e.preventDefault() }}
+                    onDoubleClick={(e) => { cell.definition.settings.editable ? cell.props.startEditing() : e.preventDefault() }}>
                     <Icon imageProps={{ src: "/WebResources/msdyn_CopilotIconWithColor.svg", style: { height: 18 } }} style={{ marginRight: 3 }} />
-                    <div style={{ height: 20 }}>{item?.text ?? props.formattedValue}</div>
+                    <div style={{ height: 20 }}>{item?.text ?? cell.props.formattedValue}</div>
                 </div>
             ) : (
                 <CommandButton
-                    text={props.formattedValue}
+                    text={cell.props.formattedValue}
                     menuProps={{ items } as IContextualMenuProps}
                     checked={true}
                     iconProps={{ imageProps: { src: "/WebResources/msdyn_CopilotIconWithColor.svg", style: { height: 18 } } }}

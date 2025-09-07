@@ -10,16 +10,17 @@
     <layoutxml>
       <grid name="resultset" jump="yp_name" select="1" icon="1" preview="1">
         <row name="result" id="yp_pagridextd_column_definitionid">
-          <cell name="yp_name" width="200" />
-          <cell name="yp_type" width="250" />
-          <cell name="yp_editable" width="100" />
-          <cell name="yp_based_on_optionset_column" width="150" />
-          <cell name="yp_optionset_criteria" width="100" />
-          <cell name="yp_optionset_values" width="150" />
-          <cell name="yp_allow_pin" width="100" />
+          <cell name="yp_name" width="250" />
           <cell name="yp_subgrid_name" width="250" />
           <cell name="yp_subgrid_table" width="250" />
           <cell name="yp_subgrid_column" width="150" />
+          <cell name="yp_type" width="250" />
+          <cell name="yp_shortcut" width="100" />
+          <cell name="yp_elegible_for_security_roles" width="250" />
+          <cell name="yp_based_on_optionset_column" width="150" />
+          <cell name="yp_editable" width="100" />
+          <cell name="yp_optionset_criteria" width="100" />
+          <cell name="yp_optionset_values" width="150" />
         </row>
       </grid>
     </layoutxml>
@@ -28,21 +29,23 @@
       <fetch version="1.0" mapping="logical" distinct="true">
         <entity name="yp_pagridextd_column_definition">
           <attribute name="yp_pagridextd_column_definitionid" />
-          <attribute name="yp_name" />
           <attribute name="yp_type" />
           <attribute name="yp_subgrid_table" />
           <attribute name="yp_subgrid_name" />
           <attribute name="yp_subgrid_column" />
           <attribute name="yp_optionset_criteria" />
           <attribute name="yp_optionset_values" />
-          <order attribute="yp_type" descending="false" />
-          <order attribute="yp_optionset_criteria" descending="true" />
           <attribute name="yp_based_on_optionset_column" />
           <attribute name="yp_editable" />
-          <attribute name="yp_allow_pin" />
           <filter type="and">
             <condition attribute="statuscode" operator="eq" value="1" />
           </filter>
+          <attribute name="yp_shortcut" />
+          <attribute name="yp_elegible_for_security_roles" />
+          <attribute name="yp_name" />
+          <order attribute="yp_subgrid_table" descending="false" />
+          <order attribute="yp_subgrid_name" descending="false" />
+          <order attribute="yp_type" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

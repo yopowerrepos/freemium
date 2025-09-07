@@ -6,6 +6,7 @@ import { IInputs } from "../generated/ManifestTypes";
 import { getFilteredLookupCell } from "./FilteredLookupCell";
 import { getReadOnlyCell } from "./ReadOnlyCell";
 import { DurationCell } from "./DurationCell";
+import { ICell } from "../interfaces/ICell";
 
 export function cellEditorOverrides(
 	subgrid: string,
@@ -41,31 +42,58 @@ export function cellEditorOverrides(
 	// Dynamically create the CellRendererOverrides object
 	const overrides: CellEditorOverrides = supportedDataTypes.reduce((acc, dataType) => {
 		acc[dataType] = (props, col) =>
-			getComponent(props, col, definitions, tableLogicalName, col.colDefs[col.columnIndex].name, context);
+			getComponent(
+				context,
+				col,
+				props,
+				definitions,
+				tableLogicalName,
+				col.colDefs[col.columnIndex].name,
+				subgrid);
 		return acc;
 	}, {} as CellEditorOverrides);
 
 	return overrides;
 };
 
-export function getComponent(props: any, col: GetEditorParams, definitions: CustomColumnDefinition[], table: string, column: string, context: ComponentFramework.Context<IInputs>): React.ReactElement | null | undefined {
+export function getComponent(
+	context: ComponentFramework.Context<IInputs>,
+	col: GetEditorParams,
+	props: any,
+	definitions: CustomColumnDefinition[],
+	table: string,
+	column: string,
+	subgrid: string
+): React.ReactElement | null | undefined {
 	const definition = Helper.getDefinition(definitions, table, column, col.rowData!);
 	if (definition !== null) {
+
+		let cell: ICell = {
+			context: context,
+			params: col,
+			props: props,
+			definition: definition,
+			table: table,
+			id: col.rowData!.__rec_id,
+			subgrid: subgrid,
+			col: col.colDefs[col.columnIndex],
+			overrideFormattedValue: null
+		};
+
 		switch (definition.type) {
 
 			//Any [Read-Only]
 			case 901:
-				return getReadOnlyCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
+				return getReadOnlyCell(cell);
 				break;
 
 			//Lookup [Filtered Lookup]
 			case 801:
-				return getFilteredLookupCell(context, col, col.colDefs[col.columnIndex], props, definition, table, col.rowData!.__rec_id);
-				break;
+				return getFilteredLookupCell(cell);
 
 			//Number [Duration]
 			case 702:
-				return <DurationCell context={context} editor={col} col={col.colDefs[col.columnIndex]} props={props} definition={definition} table={table} id={col.rowData!.__rec_id} />
+				return <DurationCell {...cell} />;
 				break;
 		}
 	}

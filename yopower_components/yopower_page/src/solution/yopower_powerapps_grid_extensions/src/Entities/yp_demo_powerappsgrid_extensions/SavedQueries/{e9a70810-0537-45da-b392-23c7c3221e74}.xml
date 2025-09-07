@@ -11,6 +11,7 @@
       <grid name="resultset" jump="yp_name" select="1" icon="1" preview="1">
         <row name="result" id="yp_demo_powerappsgrid_extensionsid">
           <cell name="statuscode" width="150" />
+          <cell name="yp_richtext" width="150" />
           <cell name="yp_name" width="150" />
           <cell name="yp_text" width="150" />
           <cell name="yp_datetime" width="250" />
@@ -52,6 +53,7 @@
             <attribute name="numberofemployees" />
           </link-entity>
           <attribute name="yp_duration" />
+          <attribute name="yp_richtext" />
         </entity>
       </fetch>
     </fetchxml>

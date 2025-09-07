@@ -19,19 +19,20 @@ export class yppagridextd implements ComponentFramework.ReactControl<IInputs, IO
 	private _eventName: string = "";
 
 	constructor() {
-		this._timeout = 30 * 60 * 1000; // 30 minutes
+		this._timeout = 1440 * 60 * 1000; // 24 hours
 	}
 
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary): void {
 		this._context = context;
-		initModifierTracker();
-
+		
 		this._eventName = context.parameters.EventName.raw ?? "";
 		this._table =
-			(context as any).cards?._customControlProperties?.descriptor?.Parameters?.TargetEntityType ??
-			(context as any).navigation?._customControlProperties?.contextToken?.entityTypeName;
-
+		(context as any).cards?._customControlProperties?.descriptor?.Parameters?.TargetEntityType ??
+		(context as any).navigation?._customControlProperties?.contextToken?.entityTypeName;
+		
 		this._subgrid = (context.utils as any).getParentControlName?.() || this._table;
+		
+		initModifierTracker(this._subgrid);
 
 		if (this._eventName) {
 

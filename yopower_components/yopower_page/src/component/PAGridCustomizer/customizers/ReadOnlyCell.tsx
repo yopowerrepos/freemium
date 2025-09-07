@@ -1,16 +1,7 @@
 import * as React from "react";
-import { ColumnDefinition, GetEditorParams, GetRendererParams } from "../types";
-import { IInputs } from "../generated/ManifestTypes";
+import { ICell } from "../interfaces/ICell";
 
-export function getReadOnlyCell(
-    context: ComponentFramework.Context<IInputs>,
-    agnostic: GetRendererParams | GetEditorParams,
-    col: ColumnDefinition,
-    props: any,
-    definition: any,
-    table: string,
-    id: string
-): React.ReactElement | null | undefined {
+export function getReadOnlyCell(cell: ICell): React.ReactElement | null | undefined {
     return <p
         style={{
             padding: 5,
@@ -19,6 +10,6 @@ export function getReadOnlyCell(
         }}
         onKeyDown={(e) => { e.preventDefault() }}
         onClick={(e) => { e.preventDefault(); return; }}>
-        {props.formattedValue}
+        {cell.props.formattedValue}
     </p>
 }

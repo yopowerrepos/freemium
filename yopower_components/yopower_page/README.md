@@ -8,9 +8,9 @@
 - The name of the subgrid logical name should be unique on the environment, it allows a tailored personalization per subgrid or main grid.
 - Microsoft does not define a name for main grids, then for the customizers understand this behavior set on Column Definition > Subgrid Name the table Logical Name [sample](https://github.com/user-attachments/assets/aaf0acd6-1ffd-484c-9ab5-523e7632da28)
 - The customizers are associated with specific column types, a plugin will ensure that the column and parameters (json) as fulfilled correct.
-- This solution uses the browser localStorage to prevent multiple requests on the Dataverse APIs, then every 30 minutes the cache will expire.
+- This solution uses the browser localStorage to prevent multiple requests on the Dataverse APIs, then every 24 hours the cache will expire.
 - Use localStorage.removeItem("**subgrid-logical-name**") to clear the cache and see the adjusts on parameters.
-  On grid cells utilize **CTRL + Right Click** to open the applied customizer.
+- **CTRL + F5** cler the localStorage also.
 
 ## Available Customizers
 
@@ -22,26 +22,27 @@
 | **Any [Copilot Execute Event] Preview** | Allow trigger an topic event on Copilot associated with the Model-Driven App.                                        |
 | **Any [Dependent Colorful Cell]**       | Determines the fill and text color of a cell based on an other column according range of values.                     |
 | **Any [New Related Record]**            | Define which associated records can be created through the Power Apps Grid, respecting the relationship's mappings.  |
-| **Any [Notes ]**                        | Allow display notes related to the row, lookups or using a custom fetchxml to group them.                            |
+| **Any [Notes Cell]**                    | Allow display notes related to the row, lookups or using a custom fetchxml to group them.                            |
 | **Lookup [Navigate Buttons]**           | Enables navigation buttons for forms related to the lookup.                                                          |
 | **Lookup [Filtered Lookup]**            | Configures a lookup field to be filtered based on the row or other subgrid columns using the `lookupObject` concept. |
 | **Numbers & Date [Colorful Cell]**      | Determines the fill and text color of a cell based on a range of values.                                             |
 | **Numbers [Progress Bar]**              | Determines the fill and color of a progress bar based on a range of values.                                          |
-| **Numbers [Duration ]**                 | Allow edit duration columns as a decimal number i.e: 1,5 = 90 minutes                                                |
-| **String [Related Records]**            | Allow interact with associated records through the subgrid buttons                                                   |
+| **Numbers [Duration Cell]**             | Allow edit duration columns as a decimal number i.e: 1,5 = 90 minutes                                                |
 | **File [Upload Download]**              | Visualize, download, updload and delete files                                                                        |
+| **Text [RichText Popover]**             | Allow rich text content to be displayed via popover                                                                  |
 
 ## Additional Settings
 
-| **Feature**              | **Description**                                                                                                                                                                       |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Conditions**           | The customizers are applied following a priority defined by conditions related to optionsets, numbers or booleans on the grid. Is **required** the column be on the view!             |
-| **Related Columns**      | It is available also define conditions using columns lookup related (N:1) with the row, just add a dot on begin '.numberofemployees'                                                  |
-| **Available Conditions** | Equals, Not Equals, In, Not In, Greater, Greater or Equals, Less, Less or Equals                                                                                                      |
-| **Editable**             | Allow a customizer enter on edit mode. (default no)                                                                                                                                   |
-| **Allow Pin Column**     | Enable the column to be pinned on left or right side.                                                                                                                                 |
-| **Icons**                | Taking color blindness into account, some components support icons. Use the [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/styles/web/icons) list to get the right names |
-| **Short Cuts**           | Allow change which customizer will be applied on the cell pressing CTRL or SHIFT                                                                                                      |
+| **Feature**                     | **Description**                                                                                                                                                                       |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Conditions**                  | The customizers are applied following a priority defined by conditions related to optionsets, numbers or booleans on the grid. Is **required** the column be on the view!             |
+| **Related Columns**             | It is available also define conditions using columns lookup related (N:1) with the row, just add a dot on begin '.numberofemployees'                                                  |
+| **Available Conditions**        | Equals, Not Equals, In, Not In, Greater, Greater or Equals, Less, Less or Equals                                                                                                      |
+| **Editable**                    | Allow a customizer enter on edit mode. (default no)                                                                                                                                   |
+| **Allow Pin Column**            | Enable the column to be pinned on left or right side.                                                                                                                                 |
+| **Icons**                       | Taking color blindness into account, some components support icons. Use the [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/styles/web/icons) list to get the right names |
+| **Short Cuts**                  | Allow change which customizer will be applied on the cell pressing CTRL or SHIFT                                                                                                      |
+| **Elegible For Security Roles** | Allow define for which security roles the column definitions will be available (splited by comma)                                                                                                       |
 
 ## Sample Data via Configuration Migration Tool
 
@@ -263,7 +264,7 @@ An agent was implemented to support you customize yours visualizations
 
 ---
 
-### 7. Lookup [Notes ]
+### 7. Lookup [Notes Cell]
 
 - ✅ Allow display notes related to the row, lookups or using a custom fetchxml to group them.
 - Required include those attributes when the query is customized: annotationid, subject, notetext, createdon, createdby, modifiedon, modifiedby, isdocument and filename
@@ -520,7 +521,7 @@ An agent was implemented to support you customize yours visualizations
 
 ---
 
-### 12. Numbers [Duration ]
+### 12. Numbers [Duration Cell]
 
 - ✅ Duration
 
@@ -549,6 +550,11 @@ An agent was implemented to support you customize yours visualizations
 }
 ```
 
+### 14. Text [RichText Popover]
+
+- ✅ RichText
+- No JSON parameters
+
 ## Schema
 
 ```mermaid
@@ -556,8 +562,8 @@ flowchart
   A([Power Apps Grid]) --use yp_yopower.components.yppagridextd--> B([index.ts])
   B --> C{localStorage <br> is present?}
   C -- has not data or expired --> D[Call API <br> yp_get_subgrid_definitions]
-  D --> E([Populate <br> localStorage])
+  D -- 🔑 elegible roles is empty or the user has the roles --> E([Populate <br> localStorage])
   E -- instanciate --> F([CellRendererOverrides.tsx <br> CellEditorOverrides.tsx])
   C -- has data --> F
-  F --> G([According parameters 'yp_pagridextd_column_definition' <br> decides which componenet will be applied])
+  F -- 🔶aplly filters related to columns and shortcuts --> G([According parameters 'yp_pagridextd_column_definition' <br> decides which componenet will be applied])
 ```

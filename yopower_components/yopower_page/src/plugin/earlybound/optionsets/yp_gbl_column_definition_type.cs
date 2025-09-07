@@ -55,6 +55,9 @@ namespace yopower_papps_grid_extensions.earlybound
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		FileUploadDownload = 600,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		TextRichTextPopover = 500,
 	}
 }
 #pragma warning restore CS1591

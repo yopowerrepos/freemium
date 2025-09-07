@@ -94,6 +94,21 @@
                     </row>
                   </rows>
                 </section>
+                <section name="security" id="5cfcb4bf-c5e5-404e-b039-7cfa017ef32a" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Elegible For Security Roles" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{0bb4d374-652d-4dd5-ae47-d6ca20b1cc50}" locklevel="0" colspan="1" rowspan="1" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="yp_elegible_for_security_roles" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="yp_elegible_for_security_roles" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
                 <section name="value_condition" id="f8c216e2-e0a8-43c1-ab14-59d836a78df0" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="OptionSet, Boolean or Number Condition" languagecode="1033" />
@@ -262,7 +277,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -291,9 +306,6 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <controlDescriptions>
         <controlDescription forControl="{63f21d15-1dc8-474d-a362-bd424cea2dc7}">
           <customControl id="{E0DECE4B-6FC8-4A8F-A065-082708572369}">
@@ -318,6 +330,9 @@
           </customControl>
         </controlDescription>
       </controlDescriptions>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

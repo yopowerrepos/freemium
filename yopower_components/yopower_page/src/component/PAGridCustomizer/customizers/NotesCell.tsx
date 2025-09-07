@@ -1,35 +1,12 @@
 import * as React from "react";
-import { ColumnDefinition, GetRendererParams } from "../types";
-import { Helper } from "../helper";
+import { ICell } from "../interfaces/ICell";
 import { IInputs } from "../generated/ManifestTypes";
-import {
-    Icon,
-    Stack,
-    Text,
-    Modal
-} from "@fluentui/react";
+import { Helper } from "../helper";
+import { Icon, Stack, Text, Modal } from "@fluentui/react";
 
-interface NotesCellProps {
-    context: ComponentFramework.Context<IInputs>;
-    editor: GetRendererParams;
-    col: ColumnDefinition;
-    props: any;
-    definition: any;
-    table: string;
-    id: string;
-}
-
-export const NotesCell: React.FC<NotesCellProps> = ({
-    context,
-    editor,
-    col,
-    props,
-    definition,
-    table,
-    id
-}) => {
-    const params = JSON.parse(definition.parameters);
-    const reference = Helper.getFilteredLookupValue(params, table, editor);
+export const NotesCell: React.FC<ICell> = (cell) => {
+    const params = JSON.parse(cell.definition.parameters);
+    const reference = Helper.getFilteredLookupValue(params, cell.table, cell.params);
 
     const [value, setValue] = React.useState("0");
 
@@ -38,7 +15,7 @@ export const NotesCell: React.FC<NotesCellProps> = ({
 
     React.useEffect(() => {
         if (reference !== null) {
-            executeAggregate(context, reference, params.fetchXmlAggregate)
+            executeAggregate(cell.context, reference, params.fetchXmlAggregate)
                 .then((_) => {
                     const val = _.entities[0].count.toString() ?? "0";
                     setValue(val);
@@ -47,11 +24,11 @@ export const NotesCell: React.FC<NotesCellProps> = ({
                     setValue(_.message);
                 });
         }
-    }, [context, table, reference]);
+    }, [cell.context, cell.table, reference]);
 
     React.useEffect(() => {
         if (isModalOpen && reference !== null) {
-            executeQuery(context, reference, params.fetchXml)
+            executeQuery(cell.context, reference, params.fetchXml)
                 .then((_) => {
                     setNotes(_.entities);
                 })

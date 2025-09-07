@@ -68,6 +68,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string yp_allow_pin = "yp_allow_pin";
 			public const string yp_based_on_optionset_column = "yp_based_on_optionset_column";
 			public const string yp_editable = "yp_editable";
+			public const string yp_elegible_for_security_roles = "yp_elegible_for_security_roles";
 			public const string yp_mode = "yp_mode";
 			public const string yp_name = "yp_name";
 			public const string yp_optionset_criteria = "yp_optionset_criteria";
@@ -330,6 +331,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("yp_editable", value);
+			}
+		}
+		
+		/// <summary>
+		/// Splited by comma
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yp_elegible_for_security_roles")]
+		public string yp_elegible_for_security_roles
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("yp_elegible_for_security_roles");
+			}
+			set
+			{
+				this.SetAttributeValue("yp_elegible_for_security_roles", value);
 			}
 		}
 		

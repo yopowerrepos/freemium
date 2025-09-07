@@ -20,7 +20,7 @@ namespace yopower_papps_grid_extensions.code.global
 
             try
             {
-                localContext.PluginExecutionContext.OutputParameters["data"] = JsonConvert.SerializeObject(business.GetDefinitions(subgrid));
+                localContext.PluginExecutionContext.OutputParameters["data"] = JsonConvert.SerializeObject(business.GetDefinitions(localContext.PluginExecutionContext.InitiatingUserId, subgrid));
                 localContext.PluginExecutionContext.OutputParameters["success"] = true;
                 localContext.PluginExecutionContext.OutputParameters["message"] = string.Empty;
             }

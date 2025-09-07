@@ -1,21 +1,13 @@
 import * as React from "react";
-import { ColumnDefinition, GetRendererParams } from "../types";
-import { CommandButton, IContextualMenuItem, IContextualMenuProps } from "@fluentui/react";
+import { ICell } from "../interfaces/ICell";
 import { Helper } from "../helper";
-import { IInputs } from "../generated/ManifestTypes";
+import { CommandButton, IContextualMenuItem, IContextualMenuProps } from "@fluentui/react";
 
-export function getRowNavigateButtonsCell(
-    context: ComponentFramework.Context<IInputs>,
-    render: GetRendererParams,
-    col: ColumnDefinition,
-    props: any,
-    definition: any,
-    table: string,
-    id: string
-): React.ReactElement | null | undefined {
+export function getRowNavigateButtonsCell(cell: ICell): React.ReactElement | null | undefined {
+
     let items = new Array<IContextualMenuItem>();
-    const modal = JSON.parse(definition.parameters).modal as Array<any>;
-    const sidePane = JSON.parse(definition.parameters).sidePane as Array<any>;
+    const modal = JSON.parse(cell.definition.parameters).modal as Array<any>;
+    const sidePane = JSON.parse(cell.definition.parameters).sidePane as Array<any>;
     if (modal !== null && modal.length > 0) {
         items = items.concat(modal.map(m => {
             return {
@@ -23,7 +15,7 @@ export function getRowNavigateButtonsCell(
                 key: m.label,
                 text: m.label,
                 onClick: (e: any) => {
-                    Helper.navigateToRecordModal(m.position, table, id, m.formId, m.tabName!, m.height, m.width)
+                    Helper.navigateToRecordModal(m.position, cell.table, cell.id, m.formId, m.tabName!, m.height, m.width)
                 }
             } as IContextualMenuItem
         }));
@@ -35,7 +27,7 @@ export function getRowNavigateButtonsCell(
                 key: m.label,
                 text: m.label,
                 onClick: (e: any) => {
-                    Helper.navigateToPane(table, id, m.formId, m.imageSrc, m.paneId, m.canClose, m.hideHeader, m.width)
+                    Helper.navigateToPane(cell.table, cell.id, m.formId, m.imageSrc, m.paneId, m.canClose, m.hideHeader, m.width)
                 }
             } as IContextualMenuItem
         }));
@@ -59,24 +51,24 @@ export function getRowNavigateButtonsCell(
                 margin: "4px",
                 cursor: "pointer"
             }}
-            onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
+            onKeyDown={(e) => { cell.definition.settings.editable ? cell.props.startEditing() : e.preventDefault() }}
             onClick={
                 item.onClick
             }>
             <div style={{ height: 20 }}>
-                {item.label ?? props.formattedValue}
+                {item.label ?? cell.props.formattedValue}
             </div>
         </div>;
     }
     else {
         return (
             <CommandButton
-                text={props.formattedValue}
+                text={cell.props.formattedValue}
                 menuProps={navigateToProps}
                 checked={false}
                 iconProps={{ iconName: "View" }}
-                onKeyDown={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}
-                onDoubleClick={(e) => { definition.settings.editable ? props.startEditing() : e.preventDefault() }}/>
+                onKeyDown={(e) => { cell.definition.settings.editable ? cell.props.startEditing() : e.preventDefault() }}
+                onDoubleClick={(e) => { cell.definition.settings.editable ? cell.props.startEditing() : e.preventDefault() }} />
         );
     }
 }
