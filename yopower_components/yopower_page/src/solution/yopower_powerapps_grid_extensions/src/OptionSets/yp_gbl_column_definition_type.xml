@@ -68,6 +68,22 @@
         <Description description="" languagecode="1033" />
       </Descriptions>
     </option>
+    <option value="907" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="Any [Audit History]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="908" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="Any [Custom Timeline]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
     <option value="800" Color="#fc8ad2" IsHidden="0">
       <labels>
         <label description="Lookup [Navigate Buttons]" languagecode="1033" />

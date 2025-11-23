@@ -14,6 +14,7 @@
     <AppModuleComponent type="1" schemaName="yp_demo_powerappsgrid_extensions" />
     <AppModuleComponent type="1" schemaName="yp_pagridextd_column_definition" />
     <AppModuleComponent type="26" id="{0573cd72-d62a-f011-8c4e-000d3ac04b80}" />
+    <AppModuleComponent type="26" id="{16b4b323-a0c8-f011-8544-002248dfb488}" />
     <AppModuleComponent type="26" id="{b6ac9a97-cb41-4bc4-9185-05fcefb2ad71}" />
     <AppModuleComponent type="26" id="{4b6388ff-7c5b-46dd-8444-23ad3b30518f}" />
     <AppModuleComponent type="26" id="{e9a70810-0537-45da-b392-23c7c3221e74}" />

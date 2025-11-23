@@ -1,0 +1,11 @@
+<customapiresponseproperty uniquename="message">
+  <description default="message">
+    <label description="message" languagecode="1033" />
+  </description>
+  <displayname default="message">
+    <label description="message" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <name>message</name>
+  <type>10</type>
+</customapiresponseproperty>

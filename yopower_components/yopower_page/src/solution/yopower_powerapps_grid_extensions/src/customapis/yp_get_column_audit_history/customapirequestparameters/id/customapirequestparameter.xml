@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="id">
+  <description default="id">
+    <label description="id" languagecode="1033" />
+  </description>
+  <displayname default="id">
+    <label description="id" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>0</isoptional>
+  <name>id</name>
+  <type>12</type>
+</customapirequestparameter>

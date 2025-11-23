@@ -39,6 +39,12 @@ namespace yopower_papps_grid_extensions.earlybound
 		AnyNotes = 906,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		AnyAuditHistory = 907,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		AnyCustomTimeline = 908,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		LookupNavigateButtons = 800,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]

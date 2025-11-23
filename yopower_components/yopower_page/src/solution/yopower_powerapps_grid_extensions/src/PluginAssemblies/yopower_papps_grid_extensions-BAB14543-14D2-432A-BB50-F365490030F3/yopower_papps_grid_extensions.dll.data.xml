@@ -8,6 +8,9 @@
     <PluginType AssemblyQualifiedName="yopower_papps_grid_extensions.code.definitions.PreOperation, yopower_papps_grid_extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35ea4f843cfb5138" PluginTypeId="269c930b-5357-4657-bad5-5feb54d5703c" Name="yopower_papps_grid_extensions.code.definitions.PreOperation">
       <FriendlyName>bfae2084-df94-4967-a021-b36802304d42</FriendlyName>
     </PluginType>
+    <PluginType AssemblyQualifiedName="yopower_papps_grid_extensions.code.global.GetColumnAuditHistory, yopower_papps_grid_extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35ea4f843cfb5138" PluginTypeId="33765440-5079-4f75-9536-7b5a2bffb358" Name="yopower_papps_grid_extensions.code.global.GetColumnAuditHistory">
+      <FriendlyName>0387f920-e8bd-47d4-8449-d8ee774c2c85</FriendlyName>
+    </PluginType>
     <PluginType AssemblyQualifiedName="yopower_papps_grid_extensions.code.global.GetSubgridDefinitions, yopower_papps_grid_extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=35ea4f843cfb5138" PluginTypeId="67a6f503-b8e0-40ac-96ab-5031704cb462" Name="yopower_papps_grid_extensions.code.global.GetSubgridDefinitions">
       <FriendlyName>dd5da11e-0937-4036-8e43-acca2004cc0a</FriendlyName>
     </PluginType>

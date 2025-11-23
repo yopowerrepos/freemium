@@ -171,11 +171,11 @@ namespace yopower_papps_grid_extensions.earlybound
 		/// Reference to the content file on Azure.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contentfileref")]
-		public object ContentFileRef
+		public System.Nullable<System.Guid> ContentFileRef
 		{
 			get
 			{
-				return this.GetAttributeValue<object>("contentfileref");
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("contentfileref");
 			}
 		}
 		
@@ -199,11 +199,11 @@ namespace yopower_papps_grid_extensions.earlybound
 		/// Reference to the Json content file on Azure.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contentjsonfileref")]
-		public object ContentJsonFileRef
+		public System.Nullable<System.Guid> ContentJsonFileRef
 		{
 			get
 			{
-				return this.GetAttributeValue<object>("contentjsonfileref");
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("contentjsonfileref");
 			}
 		}
 		

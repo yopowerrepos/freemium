@@ -243,6 +243,22 @@ namespace yopower_papps_grid_extensions.business
                         }
                         break;
 
+                    case yp_gbl_column_definition_type.AnyAuditHistory:
+                        break;
+
+                    case yp_gbl_column_definition_type.AnyCustomTimeline:
+                        try
+                        {
+                            var model = JsonConvert.DeserializeObject<CustomTimeLineModel>(parameters, settings);
+                            foreach (var item_ in model.Items)
+                                item_.EnsureStructure(metadataBO.GetTable(item_.Table));
+                        }
+                        catch (Exception jse)
+                        {
+                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                        }
+                        break;
+
                     default:
                         throw new InvalidPluginExecutionException($"❌Type not implemented!");
                 }
@@ -298,7 +314,7 @@ namespace yopower_papps_grid_extensions.business
                 var openDefinitions = new List<yp_pagridextd_column_definition>();
                 if (definitions != null && definitions.Count > 0)
                     openDefinitions = definitions
-                    .Where(w => w.yp_elegible_for_security_roles == null 
+                    .Where(w => w.yp_elegible_for_security_roles == null
                         || w.yp_elegible_for_security_roles == "")
                     .ToList();
 
@@ -308,7 +324,7 @@ namespace yopower_papps_grid_extensions.business
                     roleDefinitions = definitions
                         .Where(w => !string.IsNullOrEmpty(w.yp_elegible_for_security_roles)
                             && w.yp_elegible_for_security_roles
-                                .Split(',')  
+                                .Split(',')
                                 .Intersect(roles.Select(r => r.Name))
                                 .Any())
                         .ToList();

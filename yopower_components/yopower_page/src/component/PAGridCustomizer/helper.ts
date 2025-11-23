@@ -196,21 +196,39 @@ export class Helper {
         }
     }
 
-    public static navigateToRecordModal(position: number, tableLogicalName: string, id: string, formId: string, tabName: string, height: any, width: any) {
+    public static buildTimelineQuery(item: any, reference: any): any {
+
+        return `<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
+                        <entity name='${item.table}'>
+                            <attribute name='${item.id}' />
+                            <attribute name='${item.title}' />
+                            <attribute name='${item.description}' />
+                            <attribute name='${item.optionset}' />
+                            <attribute name='${item.orderby}' />
+                            <filter type='and'>
+                            <condition attribute='${item.lookup}' operator='eq' uitype='${reference.table}' value='${reference.id}'/>
+                            </filter>
+                        </entity>
+                        </fetch>`;
+    }
+
+    public static navigateToRecordModal(position: number, tableLogicalName: string, id: string, formId: string, tabName: string | undefined, height: any, width: any) {
+        const pageInput: any = {
+            pageType: "entityrecord",
+            entityName: tableLogicalName,
+            entityId: id,
+            formId: formId,
+            tabName: tabName
+        };
+        const navigationOptions: any = {
+            target: 2,
+            height: height,
+            width: width,
+            position: position,
+        };
         (window as any).Xrm.Navigation.navigateTo(
-            {
-                pageType: "entityrecord",
-                entityName: tableLogicalName,
-                entityId: id,
-                formId: formId,
-                tabName: tabName
-            },
-            {
-                target: 2,
-                height: height,
-                width: width,
-                position: position,
-            }
+            pageInput,
+            navigationOptions
         )
     }
 

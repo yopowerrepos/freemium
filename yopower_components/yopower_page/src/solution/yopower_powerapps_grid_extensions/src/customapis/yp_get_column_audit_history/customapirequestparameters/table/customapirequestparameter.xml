@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="table">
+  <description default="table">
+    <label description="table" languagecode="1033" />
+  </description>
+  <displayname default="table">
+    <label description="table" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>0</isoptional>
+  <name>table</name>
+  <type>10</type>
+</customapirequestparameter>

@@ -14,6 +14,32 @@ namespace yopower_papps_grid_extensions.earlybound
 	
 	
 	/// <summary>
+	/// Set the level of detail the computer use logs allow.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	public enum organization_cuaflowlogsverbosity
+	{
+		
+		/// <summary>
+		/// Complete Computer use logs for full audit and traceability. Takes more storage space.
+		/// </summary>
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Alldata = 0,
+		
+		/// <summary>
+		/// Essential Computer use logs without screenshots, minimizing storage.
+		/// </summary>
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Datawithoutscreenshots = 1,
+		
+		/// <summary>
+		/// Captures only basic system status and error data, minimizing collection and storage.
+		/// </summary>
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Minimal = 2,
+	}
+	
+	/// <summary>
 	/// Indication of whether to display money fields with currency code or currency symbol.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
@@ -544,7 +570,11 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string AdvancedFilteringEnabled = "advancedfilteringenabled";
 			public const string AdvancedLookupEnabled = "advancedlookupenabled";
 			public const string AdvancedLookupInEditFilter = "advancedlookupineditfilter";
+			public const string AiPromptsAzureAIFoundryModelTypesEnabled = "aipromptsazureaifoundrymodeltypesenabled";
+			public const string AiPromptsBasicModelTypesEnabled = "aipromptsbasicmodeltypesenabled";
 			public const string AiPromptsEnabled = "aipromptsenabled";
+			public const string AiPromptsPremiumModelTypesEnabled = "aipromptspremiummodeltypesenabled";
+			public const string AiPromptsStandardModelTypesEnabled = "aipromptsstandardmodeltypesenabled";
 			public const string AllowAddressBookSyncs = "allowaddressbooksyncs";
 			public const string AllowApplicationUserAccess = "allowapplicationuseraccess";
 			public const string AllowAutoResponseCreation = "allowautoresponsecreation";
@@ -599,6 +629,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string BlockedAttachments = "blockedattachments";
 			public const string BlockedMimeTypes = "blockedmimetypes";
 			public const string BlockTranscriptRecordingForCopilotStudio = "blocktranscriptrecordingforcopilotstudio";
+			public const string BlockUrlsInResponsesForCopilotStudio = "blockurlsinresponsesforcopilotstudio";
 			public const string BoundDashboardDefaultCardExpanded = "bounddashboarddefaultcardexpanded";
 			public const string BulkOperationPrefix = "bulkoperationprefix";
 			public const string BusinessCardOptions = "businesscardoptions";
@@ -622,6 +653,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string CreatedOnBehalfBy = "createdonbehalfby";
 			public const string CreateProductsWithoutParentInActiveState = "createproductswithoutparentinactivestate";
 			public const string CuaFlowLogsTtlInMinutes = "cuaflowlogsttlinminutes";
+			public const string CuaFlowLogsVerbosity = "cuaflowlogsverbosity";
 			public const string CurrencyDecimalPrecision = "currencydecimalprecision";
 			public const string CurrencyDisplayOption = "currencydisplayoption";
 			public const string CurrencyFormatCode = "currencyformatcode";
@@ -684,6 +716,8 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string EnableMakerSwitchToClassic = "enablemakerswitchtoclassic";
 			public const string EnableMicrosoftFlowIntegration = "enablemicrosoftflowintegration";
 			public const string EnablePricingOnCreate = "enablepricingoncreate";
+			public const string EnableRedirectionToModernSettings = "enableredirectiontomodernsettings";
+			public const string EnableSensitivityLabels = "enablesensitivitylabels";
 			public const string EnableSmartMatching = "enablesmartmatching";
 			public const string EnableUnifiedClientCDN = "enableunifiedclientcdn";
 			public const string EnableUnifiedInterfaceShellRefresh = "enableunifiedinterfaceshellrefresh";
@@ -764,6 +798,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string IsContextualEmailEnabled = "iscontextualemailenabled";
 			public const string IsContextualHelpEnabled = "iscontextualhelpenabled";
 			public const string IsCopilotFeedbackEnabled = "iscopilotfeedbackenabled";
+			public const string IsCuaOnHmgV2Enabled = "iscuaonhmgv2enabled";
 			public const string IsCustomControlsInCanvasAppsEnabled = "iscustomcontrolsincanvasappsenabled";
 			public const string IsDefaultCountryCodeCheckEnabled = "isdefaultcountrycodecheckenabled";
 			public const string IsDelegateAccessEnabled = "isdelegateaccessenabled";
@@ -774,6 +809,8 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string IsDesktopFlowSavingsEnabled = "isdesktopflowsavingsenabled";
 			public const string IsDesktopFlowSchemaV2Enabled = "isdesktopflowschemav2enabled";
 			public const string IsDesktopFlowVanillaImageSharingEnabled = "isdesktopflowvanillaimagesharingenabled";
+			public const string IsDesktopFlowVersionControlEnabled = "isdesktopflowversioncontrolenabled";
+			public const string IsDesktopFlowVersionControlEnabledByDefault = "isdesktopflowversioncontrolenabledbydefault";
 			public const string IsDisabled = "isdisabled";
 			public const string IsDuplicateDetectionEnabled = "isduplicatedetectionenabled";
 			public const string IsDuplicateDetectionEnabledForImport = "isduplicatedetectionenabledforimport";
@@ -819,6 +856,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string IsPreviewForEmailMonitoringAllowed = "ispreviewforemailmonitoringallowed";
 			public const string IsPriceListMandatory = "ispricelistmandatory";
 			public const string IsProcessCapacityAutoClaimEnabled = "isprocesscapacityautoclaimenabled";
+			public const string IsProcessMiningEnabled = "isprocessminingenabled";
 			public const string IsQuickCreateEnabledForOpportunityClose = "isquickcreateenabledforopportunityclose";
 			public const string IsReadAuditEnabled = "isreadauditenabled";
 			public const string IsRelationshipInsightsEnabled = "isrelationshipinsightsenabled";
@@ -830,9 +868,11 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string IsRpaBoxEnabled = "isrpaboxenabled";
 			public const string IsRpaUnattendedEnabled = "isrpaunattendedenabled";
 			public const string IsSalesAssistantEnabled = "issalesassistantenabled";
+			public const string IsSendCuaAuditLogToPurviewEnabled = "issendcuaauditlogtopurviewenabled";
 			public const string IsSharingInOrgAllowed = "issharinginorgallowed";
 			public const string IsSOPIntegrationEnabled = "issopintegrationenabled";
 			public const string IsTextWrapEnabled = "istextwrapenabled";
+			public const string IsUploadCuaLogToDataverseEnabled = "isuploadcualogtodataverseenabled";
 			public const string IsUserAccessAuditEnabled = "isuseraccessauditenabled";
 			public const string ISVIntegrationCode = "isvintegrationcode";
 			public const string IsWorkQueueSavingsEnabled = "isworkqueuesavingsenabled";
@@ -1200,6 +1240,38 @@ namespace yopower_papps_grid_extensions.earlybound
 		}
 		
 		/// <summary>
+		/// Indicates whether Azure AI Foundry model types for AI Prompts are enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptsazureaifoundrymodeltypesenabled")]
+		public System.Nullable<bool> AiPromptsAzureAIFoundryModelTypesEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("aipromptsazureaifoundrymodeltypesenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("aipromptsazureaifoundrymodeltypesenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Basic model types for AI Prompts are enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptsbasicmodeltypesenabled")]
+		public System.Nullable<bool> AiPromptsBasicModelTypesEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("aipromptsbasicmodeltypesenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("aipromptsbasicmodeltypesenabled", value);
+			}
+		}
+		
+		/// <summary>
 		/// Indicates whether AI Prompts feature is enabled.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptsenabled")]
@@ -1212,6 +1284,38 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("aipromptsenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Premium model types for AI Prompts are enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptspremiummodeltypesenabled")]
+		public System.Nullable<bool> AiPromptsPremiumModelTypesEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("aipromptspremiummodeltypesenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("aipromptspremiummodeltypesenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Standard model types for AI Prompts are enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptsstandardmodeltypesenabled")]
+		public System.Nullable<bool> AiPromptsStandardModelTypesEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("aipromptsstandardmodeltypesenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("aipromptsstandardmodeltypesenabled", value);
 			}
 		}
 		
@@ -2072,6 +2176,22 @@ namespace yopower_papps_grid_extensions.earlybound
 		}
 		
 		/// <summary>
+		/// Enable this feature to block URLs and images in Copilot Studio and agent responses for an individual environment. URLs will be replaced with placeholders.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blockurlsinresponsesforcopilotstudio")]
+		public System.Nullable<bool> BlockUrlsInResponsesForCopilotStudio
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("blockurlsinresponsesforcopilotstudio");
+			}
+			set
+			{
+				this.SetAttributeValue("blockurlsinresponsesforcopilotstudio", value);
+			}
+		}
+		
+		/// <summary>
 		/// Display cards in expanded state for interactive dashboard
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bounddashboarddefaultcardexpanded")]
@@ -2424,6 +2544,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("cuaflowlogsttlinminutes", value);
+			}
+		}
+		
+		/// <summary>
+		/// Set the level of detail the computer use logs allow.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("cuaflowlogsverbosity")]
+		public virtual organization_cuaflowlogsverbosity? CuaFlowLogsVerbosity
+		{
+			get
+			{
+				return ((organization_cuaflowlogsverbosity?)(EntityOptionSetEnum.GetEnum(this, "cuaflowlogsverbosity")));
+			}
+			set
+			{
+				this.SetAttributeValue("cuaflowlogsverbosity", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 			}
 		}
 		
@@ -3410,6 +3546,38 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("enablepricingoncreate", value);
+			}
+		}
+		
+		/// <summary>
+		/// Enable the redirection to Modern Settings
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableredirectiontomodernsettings")]
+		public System.Nullable<bool> EnableRedirectionToModernSettings
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableredirectiontomodernsettings");
+			}
+			set
+			{
+				this.SetAttributeValue("enableredirectiontomodernsettings", value);
+			}
+		}
+		
+		/// <summary>
+		/// Enable or disable Sensitivity Labels in Email.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablesensitivitylabels")]
+		public System.Nullable<bool> EnableSensitivityLabels
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablesensitivitylabels");
+			}
+			set
+			{
+				this.SetAttributeValue("enablesensitivitylabels", value);
 			}
 		}
 		
@@ -4656,6 +4824,22 @@ namespace yopower_papps_grid_extensions.earlybound
 		}
 		
 		/// <summary>
+		/// Indicates whether CUA on Hosted Groups V2 feature is enabled in this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscuaonhmgv2enabled")]
+		public System.Nullable<bool> IsCuaOnHmgV2Enabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscuaonhmgv2enabled");
+			}
+			set
+			{
+				this.SetAttributeValue("iscuaonhmgv2enabled", value);
+			}
+		}
+		
+		/// <summary>
 		/// Indicates whether Custom Controls in canvas PowerApps feature has been enabled for the organization.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscustomcontrolsincanvasappsenabled")]
@@ -4812,6 +4996,38 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("isdesktopflowvanillaimagesharingenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether version control for Desktop Flows is enabled in this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowversioncontrolenabled")]
+		public System.Nullable<bool> IsDesktopFlowVersionControlEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdesktopflowversioncontrolenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("isdesktopflowversioncontrolenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates if this organization will opt-in to automatically to enable version control for Desktop Flows.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowversioncontrolenabledbydefault")]
+		public System.Nullable<bool> IsDesktopFlowVersionControlEnabledByDefault
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdesktopflowversioncontrolenabledbydefault");
+			}
+			set
+			{
+				this.SetAttributeValue("isdesktopflowversioncontrolenabledbydefault", value);
 			}
 		}
 		
@@ -5529,6 +5745,22 @@ namespace yopower_papps_grid_extensions.earlybound
 		}
 		
 		/// <summary>
+		/// Indicates whether Process Mining is enabled in this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isprocessminingenabled")]
+		public System.Nullable<bool> IsProcessMiningEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isprocessminingenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("isprocessminingenabled", value);
+			}
+		}
+		
+		/// <summary>
 		/// Select whether to use the standard Out-of-box Opportunity Close experience or opt to for a customized experience.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isquickcreateenabledforopportunityclose")]
@@ -5704,6 +5936,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			}
 		}
 		
+		/// <summary>
+		/// Indicates whether sending CUA audit logs to Purview is enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("issendcuaauditlogtopurviewenabled")]
+		public System.Nullable<bool> IsSendCuaAuditLogToPurviewEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("issendcuaauditlogtopurviewenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("issendcuaauditlogtopurviewenabled", value);
+			}
+		}
+		
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("issharinginorgallowed")]
 		public System.Nullable<bool> IsSharingInOrgAllowed
 		{
@@ -5746,6 +5994,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("istextwrapenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether CUA log upload to Dataverse is enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isuploadcualogtodataverseenabled")]
+		public System.Nullable<bool> IsUploadCuaLogToDataverseEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isuploadcualogtodataverseenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("isuploadcualogtodataverseenabled", value);
 			}
 		}
 		

@@ -1,0 +1,12 @@
+<customapirequestparameter uniquename="column">
+  <description default="column">
+    <label description="column" languagecode="1033" />
+  </description>
+  <displayname default="column">
+    <label description="column" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>0</isoptional>
+  <name>column</name>
+  <type>10</type>
+</customapirequestparameter>

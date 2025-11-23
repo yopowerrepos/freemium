@@ -61,6 +61,87 @@ namespace yopower_papps_grid_extensions.business
         }
 
         /// <summary>
+        /// Get Column Metadata
+        /// </summary>
+        /// <param name="table">Table</param>
+        /// <param name="column">Column</param>
+        /// <returns></returns>
+        public AttributeMetadata GetColumn(string table, string column)
+        {
+            var request = new RetrieveAttributeRequest()
+            {
+                EntityLogicalName = table,
+                LogicalName = column,
+                RetrieveAsIfPublished = true
+            };
+
+            var response = (RetrieveAttributeResponse)this.Service.Execute(request);
+            return response.AttributeMetadata;
+        }
+
+        /// <summary>
+        /// Get OptionSet Values
+        /// </summary>
+        /// <param name="table">Table</param>
+        /// <param name="column">Column</param>
+        /// <returns></returns>
+        public List<OptionSetModel> ParseOptions(string table, string column)
+        {
+            var list = new List<OptionSetModel>();
+            var metadata = this.GetColumn(table, column);
+            switch (metadata.AttributeType)
+            {
+                case AttributeTypeCode.Boolean:
+                    var boolean_ = (BooleanAttributeMetadata)metadata;
+                    list.Add(new OptionSetModel()
+                    {
+                        DisplayName = boolean_.OptionSet.TrueOption.Label.UserLocalizedLabel?.Label,
+                        Value = boolean_.OptionSet.TrueOption.Value.Value,
+                        Color = boolean_.OptionSet.TrueOption.Color
+                    });
+                    list.Add(new OptionSetModel()
+                    {
+                        DisplayName = boolean_.OptionSet.FalseOption.Label.UserLocalizedLabel?.Label,
+                        Value = boolean_.OptionSet.FalseOption.Value.Value,
+                        Color = boolean_.OptionSet.FalseOption.Color
+                    });
+                    break;
+
+                case AttributeTypeCode.Picklist:
+                    var picklist_ = (PicklistAttributeMetadata)metadata;
+                    list = picklist_.OptionSet.Options.Select(s => new OptionSetModel()
+                    {
+                        DisplayName = s.Label.UserLocalizedLabel?.Label,
+                        Value = s.Value.Value,
+                        Color = s.Color
+                    }).ToList();
+                    break;
+
+                case AttributeTypeCode.Status:
+                    var status_ = (StatusAttributeMetadata)metadata;
+                    list = status_.OptionSet.Options.Select(s => new OptionSetModel()
+                    {
+                        DisplayName = s.Label.UserLocalizedLabel?.Label,
+                        Value = s.Value.Value,
+                        Color = s.Color
+                    }).ToList();
+                    break;
+
+                case AttributeTypeCode.State:
+                    var states_ = (StateAttributeMetadata)metadata;
+                    list = states_.OptionSet.Options.Select(s => new OptionSetModel()
+                    {
+                        DisplayName = s.Label.UserLocalizedLabel?.Label,
+                        Value = s.Value.Value,
+                        Color = s.Color
+                    }).ToList();
+                    break;
+            }
+
+            return list;
+        }
+
+        /// <summary>
         /// Get Table System Views
         /// </summary>
         /// <returns></returns>

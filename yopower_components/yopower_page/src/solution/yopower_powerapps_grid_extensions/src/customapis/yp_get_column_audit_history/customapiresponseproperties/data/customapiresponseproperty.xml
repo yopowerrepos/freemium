@@ -1,0 +1,11 @@
+<customapiresponseproperty uniquename="data">
+  <description default="data">
+    <label description="data" languagecode="1033" />
+  </description>
+  <displayname default="data">
+    <label description="data" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <name>data</name>
+  <type>10</type>
+</customapiresponseproperty>

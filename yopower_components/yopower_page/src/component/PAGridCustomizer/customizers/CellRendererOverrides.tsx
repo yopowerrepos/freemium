@@ -17,6 +17,8 @@ import { NotesCell } from "./NotesCell";
 import { ModifierState } from "../ControlKeyTracker";
 import { ICell } from "../interfaces/ICell";
 import { getRichTextPopoverCell } from "./RichTextCell";
+import { AuditedCell } from "./AuditedCell";
+import { CustomTimeLineCell } from "./CustomTimeLineCell";
 
 export function cellRendererOverrides(
 	subgrid: string,
@@ -80,7 +82,7 @@ export function getComponent(
 			// 	(col.colDefs[col.columnIndex] as any).displayName = definition.settings.renameColumn;
 		}
 
-		let cell : ICell = {
+		let cell: ICell = {
 			context: context,
 			params: col,
 			props: props,
@@ -115,13 +117,13 @@ export function getComponent(
 			// Any [Dependent Colorful Cell]
 			case 904:
 				const foundColumn = Object.keys(col.rowData!).find(k => k.includes(JSON.parse(definition.parameters).column));
-				if (foundColumn !== undefined)
-				{
-					cell.col = col.colDefs.filter(f => f.name === foundColumn)[0],
-					{
+				if (foundColumn !== undefined) {
+					const columnDefinition = col.colDefs.filter(f => f.name === foundColumn)[0]!;
+					cell.col = columnDefinition, { dataType: columnDefinition.dataType };
+					cell.props = {
 						value: (col.rowData as any)[foundColumn],
 						formattedValue: (col.rowData as any)[foundColumn]
-					};
+					}
 					return getColorfulCell(cell);
 				}
 				else
@@ -136,6 +138,14 @@ export function getComponent(
 			//Any [Notes]
 			case 906:
 				return <NotesCell {...cell} />;
+
+			//Any [Audited Cell]
+			case 907:
+				return <AuditedCell {...cell} />;
+
+			//Any [Audited Cell]
+			case 908:
+				return <CustomTimeLineCell {...cell} />;
 
 			// Lookup [Navigate Buttons]
 			case 800:
@@ -154,7 +164,7 @@ export function getComponent(
 
 			//Any [File]
 			case 600:
-				if (cell.props.value == undefined && cell.props.value !== null)
+				if (cell.props.value === undefined && cell.props.value !== null)
 					cell.props.value = {
 						fileUrl: "",
 						fileName: "--",

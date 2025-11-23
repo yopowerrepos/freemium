@@ -32,16 +32,5 @@
     "yp_pagridextd_column_definition"
   ],
   "messageNamesFilter": [
-    "ValidateFetchXmlExpression",
-    "RetrieveEnvironmentVariableValue",
-    "RetrieveEnvironmentVariableSecretValue",
-    "AIReply",
-    "AIClassify",
-    "AIExtract",
-    "AISentiment",
-    "AISummarize",
-    "AISummarizeRecord",
-    "AITranslate",
-    "SendAppNotification"
   ]
 }

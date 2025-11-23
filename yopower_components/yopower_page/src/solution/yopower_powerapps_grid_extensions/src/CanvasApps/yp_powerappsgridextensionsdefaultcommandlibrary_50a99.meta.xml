@@ -26,6 +26,6 @@
   <IntroducedVersion>1.0</IntroducedVersion>
   <CdsDependencies>{"cdsdependencies":[{"logicalname":"yp_pagridextd_column_definition","componenttype":1}]}</CdsDependencies>
   <IsCustomizable>1</IsCustomizable>
-  <BackgroundImageUri>/CanvasApps/yp_powerappsgridextensionsdefaultcommandlibra28971_BackgroundImageUri</BackgroundImageUri>
-  <DocumentUri>/CanvasApps/yp_powerappsgridextensionsdefaultcommandlibra84723_DocumentUri.msapp</DocumentUri>
+  <BackgroundImageUri>/CanvasApps/yp_powerappsgridextensionsdefaultcommandlibra99757_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/yp_powerappsgridextensionsdefaultcommandlibra64550_DocumentUri.msapp</DocumentUri>
 </CanvasApp>

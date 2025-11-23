@@ -1,0 +1,18 @@
+<customapi uniquename="yp_get_column_audit_history">
+  <allowedcustomprocessingsteptype>0</allowedcustomprocessingsteptype>
+  <bindingtype>0</bindingtype>
+  <description default="⚡Get Column Audit History">
+    <label description="⚡Get Column Audit History" languagecode="1033" />
+  </description>
+  <displayname default="⚡Get Column Audit History">
+    <label description="⚡Get Column Audit History" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isfunction>0</isfunction>
+  <isprivate>0</isprivate>
+  <name>yp_get_column_audit_history</name>
+  <plugintypeid>
+    <plugintypeexportkey>33765440-5079-4f75-9536-7b5a2bffb358</plugintypeexportkey>
+  </plugintypeid>
+  <workflowsdkstepenabled>0</workflowsdkstepenabled>
+</customapi>

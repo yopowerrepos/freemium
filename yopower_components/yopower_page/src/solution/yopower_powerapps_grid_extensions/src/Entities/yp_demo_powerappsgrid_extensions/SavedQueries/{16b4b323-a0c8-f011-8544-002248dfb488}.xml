@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{16b4b323-a0c8-f011-8544-002248dfb488}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="yp_name" select="1" icon="1" preview="1">
+        <row name="result" id="yp_demo_powerappsgrid_extensionsid">
+          <cell name="statuscode" width="150" />
+          <cell name="yp_accountid" width="250" />
+          <cell name="yp_name" width="150" />
+          <cell name="yp_text" width="150" />
+          <cell name="yp_datetime" width="200" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="yp_demo_powerappsgrid_extensions">
+          <attribute name="yp_name" />
+          <attribute name="yp_demo_powerappsgrid_extensionsid" />
+          <attribute name="yp_accountid" />
+          <attribute name="yp_datetime" />
+          <attribute name="statuscode" />
+          <attribute name="yp_text" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Fix Dependent Colors, New Audited and Custom Timeline" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
