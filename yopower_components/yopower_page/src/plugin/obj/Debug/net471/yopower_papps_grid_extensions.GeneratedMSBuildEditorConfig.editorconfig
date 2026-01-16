@@ -1,8 +1,0 @@
-is_global = true
-build_property.RootNamespace = yopower_papps_grid_extensions
-build_property.ProjectDir = c:\git\yopower\freemium\yopower_components\yopower_page\src\plugin\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
-build_property.CsWinRTUseWindowsUIXamlProjections = false
-build_property.EffectiveAnalysisLevelStyle = 
-build_property.EnableCodeStyleSeverity = 

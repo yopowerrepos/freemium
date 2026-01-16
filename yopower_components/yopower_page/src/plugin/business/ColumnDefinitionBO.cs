@@ -6,6 +6,7 @@ using Microsoft.Xrm.Sdk.Query;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ using yopower_papps_grid_extensions.earlybound;
 using yopower_papps_grid_extensions.extensions;
 using yopower_papps_grid_extensions.language;
 using yopower_papps_grid_extensions.models;
-using yopower_papps_grid_extensions.models.types;
+using yopower_papps_grid_extensions.models.customizers;
 
 namespace yopower_papps_grid_extensions.business
 {
@@ -50,221 +51,30 @@ namespace yopower_papps_grid_extensions.business
 
                 switch ((yp_gbl_column_definition_type)type.Value)
                 {
-                    case yp_gbl_column_definition_type.TextRichTextPopover:
-                        if (matchColumn.Type.Value != AttributeTypeCode.Memo.GetHashCode()
-                            && matchColumn.Type.Value != AttributeTypeCode.String.GetHashCode())
-                        {
-                            throw new InvalidPluginExecutionException($"⚠️The option 'Text [RichText]' is available for String and Memo columns");
-                        }
-                        break;
-
-                    case yp_gbl_column_definition_type.AnyNavigateButtons:
-                        try
-                        {
-                            var model = JsonConvert.DeserializeObject<NavigateToModel>(parameters, settings);
-                        }
-                        catch (Exception jse)
-                        {
-                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                        }
-                        break;
-
-                    case yp_gbl_column_definition_type.AnyNewRelatedRecord:
-                        try
-                        {
-                            var model = JsonConvert.DeserializeObject<NewRelatedRecordModel>(parameters, settings);
-                        }
-                        catch (Exception jse)
-                        {
-                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                        }
-                        break;
-
-                    case yp_gbl_column_definition_type.LookupNavigateButtons:
-                        if (matchColumn.Type.Value == AttributeTypeCode.Customer.GetHashCode()
-                            || matchColumn.Type.Value == AttributeTypeCode.Lookup.GetHashCode()
-                            || matchColumn.Type.Value == AttributeTypeCode.Owner.GetHashCode())
-                        {
-                            try
-                            {
-                                var model = JsonConvert.DeserializeObject<NavigateToModel>(parameters, settings);
-                            }
-                            catch (Exception jse)
-                            {
-                                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                            }
-                        }
-                        else
-                            throw new InvalidPluginExecutionException($"The option Lookup [Navigate Buttons] is available just for Lookup columns");
-                        break;
-
-                    case yp_gbl_column_definition_type.AnyReadOnly:
-                        target.yp_parameters = string.Empty;
-                        break;
-
-                    case yp_gbl_column_definition_type.LookupFilteredLookup:
-                        if (matchColumn.Type.Value == AttributeTypeCode.Customer.GetHashCode()
-                            || matchColumn.Type.Value == AttributeTypeCode.Lookup.GetHashCode()
-                            || matchColumn.Type.Value == AttributeTypeCode.Owner.GetHashCode())
-                        {
-                            try
-                            {
-                                var model = JsonConvert.DeserializeObject<FilteredLookupModel>(parameters, settings);
-                            }
-                            catch (Exception jse)
-                            {
-                                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                            }
-                        }
-                        else
-                            throw new InvalidPluginExecutionException($"The option Lookup [Filtered Lookup] is available just for Lookup columns");
-                        break;
-
-                    case yp_gbl_column_definition_type.AnyDependentColorfulCell:
-                        try
-                        {
-                            var model = JsonConvert.DeserializeObject<ColorfulCellModel>(parameters, settings);
-                        }
-                        catch (Exception jse)
-                        {
-                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                        }
-                        break;
-
-                    case yp_gbl_column_definition_type.NumbersDateColorfulCell:
-                        if (matchColumn.Type.Value == AttributeTypeCode.DateTime.GetHashCode()
-                            || matchColumn.Type.Value == AttributeTypeCode.Integer.GetHashCode()
-                            || matchColumn.Type.Value == AttributeTypeCode.Decimal.GetHashCode()
-                            || matchColumn.Type.Value == AttributeTypeCode.Double.GetHashCode()
-                            || matchColumn.Type.Value == AttributeTypeCode.BigInt.GetHashCode()
-                            || matchColumn.Type.Value == AttributeTypeCode.Money.GetHashCode())
-                        {
-                            try
-                            {
-                                var model = JsonConvert.DeserializeObject<ColorfulCellModel>(parameters, settings);
-                            }
-                            catch (Exception jse)
-                            {
-                                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                            }
-                        }
-                        else
-                            throw new InvalidPluginExecutionException($"⚠️The option 'Numbers & Date [Colorful Cel]' is available for Date Only, Date Time, Integer, Decimal and Double columns");
-                        break;
-
-                    case yp_gbl_column_definition_type.NumbersProgressBar:
-                        if (matchColumn.Type.Value == AttributeTypeCode.Integer.GetHashCode()
-                            || matchColumn.Type.Value == AttributeTypeCode.Decimal.GetHashCode()
-                            || matchColumn.Type.Value == AttributeTypeCode.Double.GetHashCode()
-                            || matchColumn.Type.Value == AttributeTypeCode.BigInt.GetHashCode())
-                        {
-                            try
-                            {
-                                var model = JsonConvert.DeserializeObject<ProgressIndicatorModel>(parameters, settings);
-                            }
-                            catch (Exception jse)
-                            {
-                                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                            }
-                        }
-                        else
-                            throw new InvalidPluginExecutionException($"⚠️The option 'Numbers [Progress Indicator]' is available for Integer, Decimal and Double columns");
-                        break;
-
-                    case yp_gbl_column_definition_type.NumbersDuration:
-                        if (matchColumn.Type.Value == AttributeTypeCode.Integer.GetHashCode())
-                        {
-                            try
-                            {
-                                var model = JsonConvert.DeserializeObject<DurationCellModel>(parameters, settings);
-                            }
-                            catch (Exception jse)
-                            {
-                                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                            }
-                        }
-                        else
-                            throw new InvalidPluginExecutionException($"⚠️The option 'Numbers [Duration]' is available for Integer, Decimal and Double columns");
-                        break;
-
-                    case yp_gbl_column_definition_type.AnyRelatedRecords:
-                        try
-                        {
-                            var model = JsonConvert.DeserializeObject<AnyRelatedRecords>(parameters, settings);
-                        }
-                        catch (Exception jse)
-                        {
-                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                        }
-                        break;
-
-                    case yp_gbl_column_definition_type.FileUploadDownload:
-                        try
-                        {
-                            var model = JsonConvert.DeserializeObject<FileUploadDownloadModel>(parameters, settings);
-                        }
-                        catch (Exception jse)
-                        {
-                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                        }
-                        break;
-
-                    case yp_gbl_column_definition_type.AnyCopilotExecuteEvent:
-                        try
-                        {
-                            var model = JsonConvert.DeserializeObject<CopilotExecuteEventModel>(parameters, settings);
-                        }
-                        catch (Exception jse)
-                        {
-                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                        }
-                        break;
-
-                    case yp_gbl_column_definition_type.AnyNotes:
-                        try
-                        {
-                            var model = JsonConvert.DeserializeObject<NoteCellModel>(parameters, settings);
-                            if (!string.IsNullOrEmpty(model.FetchXmlAggregate))
-                            {
-                                var fetchxml = model.FetchXmlAggregate.Replace("#valuetype#", "account").Replace("#value#", Guid.Empty.ToString());
-                                var query = ((FetchXmlToQueryExpressionResponse)this.ServiceAdmin.Execute(new FetchXmlToQueryExpressionRequest() { FetchXml = fetchxml })).Query;
-                                NoteCellModel.EnsureFetchXmlAggregateQuery(query);
-                            }
-                            if (!string.IsNullOrEmpty(model.FetchXml))
-                            {
-                                var fetchxml = model.FetchXmlAggregate.Replace("#valuetype#", "account").Replace("#value#", Guid.Empty.ToString());
-                                var query = ((FetchXmlToQueryExpressionResponse)this.ServiceAdmin.Execute(new FetchXmlToQueryExpressionRequest() { FetchXml = fetchxml })).Query;
-                                NoteCellModel.EnsureFetchXmlQuery(query);
-                            }
-                        }
-                        catch (Exception jse)
-                        {
-                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                        }
-                        break;
-
-                    case yp_gbl_column_definition_type.AnyAuditHistory:
-                        break;
-
-                    case yp_gbl_column_definition_type.AnyCustomTimeline:
-                        try
-                        {
-                            var model = JsonConvert.DeserializeObject<CustomTimeLineModel>(parameters, settings);
-                            foreach (var item_ in model.Items)
-                                item_.EnsureStructure(metadataBO.GetTable(item_.Table));
-                        }
-                        catch (Exception jse)
-                        {
-                            throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
-                        }
-                        break;
-
-                    default:
-                        throw new InvalidPluginExecutionException($"❌Type not implemented!");
+                    case yp_gbl_column_definition_type._500TextRichTextPopover: Ensure500RichTextPopover(matchColumn); break;
+                    case yp_gbl_column_definition_type._600FileManagement: Ensure600FileManagement(parameters, settings); break;
+                    case yp_gbl_column_definition_type._700NumbersDateColors: Ensure700NumbersDateColors(parameters, matchColumn, settings); break;
+                    case yp_gbl_column_definition_type._701NumbersProgressBar: Ensure701NumbersProgressBar(parameters, matchColumn, settings); break;
+                    case yp_gbl_column_definition_type._702NumbersDuration: Ensure702NumbersDuration(parameters, matchColumn, settings); break;
+                    case yp_gbl_column_definition_type._800LookupNavigateTo: Ensure800LookupNavigateTo(parameters, matchColumn, settings); break;
+                    case yp_gbl_column_definition_type._801LookupFilteredLookup: Ensure801LookupFilteredLookup(parameters, matchColumn, settings); break;
+                    case yp_gbl_column_definition_type._900AnyNavigateTo: Ensure900AnyNavigateTo(parameters, settings); break;
+                    case yp_gbl_column_definition_type._901AnyReadOnly: target.yp_parameters = string.Empty; break;
+                    case yp_gbl_column_definition_type._902AnyRelatedRecords: Ensure902AnyRelatedRecords(parameters, settings); break;
+                    case yp_gbl_column_definition_type._903AnyCopilotExecuteEvent: Ensure903AnyCopilotExecuteEvent(parameters, settings); break;
+                    case yp_gbl_column_definition_type._904AnyDependentColors: Ensure904AnyDependentColors(parameters, settings); break;
+                    case yp_gbl_column_definition_type._905AnyNewRelatedRecord: Ensure905AnyNewRelatedRecord(parameters, settings); break;
+                    case yp_gbl_column_definition_type._906AnyNotes: Ensure906AnyNotes(parameters, settings); break;
+                    case yp_gbl_column_definition_type._907AnyAuditHistory: target.yp_parameters = string.Empty; break;
+                    case yp_gbl_column_definition_type._908AnyCustomTimeline: Ensure908AnyCustomTimeline(parameters, metadataBO, settings); break;
+                    case yp_gbl_column_definition_type._909AnyColorbyHex: Ensure909AnyColorByHex(parameters, settings); break;
+                    default: throw new InvalidPluginExecutionException($"❌Type not implemented!");
                 }
             }
             else
                 throw new InvalidPluginExecutionException($"Column '{column}' not found on '{table}' table.");
+
+
         }
 
         /// <summary>
@@ -338,5 +148,220 @@ namespace yopower_papps_grid_extensions.business
             }
         }
 
+        #region Customizers
+        private void Ensure909AnyColorByHex(string parameters, JsonSerializerSettings settings)
+        {
+            try
+            {
+                var model = JsonConvert.DeserializeObject<_909AnyColorByHex>(parameters, settings);
+            }
+            catch (Exception jse)
+            {
+                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+            }
+        }
+        private void Ensure908AnyCustomTimeline(string parameters, MetadataBO metadataBO, JsonSerializerSettings settings)
+        {
+            try
+            {
+                var model = JsonConvert.DeserializeObject<_908AnyCustomTimeline>(parameters, settings);
+                foreach (var item_ in model.Items)
+                    item_.EnsureStructure(metadataBO.GetTable(item_.Table));
+            }
+            catch (Exception jse)
+            {
+                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+            }
+        }
+        private void Ensure906AnyNotes(string parameters, JsonSerializerSettings settings)
+        {
+            try
+            {
+                var model = JsonConvert.DeserializeObject<_906AnyNotes>(parameters, settings);
+                if (!string.IsNullOrEmpty(model.FetchXmlAggregate))
+                {
+                    var fetchxml = model.FetchXmlAggregate.Replace("#valuetype#", "account").Replace("#value#", Guid.Empty.ToString());
+                    var query = ((FetchXmlToQueryExpressionResponse)this.ServiceAdmin.Execute(new FetchXmlToQueryExpressionRequest() { FetchXml = fetchxml })).Query;
+                    _906AnyNotes.EnsureFetchXmlAggregateQuery(query);
+                }
+                if (!string.IsNullOrEmpty(model.FetchXml))
+                {
+                    var fetchxml = model.FetchXmlAggregate.Replace("#valuetype#", "account").Replace("#value#", Guid.Empty.ToString());
+                    var query = ((FetchXmlToQueryExpressionResponse)this.ServiceAdmin.Execute(new FetchXmlToQueryExpressionRequest() { FetchXml = fetchxml })).Query;
+                    _906AnyNotes.EnsureFetchXmlQuery(query);
+                }
+            }
+            catch (Exception jse)
+            {
+                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+            }
+        }
+        private void Ensure905AnyNewRelatedRecord(string parameters, JsonSerializerSettings settings)
+        {
+            try
+            {
+                var model = JsonConvert.DeserializeObject<_905AnyNewRelatedRecord>(parameters, settings);
+            }
+            catch (Exception jse)
+            {
+                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+            }
+        }
+        private void Ensure904AnyDependentColors(string parameters, JsonSerializerSettings settings)
+        {
+            try
+            {
+                var model = JsonConvert.DeserializeObject<_904AnyDependentColors>(parameters, settings);
+            }
+            catch (Exception jse)
+            {
+                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+            }
+        }
+        private void Ensure903AnyCopilotExecuteEvent(string parameters, JsonSerializerSettings settings)
+        {
+            try
+            {
+                var model = JsonConvert.DeserializeObject<_903AnyCopilotExecuteEvent>(parameters, settings);
+            }
+            catch (Exception jse)
+            {
+                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+            }
+        }
+        private void Ensure902AnyRelatedRecords(string parameters, JsonSerializerSettings settings)
+        {
+            try
+            {
+                var model = JsonConvert.DeserializeObject<_902AnyRelatedRecords>(parameters, settings);
+            }
+            catch (Exception jse)
+            {
+                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+            }
+        }
+        private void Ensure900AnyNavigateTo(string parameters, JsonSerializerSettings settings)
+        {
+            try
+            {
+                var model = JsonConvert.DeserializeObject<_900AnyNavigateTo>(parameters, settings);
+            }
+            catch (Exception jse)
+            {
+                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+            }
+        }
+        private void Ensure801LookupFilteredLookup(string parameters, models.metadata.ColumnModel matchColumn, JsonSerializerSettings settings)
+        {
+            if (matchColumn.Type.Value == AttributeTypeCode.Customer.GetHashCode()
+                || matchColumn.Type.Value == AttributeTypeCode.Lookup.GetHashCode()
+                || matchColumn.Type.Value == AttributeTypeCode.Owner.GetHashCode())
+            {
+                try
+                {
+                    var model = JsonConvert.DeserializeObject<_801LookupFilteredLookup>(parameters, settings);
+                }
+                catch (Exception jse)
+                {
+                    throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                }
+            }
+            else
+                throw new InvalidPluginExecutionException($"The option Lookup [Filtered Lookup] is available just for Lookup columns");
+        }
+        private void Ensure800LookupNavigateTo(string parameters, models.metadata.ColumnModel matchColumn, JsonSerializerSettings settings)
+        {
+            if (matchColumn.Type.Value == AttributeTypeCode.Customer.GetHashCode()
+                || matchColumn.Type.Value == AttributeTypeCode.Lookup.GetHashCode()
+                || matchColumn.Type.Value == AttributeTypeCode.Owner.GetHashCode())
+            {
+                try
+                {
+                    var model = JsonConvert.DeserializeObject<_800LookupNavigateTo>(parameters, settings);
+                }
+                catch (Exception jse)
+                {
+                    throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                }
+            }
+            else
+                throw new InvalidPluginExecutionException($"The option Lookup [Navigate Buttons] is available just for Lookup columns");
+        }
+        private void Ensure702NumbersDuration(string parameters, models.metadata.ColumnModel matchColumn, JsonSerializerSettings settings)
+        {
+            if (matchColumn.Type.Value == AttributeTypeCode.Integer.GetHashCode())
+            {
+                try
+                {
+                    var model = JsonConvert.DeserializeObject<_702NumbersDuration>(parameters, settings);
+                }
+                catch (Exception jse)
+                {
+                    throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                }
+            }
+            else
+                throw new InvalidPluginExecutionException($"⚠️The option 'Numbers [Duration]' is available for Integer, Decimal and Double columns");
+        }
+        private void Ensure701NumbersProgressBar(string parameters, models.metadata.ColumnModel matchColumn, JsonSerializerSettings settings)
+        {
+            if (matchColumn.Type.Value == AttributeTypeCode.Integer.GetHashCode()
+                || matchColumn.Type.Value == AttributeTypeCode.Decimal.GetHashCode()
+                || matchColumn.Type.Value == AttributeTypeCode.Double.GetHashCode()
+                || matchColumn.Type.Value == AttributeTypeCode.BigInt.GetHashCode())
+            {
+                try
+                {
+                    var model = JsonConvert.DeserializeObject<_701NumbersProgressBar>(parameters, settings);
+                }
+                catch (Exception jse)
+                {
+                    throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                }
+            }
+            else
+                throw new InvalidPluginExecutionException($"⚠️The option 'Numbers [Progress Indicator]' is available for Integer, Decimal and Double columns");
+        }
+        private void Ensure700NumbersDateColors(string parameters, models.metadata.ColumnModel matchColumn, JsonSerializerSettings settings)
+        {
+            if (matchColumn.Type.Value == AttributeTypeCode.DateTime.GetHashCode()
+                || matchColumn.Type.Value == AttributeTypeCode.Integer.GetHashCode()
+                || matchColumn.Type.Value == AttributeTypeCode.Decimal.GetHashCode()
+                || matchColumn.Type.Value == AttributeTypeCode.Double.GetHashCode()
+                || matchColumn.Type.Value == AttributeTypeCode.BigInt.GetHashCode()
+                || matchColumn.Type.Value == AttributeTypeCode.Money.GetHashCode())
+            {
+                try
+                {
+                    var model = JsonConvert.DeserializeObject<_700NumbersNDateTimeColors>(parameters, settings);
+                }
+                catch (Exception jse)
+                {
+                    throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+                }
+            }
+            else
+                throw new InvalidPluginExecutionException($"⚠️The option 'Numbers & Date [Colorful Cel]' is available for Date Only, Date Time, Integer, Decimal and Double columns");
+        }
+        private void Ensure600FileManagement(string parameters, JsonSerializerSettings settings)
+        {
+            try
+            {
+                var model = JsonConvert.DeserializeObject<_600FileManagement>(parameters, settings);
+            }
+            catch (Exception jse)
+            {
+                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+            }
+        }
+        private void Ensure500RichTextPopover(models.metadata.ColumnModel matchColumn)
+        {
+            if (matchColumn.Type.Value != AttributeTypeCode.Memo.GetHashCode()
+                && matchColumn.Type.Value != AttributeTypeCode.String.GetHashCode())
+            {
+                throw new InvalidPluginExecutionException($"⚠️The option 'Text [RichText]' is available for String and Memo columns");
+            }
+        }
+        #endregion
     }
 }

@@ -1,24 +1,27 @@
 import * as React from "react";
-import { CellRendererOverrides, ColumnDataType, ColumnDefinition, GetRendererParams, RECID } from "../types";
-import { CustomColumnDefinition } from "../models/CustomColumnDefinition";
+import { CellRendererOverrides, ColumnDataType, GetRendererParams } from "../types";
 import { IInputs } from "../generated/ManifestTypes";
-import { Helper } from "../helper";
-import { getColorfulCell } from "./ColorfulCell";
-import { getReadOnlyCell } from "./ReadOnlyCell";
-import { getLookupNavigateButtonsCell } from "./LookupNavigateButtonsCell";
-import { getRowNavigateButtonsCell } from "./RowNavigateButtonsCell";
-import { gerProgressBarCell } from "./ProgressIndicatorCell";
-import { RelatedRecordsCell } from "./RelatedRecordsCell";
-
-import { FileCell } from "./FileCell";
-import { getNewRelatedRecordCell } from "./NewRelatedRecord";
-import { CopilotExecuteEventCell } from "./CopilotExecuteEventCell";
-import { NotesCell } from "./NotesCell";
-import { ModifierState } from "../ControlKeyTracker";
+import { CustomColumnDefinition } from "../models/common/CustomColumnDefinition";
+import { _904AnyDependentColors } from "../models/customizers/_904AnyDependentColors";
 import { ICell } from "../interfaces/ICell";
-import { getRichTextPopoverCell } from "./RichTextCell";
-import { AuditedCell } from "./AuditedCell";
-import { CustomTimeLineCell } from "./CustomTimeLineCell";
+import { ModifierState } from "../ControlKeyTracker";
+import { Helper } from "../helper";
+import { getAnyNavigationTo } from "./AnyNavigateTo";
+import { getAnyReadOnly } from "./AnyReadOnly";
+import { AnyRelatedRecords } from "./AnyRelatedRecords";
+import { AnyCopilotExecuteEvent } from "./AnyCopilotExecuteEvent";
+import { getColors } from "./Colors";
+import { getAnyNewRelatedRecord } from "./AnyNewRelatedRecord";
+import { AnyNotes } from "./AnyNotes";
+import { AnyAuditHistory } from "./AnyAuditHistory";
+import { AnyCustomTimeline } from "./AnyCustomTimeline";
+import { getLookupNavigateTo } from "./LookupNavigateButtonsCell";
+import { getNumbersProgressBar } from "./NumbersProgressBar";
+import { FileManagement } from "./FileManagement";
+import { getTextRichTextPopover } from "./TextRichTextPopover";
+import { _909AnyColorByHex } from "../models/customizers/_909AnyColorByHex";
+import def from "ajv/dist/vocabularies/discriminator";
+import { getAnyColorByHex } from "./AnyColorByHex";
 
 export function cellRendererOverrides(
 	subgrid: string,
@@ -95,89 +98,55 @@ export function getComponent(
 		};
 
 		switch (definition.type) {
-			//Any [Navigate To]
-			case 900:
-				return getRowNavigateButtonsCell(cell);
-				break;
-
-			//Any [Read-Only]
-			case 901:
-				return getReadOnlyCell(cell);
-				break;
-
-			//Any [Related Records]
-			case 902:
-				return <RelatedRecordsCell {...cell} />;
-				break;
-
-			//Any [Copilot Execute Event]
-			case 903:
-				return <CopilotExecuteEventCell {...cell} />;
-
-			// Any [Dependent Colorful Cell]
+			case 900: return getAnyNavigationTo(cell); break;
+			case 901: return getAnyReadOnly(cell); break;
+			case 902: return <AnyRelatedRecords {...cell} />; break;
+			case 903: return <AnyCopilotExecuteEvent {...cell} />; break;
 			case 904:
-				const foundColumn = Object.keys(col.rowData!).find(k => k.includes(JSON.parse(definition.parameters).column));
-				if (foundColumn !== undefined) {
-					const columnDefinition = col.colDefs.filter(f => f.name === foundColumn)[0]!;
-					cell.col = columnDefinition, { dataType: columnDefinition.dataType };
-					cell.props = {
-						value: (col.rowData as any)[foundColumn],
-						formattedValue: (col.rowData as any)[foundColumn]
+				{
+					const params = JSON.parse(definition.parameters) as _904AnyDependentColors;
+					const column = Object.keys(col.rowData!).find(k => k.includes(params.column));
+					if (column !== undefined) {
+						const definition = col.colDefs.filter(f => f.name === column)[0]!;
+						cell.col = definition, { dataType: definition.dataType };
+						cell.props = {
+							value: (col.rowData as any)[column],
+							formattedValue: (col.rowData as any)[column]
+						}
+						return getColors(cell);
 					}
-					return getColorfulCell(cell);
+					else
+						return null;
+				}
+				break;
+			case 905: return getAnyNewRelatedRecord(cell); break;
+			case 906: return <AnyNotes {...cell} />; break;
+			case 907: return <AnyAuditHistory {...cell} />; break;
+			case 908: return <AnyCustomTimeline {...cell} />; break;
+			case 909: {
+				const params = JSON.parse(definition.parameters) as _909AnyColorByHex;
+				const column = Object.keys(col.rowData!).find(k => k.includes(params.column));
+				if (column !== undefined) {
+					const definition = col.colDefs.filter(f => f.name === column)[0]!;
+					cell.col = definition, { dataType: definition.dataType };
+					cell.props = {
+						value: (col.rowData as any)[column],
+						formattedValue: cell.props.formattedValue
+					}
+					return getAnyColorByHex(cell);
 				}
 				else
 					return null;
+			}
 				break;
-
-			//Any [New Contextualized Record]
-			case 905:
-				return getNewRelatedRecordCell(cell);
+			case 800: return getLookupNavigateTo(cell); break;
+			case 700: return getColors(cell); break;
+			case 701: return getNumbersProgressBar(cell); break;
+			case 600: if (cell.props.value === undefined && cell.props.value !== null)
+				cell.props.value = { fileUrl: "", fileName: "--", fileSize: 0, mimeType: "" };
+				return <FileManagement {...cell} />;
 				break;
-
-			//Any [Notes]
-			case 906:
-				return <NotesCell {...cell} />;
-
-			//Any [Audited Cell]
-			case 907:
-				return <AuditedCell {...cell} />;
-
-			//Any [Audited Cell]
-			case 908:
-				return <CustomTimeLineCell {...cell} />;
-
-			// Lookup [Navigate Buttons]
-			case 800:
-				return getLookupNavigateButtonsCell(cell);
-				break;
-
-			// Number & Date Time [Colorful Cell]
-			case 700:
-				return getColorfulCell(cell);
-				break;
-
-			// Number [Progress Bar Cell]
-			case 701:
-				return gerProgressBarCell(cell);
-				break;
-
-			//Any [File]
-			case 600:
-				if (cell.props.value === undefined && cell.props.value !== null)
-					cell.props.value = {
-						fileUrl: "",
-						fileName: "--",
-						fileSize: 0,
-						mimeType: ""
-					};
-				return <FileCell {...cell} />;
-				break;
-
-			//Text [Rich Text]
-			case 500:
-				return getRichTextPopoverCell(cell);
-				break;
+			case 500: return getTextRichTextPopover(cell); break;
 		}
 	}
 	return;

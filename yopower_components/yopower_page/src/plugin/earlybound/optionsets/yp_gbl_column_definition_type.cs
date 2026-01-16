@@ -18,52 +18,55 @@ namespace yopower_papps_grid_extensions.earlybound
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		AnyNavigateButtons = 900,
+		_900AnyNavigateTo = 900,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		AnyReadOnly = 901,
+		_901AnyReadOnly = 901,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		AnyRelatedRecords = 902,
+		_902AnyRelatedRecords = 902,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		AnyCopilotExecuteEvent = 903,
+		_903AnyCopilotExecuteEvent = 903,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		AnyDependentColorfulCell = 904,
+		_904AnyDependentColors = 904,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		AnyNewRelatedRecord = 905,
+		_905AnyNewRelatedRecord = 905,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		AnyNotes = 906,
+		_906AnyNotes = 906,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		AnyAuditHistory = 907,
+		_907AnyAuditHistory = 907,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		AnyCustomTimeline = 908,
+		_908AnyCustomTimeline = 908,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		LookupNavigateButtons = 800,
+		_909AnyColorbyHex = 909,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		LookupFilteredLookup = 801,
+		_800LookupNavigateTo = 800,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		NumbersDateColorfulCell = 700,
+		_801LookupFilteredLookup = 801,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		NumbersProgressBar = 701,
+		_700NumbersDateColors = 700,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		NumbersDuration = 702,
+		_701NumbersProgressBar = 701,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		FileUploadDownload = 600,
+		_702NumbersDuration = 702,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		TextRichTextPopover = 500,
+		_600FileManagement = 600,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		_500TextRichTextPopover = 500,
 	}
 }
 #pragma warning restore CS1591

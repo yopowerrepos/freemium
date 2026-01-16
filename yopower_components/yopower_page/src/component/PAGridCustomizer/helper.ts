@@ -1,6 +1,6 @@
 import { ModifierState } from "./ControlKeyTracker";
 import { IInputs } from "./generated/ManifestTypes";
-import { CustomColumnDefinition } from "./models/CustomColumnDefinition";
+import { CustomColumnDefinition } from "./models/common/CustomColumnDefinition";
 import { ColumnDefinition, GetEditorParams, GetRendererParams, RowData } from "./types";
 
 export class Helper {

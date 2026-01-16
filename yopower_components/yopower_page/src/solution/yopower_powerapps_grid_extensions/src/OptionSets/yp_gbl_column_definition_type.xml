@@ -12,113 +12,9 @@
     <Description description="" languagecode="1033" />
   </Descriptions>
   <options>
-    <option value="900" ExternalValue="" Color="#fad897" IsHidden="0">
+    <option value="500" Color="#F1F1F1" IsHidden="0">
       <labels>
-        <label description="Any [Navigate Buttons]" languagecode="1033" />
-      </labels>
-      <Descriptions>
-        <Description description="" languagecode="1033" />
-      </Descriptions>
-    </option>
-    <option value="901" Color="#FAD897" IsHidden="0">
-      <labels>
-        <label description="Any [Read-Only]" languagecode="1033" />
-      </labels>
-      <Descriptions>
-        <Description description="" languagecode="1033" />
-      </Descriptions>
-    </option>
-    <option value="902" ExternalValue="" Color="#fad897" IsHidden="0">
-      <labels>
-        <label description="Any [Related Records]" languagecode="1033" />
-      </labels>
-      <Descriptions>
-        <Description description="" languagecode="1033" />
-      </Descriptions>
-    </option>
-    <option value="903" Color="#fad897" IsHidden="0">
-      <labels>
-        <label description="Any [Copilot Execute Event]" languagecode="1033" />
-      </labels>
-      <Descriptions>
-        <Description description="" languagecode="1033" />
-      </Descriptions>
-    </option>
-    <option value="904" Color="#fad897" IsHidden="0">
-      <labels>
-        <label description="Any [Dependent Colorful Cell]" languagecode="1033" />
-      </labels>
-      <Descriptions>
-        <Description description="" languagecode="1033" />
-      </Descriptions>
-    </option>
-    <option value="905" Color="#fad897" IsHidden="0">
-      <labels>
-        <label description="Any [New Related Record]" languagecode="1033" />
-      </labels>
-      <Descriptions>
-        <Description description="" languagecode="1033" />
-      </Descriptions>
-    </option>
-    <option value="906" Color="#fad897" IsHidden="0">
-      <labels>
-        <label description="Any [Notes]" languagecode="1033" />
-      </labels>
-      <Descriptions>
-        <Description description="" languagecode="1033" />
-      </Descriptions>
-    </option>
-    <option value="907" Color="#fad897" IsHidden="0">
-      <labels>
-        <label description="Any [Audit History]" languagecode="1033" />
-      </labels>
-      <Descriptions>
-        <Description description="" languagecode="1033" />
-      </Descriptions>
-    </option>
-    <option value="908" Color="#fad897" IsHidden="0">
-      <labels>
-        <label description="Any [Custom Timeline]" languagecode="1033" />
-      </labels>
-      <Descriptions>
-        <Description description="" languagecode="1033" />
-      </Descriptions>
-    </option>
-    <option value="800" Color="#fc8ad2" IsHidden="0">
-      <labels>
-        <label description="Lookup [Navigate Buttons]" languagecode="1033" />
-      </labels>
-      <Descriptions>
-        <Description description="" languagecode="1033" />
-      </Descriptions>
-    </option>
-    <option value="801" Color="#fc8ad2" IsHidden="0">
-      <labels>
-        <label description="Lookup [Filtered Lookup]" languagecode="1033" />
-      </labels>
-      <Descriptions>
-        <Description description="" languagecode="1033" />
-      </Descriptions>
-    </option>
-    <option value="700" Color="#E098AF" IsHidden="0">
-      <labels>
-        <label description="Numbers &amp; Date [Colorful Cell]" languagecode="1033" />
-      </labels>
-      <Descriptions>
-        <Description description="" languagecode="1033" />
-      </Descriptions>
-    </option>
-    <option value="701" Color="#e098af" IsHidden="0">
-      <labels>
-        <label description="Numbers [Progress Bar]" languagecode="1033" />
-      </labels>
-      <Descriptions>
-        <Description description="" languagecode="1033" />
-      </Descriptions>
-    </option>
-    <option value="702" Color="#e098af" IsHidden="0">
-      <labels>
-        <label description="Numbers [Duration]" languagecode="1033" />
+        <label description="500. Text [RichText Popover]" languagecode="1033" />
       </labels>
       <Descriptions>
         <Description description="" languagecode="1033" />
@@ -126,15 +22,127 @@
     </option>
     <option value="600" Color="#c8e3f7" IsHidden="0">
       <labels>
-        <label description="File [Upload Download]" languagecode="1033" />
+        <label description="600. File [Management]" languagecode="1033" />
       </labels>
       <Descriptions>
         <Description description="" languagecode="1033" />
       </Descriptions>
     </option>
-    <option value="500" Color="#F1F1F1" IsHidden="0">
+    <option value="700" Color="#E098AF" IsHidden="0">
       <labels>
-        <label description="Text [RichText Popover]" languagecode="1033" />
+        <label description="700. Numbers &amp; Date [Colors]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="701" Color="#e098af" IsHidden="0">
+      <labels>
+        <label description="701. Numbers [Progress Bar]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="702" Color="#e098af" IsHidden="0">
+      <labels>
+        <label description="702. Numbers [Duration]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="800" Color="#fc8ad2" IsHidden="0">
+      <labels>
+        <label description="800. Lookup [Navigate To]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="801" Color="#fc8ad2" IsHidden="0">
+      <labels>
+        <label description="801. Lookup [Filtered Lookup]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="900" ExternalValue="" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="900. Any [Navigate To]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="901" Color="#FAD897" IsHidden="0">
+      <labels>
+        <label description="901. Any [Read-Only]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="902" ExternalValue="" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="902. Any [Related Records]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="903" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="903. Any [Copilot Execute Event]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="904" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="904. Any [Dependent Colors]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="905" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="905. Any [New Related Record]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="906" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="906. Any [Notes]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="907" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="907. Any [Audit History]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="908" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="908. Any [Custom Timeline]" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="909" Color="#fad897" IsHidden="0">
+      <labels>
+        <label description="909. Any [Color by Hex]" languagecode="1033" />
       </labels>
       <Descriptions>
         <Description description="" languagecode="1033" />

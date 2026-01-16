@@ -92,6 +92,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{b5e8174f-11e4-4a2f-965d-f403fae56e4d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="yp_hexadecimal" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="yp_hexadecimal" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{c7b801f7-7778-471a-801c-1f5a37e227a6}" locklevel="0" colspan="1" rowspan="5">
                         <labels>
                           <label description="" languagecode="1033" />
@@ -218,7 +226,7 @@
                         <control id="notescontrol" classid="{06375649-C143-495E-A496-C962E5B4488E}" disabled="false" />
                       </cell>
                     </row>
-                    <row></row>
+                    <row />
                     <row />
                     <row />
                     <row />
@@ -283,7 +291,7 @@
       </footer>
       <controlDescriptions />
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
