@@ -76,5 +76,21 @@
         <Description description="" languagecode="1033" />
       </Descriptions>
     </option>
+    <option value="9" Color="#e098af" IsHidden="0">
+      <labels>
+        <label description="Not Contains Data" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="10" Color="#a1d6a5" IsHidden="0">
+      <labels>
+        <label description="Contains Data" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
   </options>
 </optionset>

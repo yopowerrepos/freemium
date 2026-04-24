@@ -1,0 +1,11 @@
+kind: GptComponentMetadata
+knowledgeSources:
+  kind: SearchAllKnowledgeSources
+
+gptCapabilities:
+  webBrowsing: true
+
+aISettings:
+  model: {}
+  extensionData:
+    lastUsedCustomModel: {}

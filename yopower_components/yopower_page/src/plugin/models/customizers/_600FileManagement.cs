@@ -1,0 +1,12 @@
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
+
+namespace yopower_papps_grid_extensions.models.customizers
+{
+    [DataContract]
+    public class _600FileManagement
+    {
+        [DataMember(Name = "readOnly", Order = 1, IsRequired = true)] public bool ReadOnly { get; set; }
+        [DataMember(Name = "allowedTypes", Order = 2, IsRequired = true)] public List<string> AllowedTypes { get; set; }
+    }
+}

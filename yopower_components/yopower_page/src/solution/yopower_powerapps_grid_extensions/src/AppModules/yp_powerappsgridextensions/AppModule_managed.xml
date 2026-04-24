@@ -69,5 +69,9 @@
       <iscustomizable>1</iscustomizable>
       <value>2</value>
     </appsetting>
+    <appsetting settingdefinitionid.uniquename="NewLookOptOut">
+      <iscustomizable>1</iscustomizable>
+      <value>false</value>
+    </appsetting>
   </appsettings>
 </AppModule>

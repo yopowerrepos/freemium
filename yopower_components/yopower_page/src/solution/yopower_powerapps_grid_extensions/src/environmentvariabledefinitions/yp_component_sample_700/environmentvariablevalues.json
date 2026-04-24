@@ -1,0 +1,8 @@
+{
+  "environmentvariablevalues": {
+    "environmentvariablevalue": {
+      "iscustomizable": "1",
+      "value": "{   \"rules\": [     {       \"criteria\": \"is-null\",       \"background\": \"#000000\",       \"color\": \"#FFFFFF\"     },     {       \"min\": -10000000000,       \"max\": 500000,       \"background\": \"transparent\",       \"color\": \"#666666\"     },     {       \"min\": 500001,       \"max\": 1000000,       \"background\": \"#CCCCCC\",       \"color\": \"#666666\",       \"label\": \"Priority\",       \"icon\": \"FavoriteStar\"     },     {       \"min\": 1000000,       \"max\": 9999999999999,       \"background\": \"#666666\",       \"color\": \"#F1F1F1\",       \"label\": \"Priority\",       \"icon\": \"FavoriteStarFill\"     }   ] }"
+    }
+  }
+}

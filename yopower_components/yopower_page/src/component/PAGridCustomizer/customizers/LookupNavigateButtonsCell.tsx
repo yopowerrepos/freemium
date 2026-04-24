@@ -2,14 +2,16 @@ import * as React from "react";
 import { ICell } from "../interfaces/ICell";
 import { Helper } from "../helper";
 import { CommandButton, IContextualMenuItem, IContextualMenuProps } from "@fluentui/react";
+import { _800LookupNavigateTo } from "../models/customizers/_800LookupNavigateTo";
 
-export function getLookupNavigateButtonsCell(cell: ICell): React.ReactElement | null | undefined {
+export function getLookupNavigateTo(cell: ICell): React.ReactElement | null | undefined {
     if (cell.col.dataType === "Lookup"
         || cell.col.dataType === "Customer") {
 
+        const params = JSON.parse(cell.definition.parameters) as _800LookupNavigateTo;
         let items = new Array<IContextualMenuItem>();
-        const modal = JSON.parse(cell.definition.parameters).modal as Array<any>;
-        const sidePane = JSON.parse(cell.definition.parameters).sidePane as Array<any>;
+        const modal = params.modal;
+        const sidePane = params.sidePane;
 
         // Get Table (Manage Polymorphic)
         if (cell.props.value) {

@@ -1,0 +1,15 @@
+<aiskillconfig uniquename="ais_FormFillFieldOptOut_yp_related_teams_chat_yp_record_logicalname">
+  <aiskill>FormFillFieldOptOut</aiskill>
+  <attribute>
+    <entityid.logicalname>yp_related_teams_chat</entityid.logicalname>
+    <logicalname>yp_record_logicalname</logicalname>
+  </attribute>
+  <description>yp_related_teams_chat - Record - Logical Name Form fill opt out</description>
+  <entity>
+    <logicalname>yp_related_teams_chat</logicalname>
+  </entity>
+  <iscustomizable>1</iscustomizable>
+  <scope>1</scope>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</aiskillconfig>

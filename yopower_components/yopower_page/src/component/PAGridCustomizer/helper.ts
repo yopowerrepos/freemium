@@ -1,6 +1,6 @@
 import { ModifierState } from "./ControlKeyTracker";
 import { IInputs } from "./generated/ManifestTypes";
-import { CustomColumnDefinition } from "./models/CustomColumnDefinition";
+import { CustomColumnDefinition } from "./models/common/CustomColumnDefinition";
 import { ColumnDefinition, GetEditorParams, GetRendererParams, RowData } from "./types";
 
 export class Helper {
@@ -30,15 +30,17 @@ export class Helper {
         modifiers: ModifierState | null = null
     ) {
         // Operator logic mapping (condition.type → comparison function)
-        const conditions: Record<number, (value: number, values: number[]) => boolean> = {
-            1: (value, values) => value === values[0],                         // equals
-            2: (value, values) => value !== values[0],                        // not equals
-            3: (value, values) => values.some(k => k === value),             // in
-            4: (value, values) => !values.some(k => k === value),            // not in
-            5: (value, values) => value > values[0],                         // greater than
-            6: (value, values) => value >= values[0],                        // greater or equal
-            7: (value, values) => value < values[0],                         // less than
-            8: (value, values) => value <= values[0],                        // less or equal
+        const conditions: Record<number, (value: number, values: number[] | null) => boolean> = {
+            1: (value, values) => value === values![0],                         // equals
+            2: (value, values) => value !== values![0],                        // not equals
+            3: (value, values) => values!.some(k => k === value),             // in
+            4: (value, values) => !values!.some(k => k === value),            // not in
+            5: (value, values) => value > values![0],                         // greater than
+            6: (value, values) => value >= values![0],                        // greater or equal
+            7: (value, values) => value < values![0],                         // less than
+            8: (value, values) => value <= values![0],                        // less or equal
+            9: (value, values) => value === null || value === undefined,     // is null
+            10: (value, values) => value !== null && value !== undefined,    // is not null
         };
 
         // Step 1: filter definitions that match the current table and column
@@ -320,5 +322,23 @@ export class Helper {
             //     (window as any).Xrm.Utility.refreshParentGrid({});
             // }
         });
+    }
+
+    public static async saveRichText(
+        context: ComponentFramework.Context<IInputs>,
+        table: string,
+        id: string,
+        column: string,
+        newValue: string
+    ): Promise<boolean> {
+        const record: any = {};
+        record[column] = newValue;
+        return context.webAPI.updateRecord(table, id, record).then(
+            (_: any) => true,
+            (_: any) => {
+                context.navigation.openAlertDialog({ text: "Failed to save the rich text value." });
+                return false;
+            }
+        );
     }
 }

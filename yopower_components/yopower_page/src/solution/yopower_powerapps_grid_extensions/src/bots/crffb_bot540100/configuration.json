@@ -1,4 +1,22 @@
 {
   "$kind": "BotConfiguration",
-  "isLightweightBot": true
+  "settings": {
+    "GenerativeActionsEnabled": true
+  },
+  "gPTSettings": {
+    "$kind": "GPTSettings",
+    "defaultSchemaName": "crffb_bot540100.gpt.default"
+  },
+  "isLightweightBot": false,
+  "aISettings": {
+    "$kind": "AISettings",
+    "useModelKnowledge": false,
+    "isFileAnalysisEnabled": false,
+    "isSemanticSearchEnabled": false,
+    "contentModeration": "High",
+    "optInUseLatestModels": false
+  },
+  "recognizer": {
+    "$kind": "GenerativeAIRecognizer"
+  }
 }

@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="yp_component_sample_906">
+  <defaultvalue>[{   "popUpLastModified": true,   "reference": "row",   "column": "",   "fetchXmlAggregate": "",   "fetchXml": "" },{   "popUpLastModified": false,   "reference": "column",   "column": "yp_accountid",   "fetchXmlAggregate": "",   "fetchXml": "" },{   "reference": "column",   "column": "yp_accountid",   "fetchXmlAggregate": "&lt;fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false' aggregate='true'&gt;&lt;entity name='annotation'&gt;&lt;attribute name='annotationid' aggregate='count' alias='count' /&gt;&lt;link-entity name='contact' from='contactid' to='objectid' link-type='inner' alias='contact'&gt;&lt;filter type='and'&gt;&lt;condition attribute='parentcustomerid' operator='eq' uitype='#valuetype#' value='#value#' /&gt;&lt;/filter&gt;&lt;/link-entity&gt;&lt;/entity&gt;&lt;/fetch&gt;",   "fetchXml": "&lt;fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'&gt;&lt;entity name='annotation'&gt;&lt;attribute name='annotationid' /&gt;&lt;attribute name='subject' /&gt;&lt;attribute name='notetext' /&gt;&lt;attribute name='createdon' /&gt;&lt;attribute name='createdby' /&gt;&lt;attribute name='modifiedon' /&gt;&lt;attribute name='modifiedby' /&gt;&lt;attribute name='isdocument' /&gt;    &lt;attribute name='filename' /&gt;&lt;link-entity name='contact' from='contactid' to='objectid' link-type='inner' alias='contact'&gt;&lt;filter type='and'&gt;&lt;condition attribute='parentcustomerid' operator='eq' uitype='#valuetype#' value='#value#' /&gt;&lt;/filter&gt;&lt;/link-entity&gt;&lt;/entity&gt;&lt;/fetch&gt;" }]</defaultvalue>
+  <displayname default="906. Any [Notes]">
+    <label description="906. Any [Notes]" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.3.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000003</type>
+</environmentvariabledefinition>

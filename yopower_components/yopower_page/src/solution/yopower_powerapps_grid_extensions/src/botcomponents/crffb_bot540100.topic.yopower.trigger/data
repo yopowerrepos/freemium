@@ -37,8 +37,40 @@ beginDialog:
     - kind: ParseValue
       id: VUJCdj
       variable: Topic.CustomParameters
-      valueType: String
+      valueType:
+        kind: Record
+        properties:
+          from: String
+          id: String
+          table: String
+
       value: =JSON(System.Activity.Value)
+
+    - kind: SendActivity
+      id: sendActivity_TGhpBD
+      activity: |-
+        From: {Topic.CustomParameters.from}
+        Table: {Topic.CustomParameters.table}
+        Id: {Topic.CustomParameters.id}
+
+    - kind: InvokeFlowAction
+      id: invokeFlowAction_btfRDs
+      input:
+        binding:
+          text: =Topic.CustomParameters.id
+
+      output:
+        binding:
+          result: Topic.Result
+
+      flowId: cddd0e04-a811-f111-8342-002248e05b08
+
+    - kind: SendActivity
+      id: sendActivity_cUivBo
+      activity: "{Topic.Result}"
+
+    - kind: EndConversation
+      id: hI1h8h
 
     - kind: SendActivity
       id: sendActivity_djHqEU
@@ -103,7 +135,7 @@ beginDialog:
                       },
                       {
                           type: "TextBlock",
-                          text: Topic.CustomParameters,
+                          text: JSON(Topic.CustomParameters),
                           wrap: true
                       },
                               {

@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="yp_component_sample_903">
+  <defaultvalue>{   "events": [     {       "event": "yopower.trigger",       "label": "Event 01 - yopower.trigger",       "tooltip": ""     },     {       "event": "yopower.othertrigger",       "label": "Trigger 1 yopower.othertrigger",       "tooltip": ""     }   ] }</defaultvalue>
+  <displayname default="903. Any [Copilot Execute Event]">
+    <label description="903. Any [Copilot Execute Event]" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.3.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000003</type>
+</environmentvariabledefinition>

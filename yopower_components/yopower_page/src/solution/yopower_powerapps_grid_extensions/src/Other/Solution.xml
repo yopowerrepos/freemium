@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.25112.150" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25112.150" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25112.00150">
+<ImportExportXml version="9.2.26041.153" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26041.153" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26041.00153">
   <SolutionManifest>
     <UniqueName>yopower_powerapps_grid_extensions</UniqueName>
     <LocalizedNames>
       <LocalizedName description="🟣yopower - Power Apps Grid Extensions" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.1.0</Version>
+    <Version>1.0.3.0</Version>
     <Managed>2</Managed>
     <Publisher>
       <UniqueName>yopower</UniqueName>
@@ -86,6 +86,7 @@
       <RootComponent type="1" schemaName="contact" behavior="2" />
       <RootComponent type="1" schemaName="yp_demo_powerappsgrid_extensions" behavior="0" />
       <RootComponent type="1" schemaName="yp_pagridextd_column_definition" behavior="0" />
+      <RootComponent type="1" schemaName="yp_related_teams_chat" behavior="0" />
       <RootComponent type="29" id="{117b6346-d2dd-ef11-8eea-002248de8553}" behavior="0" />
       <RootComponent type="29" id="{93ef8fdf-66cf-ef11-8ee9-6045bd39f5aa}" behavior="0" />
       <RootComponent type="300" schemaName="yp_powerappsgridextensionsdefaultcommandlibrary_50a99" behavior="0" />
@@ -112,47 +113,54 @@
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_aimodel" displayName="AI Model" solution="msdyn_AISolution (202509.2.2.1)">
-          <package appName="PowerAI" version="202509.2.2.1">msdyn_AISolutionAnchor (202509.2.2.1)</package>
+        <Required type="1" schemaName="msdyn_aimodel" displayName="AI Model" solution="msdyn_AISolution (202603.5.24.1)">
+          <package appName="PowerAI" version="202603.5.24.1">msdyn_AISolutionAnchor (202603.5.24.1)</package>
         </Required>
         <Dependent type="300" schemaName="yp_powerappsgridextensionshelper_15e18" displayName="Power Apps Grid Extensions - Helper" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="29" displayName="SOW Reader" solution="Active" id="{cddd0e04-a811-f111-8342-002248e05b08}" />
+        <Dependent type="botcomponent_workflow" displayName="botcomponentid.schemaname=crffb_bot540100.topic.yopower.trigger,workflowid.workflowid=cddd0e04-a811-f111-8342-002248e05b08" id.botcomponentid.schemaname="crffb_bot540100.topic.yopower.trigger" id.workflowid.workflowid="cddd0e04-a811-f111-8342-002248e05b08" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Account" parentDisplayName="Account" solution="msdynce_AppCommon (9.0.4.0066)" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}">
-          <package appName="msdynce_AppCommon" version="9.0.25112.10001">msdynce_AppCommonAnchor (9.0.25112.10001)</package>
+          <package appName="msdynce_AppCommon" version="9.0.26041.10001">msdynce_AppCommonAnchor (9.0.26041.10001)</package>
         </Required>
         <Dependent type="80" schemaName="yp_powerappsgridextensions" displayName="Power Apps Grid Extensions" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_CopilotIcon.svg" displayName="msdyn_CopilotIcon.svg" solution="msdyn_AppCopilotFeatures (9.2.2025103.251015039)">
+        <Required type="61" schemaName="msdyn_CopilotIcon.svg" displayName="msdyn_CopilotIcon.svg" solution="msdyn_AppCopilotFeatures (9.2.2026033.260316057)">
           <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
           <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.2">msdyn_SuggestedAction (1.0.0.2)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.4">msdyn_M365CopilotAppInfraSettings (9.2.0.4)</package>
         </Required>
         <Dependent type="appaction" displayName="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_CopilotIconWithColor.svg" displayName="msdyn_CopilotIconWithColor.svg" solution="msdyn_AppCopilotFeatures (9.2.2025103.251015039)">
+        <Required type="61" schemaName="msdyn_CopilotIconWithColor.svg" displayName="msdyn_CopilotIconWithColor.svg" solution="msdyn_AppCopilotFeatures (9.2.2026033.260316057)">
           <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
           <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.2">msdyn_SuggestedAction (1.0.0.2)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.4">msdyn_M365CopilotAppInfraSettings (9.2.0.4)</package>
         </Required>
         <Dependent type="61" schemaName="msdyn_CopilotIconWithColor.svg" displayName="msdyn_CopilotIconWithColor.svg" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_CopilotSummarizeLibrary.js" displayName="msdyn_CopilotSummarizeLibrary.js" solution="msdyn_AppCopilotFeatures (9.2.2025103.251015039)">
+        <Required type="61" schemaName="msdyn_CopilotSummarizeLibrary.js" displayName="msdyn_CopilotSummarizeLibrary.js" solution="msdyn_AppCopilotFeatures (9.2.2026033.260316057)">
           <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
           <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.2">msdyn_SuggestedAction (1.0.0.2)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.4">msdyn_M365CopilotAppInfraSettings (9.2.0.4)</package>
         </Required>
         <Dependent type="appaction" displayName="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2511.2009)">
-          <package appName="Base Custom Controls" version="9.0.2511.2009">BaseCustomControlsCore (9.0.2511.2009)</package>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2604.1010)">
+          <package appName="Base Custom Controls" version="9.0.2604.1010">BaseCustomControlsCore (9.0.2604.1010)</package>
         </Required>
         <Dependent type="68" id="{b9bbe449-8ab9-430c-ace6-8eda0eaf1058}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2511.2009)">
-          <package appName="Base Custom Controls" version="9.0.2511.2009">BaseCustomControlsCore (9.0.2511.2009)</package>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2604.1010)">
+          <package appName="Base Custom Controls" version="9.0.2604.1010">BaseCustomControlsCore (9.0.2604.1010)</package>
         </Required>
         <Dependent type="68" id="{f68092fc-94f8-4db1-8d15-51934cf026ac}" />
       </MissingDependency>
@@ -175,23 +183,26 @@
         <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.CanSavePrimaryEntityType!1" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.CanSavePrimaryEntityType!1" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="appactionrule" displayName="msdyn_Mscrm.CopilotClientApi!1" solution="msdyn_AppCopilotFeatures (9.2.2025103.251015039)" id.uniquename="msdyn_Mscrm.CopilotClientApi!1">
+        <Required type="appactionrule" displayName="msdyn_Mscrm.CopilotClientApi!1" solution="msdyn_AppCopilotFeatures (9.2.2026033.260316057)" id.uniquename="msdyn_Mscrm.CopilotClientApi!1">
           <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
           <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.2">msdyn_SuggestedAction (1.0.0.2)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.4">msdyn_M365CopilotAppInfraSettings (9.2.0.4)</package>
         </Required>
         <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.CopilotClientApi!1" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.CopilotClientApi!1" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="appactionrule" displayName="msdyn_Mscrm.EnableCopilotSummarizeCommandButton!1" solution="msdyn_AppCopilotFeatures (9.2.2025103.251015039)" id.uniquename="msdyn_Mscrm.EnableCopilotSummarizeCommandButton!1">
+        <Required type="appactionrule" displayName="msdyn_Mscrm.EnableCopilotSummarizeCommandButton!1" solution="msdyn_AppCopilotFeatures (9.2.2026033.260316057)" id.uniquename="msdyn_Mscrm.EnableCopilotSummarizeCommandButton!1">
           <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
           <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.2">msdyn_SuggestedAction (1.0.0.2)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.4">msdyn_M365CopilotAppInfraSettings (9.2.0.4)</package>
         </Required>
         <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.EnableCopilotSummarizeCommandButton!1" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.EnableCopilotSummarizeCommandButton!1" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="appactionrule" displayName="msdyn_Mscrm.EnableCopilotSummarizeFeatures!1" solution="msdyn_AppCopilotFeatures (9.2.2025103.251015039)" id.uniquename="msdyn_Mscrm.EnableCopilotSummarizeFeatures!1">
+        <Required type="appactionrule" displayName="msdyn_Mscrm.EnableCopilotSummarizeFeatures!1" solution="msdyn_AppCopilotFeatures (9.2.2026033.260316057)" id.uniquename="msdyn_Mscrm.EnableCopilotSummarizeFeatures!1">
           <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
           <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.2">msdyn_SuggestedAction (1.0.0.2)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.4">msdyn_M365CopilotAppInfraSettings (9.2.0.4)</package>
         </Required>
         <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.EnableCopilotSummarizeFeatures!1" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.EnableCopilotSummarizeFeatures!1" />
       </MissingDependency>
@@ -208,23 +219,26 @@
         <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.FormStateNotNew!0" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.FormStateNotNew!0" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="appactionrule" displayName="msdyn_Mscrm.HideOnMobile!0" solution="msdyn_AppCopilotFeatures (9.2.2025103.251015039)" id.uniquename="msdyn_Mscrm.HideOnMobile!0">
+        <Required type="appactionrule" displayName="msdyn_Mscrm.HideOnMobile!0" solution="msdyn_AppCopilotFeatures (9.2.2026033.260316057)" id.uniquename="msdyn_Mscrm.HideOnMobile!0">
           <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
           <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.2">msdyn_SuggestedAction (1.0.0.2)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.4">msdyn_M365CopilotAppInfraSettings (9.2.0.4)</package>
         </Required>
         <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.HideOnMobile!0" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.HideOnMobile!0" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="appactionrule" displayName="msdyn_Mscrm.InitializeCopilotSidePaneOnBoot!1" solution="msdyn_AppCopilotFeatures (9.2.2025103.251015039)" id.uniquename="msdyn_Mscrm.InitializeCopilotSidePaneOnBoot!1">
+        <Required type="appactionrule" displayName="msdyn_Mscrm.InitializeCopilotSidePaneOnBoot!1" solution="msdyn_AppCopilotFeatures (9.2.2026033.260316057)" id.uniquename="msdyn_Mscrm.InitializeCopilotSidePaneOnBoot!1">
           <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
           <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.2">msdyn_SuggestedAction (1.0.0.2)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.4">msdyn_M365CopilotAppInfraSettings (9.2.0.4)</package>
         </Required>
         <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.InitializeCopilotSidePaneOnBoot!1" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.InitializeCopilotSidePaneOnBoot!1" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="appactionrule" displayName="msdyn_Mscrm.IsAppCopilotEnabled!0" solution="msdyn_AppCopilotFeatures (9.2.2025103.251015039)" id.uniquename="msdyn_Mscrm.IsAppCopilotEnabled!0">
+        <Required type="appactionrule" displayName="msdyn_Mscrm.IsAppCopilotEnabled!0" solution="msdyn_AppCopilotFeatures (9.2.2026033.260316057)" id.uniquename="msdyn_Mscrm.IsAppCopilotEnabled!0">
           <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.1">PowerAppsAppCopilotApp_Anchor (9.2.0.1)</package>
           <package appName="PowerAppsAppCopilotApp Package" version="1.0.0.2">msdyn_SuggestedAction (1.0.0.2)</package>
+          <package appName="PowerAppsAppCopilotApp Package" version="9.2.0.4">msdyn_M365CopilotAppInfraSettings (9.2.0.4)</package>
         </Required>
         <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.IsAppCopilotEnabled!0" id.appactionid.uniquename="yp__msdyn_Mscrm.Form.Copilot.Summarize!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.IsAppCopilotEnabled!0" />
       </MissingDependency>
@@ -277,15 +291,15 @@
         <Dependent type="appaction_appactionrule_classicrules" displayName="appactionid.uniquename=yp__Mscrm.Form.%7B!EntityLogicalName%7D.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0,appactionruleid.uniquename=msdyn_Mscrm.ReadPrimaryPermission!0" id.appactionid.uniquename="yp__Mscrm.Form.{!EntityLogicalName}.SaveAsComplete!yp_powerappsgridextensions!yp_pagridextd_column_definition!0" id.appactionruleid.uniquename="msdyn_Mscrm.ReadPrimaryPermission!0" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="botcomponentcollection" displayName="bot_componentcollection_appcopilot_v1" solution="msdyn_AppCopilotPVABotComponentCollection (9.1.2025105.251028179)" id.schemaname="bot_componentcollection_appcopilot_v1">
+        <Required type="botcomponentcollection" displayName="bot_componentcollection_appcopilot_v1" solution="msdyn_AppCopilotPVABotComponentCollection (9.1.2026023.260218190)" id.schemaname="bot_componentcollection_appcopilot_v1">
           <package appName="PowerAppsAppCopilotPVABotApp Package" version="9.1.2025043.250416150">PowerAppsAppCopilotPVABotApp_Anchor (9.1.2025043.250416150)</package>
-          <package appName="PowerAppsAppCopilotPVABotApp Package" version="9.1.2025105.251028179">msdyn_AppCopilotPVABotComponentCollection (9.1.2025105.251028179)</package>
+          <package appName="PowerAppsAppCopilotPVABotApp Package" version="9.1.2026023.260218190">msdyn_AppCopilotPVABotComponentCollection (9.1.2026023.260218190)</package>
         </Required>
         <Dependent type="bot_botcomponentcollection" displayName="botcomponentcollectionid.schemaname=bot_componentcollection_appcopilot_v1,botid.schemaname=crffb_bot540100" id.botcomponentcollectionid.schemaname="bot_componentcollection_appcopilot_v1" id.botid.schemaname="crffb_bot540100" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.15)" id.uniquename="AppChannel">
-          <package appName="PowerAppsAppFramework Package" version="1.0.0.23">PowerAppsAppFramework_Anchor (1.0.0.23)</package>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.16)" id.uniquename="AppChannel">
+          <package appName="PowerAppsAppFramework Package" version="1.0.0.25">PowerAppsAppFramework_Anchor (1.0.0.25)</package>
         </Required>
         <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=yp_powerappsgridextensions,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="yp_powerappsgridextensions" id.settingdefinitionid.uniquename="AppChannel" />
       </MissingDependency>
@@ -296,10 +310,16 @@
         <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=yp_powerappsgridextensions,settingdefinitionid.uniquename=FormFillBarUXEnabled" id.parentappmoduleid.uniquename="yp_powerappsgridextensions" id.settingdefinitionid.uniquename="FormFillBarUXEnabled" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="SettingDefinition" displayName="HeaderAndNavigationRefresh" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.15)" id.uniquename="HeaderAndNavigationRefresh">
-          <package appName="PowerAppsAppFramework Package" version="1.0.0.23">PowerAppsAppFramework_Anchor (1.0.0.23)</package>
+        <Required type="SettingDefinition" displayName="HeaderAndNavigationRefresh" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.16)" id.uniquename="HeaderAndNavigationRefresh">
+          <package appName="PowerAppsAppFramework Package" version="1.0.0.25">PowerAppsAppFramework_Anchor (1.0.0.25)</package>
         </Required>
         <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=yp_powerappsgridextensions,settingdefinitionid.uniquename=HeaderAndNavigationRefresh" id.parentappmoduleid.uniquename="yp_powerappsgridextensions" id.settingdefinitionid.uniquename="HeaderAndNavigationRefresh" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="NewLookOptOut" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.16)" id.uniquename="NewLookOptOut">
+          <package appName="PowerAppsAppFramework Package" version="1.0.0.25">PowerAppsAppFramework_Anchor (1.0.0.25)</package>
+        </Required>
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=yp_powerappsgridextensions,settingdefinitionid.uniquename=NewLookOptOut" id.parentappmoduleid.uniquename="yp_powerappsgridextensions" id.settingdefinitionid.uniquename="NewLookOptOut" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>

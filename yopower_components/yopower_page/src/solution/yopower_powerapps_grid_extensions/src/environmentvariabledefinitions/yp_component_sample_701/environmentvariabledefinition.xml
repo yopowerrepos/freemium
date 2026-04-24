@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="yp_component_sample_701">
+  <defaultvalue>{   "type": "",   "rules": [     {       "min": 0,       "max": 0.25,       "background": "#E098AF",       "color": "#1F1F1F",       "label": ""     },     {       "min": 0.26,       "max": 0.5,       "background": "#F4B394",       "color": "#1F1F1F",       "label": ""     },     {       "min": 0.51,       "max": 0.75,       "background": "#FAD897",       "color": "#1F1F1F",       "label": ""     },     {       "min": 0.76,       "max": 1,       "background": "#A1D6A5",       "color": "#1F1F1F",       "label": ""     }   ] }</defaultvalue>
+  <displayname default="701. Numbers [Progress Bar]">
+    <label description="701. Numbers [Progress Bar]" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.3.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000003</type>
+</environmentvariabledefinition>

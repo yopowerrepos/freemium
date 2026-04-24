@@ -1,0 +1,8 @@
+{
+  "environmentvariablevalues": {
+    "environmentvariablevalue": {
+      "iscustomizable": "1",
+      "value": "{   \"events\": [     {       \"event\": \"yopower.trigger\",       \"label\": \"Event 01 - yopower.trigger\",       \"tooltip\": \"\"     },     {       \"event\": \"yopower.othertrigger\",       \"label\": \"Trigger 1 yopower.othertrigger\",       \"tooltip\": \"\"     }   ] }"
+    }
+  }
+}

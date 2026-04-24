@@ -11,10 +11,16 @@
       <grid name="resultset" jump="yp_name" select="1" icon="1" preview="1">
         <row name="result" id="yp_demo_powerappsgrid_extensionsid">
           <cell name="statuscode" width="150" />
-          <cell name="yp_accountid" width="250" />
-          <cell name="yp_name" width="150" />
-          <cell name="yp_text" width="150" />
-          <cell name="yp_datetime" width="200" />
+          <cell name="yp_accountid" width="200" />
+          <cell name="yp_text" width="200" />
+          <cell name="yp_optionset" width="100" />
+          <cell name="yp_name" width="100" />
+          <cell name="yp_richtext" width="300" />
+          <cell name="yp_notes" width="100" />
+          <cell name="yp_integer" width="150" />
+          <cell name="yp_currency" width="150" />
+          <cell name="yp_chat" width="200" />
+          <cell name="yp_file2" width="200" />
         </row>
       </grid>
     </layoutxml>
@@ -22,18 +28,24 @@
     <fetchxml>
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="yp_demo_powerappsgrid_extensions">
-          <attribute name="yp_name" />
           <attribute name="yp_demo_powerappsgrid_extensionsid" />
-          <attribute name="yp_accountid" />
-          <attribute name="yp_datetime" />
-          <attribute name="statuscode" />
           <attribute name="yp_text" />
+          <attribute name="yp_integer" />
+          <attribute name="yp_chat" />
+          <attribute name="yp_currency" />
+          <attribute name="yp_richtext" />
+          <attribute name="yp_file2" />
+          <attribute name="statuscode" />
+          <attribute name="yp_accountid" />
+          <attribute name="yp_notes" />
+          <attribute name="yp_optionset" />
+          <attribute name="yp_name" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0.1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Fix Dependent Colors, New Audited and Custom Timeline" languagecode="1033" />
+      <LocalizedName description="v1.0.4.0" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

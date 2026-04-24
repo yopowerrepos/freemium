@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="yp_component_sample_900">
+  <defaultvalue>{   "modal": [     {       "position": 1,       "label": "⬆️Center Modal",       "formId": "00000000-0000-0000-0000-000000000000",       "tabName": "tab_name",       "height": {         "value": 80,         "unit": "%"       },       "width": {         "value": 70,         "unit": "%"       }     },     {       "position": 2,       "label": "↗️Right Modal",       "formId": "00000000-0000-0000-0000-000000000000",       "tabName": "tab_name",       "height": {         "value": 80,         "unit": "%"       },       "width": {         "value": 70,         "unit": "%"       }     }   ],   "sidePane": [     {       "label": "➡️Side Pane",       "width": 300,       "canClose": true,       "paneId": "subgrid_try",       "imageSrc": "/webresources/yp_page_try_svg.svg",       "hideHeader": true     }   ] }</defaultvalue>
+  <displayname default="900. Any [Navigate To]">
+    <label description="900. Any [Navigate To]" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.3.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000003</type>
+</environmentvariabledefinition>

@@ -1,6 +1,7 @@
 {
 	"extends": "./node_modules/pcf-scripts/tsconfig_base.json",
 	"compilerOptions": {
+		"ignoreDeprecations": "6.0",
 		"jsx": "react",
 		"typeRoots": ["node_modules/@types"],
 		"strict": true

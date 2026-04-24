@@ -1,11 +1,11 @@
 import * as React from "react";
 import { CellEditorOverrides, ColumnDataType, GetEditorParams } from "../types";
-import { CustomColumnDefinition } from "../models/CustomColumnDefinition";
+import { CustomColumnDefinition } from "../models/common/CustomColumnDefinition";
 import { Helper } from "../helper";
 import { IInputs } from "../generated/ManifestTypes";
-import { getFilteredLookupCell } from "./FilteredLookupCell";
-import { getReadOnlyCell } from "./ReadOnlyCell";
-import { DurationCell } from "./DurationCell";
+import { getLookupFilteredLookup } from "./LookupFilteredLookup";
+import { getAnyReadOnly } from "./AnyReadOnly";
+import { NumbersDuration } from "./NumbersDuration";
 import { ICell } from "../interfaces/ICell";
 
 export function cellEditorOverrides(
@@ -19,25 +19,7 @@ export function cellEditorOverrides(
 	if (schema !== null)
 		definitions = JSON.parse(JSON.parse(schema).value).definitions as CustomColumnDefinition[];
 
-	const supportedDataTypes: ColumnDataType[] = ["Text", "Email", "Phone", "Ticker", "URL", "TextArea", "Lookup", "Customer", "Owner", "MultiSelectPicklist"
-		, "OptionSet"
-		, "TwoOptions"
-		, "Duration"
-		, "Language"
-		, "Multiple"
-		, "TimeZone"
-		, "Integer"
-		, "Currency"
-		, "Decimal"
-		, "FloatingPoint"
-		, "AutoNumber"
-		, "DateOnly"
-		, "DateAndTime"
-		, "Image"
-		, "File"
-		, "Persona"
-		, "RichText"
-		, "UniqueIdentifier"];
+	const supportedDataTypes: ColumnDataType[] = ["Text", "Email", "Phone", "Ticker", "URL", "TextArea", "Lookup", "Customer", "Owner", "MultiSelectPicklist", "OptionSet", "TwoOptions", "Duration", "Language", "Multiple", "TimeZone", "Integer", "Currency", "Decimal", "FloatingPoint", "AutoNumber", "DateOnly", "DateAndTime", "Image", "File", "Persona", "RichText", "UniqueIdentifier"];
 
 	// Dynamically create the CellRendererOverrides object
 	const overrides: CellEditorOverrides = supportedDataTypes.reduce((acc, dataType) => {
@@ -81,20 +63,9 @@ export function getComponent(
 		};
 
 		switch (definition.type) {
-
-			//Any [Read-Only]
-			case 901:
-				return getReadOnlyCell(cell);
-				break;
-
-			//Lookup [Filtered Lookup]
-			case 801:
-				return getFilteredLookupCell(cell);
-
-			//Number [Duration]
-			case 702:
-				return <DurationCell {...cell} />;
-				break;
+			case 901: return getAnyReadOnly(cell); break;
+			case 801: return getLookupFilteredLookup(cell); break;
+			case 702: return <NumbersDuration {...cell} />; break;
 		}
 	}
 }

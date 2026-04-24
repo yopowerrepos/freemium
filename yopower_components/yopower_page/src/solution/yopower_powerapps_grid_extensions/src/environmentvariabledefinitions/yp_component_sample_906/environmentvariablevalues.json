@@ -1,0 +1,8 @@
+{
+  "environmentvariablevalues": {
+    "environmentvariablevalue": {
+      "iscustomizable": "1",
+      "value": "[{   \"popUpLastModified\": true,   \"reference\": \"row\",   \"column\": \"\",   \"fetchXmlAggregate\": \"\",   \"fetchXml\": \"\" },{   \"popUpLastModified\": false,   \"reference\": \"column\",   \"column\": \"yp_accountid\",   \"fetchXmlAggregate\": \"\",   \"fetchXml\": \"\" },{   \"reference\": \"column\",   \"column\": \"yp_accountid\",   \"fetchXmlAggregate\": \"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false' aggregate='true'><entity name='annotation'><attribute name='annotationid' aggregate='count' alias='count' /><link-entity name='contact' from='contactid' to='objectid' link-type='inner' alias='contact'><filter type='and'><condition attribute='parentcustomerid' operator='eq' uitype='#valuetype#' value='#value#' /></filter></link-entity></entity></fetch>\",   \"fetchXml\": \"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'><entity name='annotation'><attribute name='annotationid' /><attribute name='subject' /><attribute name='notetext' /><attribute name='createdon' /><attribute name='createdby' /><attribute name='modifiedon' /><attribute name='modifiedby' /><attribute name='isdocument' />    <attribute name='filename' /><link-entity name='contact' from='contactid' to='objectid' link-type='inner' alias='contact'><filter type='and'><condition attribute='parentcustomerid' operator='eq' uitype='#valuetype#' value='#value#' /></filter></link-entity></entity></fetch>\" }]"
+    }
+  }
+}

@@ -307,6 +307,9 @@ namespace yopower_papps_grid_extensions.earlybound
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		ImpersonableStubUser = 2,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		AgenticUser = 3,
 	}
 	
 	/// <summary>

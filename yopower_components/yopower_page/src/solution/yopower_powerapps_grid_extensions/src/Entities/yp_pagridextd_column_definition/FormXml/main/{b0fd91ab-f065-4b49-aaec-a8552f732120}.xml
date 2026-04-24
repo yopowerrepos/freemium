@@ -185,7 +185,7 @@
                         <labels>
                           <label description="Parameters" languagecode="1033" />
                         </labels>
-                        <control id="yp_parameters" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="yp_parameters" disabled="false" uniqueid="{63f21d15-1dc8-474d-a362-bd424cea2dc7}" />
+                        <control id="yp_parameters" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="yp_parameters" disabled="false" uniqueid="{999cbfe9-b0f8-4dd3-9a9c-0035c3904964}" />
                       </cell>
                     </row>
                     <row />
@@ -277,7 +277,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -307,7 +307,7 @@
         </NavBarAreas>
       </Navigation>
       <controlDescriptions>
-        <controlDescription forControl="{63f21d15-1dc8-474d-a362-bd424cea2dc7}">
+        <controlDescription forControl="{999cbfe9-b0f8-4dd3-9a9c-0035c3904964}">
           <customControl id="{E0DECE4B-6FC8-4A8F-A065-082708572369}">
             <parameters>
               <datafieldname>yp_parameters</datafieldname>
