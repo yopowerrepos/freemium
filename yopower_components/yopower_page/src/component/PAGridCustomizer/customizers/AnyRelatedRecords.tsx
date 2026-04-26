@@ -22,10 +22,19 @@ export const AnyRelatedRecords: React.FC<ICell> = (cell) => {
                 .then((_) => {
                     const val = _.entities[0].value.toString() ?? "0";
                     setValue(val);
-                    const matchedRule = rules.find(r => r.min <= +val && r.max >= +val);
-                    setBackground(matchedRule?.background ?? "transparent");
-                    setColor(matchedRule?.color ?? "transparent");
-                    setIcon(matchedRule?.icon); // <== Set icon if it exists
+                    const numVal = +val;
+                    const matchedRule = rules.find(r => {
+                        const group = r.group ?? "or";
+                        const results = r.conditions.map(c => {
+                            if (c.criteria === 'is-not-null') return true;
+                            if (c.criteria === 'is-null') return false;
+                            return c.min! <= numVal && c.max! >= numVal;
+                        });
+                        return group === "and" ? results.every(Boolean) : results.some(Boolean);
+                    });
+                    setBackground(matchedRule?.output.background ?? "transparent");
+                    setColor(matchedRule?.output.color ?? "transparent");
+                    setIcon(matchedRule?.output.icon);
                 })
                 .catch((_) => {
                     setValue(_.message);

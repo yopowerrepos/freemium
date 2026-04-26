@@ -60,7 +60,7 @@ namespace yopower_papps_grid_extensions.business
                     case yp_gbl_column_definition_type._801LookupFilteredLookup: Ensure801LookupFilteredLookup(parameters, matchColumn, settings); break;
                     case yp_gbl_column_definition_type._900AnyNavigateTo: Ensure900AnyNavigateTo(parameters, settings); break;
                     case yp_gbl_column_definition_type._901AnyReadOnly: target.yp_parameters = string.Empty; break;
-                    case yp_gbl_column_definition_type._902AnyRelatedRecords: Ensure902AnyRelatedRecords(parameters, settings); break;
+                    case yp_gbl_column_definition_type._902AnyRelatedRecords: Ensure902AnyRelatedRecords(parameters, matchColumn, settings); break;
                     case yp_gbl_column_definition_type._903AnyCopilotExecuteEvent: Ensure903AnyCopilotExecuteEvent(parameters, settings); break;
                     case yp_gbl_column_definition_type._904AnyDependentColors: Ensure904AnyDependentColors(parameters, settings); break;
                     case yp_gbl_column_definition_type._905AnyNewRelatedRecord: Ensure905AnyNewRelatedRecord(parameters, settings); break;
@@ -213,6 +213,15 @@ namespace yopower_papps_grid_extensions.business
             try
             {
                 var model = JsonConvert.DeserializeObject<_904AnyDependentColors>(parameters, settings);
+
+                // Validate each rule's conditions - validate criteria but NOT the column logical name
+                if (model.Rules != null)
+                {
+                    foreach (var rule in model.Rules)
+                    {
+                        rule.ValidateCriteriaOnly();
+                    }
+                }
             }
             catch (Exception jse)
             {
@@ -230,11 +239,20 @@ namespace yopower_papps_grid_extensions.business
                 throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
             }
         }
-        private void Ensure902AnyRelatedRecords(string parameters, JsonSerializerSettings settings)
+        private void Ensure902AnyRelatedRecords(string parameters, models.metadata.ColumnModel matchColumn, JsonSerializerSettings settings)
         {
             try
             {
                 var model = JsonConvert.DeserializeObject<_902AnyRelatedRecords>(parameters, settings);
+
+                // Validate each rule's conditions
+                if (model.Rules != null)
+                {
+                    foreach (var rule in model.Rules)
+                    {
+                        rule.ValidateConditions(matchColumn.LogicalName);
+                    }
+                }
             }
             catch (Exception jse)
             {
@@ -314,6 +332,15 @@ namespace yopower_papps_grid_extensions.business
                 try
                 {
                     var model = JsonConvert.DeserializeObject<_701NumbersProgressBar>(parameters, settings);
+
+                    // Validate each rule's conditions
+                    if (model.Rules != null)
+                    {
+                        foreach (var rule in model.Rules)
+                        {
+                            rule.ValidateConditions(matchColumn.LogicalName);
+                        }
+                    }
                 }
                 catch (Exception jse)
                 {
@@ -335,6 +362,15 @@ namespace yopower_papps_grid_extensions.business
                 try
                 {
                     var model = JsonConvert.DeserializeObject<_700NumbersNDateTimeColors>(parameters, settings);
+
+                    // Validate each rule's conditions
+                    if (model.Rules != null)
+                    {
+                        foreach (var rule in model.Rules)
+                        {
+                            rule.ValidateConditions(matchColumn.LogicalName);
+                        }
+                    }
                 }
                 catch (Exception jse)
                 {

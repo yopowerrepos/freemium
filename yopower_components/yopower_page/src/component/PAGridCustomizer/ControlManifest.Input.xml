@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="yopower.components" constructor="yppagridextd" version="1.20.75" display-name-key="🟣yopower - Power Apps Grid Extensions" description-key="🟣yopower - Power Apps Grid Extensions" control-type="virtual">
+  <control namespace="yopower.components" constructor="yppagridextd" version="1.20.88" display-name-key="🟣yopower - Power Apps Grid Extensions" description-key="🟣yopower - Power Apps Grid Extensions" control-type="virtual">
     <property name="EventName" display-name-key="EventName" description-key="EventName" of-type="SingleLine.Text" usage="bound" required="true" />
     <external-service-usage enabled="true">
       <domain>https://graph.microsoft.com</domain>

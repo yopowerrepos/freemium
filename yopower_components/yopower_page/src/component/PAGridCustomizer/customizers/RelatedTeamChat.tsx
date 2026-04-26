@@ -32,7 +32,7 @@ export const RelatedTeamChat: React.FC<ICell> = (cell) => {
     const [lastKnownMessageId, setLastKnownMessageId] = React.useState<string | null>(null);
     const [lastKnownReactionsHash, setLastKnownReactionsHash] = React.useState<string | null>(null);
     const [hoveredMessageId, setHoveredMessageId] = React.useState<string | null>(null);
-    const hoverTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+    const hoverTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
     const inputRef = React.useRef<HTMLInputElement>(null);
     const matchRefs = React.useRef<(HTMLDivElement | null)[]>([]);
 

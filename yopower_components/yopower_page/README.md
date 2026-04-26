@@ -14,24 +14,25 @@
 
 ## Available Customizers
 
-| **Title**                               | **Description**                                                                                                           |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **Any [Navigate Buttons]**              | Enables navigation buttons for forms related to the row.                                                                  |
-| **Any [Read Only]**                     | Makes read-only columns editable.                                                                                         |
-| **Any [Related Records]**               | Works as a rollup column, support different column types to compose a fetchxml.                                           |
-| **Any [Copilot Execute Event] Preview** | Allows trigger an topic event on Copilot associated with the Model-Driven App.                                            |
-| **Any [Dependent Colorful Cell]**       | Determines the fill and text color of a cell based on an other column according range of values.                          |
-| **Any [New Related Record]**            | Define which associated records can be created through the Power Apps Grid, respecting the relationship's mappings.       |
-| **Any [Notes Cell]**                    | Allows display notes related to the row, lookups or using a custom fetchxml to group them.                                |
-| **Any [Audit History]**                 | Allows you to see who updated the attribute, when it was changed, and the previous values.                                |
-| **Any [Custom Timeline]**               | Provides a timeline view capable of displaying multiple record types, styled with icons and colors defined by parameters. |
-| **Lookup [Navigate Buttons]**           | Enables navigation buttons for forms related to the lookup.                                                               |
-| **Lookup [Filtered Lookup]**            | Configures a lookup field to be filtered based on the row or other subgrid columns using the `lookupObject` concept.      |
-| **Numbers & Date [Colorful Cell]**      | Determines the fill and text color of a cell based on a range of values.                                                  |
-| **Numbers [Progress Bar]**              | Determines the fill and color of a progress bar based on a range of values.                                               |
-| **Numbers [Duration Cell]**             | Allows edit duration columns as a decimal number i.e: 1,5 = 90 minutes                                                    |
-| **File [Upload Download]**              | Visualize, download, updload and delete files                                                                             |
-| **Text [RichText Popover]**             | Allows rich text content to be displayed via popover                                                                      |
+| **Title**                           | **Description**                                                                                                                |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **500 Text (RichText Popover)**     | Allows rich text content to be displayed via popover                                                                           |
+| **600 File (Management)**           | Visualize, download, updload and delete files                                                                                  |
+| **700 Numbers & Date (Colors)**     | Determines the fill and text color of a cell based on a range of values.                                                       |
+| **701 Numbers (Progress Bar)**      | Determines the fill and color of a progress bar based on a range of values.                                                    |
+| **702 Numbers (Duration)**          | Allows edit duration columns as a decimal number i.e: 1,5 = 90 minutes                                                         |
+| **800 Lookup (Navigate To)**        | Enables navigation buttons for forms related to the lookup.                                                                    |
+| **801 Lookup (Filtered Lookup)**    | Configures a lookup field to be filtered based on the row or other subgrid columns using the `lookupObject` concept.           |
+| **900 Any (Navigate To)**           | Enables navigation buttons for forms related to the row.                                                                       |
+| **901 Any (Read-Only)**             | Makes read-only columns editable.                                                                                              |
+| **902 Any (Related Records)**       | Works as a rollup column, support different column types to compose a fetchxml.                                                |
+| **903 Any (Copilot Execute Event)** | Allows trigger an topic event on Copilot associated with the Model-Driven App.                                                 |
+| **904 Any (Dependent Colors)**      | Determines the fill and text color of a cell based on an other column according range of values.                               |
+| **905 Any (New Related Record)**    | Define which associated records can be created through the Power Apps Grid, respecting the relationship's mappings.            |
+| **906 Any (Notes)**                 | Allows display notes related to the row, lookups or using a custom fetchxml to group them, or show the last annotation on view |
+| **907 Any (Audit History)**         | Allows you to see who updated the attribute, when it was changed, and the previous values.                                     |
+| **908 Any (Custom Timeline)**       | Provides a timeline view capable of displaying multiple record types, styled with icons and colors defined by parameters.      |
+| **909 Any (Colors by Hex)**         | Text columns with hexadecimal values ​​can be used as parameters to define the background color of cells.                      |
 
 ## Additional Settings
 

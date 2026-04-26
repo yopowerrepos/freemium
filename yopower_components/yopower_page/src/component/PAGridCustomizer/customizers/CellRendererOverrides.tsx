@@ -9,7 +9,6 @@ import { Helper } from "../helper";
 import { getAnyNavigationTo } from "./AnyNavigateTo";
 import { getAnyReadOnly } from "./AnyReadOnly";
 import { AnyRelatedRecords } from "./AnyRelatedRecords";
-import { AnyCopilotExecuteEvent } from "./AnyCopilotExecuteEvent";
 import { getColors } from "./Colors";
 import { getAnyNewRelatedRecord } from "./AnyNewRelatedRecord";
 import { AnyNotes } from "./AnyNotes";
@@ -20,7 +19,6 @@ import { getNumbersProgressBar } from "./NumbersProgressBar";
 import { FileManagement } from "./FileManagement";
 import { RichTextPopoverComponent } from "./TextRichTextPopover";
 import { _909AnyColorByHex } from "../models/customizers/_909AnyColorByHex";
-import def from "ajv/dist/vocabularies/discriminator";
 import { getAnyColorByHex } from "./AnyColorByHex";
 import { RelatedTeamChat } from "./RelatedTeamChat";
 import { AnyCopilotExecuteEventv2 } from "./AnyCopilotExecuteEventv2";
@@ -104,23 +102,7 @@ export function getComponent(
 			case 901: return getAnyReadOnly(cell); break;
 			case 902: return <AnyRelatedRecords {...cell} />; break;
 			case 903: return <AnyCopilotExecuteEventv2 {...cell} />; break;
-			case 904:
-				{
-					const params = JSON.parse(definition.parameters) as _904AnyDependentColors;
-					const column = Object.keys(col.rowData!).find(k => k.includes(params.column));
-					if (column !== undefined) {
-						const definition = col.colDefs.filter(f => f.name === column)[0]!;
-						cell.col = definition, { dataType: definition.dataType };
-						cell.props = {
-							value: (col.rowData as any)[column],
-							formattedValue: (col.rowData as any)[column]
-						}
-						return getColors(cell);
-					}
-					else
-						return null;
-				}
-				break;
+			case 904: return getColors(cell); break;
 			case 905: return getAnyNewRelatedRecord(cell); break;
 			case 906: return <AnyNotes {...cell} />; break;
 			case 907: return <AnyAuditHistory {...cell} />; break;

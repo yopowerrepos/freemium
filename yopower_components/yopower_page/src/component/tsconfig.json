@@ -3,7 +3,12 @@
 	"compilerOptions": {
 		"ignoreDeprecations": "6.0",
 		"jsx": "react",
-		"typeRoots": ["node_modules/@types"],
+		"typeRoots": [
+			"node_modules/@types"
+		],
+		"types": [
+			"powerapps-component-framework"
+		],
 		"strict": true
 	}
 }
