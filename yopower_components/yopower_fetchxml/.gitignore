@@ -1,0 +1,10 @@
+**/packages
+**/.vs
+**/bin
+**/obj
+**/js
+**/node_modules
+**/TestResults
+*app-sensitive.config
+*mcp-sensitive.json
+/src/plugins/ypproject/.github/copilot-instructions.md

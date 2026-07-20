@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <control namespace="yopower" constructor="fetchxml" version="0.0.28" display-name-key="fetchxml" description-key="fetchxml description" control-type="virtual" preview-image="img/fetchxmlsettings.svg">
+    <external-service-usage enabled="false">
+    </external-service-usage>
+    <property name="fetchxml" display-name-key="Fetch XML" description-key="Fetch XML" of-type="Multiple" usage="bound" required="true" />
+    <property name="placeholders" display-name-key="Placeholders" description-key="Allowed Placeholders" of-type="Multiple" usage="input" required="false" />
+    <property name="allowedEntities" display-name-key="Allowed Entities" description-key="Comma-separated list of entity logical names allowed to be selected as the query or link-entity target (e.g. account,contact)" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="requiredAttributes" display-name-key="Required Attributes" description-key="JSON array of attributes that must always be included as columns when their entity is present in the query. attribute is required. entity is optional and defaults to the root entity when omitted, or set it to a related link entity name. alias is optional to specify, but is always applied when given." of-type="Multiple" usage="input" required="false" />
+    <property name="requiredAlias" display-name-key="Required Alias" description-key="JSON array validating that a given output alias is present somewhere in the query and bound to an attribute of an allowed type. alias and binding are both required; binding is an array of one or more of id, string, decimal, integer, long, float, double, boolean, lookup." of-type="Multiple" usage="input" required="false" />
+    <resources>
+      <code path="index.ts" order="1" />
+      <platform-library name="React" version="16.14.0" />
+      <platform-library name="Fluent" version="9.46.2" />
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <css path="css/fetchxml.css" order="1" />
+      <resx path="strings/fetchxml.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+    <feature-usage>
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+  </control>
+</manifest>
