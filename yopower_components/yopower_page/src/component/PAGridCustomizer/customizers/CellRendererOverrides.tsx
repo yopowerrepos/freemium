@@ -22,6 +22,7 @@ import { _909AnyColorByHex } from "../models/customizers/_909AnyColorByHex";
 import { getAnyColorByHex } from "./AnyColorByHex";
 import { RelatedTeamChat } from "./RelatedTeamChat";
 import { AnyCopilotExecuteEventv2 } from "./AnyCopilotExecuteEventv2";
+import { AnyQueueItem } from "./AnyQueueItem";
 
 export function cellRendererOverrides(
 	subgrid: string,
@@ -124,6 +125,7 @@ export function getComponent(
 			}
 				break;
 			case 910: return <RelatedTeamChat {...cell} />; break;
+			case 911: return <AnyQueueItem {...cell} />; break;
 			case 800: return getLookupNavigateTo(cell); break;
 			case 700: return getColors(cell); break;
 			case 701: return getNumbersProgressBar(cell); break;

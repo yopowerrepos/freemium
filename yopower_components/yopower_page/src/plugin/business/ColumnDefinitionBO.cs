@@ -69,6 +69,7 @@ namespace yopower_papps_grid_extensions.business
                     case yp_gbl_column_definition_type._908AnyCustomTimeline: Ensure908AnyCustomTimeline(parameters, metadataBO, settings); break;
                     case yp_gbl_column_definition_type._909AnyColorbyHex: Ensure909AnyColorByHex(parameters, settings); break;
                     case yp_gbl_column_definition_type._910AnyRelatedTeamChat: target.yp_parameters = string.Empty; break;
+                    case yp_gbl_column_definition_type._911AnyQueueItem: Ensure911AnyQueueItem(parameters, settings); break;
                     default: throw new InvalidPluginExecutionException($"❌Type not implemented!");
                 }
             }
@@ -150,6 +151,17 @@ namespace yopower_papps_grid_extensions.business
         }
 
         #region Customizers
+        private void Ensure911AnyQueueItem(string parameters, JsonSerializerSettings settings)
+        {
+            try
+            {
+                var model = JsonConvert.DeserializeObject<_911AnyQueueItem>(parameters, settings);
+            }
+            catch (Exception jse)
+            {
+                throw new InvalidPluginExecutionException($"❌Check the parameters: {jse.Message}.");
+            }
+        }
         private void Ensure909AnyColorByHex(string parameters, JsonSerializerSettings settings)
         {
             try

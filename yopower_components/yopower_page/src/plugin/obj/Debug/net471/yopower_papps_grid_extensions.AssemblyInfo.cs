@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyDescriptionAttribute(("This is a sample nuget package which contains a Dataverse plugin and its runtime " +
     "dependencies like Newtonsoft.Json"))]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0.0+873be9b766377a83bff2b09883e6efd70338d530")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0.0+4df2914f23a5916351318267ad20e32477a5ce38")]
 [assembly: System.Reflection.AssemblyProductAttribute("yopower_papps_grid_extensions")]
 [assembly: System.Reflection.AssemblyTitleAttribute("yopower_papps_grid_extensions")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

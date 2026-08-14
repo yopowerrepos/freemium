@@ -70,6 +70,9 @@ namespace yopower_papps_grid_extensions.earlybound
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		_910AnyRelatedTeamChat = 910,
-	}
+
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        _911AnyQueueItem = 911,
+    }
 }
 #pragma warning restore CS1591

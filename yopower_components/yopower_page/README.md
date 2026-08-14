@@ -33,6 +33,7 @@
 | **907 Any (Audit History)**         | Allows you to see who updated the attribute, when it was changed, and the previous values.                                     |
 | **908 Any (Custom Timeline)**       | Provides a timeline view capable of displaying multiple record types, styled with icons and colors defined by parameters.      |
 | **909 Any (Colors by Hex)**         | Text columns with hexadecimal values ​​can be used as parameters to define the background color of cells.                      |
+| **911 Any (Queue Item)**            | Shows the active queue item for a record, with inline actions to add, remove, pick, release and auto-distribute it.            |
 
 ## Additional Settings
 
@@ -46,6 +47,13 @@
 | **Icons**                       | Taking color blindness into account, some components support icons. Use the [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/styles/web/icons) list to get the right names |
 | **Short Cuts**                  | Allow change which customizer will be applied on the cell pressing CTRL or SHIFT                                                                                                      |
 | **Elegible For Security Roles** | Allow define for which security roles the column definitions will be available (splited by comma)                                                                                     |
+
+## Parameters Editor
+
+The `yp_parameters` json field on the Column Definition form uses a CodeMirror editor (previously Monaco), which runs entirely on the main thread with no CDN worker dependency.
+
+- **Prettify / Minify** — format or compact the json.
+- **Load Sample** — pulls a json sample from an environment variable, chosen based on the value of a configurable `option` column on the Column Definition form.
 
 ## Sample Data via Configuration Migration Tool
 
