@@ -310,6 +310,9 @@ namespace yopower_papps_grid_extensions.earlybound
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		AgenticUser = 3,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		NonLicensed = 4,
 	}
 	
 	/// <summary>
@@ -1287,6 +1290,10 @@ namespace yopower_papps_grid_extensions.earlybound
 			get
 			{
 				return this.GetAttributeValue<System.Nullable<System.Guid>>("azureactivedirectoryobjectid");
+			}
+			set
+			{
+				this.SetAttributeValue("azureactivedirectoryobjectid", value);
 			}
 		}
 		

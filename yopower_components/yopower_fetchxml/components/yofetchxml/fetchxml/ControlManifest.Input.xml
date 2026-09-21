@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="yopower" constructor="fetchxml" version="0.0.28" display-name-key="fetchxml" description-key="fetchxml description" control-type="virtual" preview-image="img/fetchxmlsettings.svg">
+  <control namespace="yopower" constructor="fetchxml" version="0.0.33" display-name-key="fetchxml" description-key="fetchxml description" control-type="virtual" preview-image="img/fetchxmlsettings.svg">
     <external-service-usage enabled="false">
     </external-service-usage>
     <property name="fetchxml" display-name-key="Fetch XML" description-key="Fetch XML" of-type="Multiple" usage="bound" required="true" />

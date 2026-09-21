@@ -77,19 +77,31 @@ interface IRawLookupAttribute {
 
 const attributeCache = new Map<string, Promise<IAttributeMetadata[]>>();
 
+/**
+ * Picklist, state, status and multiselect-picklist attributes are all distinct Web API metadata
+ * types (not variants of one type), so each needs its own $expand=OptionSet query - a single
+ * PicklistAttributeMetadata cast (the old behavior) silently skips statecode/statuscode and
+ * multiselect columns, leaving their filter value UI without a dropdown.
+ */
+const OPTIONSET_METADATA_TYPES = ["PicklistAttributeMetadata", "StateAttributeMetadata", "StatusAttributeMetadata", "MultiSelectPicklistAttributeMetadata"];
+
 async function fetchOptionSets(entityLogicalName: string): Promise<Map<string, IOptionMetadata[]>> {
-    const url =
-        `${WEB_API_VERSION_PATH}/EntityDefinitions(LogicalName='${encodeURIComponent(entityLogicalName)}')` +
-        `/Attributes/Microsoft.Dynamics.CRM.PicklistAttributeMetadata?$select=LogicalName&$expand=OptionSet($select=Options)`;
-    const rows = await fetchAllPages<IRawOptionSetAttribute>(url);
     const map = new Map<string, IOptionMetadata[]>();
-    for (const attr of rows) {
-        const options = (attr.OptionSet?.Options ?? []).map((o) => ({
-            value: o.Value,
-            label: getLabel(o.Label) ?? String(o.Value),
-        }));
-        map.set(attr.LogicalName, options);
-    }
+    await Promise.all(
+        OPTIONSET_METADATA_TYPES.map(async (metadataType) => {
+            const url =
+                `${WEB_API_VERSION_PATH}/EntityDefinitions(LogicalName='${encodeURIComponent(entityLogicalName)}')` +
+                `/Attributes/Microsoft.Dynamics.CRM.${metadataType}?$select=LogicalName&$expand=OptionSet($select=Options)`;
+            const rows = await fetchAllPages<IRawOptionSetAttribute>(url).catch(() => []);
+            for (const attr of rows) {
+                const options = (attr.OptionSet?.Options ?? []).map((o) => ({
+                    value: o.Value,
+                    label: getLabel(o.Label) ?? String(o.Value),
+                }));
+                map.set(attr.LogicalName, options);
+            }
+        })
+    );
     return map;
 }
 

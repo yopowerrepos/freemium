@@ -101,6 +101,26 @@ namespace yopower_papps_grid_extensions.earlybound
 	}
 	
 	/// <summary>
+	/// Control how compact or spacious the interface feels. This affects spacing, padding, and font sizes across the application.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	public enum usersettings_displaydensity
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Default = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Comfortable = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Cozy = 2,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Compact = 3,
+	}
+	
+	/// <summary>
 	/// Information that specifies the preferred form mode.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
@@ -228,6 +248,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string DefaultCountryCode = "defaultcountrycode";
 			public const string DefaultDashboardId = "defaultdashboardid";
 			public const string DefaultSearchExperience = "defaultsearchexperience";
+			public const string DisplayDensity = "displaydensity";
 			public const string EmailPassword = "emailpassword";
 			public const string EmailUsername = "emailusername";
 			public const string EntityFormMode = "entityformmode";
@@ -702,6 +723,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("defaultsearchexperience", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		/// <summary>
+		/// Control how compact or spacious the interface feels. This affects spacing, padding, and font sizes across the application.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("displaydensity")]
+		public virtual usersettings_displaydensity? DisplayDensity
+		{
+			get
+			{
+				return ((usersettings_displaydensity?)(EntityOptionSetEnum.GetEnum(this, "displaydensity")));
+			}
+			set
+			{
+				this.SetAttributeValue("displaydensity", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 			}
 		}
 		

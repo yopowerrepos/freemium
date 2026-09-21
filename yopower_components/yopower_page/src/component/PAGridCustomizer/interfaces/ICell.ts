@@ -1,4 +1,5 @@
 import { IInputs } from "../generated/ManifestTypes";
+import { ModifierState } from "../ControlKeyTracker";
 import { ColumnDefinition, GetEditorParams, GetRendererParams } from "../types";
 
 export interface ICell {
@@ -7,6 +8,7 @@ export interface ICell {
     col: ColumnDefinition;
     props: any;
     definition: any;
+    modifiers: ModifierState;
     table: string;
     id: string;
     subgrid: string;

@@ -66,6 +66,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string UTCConversionTimeZoneCode = "utcconversiontimezonecode";
 			public const string VersionNumber = "versionnumber";
 			public const string yp_allow_pin = "yp_allow_pin";
+			public const string yp_allow_show_hide = "yp_allow_show_hide";
 			public const string yp_based_on_optionset_column = "yp_based_on_optionset_column";
 			public const string yp_editable = "yp_editable";
 			public const string yp_elegible_for_security_roles = "yp_elegible_for_security_roles";
@@ -305,6 +306,19 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("yp_allow_pin", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yp_allow_show_hide")]
+		public System.Nullable<bool> yp_allow_show_hide
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("yp_allow_show_hide");
+			}
+			set
+			{
+				this.SetAttributeValue("yp_allow_show_hide", value);
 			}
 		}
 		

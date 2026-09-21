@@ -1,6 +1,6 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import * as React from "react";
-import { FetchXmlDesigner, IFetchXmlDesignerProps } from "./components/FetchXmlDesigner";
+import { FetchXmlField, IFetchXmlFieldProps } from "./components/FetchXmlField";
 import {
     parseAllowedEntities,
     getAllEntityNames,
@@ -20,6 +20,13 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
     private notifyOutputChanged: () => void;
     private context: ComponentFramework.Context<IInputs>;
     private currentXml: string;
+    // Last raw value handed to us by the platform, and the value the designer was seeded with.
+    // On a form load the bound column is usually still null in init() and only arrives on a later
+    // updateView, so the seed has to be refreshed (and the designer remounted via seedVersion)
+    // whenever the platform delivers a value that isn't the echo of our own edit.
+    private lastBoundXml: string;
+    private seedXml: string;
+    private seedVersion = 0;
 
     /**
      * Empty constructor.
@@ -38,6 +45,8 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
         this.context = context;
         this.notifyOutputChanged = notifyOutputChanged;
         this.currentXml = context.parameters.fetchxml?.raw ?? "";
+        this.lastBoundXml = this.currentXml;
+        this.seedXml = this.currentXml;
     }
 
     /**
@@ -48,13 +57,25 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
         this.context = context;
 
+        const boundXml = context.parameters.fetchxml?.raw ?? "";
+        if (boundXml !== this.lastBoundXml) {
+            this.lastBoundXml = boundXml;
+            // A genuinely new value from the platform (record data arriving after init, a record
+            // switch, an undo) - anything equal to currentXml is just our own edit coming back.
+            if (boundXml !== this.currentXml) {
+                this.currentXml = boundXml;
+                this.seedXml = boundXml;
+                this.seedVersion++;
+            }
+        }
+
         const allowedEntities = parseAllowedEntities(context.parameters.allowedEntities?.raw);
         const { placeholders, error: placeholdersError } = parsePlaceholderConfig(context.parameters.placeholders?.raw);
         const { requiredFields, error: requiredFieldsError } = parseRequiredFields(context.parameters.requiredAttributes?.raw);
         const { requiredAliases, error: requiredAliasesError } = parseRequiredAliases(context.parameters.requiredAlias?.raw);
 
-        const props: IFetchXmlDesignerProps = {
-            initialXml: this.currentXml,
+        const props: IFetchXmlFieldProps = {
+            initialXml: this.seedXml,
             allowedEntities,
             placeholders,
             placeholdersError,
@@ -62,7 +83,8 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
             requiredFieldsError,
             requiredAliases,
             requiredAliasesError,
-            onChange: this.handleXmlChange,
+            onApply: this.handleApply,
+            disabled: context.mode.isControlDisabled,
             getAllEntities: this.getAllEntities,
             getAttributes: this.getAttributes,
             getRelationships: this.getRelationships,
@@ -73,7 +95,8 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
             runQuery: this.runQuery,
         };
 
-        return React.createElement(FetchXmlDesigner, props);
+        // The designer seeds its state from initialXml once, so a new seed needs a fresh instance.
+        return React.createElement(FetchXmlField, { ...props, key: `seed-${this.seedVersion}` });
     }
 
     /**
@@ -95,8 +118,14 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
     // Stable function references (class field arrow functions), so React effects that depend on
     // them don't re-fire on every updateView - they always read the latest this.context at call time.
 
-    private handleXmlChange = (xml: string): void => {
+    private handleApply = (xml: string): void => {
+        if (xml === this.currentXml) {
+            return;
+        }
         this.currentXml = xml;
+        // Keep the seed in step with what we just committed, so reopening the designer starts from
+        // the applied query rather than from whatever the column held at form load.
+        this.seedXml = xml;
         this.notifyOutputChanged();
     };
 

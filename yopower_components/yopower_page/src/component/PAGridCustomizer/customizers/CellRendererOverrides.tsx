@@ -23,6 +23,7 @@ import { getAnyColorByHex } from "./AnyColorByHex";
 import { RelatedTeamChat } from "./RelatedTeamChat";
 import { AnyCopilotExecuteEventv2 } from "./AnyCopilotExecuteEventv2";
 import { AnyQueueItem } from "./AnyQueueItem";
+import { getHiddenValue, isHidden } from "./HiddenValue";
 
 export function cellRendererOverrides(
 	subgrid: string,
@@ -70,10 +71,13 @@ export function getComponent(
 	const definition = Helper.getDefinition(definitions, table, column, col.rowData!, modifiers);
 	if (definition !== null) {
 
+		// Show / hide toggle (CTRL pressed twice) masks the customizer entirely
+		const hidden = isHidden(definition, modifiers);
+
 		// Additional Settings
 		if (definition.settings !== null) {
-			// Editable
-			(col.colDefs[col.columnIndex] as any).editable = definition.settings.editable;
+			// Editable (a masked cell is never editable)
+			(col.colDefs[col.columnIndex] as any).editable = hidden ? false : definition.settings.editable;
 
 			// Allow Pin
 			if (definition.settings.allowPin)
@@ -86,11 +90,15 @@ export function getComponent(
 			// 	(col.colDefs[col.columnIndex] as any).displayName = definition.settings.renameColumn;
 		}
 
+		if (hidden)
+			return getHiddenValue();
+
 		let cell: ICell = {
 			context: context,
 			params: col,
 			props: props,
 			definition: definition,
+			modifiers: modifiers,
 			table: table,
 			id: col.rowData!.__rec_id,
 			subgrid: subgrid,

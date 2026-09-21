@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.26071.153" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26071.153" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26071.00153">
+<ImportExportXml version="9.2.26091.144" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26091.144" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26091.00144">
   <SolutionManifest>
     <UniqueName>fetchassettings</UniqueName>
     <LocalizedNames>
       <LocalizedName description="🔍FetchXml as Settings" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>0.0.26201.1729</Version>
+    <Version>0.0.26264.1024</Version>
     <Managed>2</Managed>
     <Publisher>
       <UniqueName>yopower</UniqueName>

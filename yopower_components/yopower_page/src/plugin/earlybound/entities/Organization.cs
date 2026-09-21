@@ -337,6 +337,29 @@ namespace yopower_papps_grid_extensions.earlybound
 		IPBindingorIPFirewall = 3,
 	}
 	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	public enum organization_isdesktopflowversioncontrolenabledoverride
+	{
+		
+		/// <summary>
+		/// No override is set; the organization inherits the default version control setting for Desktop Flows.
+		/// </summary>
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Unset = 0,
+		
+		/// <summary>
+		/// Version control for Desktop Flows is explicitly enabled in this organization.
+		/// </summary>
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Enabled = 1,
+		
+		/// <summary>
+		/// Version control for Desktop Flows is explicitly disabled in this organization.
+		/// </summary>
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Disabled = 2,
+	}
+	
 	/// <summary>
 	/// Flag that determines whether or not MSCRM should be loaded in an browser window that does not have address, tool and menu bars.
 	/// </summary>
@@ -570,6 +593,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string AdvancedFilteringEnabled = "advancedfilteringenabled";
 			public const string AdvancedLookupEnabled = "advancedlookupenabled";
 			public const string AdvancedLookupInEditFilter = "advancedlookupineditfilter";
+			public const string AiBuilderCreditsOnlyEnabled = "aibuildercreditsonlyenabled";
 			public const string AiPromptsAzureAIFoundryModelTypesEnabled = "aipromptsazureaifoundrymodeltypesenabled";
 			public const string AiPromptsBasicModelTypesEnabled = "aipromptsbasicmodeltypesenabled";
 			public const string AiPromptsEnabled = "aipromptsenabled";
@@ -702,6 +726,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string EnableCopilotStudioCrossGeoShareDataWithVivaInsights = "enablecopilotstudiocrossgeosharedatawithvivainsights";
 			public const string EnableCopilotStudioShareDataWithVI = "enablecopilotstudiosharedatawithvi";
 			public const string EnableCopilotStudioShareDataWithVivaInsights = "enablecopilotstudiosharedatawithvivainsights";
+			public const string EnableEmailMention = "enableemailmention";
 			public const string EnableEnvironmentSettingsApp = "enableenvironmentsettingsapp";
 			public const string EnableFlowsInSolutionByDefault = "enableflowsinsolutionbydefault";
 			public const string EnableFlowsInSolutionByDefaultGracePeriod = "enableflowsinsolutionbydefaultgraceperiod";
@@ -811,6 +836,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string IsDesktopFlowVanillaImageSharingEnabled = "isdesktopflowvanillaimagesharingenabled";
 			public const string IsDesktopFlowVersionControlEnabled = "isdesktopflowversioncontrolenabled";
 			public const string IsDesktopFlowVersionControlEnabledByDefault = "isdesktopflowversioncontrolenabledbydefault";
+			public const string IsDesktopFlowVersionControlEnabledOverride = "isdesktopflowversioncontrolenabledoverride";
 			public const string IsDisabled = "isdisabled";
 			public const string IsDuplicateDetectionEnabled = "isduplicatedetectionenabled";
 			public const string IsDuplicateDetectionEnabledForImport = "isduplicatedetectionenabledforimport";
@@ -1236,6 +1262,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("advancedlookupineditfilter", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether AI Builder features are blocked from using Copilot Credits.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aibuildercreditsonlyenabled")]
+		public System.Nullable<bool> AiBuilderCreditsOnlyEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("aibuildercreditsonlyenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("aibuildercreditsonlyenabled", value);
 			}
 		}
 		
@@ -3326,6 +3368,22 @@ namespace yopower_papps_grid_extensions.earlybound
 		}
 		
 		/// <summary>
+		/// Enable or disable Mentions in Email.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableemailmention")]
+		public System.Nullable<bool> EnableEmailMention
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableemailmention");
+			}
+			set
+			{
+				this.SetAttributeValue("enableemailmention", value);
+			}
+		}
+		
+		/// <summary>
 		/// Enables the Environment Settings App
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableenvironmentsettingsapp")]
@@ -3961,7 +4019,7 @@ namespace yopower_papps_grid_extensions.earlybound
 		}
 		
 		/// <summary>
-		/// Default time to live in minutes for new records in the Flow Logs entity.
+		/// Defines how long desktop flow logs are retained in Dataverse (V2 only). The default is 40,320 minutes (28 days). Set to 0 to retain logs indefinitely.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("flowlogsttlinminutes")]
 		public System.Nullable<int> FlowLogsTtlInMinutes
@@ -5028,6 +5086,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("isdesktopflowversioncontrolenabledbydefault", value);
+			}
+		}
+		
+		/// <summary>
+		/// Overrides whether version control for Desktop Flows is enabled in this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowversioncontrolenabledoverride")]
+		public virtual organization_isdesktopflowversioncontrolenabledoverride? IsDesktopFlowVersionControlEnabledOverride
+		{
+			get
+			{
+				return ((organization_isdesktopflowversioncontrolenabledoverride?)(EntityOptionSetEnum.GetEnum(this, "isdesktopflowversioncontrolenabledoverride")));
+			}
+			set
+			{
+				this.SetAttributeValue("isdesktopflowversioncontrolenabledoverride", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 			}
 		}
 		

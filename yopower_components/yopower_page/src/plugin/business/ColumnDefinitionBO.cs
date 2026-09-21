@@ -119,6 +119,7 @@ namespace yopower_papps_grid_extensions.business
                         yp_optionset_values = s.yp_optionset_values,
                         yp_editable = s.yp_editable,
                         yp_allow_pin = s.yp_allow_pin,
+                        yp_allow_show_hide = s.yp_allow_show_hide,
                         yp_rename_column = s.yp_rename_column
                     })
                     .ToList();

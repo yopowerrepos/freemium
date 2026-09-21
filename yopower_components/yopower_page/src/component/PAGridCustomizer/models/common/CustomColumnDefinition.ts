@@ -3,6 +3,7 @@ export interface CustomColumnDefinition {
     name: string;
     type: number;
     shortcut: number;
+    showhide: boolean;
     subgrid: string;
     table: string;
     column: string;

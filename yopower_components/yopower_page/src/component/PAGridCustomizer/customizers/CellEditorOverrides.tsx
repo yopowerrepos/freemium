@@ -7,6 +7,7 @@ import { getLookupFilteredLookup } from "./LookupFilteredLookup";
 import { getAnyReadOnly } from "./AnyReadOnly";
 import { NumbersDuration } from "./NumbersDuration";
 import { ICell } from "../interfaces/ICell";
+import { getModifierState } from "../ControlKeyTracker";
 
 export function cellEditorOverrides(
 	subgrid: string,
@@ -55,6 +56,7 @@ export function getComponent(
 			params: col,
 			props: props,
 			definition: definition,
+			modifiers: getModifierState(),
 			table: table,
 			id: col.rowData!.__rec_id,
 			subgrid: subgrid,
