@@ -6,12 +6,15 @@ import {
     getAllEntityNames,
     getEntityAttributes,
     getEntityRelationships,
+    getEntityViews,
     pickLookupValue,
     runFetchXml,
     getUserAadObjectId,
     resolveRecordLabel,
     openRecordInDialog,
+    convertFetchXmlToSql,
 } from "./services/metadataService";
+import { explainFetchXml } from "./services/aiExplanationService";
 import { parsePlaceholderConfig } from "./services/placeholderService";
 import { parseRequiredFields } from "./models/requiredFieldModel";
 import { parseRequiredAliases } from "./models/requiredAliasModel";
@@ -27,6 +30,9 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
     private lastBoundXml: string;
     private seedXml: string;
     private seedVersion = 0;
+    // The "explaining" column: written straight away by the Explain dialog's Save, not held until Apply.
+    private currentExplaining: string;
+    private lastBoundExplaining: string;
 
     /**
      * Empty constructor.
@@ -47,6 +53,8 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
         this.currentXml = context.parameters.fetchxml?.raw ?? "";
         this.lastBoundXml = this.currentXml;
         this.seedXml = this.currentXml;
+        this.currentExplaining = context.parameters.explaining?.raw ?? "";
+        this.lastBoundExplaining = this.currentExplaining;
     }
 
     /**
@@ -69,6 +77,13 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
             }
         }
 
+        // Same as the XML: a value arriving after init (or a record switch) replaces ours; the echo of our own Save doesn't.
+        const boundExplaining = context.parameters.explaining?.raw ?? "";
+        if (boundExplaining !== this.lastBoundExplaining) {
+            this.lastBoundExplaining = boundExplaining;
+            this.currentExplaining = boundExplaining;
+        }
+
         const allowedEntities = parseAllowedEntities(context.parameters.allowedEntities?.raw);
         const { placeholders, error: placeholdersError } = parsePlaceholderConfig(context.parameters.placeholders?.raw);
         const { requiredFields, error: requiredFieldsError } = parseRequiredFields(context.parameters.requiredAttributes?.raw);
@@ -88,11 +103,16 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
             getAllEntities: this.getAllEntities,
             getAttributes: this.getAttributes,
             getRelationships: this.getRelationships,
+            getViews: this.getViews,
             pickLookup: this.pickLookup,
             resolveImpersonationUser: this.resolveImpersonationUser,
             resolveLookupLabel: this.resolveLookupLabel,
             openRecord: this.openRecord,
             runQuery: this.runQuery,
+            convertToSql: this.convertToSql,
+            explainFetchXml: this.explainFetchXml,
+            savedExplanation: this.currentExplaining,
+            onSaveExplanation: context.mode.isControlDisabled ? undefined : this.handleSaveExplanation,
         };
 
         // The designer seeds its state from initialXml once, so a new seed needs a fresh instance.
@@ -104,7 +124,7 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
      * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as "bound" or "output"
      */
     public getOutputs(): IOutputs {
-        return { fetchxml: this.currentXml };
+        return { fetchxml: this.currentXml, explaining: this.currentExplaining };
     }
 
     /**
@@ -129,7 +149,15 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
         this.notifyOutputChanged();
     };
 
-    private getAllEntities = (): ReturnType<typeof getAllEntityNames> => {
+    private handleSaveExplanation = (value: string): void => {
+        if (value === this.currentExplaining) {
+            return;
+        }
+        this.currentExplaining = value;
+        this.notifyOutputChanged();
+    };
+
+    private getAllEntities =(): ReturnType<typeof getAllEntityNames> => {
         return getAllEntityNames();
     };
 
@@ -141,8 +169,12 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
         return getEntityRelationships(entityName);
     };
 
-    private pickLookup = (entityTypes: string[]): ReturnType<typeof pickLookupValue> => {
-        return pickLookupValue(this.context, entityTypes);
+    private getViews = (entityName: string): ReturnType<typeof getEntityViews> => {
+        return getEntityViews(entityName);
+    };
+
+    private pickLookup = (entityTypes: string[], allowMultiSelect?: boolean): ReturnType<typeof pickLookupValue> => {
+        return pickLookupValue(this.context, entityTypes, allowMultiSelect);
     };
 
     private resolveImpersonationUser = (systemUserId: string): ReturnType<typeof getUserAadObjectId> => {
@@ -157,7 +189,15 @@ export class fetchxml implements ComponentFramework.ReactControl<IInputs, IOutpu
         return openRecordInDialog(this.context, entityName, id);
     };
 
-    private runQuery = (entityName: string, fetchXmlString: string, impersonateCallerId?: string): ReturnType<typeof runFetchXml> => {
+    private convertToSql = (fetchXmlString: string, subqueryCompatible: boolean): ReturnType<typeof convertFetchXmlToSql> => {
+        return convertFetchXmlToSql(fetchXmlString, subqueryCompatible);
+    };
+
+    private explainFetchXml = (fetchXmlString: string): ReturnType<typeof explainFetchXml> => {
+        return explainFetchXml(fetchXmlString);
+    };
+
+    private runQuery =(entityName: string, fetchXmlString: string, impersonateCallerId?: string): ReturnType<typeof runFetchXml> => {
         return runFetchXml(this.context, entityName, fetchXmlString, impersonateCallerId);
     };
 }

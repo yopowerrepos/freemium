@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Combobox, Option, Field } from "@fluentui/react-components";
+import { Combobox, Option } from "@fluentui/react-components";
 import { useDesignerContext } from "../designerContext";
+import { InlineField } from "./InlineField";
 import { SCROLLABLE_LISTBOX, POPUP_FIELD_PROPS, COMPACT_HEIGHT_STYLE } from "./treeStyles";
 
 export interface IEntitySectionProps {
@@ -15,11 +16,13 @@ export const EntitySection: React.FC<IEntitySectionProps> = ({ label, value, onC
     const unrestricted = allowedEntities.length === 0;
     const [allEntities, setAllEntities] = React.useState<string[]>([]);
     const [loadingAll, setLoadingAll] = React.useState(false);
+    const [loadError, setLoadError] = React.useState<string | undefined>(undefined);
 
     React.useEffect(() => {
         if (!unrestricted) return undefined;
         let cancelled = false;
         setLoadingAll(true);
+        setLoadError(undefined);
         getAllEntities()
             .then((names) => {
                 if (!cancelled) {
@@ -28,9 +31,10 @@ export const EntitySection: React.FC<IEntitySectionProps> = ({ label, value, onC
                 }
                 return undefined;
             })
-            .catch(() => {
+            .catch((e: Error) => {
                 if (!cancelled) {
                     setAllEntities([]);
+                    setLoadError(e?.message ?? "Failed to load tables");
                     setLoadingAll(false);
                 }
             });
@@ -42,7 +46,7 @@ export const EntitySection: React.FC<IEntitySectionProps> = ({ label, value, onC
     const options = unrestricted ? allEntities : allowedEntities;
     const filtered = options.filter((name) => !value || name.toLowerCase().includes(value.toLowerCase()));
     return (
-        <Field label={label}>
+        <InlineField label={label}>
             <Combobox
                 {...POPUP_FIELD_PROPS}
                 freeform
@@ -52,14 +56,24 @@ export const EntitySection: React.FC<IEntitySectionProps> = ({ label, value, onC
                 onOptionSelect={(_, data) => onChange(data.optionValue ?? "")}
                 onChange={(e) => onChange((e.target as HTMLInputElement).value)}
                 listbox={SCROLLABLE_LISTBOX}
-                style={COMPACT_HEIGHT_STYLE}
+                style={{ minWidth: "200px", ...COMPACT_HEIGHT_STYLE }}
             >
+                {loadingAll && (
+                    <Option key="__loading" value="" disabled>
+                        Loading tables...
+                    </Option>
+                )}
+                {loadError && (
+                    <Option key="__error" value="" disabled>
+                        {`Could not load tables - type the logical name instead (${loadError})`}
+                    </Option>
+                )}
                 {filtered.map((name) => (
                     <Option key={name} value={name}>
                         {name}
                     </Option>
                 ))}
             </Combobox>
-        </Field>
+        </InlineField>
     );
 };

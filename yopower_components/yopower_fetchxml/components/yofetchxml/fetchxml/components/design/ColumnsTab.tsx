@@ -1,10 +1,8 @@
 import * as React from "react";
 import { Text } from "@fluentui/react-components";
-import { IFetchXmlQuery, ILinkEntity, isStructuralLinkType, createEmptyFilter, getRequiredAttributeNames } from "../../models/fetchXmlModel";
+import { IFetchXmlQuery, ILinkEntity, isStructuralLinkType, getRequiredAttributeNames } from "../../models/fetchXmlModel";
 import { useDesignerContext } from "../designerContext";
-import { EntitySection } from "./EntitySection";
 import { AttributesSection } from "./AttributesSection";
-import { OptionsSection } from "./OptionsSection";
 import { OrderSection } from "./OrderSection";
 import { LINK_ENTITY_BOX_STYLE } from "./treeStyles";
 
@@ -67,31 +65,7 @@ export const ColumnsTab: React.FC<IColumnsTabProps> = ({ query, onChange }) => {
     const { requiredFields } = useDesignerContext();
 
     return (
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px", padding: "8px 0" }}>
-            <div style={{ display: "flex", gap: "16px", alignItems: "flex-end", flexWrap: "wrap" }}>
-                <EntitySection
-                    label="Entity"
-                    value={query.entityName}
-                    onChange={(entityName) =>
-                        onChange((prev) =>
-                            entityName === prev.entityName
-                                ? prev
-                                : {
-                                      ...prev,
-                                      entityName,
-                                      allAttributes: false,
-                                      attributes: [],
-                                      attributeAliases: {},
-                                      orders: [],
-                                      filter: createEmptyFilter(),
-                                      linkEntities: [],
-                                  }
-                        )
-                    }
-                />
-                <OptionsSection query={query} onChange={onChange} />
-            </div>
-
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px", padding: "6px 0" }}>
             <AttributesSection
                 label="Columns"
                 entityName={query.entityName}

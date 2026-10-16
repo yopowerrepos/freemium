@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Checkbox, Field, Dropdown, Option, SpinButton } from "@fluentui/react-components";
+import { Checkbox, Dropdown, Option, SpinButton } from "@fluentui/react-components";
 import { IFetchXmlQuery, PagingMode } from "../../models/fetchXmlModel";
+import { InlineField } from "./InlineField";
 import { COMPACT_FIELD_PROPS, POPUP_FIELD_PROPS, COMPACT_HEIGHT_STYLE } from "./treeStyles";
 
 export interface IOptionsSectionProps {
@@ -19,7 +20,7 @@ export const OptionsSection: React.FC<IOptionsSectionProps> = ({ query, onChange
         <>
             <Checkbox label="Distinct" checked={query.distinct} onChange={(_, data) => onChange({ ...query, distinct: !!data.checked })} />
 
-            <Field label="Paging">
+            <InlineField label="Paging">
                 <Dropdown
                     {...POPUP_FIELD_PROPS}
                     value={PAGING_LABELS[query.pagingMode]}
@@ -31,10 +32,10 @@ export const OptionsSection: React.FC<IOptionsSectionProps> = ({ query, onChange
                     <Option value="top">Limit (Top N)</Option>
                     <Option value="page">Page</Option>
                 </Dropdown>
-            </Field>
+            </InlineField>
 
             {query.pagingMode === "top" && (
-                <Field label="Top">
+                <InlineField label="Top">
                     <SpinButton
                         {...COMPACT_FIELD_PROPS}
                         value={query.top ?? 0}
@@ -42,12 +43,12 @@ export const OptionsSection: React.FC<IOptionsSectionProps> = ({ query, onChange
                         onChange={(_, data) => onChange({ ...query, top: data.value ?? (data.displayValue ? parseInt(data.displayValue, 10) : query.top) })}
                         style={{ maxWidth: "90px", ...COMPACT_HEIGHT_STYLE }}
                     />
-                </Field>
+                </InlineField>
             )}
 
             {query.pagingMode === "page" && (
                 <>
-                    <Field label="Page">
+                    <InlineField label="Page">
                         <SpinButton
                             {...COMPACT_FIELD_PROPS}
                             value={query.page ?? 1}
@@ -55,8 +56,8 @@ export const OptionsSection: React.FC<IOptionsSectionProps> = ({ query, onChange
                             onChange={(_, data) => onChange({ ...query, page: data.value ?? query.page })}
                             style={{ maxWidth: "80px", ...COMPACT_HEIGHT_STYLE }}
                         />
-                    </Field>
-                    <Field label="Page Size">
+                    </InlineField>
+                    <InlineField label="Page Size">
                         <SpinButton
                             {...COMPACT_FIELD_PROPS}
                             value={query.count ?? 50}
@@ -64,7 +65,7 @@ export const OptionsSection: React.FC<IOptionsSectionProps> = ({ query, onChange
                             onChange={(_, data) => onChange({ ...query, count: data.value ?? query.count })}
                             style={{ maxWidth: "90px", ...COMPACT_HEIGHT_STYLE }}
                         />
-                    </Field>
+                    </InlineField>
                 </>
             )}
         </>

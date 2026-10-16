@@ -9,13 +9,14 @@ export interface IFilterTabProps {
 
 export const FilterTab: React.FC<IFilterTabProps> = ({ query, onChange }) => {
     return (
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px", padding: "8px 0" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px", padding: "6px 0" }}>
             <FilterGroupEditor
                 filter={query.filter}
                 entityName={query.entityName}
                 onChange={(filter) => onChange((prev) => ({ ...prev, filter }))}
                 linkEntities={query.linkEntities}
                 onLinkEntitiesChange={(linkEntities) => onChange((prev) => ({ ...prev, linkEntities }))}
+                allowEntityAlias
             />
         </div>
     );

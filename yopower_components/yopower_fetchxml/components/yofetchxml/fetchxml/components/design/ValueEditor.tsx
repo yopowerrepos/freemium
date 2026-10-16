@@ -34,8 +34,27 @@ const ManyValueEditor: React.FC<{
     values: string[];
     onChange: (values: string[]) => void;
 }> = ({ category, attributeMeta, values, onChange }) => {
+    const { pickLookup } = useDesignerContext();
+    const isLookup = category === "lookup";
+    const targets = attributeMeta?.targets ?? [];
+
+    const handlePickMany = (): void => {
+        if (targets.length === 0) return;
+        pickLookup(targets, true)
+            .then((results) => {
+                const picked = results.map((r) => r.id.replace(/[{}]/g, ""));
+                const existing = new Set(values.filter(Boolean).map((v) => v.toLowerCase()));
+                const added = picked.filter((id) => !existing.has(id.toLowerCase()));
+                // Picked records fill any blank slots first, so "+ value" followed by a pick doesn't leave an empty row behind.
+                if (added.length > 0) onChange([...values.filter(Boolean), ...added]);
+                return undefined;
+            })
+            .catch(() => undefined);
+    };
+
+    // One value per line: the list grows downwards instead of pushing the row sideways.
     return (
-        <div style={{ display: "flex", alignItems: "center", gap: "4px", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "2px" }}>
             {values.map((v, idx) => (
                 <div key={idx} style={{ display: "flex", gap: "2px", alignItems: "center" }}>
                     <LiteralValueInput
@@ -43,19 +62,33 @@ const ManyValueEditor: React.FC<{
                         attributeMeta={attributeMeta}
                         value={v}
                         onChange={(nv) => {
+                            // A lookup chip's own clear button removes the entry outright, rather than leaving a blank one behind.
+                            if (isLookup && !nv) {
+                                onChange(values.filter((_, i) => i !== idx));
+                                return;
+                            }
                             const next = [...values];
                             next[idx] = nv;
                             onChange(next);
                         }}
                     />
-                    <Button size="small" appearance="subtle" style={COMPACT_HEIGHT_STYLE} onClick={() => onChange(values.filter((_, i) => i !== idx))} aria-label="Remove value">
-                        ✕
-                    </Button>
+                    {!(isLookup && v) && (
+                        <Button size="small" appearance="subtle" style={COMPACT_HEIGHT_STYLE} onClick={() => onChange(values.filter((_, i) => i !== idx))} aria-label="Remove value">
+                            ✕
+                        </Button>
+                    )}
                 </div>
             ))}
-            <Button size="small" appearance="subtle" style={COMPACT_HEIGHT_STYLE} onClick={() => onChange([...values, ""])}>
-                + value
-            </Button>
+            <div style={{ display: "flex", gap: "4px" }}>
+                {isLookup && targets.length > 0 && (
+                    <Button size="small" appearance="subtle" style={COMPACT_HEIGHT_STYLE} onClick={handlePickMany}>
+                        + Select records...
+                    </Button>
+                )}
+                <Button size="small" appearance="subtle" style={COMPACT_HEIGHT_STYLE} onClick={() => onChange([...values, ""])}>
+                    + value
+                </Button>
+            </div>
         </div>
     );
 };
@@ -88,7 +121,7 @@ export const ValueEditor: React.FC<IValueEditorProps> = ({ conditionValue, opera
     const modeOptions = MODE_LABELS.filter((m) => m.key === "literal" || (m.key === "compareColumn" && canCompareColumn) || (m.key === "placeholder" && canUsePlaceholder));
 
     return (
-        <div style={{ display: "flex", alignItems: "center", gap: "4px", flexWrap: "nowrap" }}>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: "4px", flexWrap: "wrap" }}>
             {modeOptions.length > 1 && (
                 <Dropdown
                     {...POPUP_FIELD_PROPS}

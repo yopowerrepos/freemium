@@ -20,7 +20,8 @@ export interface IDesignerContext {
     getAllEntities: () => Promise<string[]>;
     getAttributes: (entityName: string) => Promise<IAttributeMetadata[]>;
     getRelationships: (entityName: string) => Promise<IEntityRelationshipsResult>;
-    pickLookup: (entityTypes: string[]) => Promise<ILookupValue[]>;
+    /** Opens the native lookup dialog; allowMultiSelect lets the maker pick several records at once (in/not-in). */
+    pickLookup: (entityTypes: string[], allowMultiSelect?: boolean) => Promise<ILookupValue[]>;
     /** Resolves a systemuser record id to the caller id used to impersonate them on the Test tab (undefined if it can't be resolved). */
     resolveImpersonationUser: (systemUserId: string) => Promise<string | undefined>;
     /** Resolves a record id's display name (trying each candidate entity type in turn), to render a selected lookup/primary-key value as a name instead of a bare id. */

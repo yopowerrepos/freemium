@@ -20,9 +20,11 @@ export interface IFilterGroupEditorProps {
      */
     linkEntities?: ILinkEntity[];
     onLinkEntitiesChange?: (updated: ILinkEntity[]) => void;
+    /** Root entity's filter tree only: conditions may target a link-entity alias via `entityname`. */
+    allowEntityAlias?: boolean;
 }
 
-export const FilterGroupEditor: React.FC<IFilterGroupEditorProps> = ({ filter, entityName, onChange, onRemove, depth = 0, linkEntities, onLinkEntitiesChange }) => {
+export const FilterGroupEditor: React.FC<IFilterGroupEditorProps> = ({ filter, entityName, onChange, onRemove, depth = 0, linkEntities, onLinkEntitiesChange, allowEntityAlias }) => {
     const links = linkEntities ?? [];
     const isEmpty = filter.conditions.length === 0 && filter.filters.length === 0 && (depth > 0 || links.length === 0);
 
@@ -40,7 +42,7 @@ export const FilterGroupEditor: React.FC<IFilterGroupEditorProps> = ({ filter, e
                     <Option value="or">OR</Option>
                 </Dropdown>
                 {onRemove && (
-                    <Button size="small" appearance="subtle" style={COMPACT_HEIGHT_STYLE} onClick={onRemove} aria-label="Remove group">
+                    <Button size="small" appearance="subtle" style={{ ...COMPACT_HEIGHT_STYLE, marginLeft: "auto" }} onClick={onRemove} aria-label="Remove group">
                         ✕
                     </Button>
                 )}
@@ -67,6 +69,7 @@ export const FilterGroupEditor: React.FC<IFilterGroupEditorProps> = ({ filter, e
                         key={condition.id}
                         condition={condition}
                         entityName={entityName}
+                        allowEntityAlias={allowEntityAlias}
                         onChange={(updated) => {
                             const next = [...filter.conditions];
                             next[idx] = updated;
@@ -84,6 +87,7 @@ export const FilterGroupEditor: React.FC<IFilterGroupEditorProps> = ({ filter, e
                         depth={depth + 1}
                         linkEntities={linkEntities}
                         onLinkEntitiesChange={onLinkEntitiesChange}
+                        allowEntityAlias={allowEntityAlias}
                         onChange={(updated) => {
                             const next = [...filter.filters];
                             next[idx] = updated;

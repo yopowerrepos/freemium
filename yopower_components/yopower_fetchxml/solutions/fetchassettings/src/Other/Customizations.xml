@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26091.144" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26091.00144">
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26094.142" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26094.00146">
   <Entities />
   <Roles />
   <Workflows />
@@ -11,6 +11,54 @@
   <optionsets />
   <CustomControls />
   <EntityDataProviders />
+  <AIModels>
+    <AIModel>
+      <msdyn_aimodelid>{7e91d0c8-fa55-4309-8653-153050b91dd2}</msdyn_aimodelid>
+      <msdyn_name>FetchXml to End-User Translator</msdyn_name>
+      <msdyn_templateid>{edfdb190-3791-45d8-9a6c-8f90a37c278a}</msdyn_templateid>
+      <statecode>1</statecode>
+      <statuscode>1</statuscode>
+      <IsCustomizable>1</IsCustomizable>
+      <msdyn_activerunconfigurationid>{cc189ddc-47ce-49a0-b3f4-386ac0a760bc}</msdyn_activerunconfigurationid>
+      <AIConfigurations>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{cc189ddc-47ce-49a0-b3f4-386ac0a760bc}</msdyn_aiconfigurationid>
+          <msdyn_customconfiguration>{"version":"GptDynamicPrompt-2","prompt":[{"type":"literal","text":"You are tasked with interpreting a FetchXML query and explaining its purpose and details in clear, natural language suitable for end-users who may not be familiar with technical query syntax.\n\n### Instructions:\n1. **Parse the FetchXML Query:** Analyze the provided FetchXML input to understand the entities, attributes, filters, and conditions involved.\n2. **Explain in Natural Language:** Translate the technical query components into a simple, user-friendly explanation that describes:\n   - What data the query is retrieving.\n   - The criteria or filters applied.\n   - Any sorting or grouping logic.\n3. **Clarity and Accessibility:** Ensure the explanation avoids technical jargon and is easy to understand for users without technical backgrounds.\n4. **Comprehensiveness:** Cover all key parts of the query to provide a complete overview of what the query does.\n\n### Guardrails:\n- Not include technical terms as 'database', 'unique identifier', 'one to many', 'many to many'\n\n### Output Format:\nProvide a clear, concise paragraph or set of paragraphs that explain the FetchXML query in natural language.\n\nProvide the FetchXML query here: "},{"type":"inputVariable","id":"FetchXML_20Query"},{"type":"literal","text":"\n"}],"definitions":{"inputs":[{"id":"FetchXML_20Query","text":"FetchXML Query","type":"text","quickTestValue":"&lt;fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\"&gt;\n  &lt;entity name=\"account\"&gt;\n    &lt;attribute name=\"name\" /&gt;\n    &lt;attribute name=\"address1_city\" /&gt;\n    &lt;attribute name=\"telephone1\" /&gt;\n    &lt;attribute name=\"accountid\" /&gt;\n    &lt;order attribute=\"name\" /&gt;\n  &lt;/entity&gt;\n&lt;/fetch&gt;"}],"formulas":[],"data":[],"output":{"formats":["text"]}},"modelParameters":{"modelType":"gpt-41-mini","gptParameters":{"temperature":0}},"settings":{"recordRetrievalLimit":30,"shouldPreserveRecordLinks":null,"runtime":null},"code":""}</msdyn_customconfiguration>
+          <msdyn_majoriterationnumber>1</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_name>7e91d0c8-fa55-4309-8653-153050b91dd2_10/16/2026 12:47:36 AM</msdyn_name>
+          <msdyn_modelrundataspecification>H4sIAAAAAAAACpWQzQrCMBCEX6XsOQcV8dBb/QNBLbZFvEnUVQNtEpINWKTvbmoVhXjxPDPf7swdco3HuTIVpy0aK5SEuM9gIbWjTCmaSRJUQ3yHqbC65PWaVwgxAIOEyIiDI7StPEc6Xner5X7Q2zg0PyJvR9TpDFJN/h4vIT7z0iKDotatMfdceYGGAT+dROeZKEl4o5CaBJZvMBn34Y65xdHwTW88P3X0b8/fXxTd4aDAWUhhrxly2w4bLPJUo5ccxP2LDz8/Q+CgAQAA</msdyn_modelrundataspecification>
+          <msdyn_type>190690001</msdyn_type>
+          <msdyn_aimodelid>{7e91d0c8-fa55-4309-8653-153050b91dd2}</msdyn_aimodelid>
+          <msdyn_trainedmodelaiconfigurationpareid>{6151f02c-fbc8-f111-a05c-002248375005}</msdyn_trainedmodelaiconfigurationpareid>
+          <statecode>2</statecode>
+          <statuscode>7</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+        <AIConfiguration>
+          <msdyn_aiconfigurationid>{6151f02c-fbc8-f111-a05c-002248375005}</msdyn_aiconfigurationid>
+          <msdyn_majoriterationnumber>1</msdyn_majoriterationnumber>
+          <msdyn_minoriterationnumber>0</msdyn_minoriterationnumber>
+          <msdyn_modeldata>e34dfa78-f8e5-4b61-9921-4e52a7edf67e</msdyn_modeldata>
+          <msdyn_name>7e91d0c8-fa55-4309-8653-153050b91dd2_Training_10/16/2026 12:47:35 AM</msdyn_name>
+          <msdyn_modelrundataspecification>
+        {
+          "schemaVersion": 2,
+          "input": {},
+          "output": {}
+        }
+      </msdyn_modelrundataspecification>
+          <msdyn_type>190690000</msdyn_type>
+          <msdyn_aimodelid>{7e91d0c8-fa55-4309-8653-153050b91dd2}</msdyn_aimodelid>
+          <statecode>2</statecode>
+          <statuscode>6</statuscode>
+          <IsCustomizable>1</IsCustomizable>
+          <msdyn_templateversion>1</msdyn_templateversion>
+        </AIConfiguration>
+      </AIConfigurations>
+    </AIModel>
+  </AIModels>
   <Languages>
     <Language>1033</Language>
     <Language>1046</Language>

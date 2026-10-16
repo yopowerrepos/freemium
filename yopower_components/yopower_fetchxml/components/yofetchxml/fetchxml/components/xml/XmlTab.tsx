@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button, Textarea, MessageBar, MessageBarBody, MessageBarTitle, Checkbox } from "@fluentui/react-components";
+import { Button, Textarea, MessageBar, MessageBarBody, MessageBarTitle, Checkbox, makeStyles } from "@fluentui/react-components";
 import { COMPACT_HEIGHT_STYLE } from "../design/treeStyles";
 
 export interface IXmlTabProps {
@@ -7,7 +7,16 @@ export interface IXmlTabProps {
     onApplyRawXml: (xml: string) => { success: boolean; error?: string };
 }
 
+/** The pane around it already frames the XML, so the textarea drops its own border and focus underline. */
+const useStyles = makeStyles({
+    borderless: {
+        border: "none",
+        "::after": { display: "none" },
+    },
+});
+
 export const XmlTab: React.FC<IXmlTabProps> = ({ xml, onApplyRawXml }) => {
+    const styles = useStyles();
     const [editing, setEditing] = React.useState(false);
     const [draft, setDraft] = React.useState(xml);
     const [error, setError] = React.useState<string | undefined>(undefined);
@@ -40,7 +49,7 @@ export const XmlTab: React.FC<IXmlTabProps> = ({ xml, onApplyRawXml }) => {
     };
 
     return (
-        <div style={{ display: "flex", flexDirection: "column", gap: "8px", padding: "8px 0", flex: 1, minHeight: 0 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px", padding: "6px 0", flex: 1, minHeight: 0 }}>
             <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
                 <Checkbox
                     label="Edit raw XML"
@@ -76,14 +85,19 @@ export const XmlTab: React.FC<IXmlTabProps> = ({ xml, onApplyRawXml }) => {
                 </MessageBar>
             )}
 
-            <Textarea
-                value={editing ? draft : xml}
-                readOnly={!editing}
-                onChange={(_, data) => setDraft(data.value)}
-                resize="none"
-                style={{ flex: 1, minHeight: "400px", height: "100%" }}
-                textarea={{ style: { fontFamily: "monospace", fontSize: "12px", whiteSpace: "pre", height: "100%" } }}
-            />
+            {/* Pinned to a positioned box so the inner <textarea> gets a definite height to fill -
+                with a percentage height alone it fell back to its intrinsic rows and clipped mid-pane. */}
+            <div style={{ position: "relative", flex: 1, minHeight: "200px" }}>
+                <Textarea
+                    value={editing ? draft : xml}
+                    readOnly={!editing}
+                    onChange={(_, data) => setDraft(data.value)}
+                    resize="none"
+                    className={styles.borderless}
+                    style={{ position: "absolute", inset: 0, display: "flex" }}
+                    textarea={{ style: { fontFamily: "monospace", fontSize: "11px", whiteSpace: "pre", flex: 1, height: "100%", maxHeight: "none" } }}
+                />
+            </div>
         </div>
     );
 };

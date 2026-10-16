@@ -349,17 +349,69 @@ let allEntityNamesCache: Promise<string[]> | undefined;
 /**
  * Fetches (and caches) every table's logical name, for the entity picker when no allowedEntities
  * restriction is configured. Scoped to IsValidForAdvancedFind so system/hidden tables that can't
- * meaningfully be queried via FetchXml don't clutter the list.
+ * meaningfully be queried via FetchXml don't clutter the list. Sorted client-side: metadata
+ * endpoints reject $orderby outright (400), which used to leave the picker silently empty.
  */
 export function getAllEntityNames(): Promise<string[]> {
     if (allEntityNamesCache) return allEntityNamesCache;
-    const url = `${WEB_API_VERSION_PATH}/EntityDefinitions?$select=LogicalName&$filter=IsValidForAdvancedFind eq true&$orderby=LogicalName`;
-    const promise = fetchAllPages<{ LogicalName: string }>(url).then((rows) => rows.map((r) => r.LogicalName));
+    const url = `${WEB_API_VERSION_PATH}/EntityDefinitions?$select=LogicalName&$filter=IsValidForAdvancedFind eq true`;
+    const promise = fetchAllPages<{ LogicalName: string }>(url).then((rows) => rows.map((r) => r.LogicalName).sort((a, b) => a.localeCompare(b)));
     allEntityNamesCache = promise;
     promise.catch(() => {
         allEntityNamesCache = undefined;
     });
     return promise;
+}
+
+export type ViewKind = "system" | "personal";
+
+export interface IViewOption {
+    id: string;
+    name: string;
+    kind: ViewKind;
+    fetchXml: string;
+}
+
+/**
+ * savedquery/userquery querytype values that aren't useful as a starting point for a query:
+ * associated (2) and quick find (4) views, and lookup (64) views.
+ */
+const EXCLUDED_VIEW_QUERY_TYPES = [2, 4, 64];
+
+interface IRawView {
+    name: string;
+    fetchxml?: string | null;
+    savedqueryid?: string;
+    userqueryid?: string;
+}
+
+/**
+ * Lists the active system (savedquery) and personal (userquery) views for an entity, to seed the
+ * designer from. Not cached: personal views change while the form stays open. A failure loading
+ * personal views (e.g. missing privilege) doesn't hide the system ones.
+ */
+export async function getEntityViews(entityLogicalName: string): Promise<IViewOption[]> {
+    const entity = entityLogicalName.replace(/'/g, "''");
+    const typeFilter = EXCLUDED_VIEW_QUERY_TYPES.map((t) => `querytype ne ${t}`).join(" and ");
+    const filter = encodeURIComponent(`returnedtypecode eq '${entity}' and statecode eq 0 and ${typeFilter}`);
+
+    const [systemResult, personalResult] = await Promise.allSettled([
+        fetchAllPages<IRawView>(`${WEB_API_VERSION_PATH}/savedqueries?$select=savedqueryid,name,fetchxml&$filter=${filter}&$orderby=name`),
+        fetchAllPages<IRawView>(`${WEB_API_VERSION_PATH}/userqueries?$select=userqueryid,name,fetchxml&$filter=${filter}&$orderby=name`),
+    ]);
+    if (systemResult.status === "rejected" && personalResult.status === "rejected") {
+        throw systemResult.reason;
+    }
+
+    const toOptions = (rows: IRawView[], kind: ViewKind): IViewOption[] =>
+        rows
+            .filter((r) => !!r.fetchxml)
+            .map((r) => ({ id: (kind === "system" ? r.savedqueryid : r.userqueryid) ?? r.name, name: r.name, kind, fetchXml: r.fetchxml! }));
+
+    return [
+        ...(systemResult.status === "fulfilled" ? toOptions(systemResult.value, "system") : []),
+        ...(personalResult.status === "fulfilled" ? toOptions(personalResult.value, "personal") : []),
+    ];
 }
 
 export function clearMetadataCache(): void {
@@ -444,6 +496,48 @@ export async function resolveRecordLabel<TInputs>(
         }
     }
     return undefined;
+}
+
+interface IXrmWebApiExecuteGlobal {
+    Xrm?: {
+        WebApi?: {
+            execute?: (request: unknown) => Promise<{ ok: boolean; json: () => Promise<unknown> }>;
+        };
+    };
+}
+
+/**
+ * Converts FetchXML to its T-SQL equivalent via the FetchXMLToSQL custom API (an unbound
+ * function). Goes through Xrm.WebApi.execute when the host exposes it - PCF's context.webAPI has
+ * no way to call a function - and falls back to a direct Web API GET (e.g. the test harness).
+ */
+export async function convertFetchXmlToSql(fetchXml: string, subqueryCompatible = true): Promise<string> {
+    const xrm = (window as unknown as IXrmWebApiExecuteGlobal).Xrm;
+    if (xrm?.WebApi?.execute) {
+        const request = {
+            SubqueryCompatible: subqueryCompatible,
+            FetchXml: fetchXml,
+            getMetadata: () => ({
+                boundParameter: null,
+                parameterTypes: {
+                    SubqueryCompatible: { typeName: "Edm.Boolean", structuralProperty: 1 },
+                    FetchXml: { typeName: "Edm.String", structuralProperty: 1 },
+                },
+                operationType: 1,
+                operationName: "FetchXMLToSQL",
+            }),
+        };
+        const response = await xrm.WebApi.execute(request);
+        if (!response.ok) throw new Error("FetchXMLToSQL request failed");
+        const body = (await response.json()) as { Response?: string };
+        return body.Response ?? "";
+    }
+
+    const xmlParam = encodeURIComponent(`'${fetchXml.replace(/'/g, "''")}'`);
+    const body = await fetchJson<{ Response?: string }>(
+        `${WEB_API_VERSION_PATH}/FetchXMLToSQL(FetchXml=@x,SubqueryCompatible=@s)?@x=${xmlParam}&@s=${subqueryCompatible ? "true" : "false"}`
+    );
+    return body.Response ?? "";
 }
 
 interface IXrmNavigateToGlobal {

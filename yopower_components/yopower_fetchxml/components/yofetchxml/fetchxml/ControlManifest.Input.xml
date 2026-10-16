@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="yopower" constructor="fetchxml" version="0.0.33" display-name-key="fetchxml" description-key="fetchxml description" control-type="virtual" preview-image="img/fetchxmlsettings.svg">
+  <control namespace="yopower" constructor="fetchxml" version="0.0.44" display-name-key="fetchxml" description-key="fetchxml description" control-type="virtual" preview-image="img/fetchxmlsettings.svg">
     <external-service-usage enabled="false">
     </external-service-usage>
     <property name="fetchxml" display-name-key="Fetch XML" description-key="Fetch XML" of-type="Multiple" usage="bound" required="true" />
@@ -8,6 +8,7 @@
     <property name="allowedEntities" display-name-key="Allowed Entities" description-key="Comma-separated list of entity logical names allowed to be selected as the query or link-entity target (e.g. account,contact)" of-type="SingleLine.Text" usage="input" required="false" />
     <property name="requiredAttributes" display-name-key="Required Attributes" description-key="JSON array of attributes that must always be included as columns when their entity is present in the query. attribute is required. entity is optional and defaults to the root entity when omitted, or set it to a related link entity name. alias is optional to specify, but is always applied when given." of-type="Multiple" usage="input" required="false" />
     <property name="requiredAlias" display-name-key="Required Alias" description-key="JSON array validating that a given output alias is present somewhere in the query and bound to an attribute of an allowed type. alias and binding are both required; binding is an array of one or more of id, string, decimal, integer, long, float, double, boolean, lookup." of-type="Multiple" usage="input" required="false" />
+    <property name="explaining" display-name-key="Explaining" description-key="AI Builder result saved as JSON from the designer Explain dialog" of-type="Multiple" usage="bound" required="false" />
     <resources>
       <code path="index.ts" order="1" />
       <platform-library name="React" version="16.14.0" />
