@@ -18,6 +18,8 @@ import { getLookupNavigateTo } from "./LookupNavigateButtonsCell";
 import { getNumbersProgressBar } from "./NumbersProgressBar";
 import { FileManagement } from "./FileManagement";
 import { RichTextPopoverComponent } from "./TextRichTextPopover";
+import { TextQRCodeComponent } from "./TextQRCode";
+import { TextBarCodeComponent } from "./TextBarCode";
 import { _909AnyColorByHex } from "../models/customizers/_909AnyColorByHex";
 import { getAnyColorByHex } from "./AnyColorByHex";
 import { RelatedTeamChat } from "./RelatedTeamChat";
@@ -142,6 +144,8 @@ export function getComponent(
 				return <FileManagement {...cell} />;
 				break;
 			case 500: return <RichTextPopoverComponent {...cell} />; break;
+			case 501: return <TextQRCodeComponent {...cell} />; break;
+			case 502: return <TextBarCodeComponent {...cell} />; break;
 		}
 	}
 	return;

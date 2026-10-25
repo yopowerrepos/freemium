@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 using yopower_papps_grid_extensions.earlybound;
@@ -20,6 +21,19 @@ namespace yopower_papps_grid_extensions.business
 {
     public class ColumnDefinitionBO : BaseBusiness
     {
+        private static readonly string[] QRCodeLayouts = new[] { "PIX", "EPC", "SWISS_QR" };
+        private static readonly string[] BarCodeLayouts = new[] { "BR_BOLETO", "BR_ARRECADACAO", "GTIN", "ITF14", "ISBN", "GS1_128" };
+        private static readonly string[] BarCodeFormats = new[] { "CODE128", "CODE128A", "CODE128B", "CODE128C", "CODE39", "EAN13", "EAN8", "EAN5", "EAN2", "UPC", "UPCE", "ITF", "ITF14", "MSI", "MSI10", "MSI11", "MSI1010", "MSI1110", "pharmacode", "codabar" };
+        private static readonly Dictionary<string, string[]> BarCodeLayoutFormats = new Dictionary<string, string[]>(StringComparer.OrdinalIgnoreCase)
+        {
+            { "BR_BOLETO", new[] { "ITF" } },
+            { "BR_ARRECADACAO", new[] { "ITF" } },
+            { "GTIN", new[] { "EAN13", "UPC", "EAN8", "ITF14" } },
+            { "ITF14", new[] { "ITF14" } },
+            { "ISBN", new[] { "EAN13" } },
+            { "GS1_128", new[] { "CODE128" } },
+        };
+
         public ColumnDefinitionBO(IOrganizationService service, IOrganizationService serviceAdmin, IServiceEndpointNotificationService notificationService, ITracingService tracingService, ILogger logger, List<Resx> messages = null) : base(service, serviceAdmin, notificationService, tracingService, logger, messages)
         {
         }
@@ -52,6 +66,8 @@ namespace yopower_papps_grid_extensions.business
                 switch ((yp_gbl_column_definition_type)type.Value)
                 {
                     case yp_gbl_column_definition_type._500TextRichTextPopover: Ensure500RichTextPopover(matchColumn); break;
+                    case yp_gbl_column_definition_type._501TextQRCode: Ensure501TextQRCode(matchColumn, parameters); break;
+                    case yp_gbl_column_definition_type._502TextBarcode: Ensure502Barcode(parameters, matchColumn, settings); break;
                     case yp_gbl_column_definition_type._600FileManagement: Ensure600FileManagement(parameters, settings); break;
                     case yp_gbl_column_definition_type._700NumbersDateColors: Ensure700NumbersDateColors(parameters, matchColumn, settings); break;
                     case yp_gbl_column_definition_type._701NumbersProgressBar: Ensure701NumbersProgressBar(parameters, matchColumn, settings); break;
@@ -412,6 +428,88 @@ namespace yopower_papps_grid_extensions.business
                 throw new InvalidPluginExecutionException($"⚠️The option 'Text [RichText]' is available for String and Memo columns");
             }
         }
+
+        private void Ensure501TextQRCode(models.metadata.ColumnModel matchColumn, string parameters = null)
+        {
+            if (matchColumn.Type.Value != AttributeTypeCode.Memo.GetHashCode()
+                && matchColumn.Type.Value != AttributeTypeCode.String.GetHashCode())
+            {
+                throw new InvalidPluginExecutionException($"⚠️The option 'Text [QRCode]' is available for String and Memo columns");
+            }
+            ValidateQRCodeParameters(parameters);
+        }
+
+        private void Ensure502Barcode(string parameters, models.metadata.ColumnModel matchColumn, JsonSerializerSettings settings)
+        {
+            if (matchColumn.Type.Value == AttributeTypeCode.Memo.GetHashCode()
+                || matchColumn.Type.Value == AttributeTypeCode.String.GetHashCode())
+            {
+                ValidateBarCodeParameters(parameters);
+            }
+            else
+                throw new InvalidPluginExecutionException($"⚠️The option 'Text [Barcode]' is available for String and Memo columns");
+        }
         #endregion
+
+        private void ValidateQRCodeParameters(string parameters)
+        {
+            if (string.IsNullOrWhiteSpace(parameters)) return;
+            object obj;
+            try { obj = JsonConvert.DeserializeObject<Dictionary<string, object>>(parameters); }
+            catch (Exception ex) { throw new InvalidPluginExecutionException($"❌Invalid JSON: {ex.Message}"); }
+            if (obj == null) return;
+            var dict = obj as Dictionary<string, object>;
+            if (dict.Count == 0) return;
+            foreach (var key in dict.Keys)
+            {
+                if (!string.Equals(key, "layout", StringComparison.OrdinalIgnoreCase))
+                    throw new InvalidPluginExecutionException($"❌Unknown property '{key}' in QRCode parameters.");
+            }
+            if (dict.TryGetValue("layout", out var layoutObj) && layoutObj != null)
+            {
+                var layout = layoutObj.ToString().ToUpperInvariant();
+                if (!QRCodeLayouts.Contains(layout))
+                    throw new InvalidPluginExecutionException($"❌Invalid QRCode layout '{layout}'. Allowed: PIX, EPC, SWISS_QR.");
+            }
+        }
+
+        private void ValidateBarCodeParameters(string parameters)
+        {
+            if (string.IsNullOrWhiteSpace(parameters)) return;
+            object obj;
+            try { obj = JsonConvert.DeserializeObject<Dictionary<string, object>>(parameters); }
+            catch (Exception ex) { throw new InvalidPluginExecutionException($"❌Invalid JSON: {ex.Message}"); }
+            if (obj == null) return;
+            var dict = obj as Dictionary<string, object>;
+            if (dict.Count == 0) return;
+            foreach (var key in dict.Keys)
+            {
+                if (!string.Equals(key, "layout", StringComparison.OrdinalIgnoreCase) && !string.Equals(key, "format", StringComparison.Ordinal))
+                    throw new InvalidPluginExecutionException($"❌Unknown property '{key}' in Barcode parameters.");
+            }
+            string layout = null;
+            string format = null;
+            if (dict.TryGetValue("layout", out var layoutObj) && layoutObj != null)
+            {
+                layout = layoutObj.ToString().ToUpperInvariant();
+                if (!BarCodeLayouts.Contains(layout))
+                    throw new InvalidPluginExecutionException($"❌Invalid Barcode layout '{layout}'. Allowed: {string.Join(", ", BarCodeLayouts)}.");
+            }
+            if (dict.TryGetValue("format", out var formatObj) && formatObj != null)
+            {
+                format = formatObj.ToString();
+                if (!BarCodeFormats.Contains(format))
+                    throw new InvalidPluginExecutionException($"❌Invalid Barcode format '{format}'. Allowed: {string.Join(", ", BarCodeFormats)}.");
+            }
+            // If both present, check compatibility
+            if (!string.IsNullOrEmpty(layout) && !string.IsNullOrEmpty(format))
+            {
+                if (BarCodeLayoutFormats.TryGetValue(layout, out var allowedFormats))
+                {
+                    if (!allowedFormats.Contains(format))
+                        throw new InvalidPluginExecutionException($"❌Format '{format}' is not allowed for layout '{layout}'. Allowed: {string.Join(", ", allowedFormats)}.");
+                }
+            }
+        }
     }
 }

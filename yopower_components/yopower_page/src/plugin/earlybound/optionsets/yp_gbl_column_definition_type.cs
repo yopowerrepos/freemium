@@ -21,6 +21,12 @@ namespace yopower_papps_grid_extensions.earlybound
 		_500TextRichTextPopover = 500,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		_501TextQRCode = 501,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		_502TextBarcode = 502,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		_600FileManagement = 600,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]

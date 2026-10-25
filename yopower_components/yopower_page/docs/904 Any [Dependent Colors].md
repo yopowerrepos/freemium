@@ -1,18 +1,24 @@
 # Any (Dependent Colors)
 
-- 📝 Use double click to enter on edit mode
-- ⚠️ Different of 'Numbers & Date [Colorful Cell]' it will define a color according rules
+- ✅ Any column type
+- 📝 Enable **Editable** on the Column Definition and click the cell to enter edit mode
+- ⚠️ Different of [700 Numbers & Date (Colors)](700%20Numbers%20&%20Date%20[Colors].md), the conditions can use **other columns** of the row to define the color of the cell.
+- Rules work the same way as 700: first match wins, `group` defaults to `or`, `min` / `max` are inclusive, same `output` properties.
 
 ## column
 
-The column defined should be included on grid!
+Any column of the row, it should be included on the view! Supported values:
+
+- Numbers, Currency and Duration: the value itself
+- Option Sets: the option value (i.e. `628950000`)
+- Two Options: `1` = yes, `0` = no
+- Date Only / Date&Time: difference in minutes between the value and now
 
 ## criteria
 
-'is-null', 'not-null' or 'range'
-- range: required include min and max
-- is-null
-- not-null
+- `range`: requires `min` and `max` (use the same value on both to match a single option)
+- `is-null`
+- `is-not-null`
 
 ## Parameters
 

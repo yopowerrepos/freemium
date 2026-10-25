@@ -1,7 +1,15 @@
 # Any (Related Records)
 
 - ✅ Any column type
-- ⚠️ The `reference` property defines whether the `row` or a `column` is used to substitute the placeholder `#value#`.
+- ⚠️ The `reference` property defines whether the `row` or a `column` (lookup on the view) is used to substitute the placeholders `#value#` and `#valuetype#`.
+- Displays the result of `fetchXmlAggregate` (aliased as `value`) on the cell, colored by `rules`. Clicking it creates (or updates) a personal view named `viewName` on `table`, using `fetchXml` and `layoutXml`, and opens it on a modal. The `viewId` property is required by the plugin but not used.
+
+## rules
+
+- Rules are evaluated against the aggregate result, in order, and the **first matching rule wins**.
+- Every condition `column` must be the same informed on the field `yp_subgrid_column` (validated by the plugin).
+- Use `range` only: on this customizer `is-null` never matches and `is-not-null` always matches.
+- ⚠️ If no rule matches, the text color is `transparent` and the value is not visible, so cover every possible count (i.e. a last rule up to `9999999`).
 
 ## Parameters
 ```json

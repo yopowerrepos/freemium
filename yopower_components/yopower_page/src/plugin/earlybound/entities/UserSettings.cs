@@ -272,6 +272,8 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string LastModifiedTimeForViewPersonalizationSettings = "lastmodifiedtimeforviewpersonalizationsettings";
 			public const string LocaleId = "localeid";
 			public const string LongDateFormatCode = "longdateformatcode";
+			public const string ModelLicenseEnforcementLastDismissed = "modellicenseenforcementlastdismissed";
+			public const string ModelLicenseEnforcementNotificationFirstShown = "modellicenseenforcementnotificationfirstshown";
 			public const string ModifiedBy = "modifiedby";
 			public const string ModifiedOn = "modifiedon";
 			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
@@ -1101,6 +1103,38 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("longdateformatcode", value);
+			}
+		}
+		
+		/// <summary>
+		/// The date and time when the model license enforcement notification was last dismissed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modellicenseenforcementlastdismissed")]
+		public System.Nullable<System.DateTime> ModelLicenseEnforcementLastDismissed
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modellicenseenforcementlastdismissed");
+			}
+			set
+			{
+				this.SetAttributeValue("modellicenseenforcementlastdismissed", value);
+			}
+		}
+		
+		/// <summary>
+		/// The date and time when the model license enforcement notification was first shown.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modellicenseenforcementnotificationfirstshown")]
+		public System.Nullable<System.DateTime> ModelLicenseEnforcementNotificationFirstShown
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modellicenseenforcementnotificationfirstshown");
+			}
+			set
+			{
+				this.SetAttributeValue("modellicenseenforcementnotificationfirstshown", value);
 			}
 		}
 		

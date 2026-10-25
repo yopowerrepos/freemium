@@ -1,22 +1,27 @@
-
 # Numbers (Progress Bar)
 
 - ✅ Integer, Decimal and Float
-- 📝 Use double click to enter on edit mode.
-- ⚠️ Type options: '_' (column value _ 100) | '/' (column value / 100) | empty
+- 📝 Enable **Editable** on the Column Definition and click the cell to enter edit mode
+- ⚠️ The progress bar expects a value between **0 and 1**, use `type` to convert the column value:
 
-## column
+| **type** | **Conversion**     | **Use when**                                |
+| -------- | ------------------ | ------------------------------------------- |
+| `""`     | none               | the column already stores 0 ~ 1 (i.e. 0.75) |
+| `"/"`    | column value / 100 | the column stores 0 ~ 100 (i.e. 75)         |
+| `"*"`    | column value × 100 | the column stores 0 ~ 0.01                  |
 
-The column should be the same informed on the field yp_subgrid_column!
+- The conversion is applied only to draw the bar, rules are always evaluated against the original column value.
+- Rules work the same way as [700 Numbers & Date (Colors)](700%20Numbers%20&%20Date%20[Colors].md#how-rules-are-evaluated): first match wins, `group` defaults to `or`, `min` / `max` are inclusive, and every condition `column` must be the `yp_subgrid_column`.
+- `output.background` is the bar and icon color, `output.color` is the text color and `output.label` is the tooltip.
+- If no rule matches, no progress bar is rendered.
 
 ## criteria
 
-'is-null', 'not-null' or 'range'
-- range: required include min and max
-- is-null
-- not-null
+- `range`: requires `min` and `max`
+- `is-null`
+- `is-not-null`
 
-## Parameters Decimal (0 > 1)
+## Parameters Decimal (0 ~ 1)
 
 ```json
 {
@@ -33,7 +38,7 @@ The column should be the same informed on the field yp_subgrid_column!
       "output": {
         "background": "transparent",
         "color": "#666666",
-        "label": "Fillout date",
+        "label": "Fill out value",
         "icon": "StatusCircleQuestionMark"
       }
     },
@@ -60,7 +65,7 @@ The column should be the same informed on the field yp_subgrid_column!
         {
           "column": "yp_decimal",
           "criteria": "range",
-          "min": 0.26,
+          "min": 0.25,
           "max": 0.50
         }
       ],
@@ -77,7 +82,7 @@ The column should be the same informed on the field yp_subgrid_column!
         {
           "column": "yp_decimal",
           "criteria": "range",
-          "min": 0.51,
+          "min": 0.50,
           "max": 0.75
         }
       ],
@@ -94,7 +99,7 @@ The column should be the same informed on the field yp_subgrid_column!
         {
           "column": "yp_decimal",
           "criteria": "range",
-          "min": 0.76,
+          "min": 0.75,
           "max": 1
         }
       ],
@@ -109,7 +114,9 @@ The column should be the same informed on the field yp_subgrid_column!
 }
 ```
 
-## Parameters Integer
+> Boundaries are repeated on purpose (first rule wins), so values like 0.255 are still covered.
+
+## Parameters Integer (0 ~ 100)
 
 ```json
 {
@@ -126,7 +133,7 @@ The column should be the same informed on the field yp_subgrid_column!
       "output": {
         "background": "transparent",
         "color": "#666666",
-        "label": "Fillout date",
+        "label": "Fill out value",
         "icon": "StatusCircleQuestionMark"
       }
     },

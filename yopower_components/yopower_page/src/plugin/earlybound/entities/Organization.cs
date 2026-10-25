@@ -709,6 +709,8 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string DefaultThemeData = "defaultthemedata";
 			public const string DelegatedAdminUserId = "delegatedadminuserid";
 			public const string DesktopFlowQueueLogsTtlInMinutes = "desktopflowqueuelogsttlinminutes";
+			public const string DesktopFlowRunActionLogsCustomUrl = "desktopflowrunactionlogscustomurl";
+			public const string DesktopFlowRunActionLogsCustomUrlEnabled = "desktopflowrunactionlogscustomurlenabled";
 			public const string DesktopFlowRunActionLogsStatus = "desktopflowrunactionlogsstatus";
 			public const string DesktopFlowRunActionLogVerbosity = "desktopflowrunactionlogverbosity";
 			public const string DesktopFlowRunActionLogVersion = "desktopflowrunactionlogversion";
@@ -829,6 +831,7 @@ namespace yopower_papps_grid_extensions.earlybound
 			public const string IsDelegateAccessEnabled = "isdelegateaccessenabled";
 			public const string IsDelveActionHubIntegrationEnabled = "isdelveactionhubintegrationenabled";
 			public const string IsDesktopFlowConnectionEmbeddingEnabled = "isdesktopflowconnectionembeddingenabled";
+			public const string IsDesktopFlowRemoteMonitoringControlEnabled = "isdesktopflowremotemonitoringcontrolenabled";
 			public const string IsDesktopFlowRuntimeRepairAttendedEnabled = "isdesktopflowruntimerepairattendedenabled";
 			public const string IsDesktopFlowRuntimeRepairUnattendedEnabled = "isdesktopflowruntimerepairunattendedenabled";
 			public const string IsDesktopFlowSavingsEnabled = "isdesktopflowsavingsenabled";
@@ -3100,6 +3103,38 @@ namespace yopower_papps_grid_extensions.earlybound
 		}
 		
 		/// <summary>
+		/// Customer-managed URL template for external desktop flow run action logs.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowrunactionlogscustomurl")]
+		public string DesktopFlowRunActionLogsCustomUrl
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("desktopflowrunactionlogscustomurl");
+			}
+			set
+			{
+				this.SetAttributeValue("desktopflowrunactionlogscustomurl", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether desktop flow run action logs use the customer-managed custom URL template.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowrunactionlogscustomurlenabled")]
+		public System.Nullable<bool> DesktopFlowRunActionLogsCustomUrlEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("desktopflowrunactionlogscustomurlenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("desktopflowrunactionlogscustomurlenabled", value);
+			}
+		}
+		
+		/// <summary>
 		/// Toggle the activation of the Power Automate Desktop Flow run action logs.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowrunactionlogsstatus")]
@@ -4974,6 +5009,22 @@ namespace yopower_papps_grid_extensions.earlybound
 			set
 			{
 				this.SetAttributeValue("isdesktopflowconnectionembeddingenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether remote monitoring and control for unattended desktop flows is enabled for this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowremotemonitoringcontrolenabled")]
+		public System.Nullable<bool> IsDesktopFlowRemoteMonitoringControlEnabled
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdesktopflowremotemonitoringcontrolenabled");
+			}
+			set
+			{
+				this.SetAttributeValue("isdesktopflowremotemonitoringcontrolenabled", value);
 			}
 		}
 		

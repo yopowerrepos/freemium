@@ -1,4 +1,6 @@
 # Text (Rich Text Popover)
-- ✅ RichText
+
+- ✅ Single Line of Text and Multiple Lines of Text (Rich Text)
 - ⚠️ No parameters
-- Allowed edit directly on the grid
+- Displays the rich text content on a popover.
+- Edit directly on the grid when **Editable** is enabled on the Column Definition.
